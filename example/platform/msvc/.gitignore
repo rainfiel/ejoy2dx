@@ -1,0 +1,13 @@
+lib/
+obj/
+output/
+*.bsc
+*.exp
+*.ilk
+*.lastbuildstate
+*.pdb
+*.suo
+*.sdf
+*.opensdf
+*.ipch
+*.sln.cache
