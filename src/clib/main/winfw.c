@@ -20,7 +20,8 @@ static struct WINDOWGAME *G = NULL;
 
 static const char * startscript =
 "local path, script = ...\n"
-"script = script or [[main.lua]]"
+"script = script or [[main.lua]]\n"
+"if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
 "path = string.match(path,[[(.*)\\[^\\]*$]])\n"
 "require(\"ejoy2d.framework\").WorkDir = path\n"
 
