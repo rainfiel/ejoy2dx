@@ -12,12 +12,6 @@ creator your_prj_name
 **************************************************
 '''
 
-class foo(object):
-	def __getitem__(self, key):
-		print("key:"+key)
-		return 1
-
-
 def format_file(path, *args):
 	f = open(path, "r")
 	fmt = f.read()
@@ -61,7 +55,7 @@ def create_msvc(prj_name, folder):
 
 def main(prj_name):
 	py_path = os.getcwd()
-	root = os.path.join(py_path, "../..")
+	root = os.path.join(py_path, "../../project")
 	tpl_dir = os.path.join(py_path, "template")
 	prj_dir = os.path.join(root, prj_name)
 	if os.path.exists(prj_dir):
