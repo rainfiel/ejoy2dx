@@ -24,7 +24,7 @@ M.blend_cfg = {
 }
 
 function M.begin_blend(mode)
-	if not mode then return true end
+	if not mode or mode == "normal" then return true end
 	local cfg = rawget(M.blend_cfg, mode)
 	if not cfg then return end
 	shader.blend(cfg[1], cfg[2])
