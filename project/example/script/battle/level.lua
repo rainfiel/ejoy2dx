@@ -70,7 +70,7 @@ function mt:init(cfg)
 					man:ps(x, cfg.Size.height_pixels - y)
 					man:sr(-v.rotation)
 				else
-					print("no defined entity:", v.name)
+					-- print("no defined entity:", v.name)
 				end
 			end
 		end

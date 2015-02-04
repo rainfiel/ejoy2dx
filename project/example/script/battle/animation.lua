@@ -22,14 +22,11 @@ function mt:init(path, name, render_cfg)
 	self.time_per_frame = self.time_ms / self.frame_cnt
 	self.timer = self.time_per_frame
 
-	-- print("....:", path, name)
-
 	self.img = image:load_image(path, name, nil, function(cfg, tx, ty, tw, th)
 		self.width, self.height = tw, th
 		self.row = math.floor(self.height / self.frame_height)
 		self.col = math.floor(self.width / self.frame_width)
 
-		-- print(self.frame_cnt, self.row, self.col, self.width, self.height, self.frame_width, self.frame_height, self.start_frame, self.end_frame)
 		--HACK
 		if self.start_frame > self.end_frame then
 			self.start_frame, self.end_frame = self.end_frame, self.start_frame
@@ -59,7 +56,6 @@ function mt:init(path, name, render_cfg)
 		image.add_animation(cfg, anis)
 	end)
 	self.img.action = "default"
-	-- self.img.frame = self.start_frame
 end
 
 function mt:ps(x, y)
@@ -100,7 +96,6 @@ end
 local M = {}
 
 function M.new(path, name, cfg)
-	-- path = utls.get_path(path)
 	local ani = setmetatable({}, mt)
 	ani:init(path, name, cfg)
 	return ani

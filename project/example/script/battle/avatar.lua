@@ -53,7 +53,6 @@ function mt:set_animation(ani_id)
 		last_tex_type = tex_type
 		return rawget(self, tex_type)
 	end)
-	print(ani_id, self.leg_skin)
 	if last_tex_type == "weapon_skin" then
 		local leg = get_leg_ani(ani_id)
 		self.leg_ani = ani_mgr:play(leg, self.leg_skin)

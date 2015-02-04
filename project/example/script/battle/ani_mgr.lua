@@ -43,7 +43,6 @@ function M:play(ani_name, tex_name, tex_callback)
 end
 
 function M:play_fx(fx_name)
-	print(fx_name)
 	local cfg = rawget(self.fx_def, fx_name)
 	if not cfg then return end
 	local render = cfg.RenderObject2D

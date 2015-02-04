@@ -52,7 +52,7 @@ function M.edge_reachable(lv, from_x, from_y, ref_x, ref_y)
 	local nx, ny = vector2.normalize(dir_x, dir_y)
 	local toward_x, toward_y = vector2.add(from_x, from_y, vector2.mul(dist, nx, ny))
 	if not M.point_hit(lv, toward_x, toward_y) then
-		print("straight:", from_x, from_y, toward_x, toward_y)
+		-- print("straight:", from_x, from_y, toward_x, toward_y)
 		return toward_x, toward_y, true
 	end
 
@@ -60,7 +60,7 @@ function M.edge_reachable(lv, from_x, from_y, ref_x, ref_y)
 	dist = math.min(global.minimal_collide_pixels, math.abs(dir_y))
 	local toward_x, toward_y = vector2.add(from_x, from_y, vector2.mul(dist, nx, ny))
 	if not M.point_hit(lv, toward_x, toward_y) then
-		print("along y:", from_x, from_y, toward_x, toward_y)
+		-- print("along y:", from_x, from_y, toward_x, toward_y)
 		return toward_x, toward_y
 	end
 
@@ -68,7 +68,7 @@ function M.edge_reachable(lv, from_x, from_y, ref_x, ref_y)
 	dist = math.min(global.minimal_collide_pixels, math.abs(dir_x))
 	local toward_x, toward_y = vector2.add(from_x, from_y, vector2.mul(dist, nx, ny))
 	if not M.point_hit(lv, toward_x, toward_y) then
-		print("along x:", from_x, from_y, toward_x, toward_y)
+		-- print("along x:", from_x, from_y, toward_x, toward_y)
 		return toward_x, toward_y
 	end
 end

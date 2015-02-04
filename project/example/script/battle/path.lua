@@ -41,7 +41,7 @@ function mt:calc_speed(meter_per_sec)
 	local spd_pix_per_sec = pixels_per_meter * meter_per_sec
 	self.pix_per_frame = spd_pix_per_sec * utls.frame_rate
 
-	print("velocity:", self.pix_per_frame)
+	-- print("velocity:", self.pix_per_frame)
 end
 
 function mt:is_pathing()

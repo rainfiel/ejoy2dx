@@ -25,7 +25,6 @@ end
 function mt:show(points)
 	local point_dist = self.point_dist
 	self.brick_cnt = math.floor( #points/2/point_dist )
-	print(self.brick_cnt)
 	local mcnt = #self.matrix_cache
 	local delta = self.brick_cnt - mcnt
 	while delta > 0 do
