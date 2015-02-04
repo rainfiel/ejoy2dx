@@ -91,7 +91,7 @@
     <ClCompile Include="..\..\..\..\..\src\clib\utls\image.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DE06B161-F6C3-4955-972A-960DAC9845E0}</ProjectGuid>
+    <ProjectGuid>{e7a3dd5e-ac4e-11e4-83dd-d52fcc5b651b}</ProjectGuid>
     <RootNamespace>example</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

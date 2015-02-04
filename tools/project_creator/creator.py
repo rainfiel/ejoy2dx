@@ -47,6 +47,16 @@ def create_msvc(prj_name, folder):
 	args=(guid, prj_name, "%(AdditionalIncludeDirectories)", "%(PreprocessorDefinitions)", "%(AdditionalDependencies)")
 	format_file(os.path.join(prj_dir, "%s.vcxproj"%prj_name), *args)
 
+	#bat
+	bat = os.path.join(folder, "make.bat")
+	f = open(bat, "r")
+	fmt = f.read()
+	f.close()
+	text = fmt.replace("ejoy2d", prj_name)
+	f = open(bat, "w")
+	f.write(text)
+	f.close()
+
 	print("msvc project created")
 
 def main(prj_name):

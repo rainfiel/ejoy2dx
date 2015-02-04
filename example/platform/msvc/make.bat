@@ -18,5 +18,5 @@ if {%1}=={} (
 	set configuration=%1
 )
 
-msbuild "%~dp0/build/ejoy2d.sln" /m /v:m /t:rebuild /clp:ShowEventId /p:Configuration="%configuration%",Platform="Win32"
-%~dp0/output/debug/ej2dx.exe %~dp0\..\..\ flappybird.lua
+msbuild "%~dp0build/example.sln" /m /v:m /t:rebuild /clp:ShowEventId /p:Configuration="%configuration%",Platform="Win32"
+%~dp0output/debug/ej2dx.exe %~dp0..\..\ flappybird.lua
