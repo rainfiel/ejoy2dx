@@ -26,12 +26,13 @@ static const char * startscript =
 "require(\"ejoy2d.framework\").WorkDir = path\n"
 
 //ejoy2dx path
-"local ej2dx = path .. [[\\..\\src]] .. [[\\?.lua;]] .. path .. [[\\..\\src]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
+"local ej2dx = path .. [[\\..\\..\\src]] .. [[\\?.lua;]] .. path .. [[\\..\\..\\src]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 //ejoy2d path
-"local ej2d  = path .. [[\\..\\ejoy2d]] .. [[\\?.lua;]] .. path .. [[\\..\\ejoy2d]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
+"local ej2d  = path .. [[\\..\\..\\ejoy2d]] .. [[\\?.lua;]] .. path .. [[\\..\\..\\ejoy2d]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 //user path
 "local usr = path .. [[\\script\\?.lua;]].. path .. [[\\script]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 "package.path = ej2dx..[[;]]..ej2d..[[;]]..usr\n"
+"print(package.path)\n"
 
 "local f = assert(loadfile(path..[[\\script\\]]..script))\n"
 "f(script)\n"

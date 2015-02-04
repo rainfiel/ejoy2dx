@@ -24,210 +24,210 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\src\clib\main\lualibs.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\lualibs.h">
       <Filter>clib\main</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\main\winfw.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\winfw.h">
       <Filter>clib\main</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\debug_log.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\debug_log.h">
       <Filter>clib\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\filesystem.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\filesystem.h">
       <Filter>clib\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\lhttplib.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\lhttplib.h">
       <Filter>clib\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\liosutil.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\liosutil.h">
       <Filter>clib\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\platform_init.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\platform_init.h">
       <Filter>clib\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\sound.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\sound.h">
       <Filter>clib\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\utls\stb_image.h">
       <Filter>clib\utls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image_write.h">
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\utls\stb_image_write.h">
       <Filter>clib\utls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\array.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\array.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\dfont.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\dfont.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\ejoy2dgame.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\ejoy2dgame.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\fault.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\fault.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\label.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\label.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\list.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\list.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\lmatrix.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\lmatrix.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\lrenderbuffer.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\lrenderbuffer.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\material.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\material.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\matrix.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\matrix.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\opengl.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\opengl.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\particle.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\particle.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\platform_print.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\platform_print.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\ppm.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\ppm.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\renderbuffer.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\renderbuffer.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\scissor.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\scissor.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\screen.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\screen.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\screenshot.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\screenshot.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\shader.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\shader.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\sprite.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\sprite.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\spritepack.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\spritepack.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\texture.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\texture.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\blendmode.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\render\blendmode.h">
       <Filter>ejoy2d\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\block.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\render\block.h">
       <Filter>ejoy2d\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\carray.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\render\carray.h">
       <Filter>ejoy2d\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\log.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\render\log.h">
       <Filter>ejoy2d\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\render.h">
+    <ClInclude Include="$(EJOY2D_ROOT)lib\render\render.h">
       <Filter>ejoy2d\render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\filesystem.c">
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\filesystem.c">
       <Filter>winmain</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\os_utls.c">
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\os_utls.c">
       <Filter>winmain</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\window.c">
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\window.c">
       <Filter>winmain</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winfont.c">
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\winfont.c">
       <Filter>winmain</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winmain.c">
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\winmain.c">
       <Filter>winmain</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\clib\main\lualibs.c">
+    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\lualibs.c">
       <Filter>clib\main</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\clib\main\winfw.c">
+    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\winfw.c">
       <Filter>clib\main</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\clib\utls\image.c">
+    <ClCompile Include="$(EJOY2DX_ROOT)clib\utls\image.c">
       <Filter>clib\utls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\dfont.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\dfont.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\ejoy2dgame.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\ejoy2dgame.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\fault.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\fault.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\label.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\label.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lmatrix.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\lmatrix.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lparticle.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\lparticle.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lrenderbuffer.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\lrenderbuffer.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lshader.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\lshader.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lsprite.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\lsprite.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\matrix.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\matrix.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\particle.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\particle.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\ppm.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\ppm.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\renderbuffer.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\renderbuffer.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\scissor.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\scissor.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\screen.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\screen.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\screenshot.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\screenshot.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\shader.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\shader.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\sprite.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\sprite.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\spritepack.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\spritepack.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\texture.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\texture.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\carray.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\render\carray.c">
       <Filter>ejoy2d\render</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\log.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\render\log.c">
       <Filter>ejoy2d\render</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\render.c">
+    <ClCompile Include="$(EJOY2D_ROOT)lib\render\render.c">
       <Filter>ejoy2d\render</Filter>
     </ClCompile>
   </ItemGroup>

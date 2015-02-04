@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "..\..\..\..\platform\msvc\build\lua\lua.vcxproj", "{D26A01D4-8C09-4427-A01F-CA1F96452412}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "..\..\..\..\..\platform\msvc\build\lua\lua.vcxproj", "{D26A01D4-8C09-4427-A01F-CA1F96452412}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "..\..\..\..\platform\msvc\build\glew\glew.vcxproj", "{22CDD41B-BEDE-4031-BD9B-AF304A5F3A4C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "..\..\..\..\..\platform\msvc\build\glew\glew.vcxproj", "{22CDD41B-BEDE-4031-BD9B-AF304A5F3A4C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib-1.2.7-win32", "..\..\..\..\platform\msvc\build\zlib\zlib-1.2.7-win32.vcxproj", "{D345D40F-F37F-4A14-8A25-87C28D407D33}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib-1.2.7-win32", "..\..\..\..\..\platform\msvc\build\zlib\zlib-1.2.7-win32.vcxproj", "{D345D40F-F37F-4A14-8A25-87C28D407D33}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "%s", "%s\%s.vcxproj", "{%s}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -42,12 +42,12 @@ Global
 		{D345D40F-F37F-4A14-8A25-87C28D407D33}.Release|Win32.Build.0 = Release|Win32
 		{D345D40F-F37F-4A14-8A25-87C28D407D33}.Release|x64.ActiveCfg = Release|x64
 		{D345D40F-F37F-4A14-8A25-87C28D407D33}.Release|x64.Build.0 = Release|x64
-		{DE06B161-F6C3-4955-972A-960DAC9845E0}.Debug|Win32.ActiveCfg = Debug|Win32
-		{DE06B161-F6C3-4955-972A-960DAC9845E0}.Debug|Win32.Build.0 = Debug|Win32
-		{DE06B161-F6C3-4955-972A-960DAC9845E0}.Debug|x64.ActiveCfg = Debug|Win32
-		{DE06B161-F6C3-4955-972A-960DAC9845E0}.Release|Win32.ActiveCfg = Release|Win32
-		{DE06B161-F6C3-4955-972A-960DAC9845E0}.Release|Win32.Build.0 = Release|Win32
-		{DE06B161-F6C3-4955-972A-960DAC9845E0}.Release|x64.ActiveCfg = Release|Win32
+		{E7A3DD5E-AC4E-11E4-83DD-D52FCC5B651B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E7A3DD5E-AC4E-11E4-83DD-D52FCC5B651B}.Debug|Win32.Build.0 = Debug|Win32
+		{E7A3DD5E-AC4E-11E4-83DD-D52FCC5B651B}.Debug|x64.ActiveCfg = Debug|Win32
+		{E7A3DD5E-AC4E-11E4-83DD-D52FCC5B651B}.Release|Win32.ActiveCfg = Release|Win32
+		{E7A3DD5E-AC4E-11E4-83DD-D52FCC5B651B}.Release|Win32.Build.0 = Release|Win32
+		{E7A3DD5E-AC4E-11E4-83DD-D52FCC5B651B}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
