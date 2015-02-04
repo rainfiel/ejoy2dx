@@ -1,0 +1,419 @@
+{
+    "Entities": {
+                    "Entity": {
+                                                    "FX_Flies": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "1100",
+                                                                                                                                "endFrame": "23",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "128",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "multiply_inverse",
+                                                                                                         "layer": "19",
+                                                                                                       "texture": "data/textures/fx/flies.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Flies",
+                                                                                  "type": "FX"
+                                                                },
+                                                     "FX_Rain": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "1100",
+                                                                                                                                "endFrame": "15",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "256",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                       "texture": "data/textures/fx/rain.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Rain",
+                                                                                  "type": "FX"
+                                                                },
+                                            "FX_Rain_Droplets": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "1300",
+                                                                                                                                "endFrame": "31",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "128",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "1",
+                                                                                                        "scaleX": "1.6",
+                                                                                                        "scaleY": "1.6",
+                                                                                                       "texture": "data/textures/fx/droplets.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Rain_Droplets",
+                                                                                  "type": "FX"
+                                                                },
+                                        "FX_Smoke_black_large": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2500",
+                                                                                                                                "endFrame": "23",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "multiply_inverse",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "4.5",
+                                                                                                        "scaleY": "4.5",
+                                                                                                       "texture": "data/textures/fx/smoke_small.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Smoke_black_large",
+                                                                                  "type": "FX"
+                                                                },
+                                              "FX_Smoke_large": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2500",
+                                                                                                                                "endFrame": "23",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "4.5",
+                                                                                                        "scaleY": "4.5",
+                                                                                                       "texture": "data/textures/fx/smoke_small.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Smoke_large",
+                                                                                  "type": "FX"
+                                                                },
+                                             "FX_Smoke_medium": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2500",
+                                                                                                                                "endFrame": "23",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "2.5",
+                                                                                                        "scaleY": "2.5",
+                                                                                                       "texture": "data/textures/fx/smoke_small.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Smoke_medium",
+                                                                                  "type": "FX"
+                                                                },
+                                              "FX_Smoke_small": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2500",
+                                                                                                                                "endFrame": "23",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "1.3",
+                                                                                                        "scaleY": "1.3",
+                                                                                                       "texture": "data/textures/fx/smoke_small.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Smoke_small",
+                                                                                  "type": "FX"
+                                                                },
+                                                     "FX_Snow": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2500",
+                                                                                                                                "endFrame": "63",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "128",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                       "texture": "data/textures/fx/snow.dds"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_Snow",
+                                                                                  "type": "FX"
+                                                                },
+                                                 "FX_TV_Light": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                          "animationTimeMS": "1400",
+                                                                                                                                 "endFrame": "11",
+                                                                                                                              "frameHeight": "128",
+                                                                                                                               "frameWidth": "128",
+                                                                                                                                 "numLoops": "-1",
+                                                                                                                      "randomizeFrameOrder": "true",
+                                                                                                                       "randomizeStartTime": "true",
+                                                                                                                               "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "overlay",
+                                                                                                         "layer": "19",
+                                                                                                       "texture": "data/textures/fx/tv_light.dds"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_TV_Light",
+                                                                                  "type": "FX"
+                                                                },
+                                          "FX_atmospheric_fog": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "3800",
+                                                                                                                                "endFrame": "47",
+                                                                                                                             "frameHeight": "64",
+                                                                                                                              "frameWidth": "64",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "color": "ffc8c8c8",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "10",
+                                                                                                        "scaleY": "10",
+                                                                                                       "texture": "data/textures/fx/atmospheric_fog.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_atmospheric_fog",
+                                                                                  "type": "FX"
+                                                                },
+                                  "FX_atmospheric_fog_smaller": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "3800",
+                                                                                                                                "endFrame": "47",
+                                                                                                                             "frameHeight": "64",
+                                                                                                                              "frameWidth": "64",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "color": "ffc8c8c8",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "5",
+                                                                                                        "scaleY": "5",
+                                                                                                       "texture": "data/textures/fx/atmospheric_fog.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_atmospheric_fog_smaller",
+                                                                                  "type": "FX"
+                                                                },
+                                              "FX_cooker_fire": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "1000",
+                                                                                                                                "endFrame": "11",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "normal",
+                                                                                                         "layer": "19",
+                                                                                                       "texture": "data/textures/fx/cooker_fire.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_cooker_fire",
+                                                                                  "type": "FX"
+                                                                },
+                                              "FX_electricity": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "200",
+                                                                                                                                "endFrame": "7",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                       "texture": "data/textures/fx/tazer_hit.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_electricity",
+                                                                                  "type": "FX"
+                                                                },
+                                               "FX_fire_large": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "3000",
+                                                                                                                                "endFrame": "47",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "color": "ffc8c8c8",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "2.5",
+                                                                                                        "scaleY": "2.5",
+                                                                                                       "texture": "data/textures/fx/fire.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_fire_large",
+                                                                                  "type": "FX"
+                                                                },
+                                               "FX_fire_small": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "3000",
+                                                                                                                                "endFrame": "47",
+                                                                                                                             "frameHeight": "32",
+                                                                                                                              "frameWidth": "32",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "color": "ffc8c8c8",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "1.0",
+                                                                                                        "scaleY": "1.0",
+                                                                                                       "texture": "data/textures/fx/fire.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_fire_small",
+                                                                                  "type": "FX"
+                                                                },
+                                                      "FX_gas": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2500",
+                                                                                                                                "endFrame": "31",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "128",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "19",
+                                                                                                        "scaleX": "2",
+                                                                                                        "scaleY": "2",
+                                                                                                       "texture": "data/textures/fx/gas.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_gas",
+                                                                                  "type": "FX"
+                                                                },
+                                        "FX_police_light_blue": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "650",
+                                                                                                                                "endFrame": "0",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "128",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "false",
+                                                                                                                              "startFrame": "11"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "color": "0xffff9c0e",
+                                                                                                         "layer": "18",
+                                                                                                        "scaleX": "2.7",
+                                                                                                        "scaleY": "2.7",
+                                                                                                       "texture": "data/textures/fx/police_light.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_police_light_blue",
+                                                                                  "type": "FX"
+                                                                },
+                                         "FX_police_light_red": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "650",
+                                                                                                                                "endFrame": "11",
+                                                                                                                             "frameHeight": "128",
+                                                                                                                              "frameWidth": "128",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "false",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "color": "0xff0000ff",
+                                                                                                         "layer": "18",
+                                                                                                        "scaleX": "2.7",
+                                                                                                        "scaleY": "2.7",
+                                                                                                       "texture": "data/textures/fx/police_light.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_police_light_red",
+                                                                                  "type": "FX"
+                                                                },
+                                             "FX_water_ripple": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2000",
+                                                                                                                                "endFrame": "31",
+                                                                                                                             "frameHeight": "64",
+                                                                                                                              "frameWidth": "64",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "1",
+                                                                                                       "texture": "data/textures/fx/water_ripple.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_water_ripple",
+                                                                                  "type": "FX"
+                                                                },
+                                         "FX_water_ripple_Top": {
+                                                                        "RenderObject2D": {
+                                                                                              "TextureAnimation": {
+                                                                                                                         "animationTimeMS": "2000",
+                                                                                                                                "endFrame": "31",
+                                                                                                                             "frameHeight": "64",
+                                                                                                                              "frameWidth": "64",
+                                                                                                                                "numLoops": "-1",
+                                                                                                                      "randomizeStartTime": "true",
+                                                                                                                              "startFrame": "0"
+                                                                                                                  },
+                                                                                                     "blendMode": "add",
+                                                                                                         "layer": "3",
+                                                                                                        "scaleX": "0.9",
+                                                                                                        "scaleY": "0.9",
+                                                                                                       "texture": "data/textures/fx/water_ripple.tga"
+                                                                                          },
+                                                                    "fogOfWarVisibility": "partial",
+                                                                                  "name": "FX_water_ripple_Top",
+                                                                                  "type": "FX"
+                                                                }
+                              }
+                }
+}

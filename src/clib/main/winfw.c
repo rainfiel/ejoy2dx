@@ -32,7 +32,6 @@ static const char * startscript =
 //user path
 "local usr = path .. [[\\script\\?.lua;]].. path .. [[\\script]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 "package.path = ej2dx..[[;]]..ej2d..[[;]]..usr\n"
-"print(package.path)\n"
 
 "local f = assert(loadfile(path..[[\\script\\]]..script))\n"
 "f(script)\n"

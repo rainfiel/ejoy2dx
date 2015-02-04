@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommand>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>$(EJOY2D)\..\..\ flappybird.lua</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>$(EJOY2D)\..\..\ main.lua</LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory>$(EJOY2D)\..\..\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
 </Project>

@@ -1,0 +1,1236 @@
+{
+    "Animations": {
+                      "RenderObject2D": {
+                                                               "ANIM_DOOR_BUS_CLOSE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "0",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_BUS_CLOSE",
+                                                                                                   "texture": "data/textures/environment/door2_anim.tga"
+                                                                                      },
+                                                                "ANIM_DOOR_BUS_OPEN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "11",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_BUS_OPEN",
+                                                                                                   "texture": "data/textures/environment/door2_anim.tga"
+                                                                                      },
+                                                                   "ANIM_DOOR_CLOSE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "0",
+                                                                                                                      "frameHeight": "66",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_CLOSE",
+                                                                                                   "texture": "data/textures/environment/door1_anim.tga"
+                                                                                      },
+                                                          "ANIM_DOOR_ELEVATOR_CLOSE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "0",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "16",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_ELEVATOR_CLOSE",
+                                                                                                   "texture": "data/textures/environment/door3_anim.tga"
+                                                                                      },
+                                                           "ANIM_DOOR_ELEVATOR_OPEN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "11",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "16",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_ELEVATOR_OPEN",
+                                                                                                   "texture": "data/textures/environment/door3_anim.tga"
+                                                                                      },
+                                                           "ANIM_DOOR_GRATING_CLOSE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "0",
+                                                                                                                      "frameHeight": "66",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_GRATING_CLOSE",
+                                                                                                   "texture": "data/textures/environment/door_grating_anim.tga"
+                                                                                      },
+                                                            "ANIM_DOOR_GRATING_OPEN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "11",
+                                                                                                                      "frameHeight": "66",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_GRATING_OPEN",
+                                                                                                   "texture": "data/textures/environment/door_grating_anim.tga"
+                                                                                      },
+                                                                    "ANIM_DOOR_OPEN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "11",
+                                                                                                                      "frameHeight": "66",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_OPEN",
+                                                                                                   "texture": "data/textures/environment/door1_anim.tga"
+                                                                                      },
+                                                     "ANIM_DOOR_SLIDINGSIMPLE_CLOSE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "0",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "16",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_SLIDINGSIMPLE_CLOSE",
+                                                                                                   "texture": "data/textures/environment/door4_anim.tga"
+                                                                                      },
+                                                      "ANIM_DOOR_SLIDINGSIMPLE_OPEN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "11",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "16",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "3",
+                                                                                                      "name": "ANIM_DOOR_SLIDINGSIMPLE_OPEN",
+                                                                                                   "texture": "data/textures/environment/door4_anim.tga"
+                                                                                      },
+                                                              "ANIM_ENEMY_DIE_TAZED": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1800",
+                                                                                                                         "endFrame": "119",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "77"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_ENEMY_DIE_TAZED"
+                                                                                      },
+                                                            "ANIM_ENEMY_FLASHBANGED": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "1500",
+                                                                                                                            "endFrame": "78",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "48"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_FLASHBANGED"
+                                                                                      },
+                                                        "ANIM_ENEMY_HANDCUFFED_IDLE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "4000",
+                                                                                                                            "endFrame": "1",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_HANDCUFFED_IDLE"
+                                                                                      },
+                                                        "ANIM_ENEMY_HANDCUFFED_WALK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "2200",
+                                                                                                                         "endFrame": "21",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_HANDCUFFED_WALK"
+                                                                                      },
+                                                          "ANIM_ENEMY_NOWEAPON_IDLE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "3500",
+                                                                                                                            "endFrame": "50",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "22"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_NOWEAPON_IDLE"
+                                                                                      },
+                                                           "ANIM_ENEMY_NOWEAPON_RUN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "750",
+                                                                                                                         "endFrame": "63",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "51"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_NOWEAPON_RUN"
+                                                                                      },
+                                                          "ANIM_ENEMY_NOWEAPON_WALK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1000",
+                                                                                                                         "endFrame": "78",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "64"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_NOWEAPON_WALK"
+                                                                                      },
+                                                              "ANIM_ENEMY_OPEN_DOOR": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "125",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "112"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_OPEN_DOOR"
+                                                                                      },
+                                                   "ANIM_ENEMY_OPERATE_LOWER_DEVICE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1800",
+                                                                                                                         "endFrame": "102",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "80"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_OPERATE_LOWER_DEVICE"
+                                                                                      },
+                                                                    "ANIM_ENEMY_RUN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "750",
+                                                                                                                         "endFrame": "140",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "128"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_RUN"
+                                                                                      },
+                                                           "ANIM_ENEMY_TAZED_SHIVER": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "117",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "114"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_TAZED_SHIVER"
+                                                                                      },
+                                                        "ANIM_ENEMY_THROW_GRENADE_R": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "43",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "23"
+                                                                                                              },
+                                                                                                      "name": "ANIM_ENEMY_THROW_GRENADE_R"
+                                                                                      },
+                                                              "ANIM_FX_BLOOD_BURST1": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "200",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_BLOOD_BURST1",
+                                                                                                   "texture": "data/textures/fx/blood/blood_burst_anim1.tga"
+                                                                                      },
+                                                              "ANIM_FX_BLOOD_BURST2": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "200",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_BLOOD_BURST2",
+                                                                                                   "texture": "data/textures/fx/blood/blood_burst_anim2.tga"
+                                                                                      },
+                                                                "ANIM_FX_BLOOD_POOL": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "2000",
+                                                                                                                         "endFrame": "23",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_FX_BLOOD_POOL",
+                                                                                                   "texture": "data/textures/fx/blood/blood_pool.tga"
+                                                                                      },
+                                                               "ANIM_FX_BREACH_DUST": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "2500",
+                                                                                                                            "endFrame": "23",
+                                                                                                                         "frameHeight": "32",
+                                                                                                                          "frameWidth": "32",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "19",
+                                                                                                      "name": "ANIM_FX_BREACH_DUST",
+                                                                                                    "scaleX": "6.5",
+                                                                                                    "scaleY": "6.5",
+                                                                                                   "texture": "data/textures/fx/smoke_small.tga"
+                                                                                      },
+                                                    "ANIM_FX_BULLET_IMPACT_CONCRETE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "550",
+                                                                                                                         "endFrame": "7",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "12",
+                                                                                                      "name": "ANIM_FX_BULLET_IMPACT_CONCRETE",
+                                                                                                   "texture": "data/textures/fx/bullet_impact_concrete.tga"
+                                                                                      },
+                                             "ANIM_FX_BULLET_IMPACT_CONCRETE_DEBRIS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "550",
+                                                                                                                         "endFrame": "6",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "32",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_FX_BULLET_IMPACT_CONCRETE_DEBRIS",
+                                                                                                   "texture": "data/textures/fx/bullet_impact_concrete_debris.dds"
+                                                                                      },
+                                            "ANIM_FX_BULLET_IMPACT_CONCRETE_DEBRIS2": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "550",
+                                                                                                                         "endFrame": "6",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "32",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_FX_BULLET_IMPACT_CONCRETE_DEBRIS2",
+                                                                                                   "texture": "data/textures/fx/bullet_impact_concrete_debris2.dds"
+                                                                                      },
+                                                       "ANIM_FX_BULLET_IMPACT_METAL": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "250",
+                                                                                                                         "endFrame": "6",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "12",
+                                                                                                      "name": "ANIM_FX_BULLET_IMPACT_METAL",
+                                                                                                     "sizeX": "56",
+                                                                                                     "sizeY": "28",
+                                                                                                   "texture": "data/textures/fx/bullet_impact_metal.tga"
+                                                                                      },
+                                                        "ANIM_FX_BULLET_IMPACT_SOFA": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "550",
+                                                                                                                         "endFrame": "7",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "12",
+                                                                                                      "name": "ANIM_FX_BULLET_IMPACT_SOFA",
+                                                                                                   "texture": "data/textures/fx/bullet_impact_sofa.tga"
+                                                                                      },
+                                                           "ANIM_FX_DESTROYING_DOPE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "9",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "color": "ff0707fe",
+                                                                                                     "layer": "2",
+                                                                                                      "name": "ANIM_FX_DESTROYING_DOPE",
+                                                                                                    "scaleX": "1.8",
+                                                                                                    "scaleY": "1.8",
+                                                                                                   "texture": "data/textures/fx/vip_enemy_spotted.tga"
+                                                                                      },
+                                                         "ANIM_FX_DOOR_BREAK_DEBRIS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "700",
+                                                                                                                         "endFrame": "15",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_FX_DOOR_BREAK_DEBRIS",
+                                                                                                   "texture": "data/textures/fx/door_break_debris.tga"
+                                                                                      },
+                                                       "ANIM_FX_DOOR_EXPLODE_DEBRIS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "700",
+                                                                                                                         "endFrame": "15",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_DOOR_EXPLODE_DEBRIS",
+                                                                                                     "sizeX": "192",
+                                                                                                     "sizeY": "192",
+                                                                                                   "texture": "data/textures/fx/door_break_debris.tga"
+                                                                                      },
+                                                            "ANIM_FX_DOOR_EXPLOSION": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "800",
+                                                                                                                         "endFrame": "15",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "256",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_DOOR_EXPLOSION",
+                                                                                                     "sizeX": "346",
+                                                                                                     "sizeY": "128",
+                                                                                                   "texture": "data/textures/fx/door_explosion.tga"
+                                                                                      },
+                                                        "ANIM_FX_EVIDENCE_RETRIEVED": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "9",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "2",
+                                                                                                      "name": "ANIM_FX_EVIDENCE_RETRIEVED",
+                                                                                                    "scaleX": "1.8",
+                                                                                                    "scaleY": "1.8",
+                                                                                                   "texture": "data/textures/fx/vip_friendly_control.tga"
+                                                                                      },
+                                                         "ANIM_FX_EXCLAMATION_MARKS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "440",
+                                                                                                                         "endFrame": "2",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "32",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "normal",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_EXCLAMATION_MARKS",
+                                                                                                   "texture": "data/textures/fx/state_alerted.tga"
+                                                                                      },
+                                                       "ANIM_FX_FRAGGRENADE_EXPLODE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1200",
+                                                                                                                         "endFrame": "24",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_FRAGGRENADE_EXPLODE",
+                                                                                                    "scaleX": "4.0",
+                                                                                                    "scaleY": "4.0",
+                                                                                                   "texture": "data/textures/fx/stinger_explosion.tga"
+                                                                                      },
+                                                              "ANIM_FX_GRENADE_DUST": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "2500",
+                                                                                                                            "endFrame": "31",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "19",
+                                                                                                      "name": "ANIM_FX_GRENADE_DUST",
+                                                                                                    "scaleX": "2.5",
+                                                                                                    "scaleY": "2.5",
+                                                                                                   "texture": "data/textures/fx/gas.tga"
+                                                                                      },
+                                                             "ANIM_FX_HUMAN_STUNNED": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "5",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_HUMAN_STUNNED",
+                                                                                                   "texture": "data/textures/fx/human_stunned.tga"
+                                                                                      },
+                                                         "ANIM_FX_MUZZLE_FLASH_1911": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "170",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add_masked",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_1911",
+                                                                                                   "texture": "data/textures/fx/muzzle_flash_1911.tga"
+                                                                                      },
+                                                           "ANIM_FX_MUZZLE_FLASH_M4": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "150",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add_masked",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_M4",
+                                                                                                   "texture": "data/textures/fx/muzzle_flash_m4.tga"
+                                                                                      },
+                                                        "ANIM_FX_MUZZLE_FLASH_MAC10": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "100",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add_masked",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_MAC10",
+                                                                                                   "texture": "data/textures/fx/muzzle_flash_mac10.tga"
+                                                                                      },
+                                                      "ANIM_FX_MUZZLE_FLASH_SHOTGUN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "200",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add_masked",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_SHOTGUN",
+                                                                                                     "sizeX": "100",
+                                                                                                     "sizeY": "64",
+                                                                                                   "texture": "data/textures/fx/muzzle_flash_sw.tga"
+                                                                                      },
+                                                   "ANIM_FX_MUZZLE_FLASH_SUPPRESSED": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "300",
+                                                                                                                         "endFrame": "6",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "normal",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_SUPPRESSED",
+                                                                                                   "texture": "data/textures/fx/suppressed_weapons.tga"
+                                                                                      },
+                                                           "ANIM_FX_MUZZLE_FLASH_SW": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "150",
+                                                                                                                         "endFrame": "3",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add_masked",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_SW",
+                                                                                                   "texture": "data/textures/fx/muzzle_flash_sw.tga"
+                                                                                      },
+                                                        "ANIM_FX_MUZZLE_FLASH_TAZER": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "150",
+                                                                                                                         "endFrame": "7",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "32",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_MUZZLE_FLASH_TAZER",
+                                                                                                   "texture": "data/textures/fx/muzzle_flash_tazer.tga"
+                                                                                      },
+                                                            "ANIM_FX_QUESTION_MARKS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1100",
+                                                                                                                         "endFrame": "2",
+                                                                                                                      "frameHeight": "48",
+                                                                                                                       "frameWidth": "48",
+                                                                                                                         "numLoops": "1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_QUESTION_MARKS",
+                                                                                                   "texture": "data/textures/fx/state_suspicious.tga"
+                                                                                      },
+                                                               "ANIM_FX_RADIO_WAVES": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "9",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "80",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_RADIO_WAVES",
+                                                                                                   "texture": "data/textures/fx/radio_waves.tga"
+                                                                                      },
+                                                              "ANIM_FX_RELOAD_TIMER": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "12",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_RELOAD_TIMER",
+                                                                                                   "texture": "data/textures/fx/reload_timer.tga"
+                                                                                      },
+                                                           "ANIM_FX_STINGER_EXPLODE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1200",
+                                                                                                                         "endFrame": "24",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "19",
+                                                                                                      "name": "ANIM_FX_STINGER_EXPLODE",
+                                                                                                    "scaleX": "2.5",
+                                                                                                    "scaleY": "2.5",
+                                                                                                   "texture": "data/textures/fx/stinger_explosion.tga"
+                                                                                      },
+                                                                 "ANIM_FX_TAZER_HIT": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "250",
+                                                                                                                         "endFrame": "7",
+                                                                                                                      "frameHeight": "32",
+                                                                                                                       "frameWidth": "32",
+                                                                                                                         "numLoops": "5",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_TAZER_HIT",
+                                                                                                    "scaleX": "1.7",
+                                                                                                    "scaleY": "1.7",
+                                                                                                   "texture": "data/textures/fx/tazer_hit.tga"
+                                                                                      },
+                                                        "ANIM_FX_TIMEBOMB_EXPLOSION": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1000",
+                                                                                                                         "endFrame": "15",
+                                                                                                                      "frameHeight": "256",
+                                                                                                                       "frameWidth": "256",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add_masked",
+                                                                                                     "layer": "30",
+                                                                                                      "name": "ANIM_FX_TIMEBOMB_EXPLOSION",
+                                                                                                     "sizeX": "320",
+                                                                                                     "sizeY": "320",
+                                                                                                   "texture": "data/textures/fx/timebomb_explosion.tga"
+                                                                                      },
+                                                         "ANIM_FX_VIP_ENEMY_SPOTTED": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "9",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "color": "ff0707fe",
+                                                                                                     "layer": "2",
+                                                                                                      "name": "ANIM_FX_VIP_ENEMY_SPOTTED",
+                                                                                                   "texture": "data/textures/fx/vip_enemy_spotted.tga"
+                                                                                      },
+                                                      "ANIM_FX_VIP_FRIENDLY_CONTROL": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "9",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                 "blendMode": "add",
+                                                                                                     "layer": "2",
+                                                                                                      "name": "ANIM_FX_VIP_FRIENDLY_CONTROL",
+                                                                                                   "texture": "data/textures/fx/vip_friendly_control.tga"
+                                                                                      },
+                                                              "ANIM_FX_WINDOW_BREAK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "10",
+                                                                                                                      "frameHeight": "64",
+                                                                                                                       "frameWidth": "64",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_FX_WINDOW_BREAK",
+                                                                                                   "texture": "data/textures/fx/window_break.tga"
+                                                                                      },
+                                                          "ANIM_GUI_DETONATE_BUTTON": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1500",
+                                                                                                                         "endFrame": "1",
+                                                                                                                      "frameHeight": "36",
+                                                                                                                       "frameWidth": "36",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "21",
+                                                                                                      "name": "ANIM_GUI_DETONATE_BUTTON",
+                                                                                                   "texture": "data/textures/gui/contextual/pathicon_detonate_active_anim.tga"
+                                                                                      },
+                                                                  "ANIM_HOSTAGE_DIE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "900",
+                                                                                                                         "endFrame": "28",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_HOSTAGE_DIE"
+                                                                                      },
+                                                                 "ANIM_HOSTAGE_IDLE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "2000",
+                                                                                                                            "endFrame": "28",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_HOSTAGE_IDLE"
+                                                                                      },
+                                                                 "ANIM_HOSTAGE_WALK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1000",
+                                                                                                                         "endFrame": "53",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "32"
+                                                                                                              },
+                                                                                                      "name": "ANIM_HOSTAGE_WALK"
+                                                                                      },
+                                                                    "ANIM_LEGS_IDLE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "2000",
+                                                                                                                         "endFrame": "74",
+                                                                                                                      "frameHeight": "70",
+                                                                                                                       "frameWidth": "70",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "60"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_LEGS_IDLE"
+                                                                                      },
+                                                                "ANIM_LEGS_STRAFE_L": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "650",
+                                                                                                                         "endFrame": "44",
+                                                                                                                      "frameHeight": "70",
+                                                                                                                       "frameWidth": "70",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "30"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_LEGS_STRAFE_L"
+                                                                                      },
+                                                                "ANIM_LEGS_STRAFE_R": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "650",
+                                                                                                                         "endFrame": "59",
+                                                                                                                      "frameHeight": "70",
+                                                                                                                       "frameWidth": "70",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "45"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_LEGS_STRAFE_R"
+                                                                                      },
+                                                                    "ANIM_LEGS_WALK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "980",
+                                                                                                                         "endFrame": "14",
+                                                                                                                      "frameHeight": "70",
+                                                                                                                       "frameWidth": "70",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_LEGS_WALK"
+                                                                                      },
+                                                          "ANIM_LEGS_WALK_BACKWARDS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "980",
+                                                                                                                         "endFrame": "29",
+                                                                                                                      "frameHeight": "70",
+                                                                                                                       "frameWidth": "70",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "15"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_LEGS_WALK_BACKWARDS"
+                                                                                      },
+                                                                "ANIM_NOWEAPON_IDLE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "0",
+                                                                                                                            "endFrame": "0",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_NOWEAPON_IDLE"
+                                                                                      },
+                                                                   "ANIM_PISTOL_DIE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "750",
+                                                                                                                         "endFrame": "15",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_PISTOL_DIE"
+                                                                                      },
+                                                                  "ANIM_PISTOL_DIE2": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "820",
+                                                                                                                         "endFrame": "39",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "22"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_PISTOL_DIE2"
+                                                                                      },
+                                                                  "ANIM_PISTOL_DIE3": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "650",
+                                                                                                                         "endFrame": "54",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "44"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_PISTOL_DIE3"
+                                                                                      },
+                                                                  "ANIM_PISTOL_DIE4": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "870",
+                                                                                                                         "endFrame": "75",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "55"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_PISTOL_DIE4"
+                                                                                      },
+                                                                    "ANIM_RIFLE_DIE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "650",
+                                                                                                                         "endFrame": "10",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_RIFLE_DIE"
+                                                                                      },
+                                                                   "ANIM_RIFLE_DIE2": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "750",
+                                                                                                                         "endFrame": "24",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_RIFLE_DIE2"
+                                                                                      },
+                                                                   "ANIM_RIFLE_DIE3": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "850",
+                                                                                                                         "endFrame": "41",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "25"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_RIFLE_DIE3"
+                                                                                      },
+                                                                   "ANIM_RIFLE_DIE4": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1100",
+                                                                                                                         "endFrame": "72",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "44"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_RIFLE_DIE4"
+                                                                                      },
+                                                                   "ANIM_SHIELD_DIE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "900",
+                                                                                                                         "endFrame": "23",
+                                                                                                                      "frameHeight": "180",
+                                                                                                                       "frameWidth": "180",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "layer": "1",
+                                                                                                      "name": "ANIM_SHIELD_DIE"
+                                                                                      },
+                                                          "ANIM_SWAT_CROWBAR_BREACH": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1500",
+                                                                                                                         "endFrame": "88",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "64"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_CROWBAR_BREACH"
+                                                                                      },
+                                                             "ANIM_SWAT_CUT_PADLOCK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1100",
+                                                                                                                         "endFrame": "88",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "64"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_CUT_PADLOCK"
+                                                                                      },
+                                                   "ANIM_SWAT_DYNAMIC_HAMMER_BREACH": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1500",
+                                                                                                                         "endFrame": "111",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "89"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_DYNAMIC_HAMMER_BREACH"
+                                                                                      },
+                                                                "ANIM_SWAT_HANDCUFF": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1500",
+                                                                                                                         "endFrame": "38",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "22"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_HANDCUFF"
+                                                                                      },
+                                                               "ANIM_SWAT_KICK_DOOR": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "125",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "112"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_KICK_DOOR"
+                                                                                      },
+                                                               "ANIM_SWAT_OPEN_DOOR": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "500",
+                                                                                                                         "endFrame": "141",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "128"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_OPEN_DOOR"
+                                                                                      },
+                                                    "ANIM_SWAT_OPERATE_LOWER_DEVICE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "1800",
+                                                                                                                         "endFrame": "54",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "40"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_OPERATE_LOWER_DEVICE"
+                                                                                      },
+                                                         "ANIM_SWAT_THROW_GRENADE_L": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "20",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                     "flipY": "true",
+                                                                                                      "name": "ANIM_SWAT_THROW_GRENADE_L"
+                                                                                      },
+                                                         "ANIM_SWAT_THROW_GRENADE_R": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "20",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_SWAT_THROW_GRENADE_R"
+                                                                                      },
+                                                              "ANIM_TORSO_CHANGE_IN": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "0",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_CHANGE_IN"
+                                                                                      },
+                                                             "ANIM_TORSO_CHANGE_OUT": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "10",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "10"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_CHANGE_OUT"
+                                                                                      },
+                                                            "ANIM_TORSO_FIRE_WEAPON": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "150",
+                                                                                                                         "endFrame": "15",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "11"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_FIRE_WEAPON"
+                                                                                      },
+                                                                  "ANIM_TORSO_GUARD": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "10",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "5"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_GUARD"
+                                                                                      },
+                                                                   "ANIM_TORSO_IDLE": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "2000",
+                                                                                                                            "endFrame": "46",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "32"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_IDLE"
+                                                                                      },
+                                                    "ANIM_TORSO_IDLE_GUARDED_WEAPON": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "1100",
+                                                                                                                            "endFrame": "10",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "9"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_IDLE_GUARDED_WEAPON"
+                                                                                      },
+                                                                  "ANIM_TORSO_READY": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "5",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "0"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_READY"
+                                                                                      },
+                                                          "ANIM_TORSO_RELOAD_WEAPON": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "0",
+                                                                                                                         "endFrame": "31",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "0",
+                                                                                                                       "startFrame": "16"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_RELOAD_WEAPON"
+                                                                                      },
+                                                               "ANIM_TORSO_STRAFE_L": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "650",
+                                                                                                                         "endFrame": "95",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "80"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_STRAFE_L"
+                                                                                      },
+                                                               "ANIM_TORSO_STRAFE_R": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "650",
+                                                                                                                         "endFrame": "111",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "96"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_STRAFE_R"
+                                                                                      },
+                                                                   "ANIM_TORSO_WALK": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "980",
+                                                                                                                         "endFrame": "63",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "48"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_WALK"
+                                                                                      },
+                                                         "ANIM_TORSO_WALK_BACKWARDS": {
+                                                                                          "TextureAnimation": {
+                                                                                                                  "animationTimeMS": "980",
+                                                                                                                         "endFrame": "79",
+                                                                                                                      "frameHeight": "128",
+                                                                                                                       "frameWidth": "128",
+                                                                                                                         "numLoops": "-1",
+                                                                                                                       "startFrame": "64"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_WALK_BACKWARDS"
+                                                                                      },
+                                                    "ANIM_TORSO_WALK_GUARDED_WEAPON": {
+                                                                                          "TextureAnimation": {
+                                                                                                                     "animationTimeMS": "600",
+                                                                                                                            "endFrame": "10",
+                                                                                                                         "frameHeight": "128",
+                                                                                                                          "frameWidth": "128",
+                                                                                                                            "numLoops": "-1",
+                                                                                                                  "randomizeStartTime": "true",
+                                                                                                                          "startFrame": "9"
+                                                                                                              },
+                                                                                                      "name": "ANIM_TORSO_WALK_GUARDED_WEAPON"
+                                                                                      }
+                                        }
+                  }
+}

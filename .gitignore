@@ -1,6 +1,7 @@
 lib/
 obj/
 output/
+doorkickers/
 ej2dx
 ej2dx.dSYM/*
 *.exe

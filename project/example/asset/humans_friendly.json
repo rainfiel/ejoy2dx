@@ -1,0 +1,83 @@
+{
+    "Entities": {
+                    "Entity": {
+                                          "Friendly_Pointman": {
+                                                                             "Behavior": {
+                                                                                                       "State": {
+                                                                                                                    "ActivityBindingTable": {
+                                                                                                                                                "ActivityBinding": {
+                                                                                                                                                                        "Activity": {
+                                                                                                                                                                                        "type": "ACTP_ENGAGE_ENEMY"
+                                                                                                                                                                                    },
+                                                                                                                                                                       "eventName": "TYPE_AI_SETUP_DEFAULT_ACTIVITY",
+                                                                                                                                                                        "priority": "1"
+                                                                                                                                                                   }
+                                                                                                                                            },
+                                                                                                                                    "name": "default"
+                                                                                                                },
+                                                                                             "defaultActivity": "ACTP_ENGAGE_ENEMY",
+                                                                                                "defaultState": "default"
+                                                                                         },
+                                                                            "Equipment": {
+                                                                                             "Item": {
+                                                                                                         "Breaching Charge": {
+                                                                                                                                 "name": "Breaching Charge"
+                                                                                                                             },
+                                                                                                                  "Crowbar": {
+                                                                                                                                 "name": "Crowbar"
+                                                                                                                             },
+                                                                                                                "Flashbang": {
+                                                                                                                                 "name": "Flashbang"
+                                                                                                                             },
+                                                                                                               "G17 Pistol": {
+                                                                                                                                 "name": "G17 Pistol"
+                                                                                                                             },
+                                                                                                                 "Lockpick": {
+                                                                                                                                 "name": "Lockpick"
+                                                                                                                             },
+                                                                                                         "Low Threat Armor": {
+                                                                                                                                 "name": "Low Threat Armor"
+                                                                                                                             },
+                                                                                                               "Spy Camera": {
+                                                                                                                                 "name": "Spy Camera"
+                                                                                                                             }
+                                                                                                     }
+                                                                                         },
+                                                                          "FieldOfView": {
+                                                                                                     "degrees": "90",
+                                                                                             "eyeRadiusMeters": "0.7",
+                                                                                                 "rangeMeters": "99999"
+                                                                                         },
+                                                                    "MobilityModifiers": {
+                                                                                             "moveSpeedLocalModifierPercent": "0",
+                                                                                             "turnSpeedLocalModifierPercent": "0"
+                                                                                         },
+                                                                   "OffscreenIndicator": {
+                                                                                             "RenderObject2D": {
+                                                                                                                   "texture": "data/textures/gui/menus/menu_brief_swat.tga"
+                                                                                                               }
+                                                                                         },
+                                                                       "RenderObject2D": {
+                                                                                             "layer": "10"
+                                                                                         },
+                                                                                 "Skin": {
+                                                                                                  "death": "data/textures/humans/swat_pointman_deaths.dds",
+                                                                                                   "legs": "data/textures/humans/swat_legs.png",
+                                                                                                 "pistol": "data/textures/humans/swat_pointman_pistol.png",
+                                                                                                  "rifle": "data/textures/humans/swat_pointman_rifle.png",
+                                                                                                "shotgun": "data/textures/humans/swat_pointman_rifle.png",
+                                                                                             "weaponless": "data/textures/humans/swat_pointman_weaponless.png"
+                                                                                         },
+                                                                          "bboxOffsetX": "0",
+                                                                          "bboxOffsetY": "0",
+                                                                                "class": "Pointman",
+                                                                   "fogOfWarVisibility": "full",
+                                                                                 "name": "Friendly_Pointman",
+                                                                                "sizeX": "45",
+                                                                                "sizeY": "40",
+                                                                              "subType": "Friendly",
+                                                                                 "type": "Human"
+                                                               }
+                              }
+                }
+}

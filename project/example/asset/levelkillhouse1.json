@@ -1,0 +1,174 @@
+{
+    "Level": {
+                 "Background": {
+                                   "RenderObject2D": {
+                                                                "flipX": "0",
+                                                                "flipY": "0",
+                                                         "texCoordsMax": "1 1",
+                                                              "texture": "data/textures/background/killhouse1r1d.dds"
+                                                     }
+                               },
+                   "Entities": {
+                                   "Entity": [ {
+                                                     "name": "BrokenGlass",
+                                                   "origin": "424 288",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "DoorDebris",
+                                                   "origin": "472 160",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "DoorDebris",
+                                                   "origin": "496 280",
+                                                 "rotation": "320"
+                                             }, {
+                                                     "name": "DoorDebris",
+                                                   "origin": "208 464",
+                                                 "rotation": "260"
+                                             }, {
+                                                     "name": "DoorDebris",
+                                                   "origin": "664 416",
+                                                 "rotation": "125"
+                                             }, {
+                                                     "name": "Palet",
+                                                   "origin": "928 104",
+                                                 "rotation": "356"
+                                             }, {
+                                                     "name": "Palet",
+                                                   "origin": "928 232",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Palet",
+                                                   "origin": "32 72",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Palet",
+                                                   "origin": "30 64",
+                                                 "rotation": "181"
+                                             }, {
+                                                     "name": "TutorialText5",
+                                                   "origin": "632 62",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "BurnMark1",
+                                                   "origin": "232 448",
+                                                 "rotation": "25"
+                                             }, {
+                                                     "name": "BurnMark1",
+                                                   "origin": "496 256",
+                                                 "rotation": "295"
+                                             }, {
+                                                     "name": "BurnMark2",
+                                                   "origin": "632 392",
+                                                 "rotation": "240"
+                                             }, {
+                                                     "name": "Barrel04MetalOld",
+                                                   "origin": "380 269",
+                                                 "rotation": "350"
+                                             }, {
+                                                     "name": "Barrel05MetalRusty",
+                                                   "origin": "376 352",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "CouchTorn",
+                                                   "origin": "544 312",
+                                                 "rotation": "180"
+                                             }, {
+                                                     "name": "Crate",
+                                                   "origin": "944 96",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Crate",
+                                                   "origin": "936 200",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Crate",
+                                                   "origin": "944 152",
+                                                 "rotation": "10"
+                                             }, {
+                                                     "name": "Roundtable",
+                                                   "origin": "454 309",
+                                                 "rotation": "275"
+                                             }, {
+                                                     "name": "Door1",
+                                                   "origin": "464 120",
+                                                 "rotation": "270"
+                                             }, {
+                                                     "name": "Enemy_JunkieHarry",
+                                                   "origin": "188 156",
+                                                 "rotation": "5"
+                                             }, {
+                                                     "name": "Enemy_JunkieHarry",
+                                                   "origin": "455 376",
+                                                 "rotation": "344"
+                                             }, {
+                                                     "name": "Enemy_JunkieHarry",
+                                                   "origin": "607 342",
+                                                 "rotation": "161"
+                                             }, {
+                                                     "name": "Enemy_JunkieHarry",
+                                                   "origin": "550 404",
+                                                 "rotation": "261"
+                                             }, {
+                                                     "name": "Friendly_Pointman",
+                                                   "origin": "400 88",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Friendly_Pointman",
+                                                   "origin": "336 88",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "FX_atmospheric_fog",
+                                                   "origin": "80 464",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "FX_atmospheric_fog",
+                                                   "origin": "480 584",
+                                                 "rotation": "35"
+                                             }, {
+                                                     "name": "FX_atmospheric_fog",
+                                                   "origin": "984 264",
+                                                 "rotation": "320"
+                                             }, {
+                                                     "name": "FX_Smoke_black_large",
+                                                   "origin": "232 456",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "FX_Smoke_black_large",
+                                                   "origin": "648 408",
+                                                 "rotation": "310"
+                                             }, {
+                                                     "name": "Sound_LightFlickering",
+                                                   "origin": "460 102",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Sound_PoliceSirenA",
+                                                   "origin": "87 591",
+                                                 "rotation": "0"
+                                             }, {
+                                                     "name": "Sound_Wind",
+                                                   "origin": "462 64",
+                                                 "rotation": "0"
+                                             } ]
+                               },
+                      "Paths": [  ],
+                   "Scenario": {
+                                                    "challenges": "5",
+                                                 "noVisualIntel": "0",
+                                             "numArrestWarrants": "0",
+                                              "numKnownHostages": "0",
+                                              "numKnownHostiles": "4",
+                                          "numUncertainHostiles": "0",
+                                   "referenceResolveTimeSeconds": "6",
+                                                          "type": "ClearHostiles"
+                               },
+                       "Size": {
+                                    "height_pixels": "672",
+                                       "mapSizeTag": "L",
+                                   "pixelsPerMeter": "64",
+                                     "width_pixels": "992"
+                               },
+                      "Walls": [  ],
+                       "name": "Kicking the door"
+             }
+}

@@ -1,0 +1,123 @@
+{
+    "Entities": {
+                    "Entity": {                                                        
+                                                        "Palet": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "6",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "1",
+                                                                                               "texture": "data/textures/environment/obj_palet.png"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "Palet",
+                                                                                   "type": "Cover"
+                                                                 },
+                                                "TutorialText5": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "4",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                               "blendMode": "normal",
+                                                                                                   "layer": "1",
+                                                                                                 "texture": "data/textures/environment/text_decals/text_tutorial5.tga"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "TutorialText5",
+                                                                                   "type": "RescueZone"
+                                                                 },
+                                             "Barrel04MetalOld": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "10",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "2",
+                                                                                               "texture": "data/textures/environment/obj_barrel04.png"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "Barrel04MetalOld",
+                                                                                   "type": "Cover"
+                                                                 },
+                                           "Barrel05MetalRusty": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "10",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "2",
+                                                                                               "texture": "data/textures/environment/obj_barrel05.png"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "Barrel05MetalRusty",
+                                                                                   "type": "Cover"
+                                                                 },
+                                                    "CouchTorn": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "10",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "2",
+                                                                                               "texture": "data/textures/environment/obj_couch_torn.png"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "CouchTorn",
+                                                                                   "type": "Cover"
+                                                                 },
+                                                        "Crate": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "10",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "2",
+                                                                                               "texture": "data/textures/environment/obj_crate.png"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "Crate",
+                                                                                   "type": "Cover"
+                                                                 },
+                                                   "Roundtable": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "6",
+                                                                                                "type": "static"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "2",
+                                                                                               "texture": "data/textures/environment/obj_rountable.png"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "partial",
+                                                                                   "name": "Roundtable",
+                                                                                   "type": "Static"
+                                                                 },
+                                                        "Door1": {
+                                                                          "CollisionInfo": {
+                                                                                               "flags": "16",
+                                                                                                "type": "dynamic"
+                                                                                           },
+                                                                             "Parameters": {
+                                                                                                "closeAnimation": "ANIM_DOOR_CLOSE",
+                                                                                               "debrisAnimation": "ANIM_FX_DOOR_BREAK_DEBRIS",
+                                                                                                        "locked": "0",
+                                                                                                 "openAnimation": "ANIM_DOOR_OPEN",
+                                                                                                      "sfxBreak": "SFX_DOOR_FALL",
+                                                                                                      "sfxClose": "SFX_DOOR_CLOSE",
+                                                                                                       "sfxOpen": "SFX_DOOR_OPEN"
+                                                                                           },
+                                                                         "RenderObject2D": {
+                                                                                                 "layer": "3",
+                                                                                               "texture": "data/textures/environment/door1.dds"
+                                                                                           },
+                                                                     "fogOfWarVisibility": "full",
+                                                                                   "name": "Door1",
+                                                                                  "sizeX": "16",
+                                                                                  "sizeY": "64",
+                                                                                "tooltip": "Door",
+                                                                                   "type": "Door"
+                                                                 }
+                              }
+                }
+}
