@@ -1,6 +1,6 @@
 
 local utls = require "ejoy2dx.utls"
-local BTLua = require "ejoy2dx.BTLua.BTLua"
+local BTLua = require "BTLua.BTLua"
 
 local mt = {}
 mt.__index = mt

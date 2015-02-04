@@ -64,8 +64,7 @@ function M:load_image(path, name, collide, ani_callback)
 
 			self.textures[path] = {tex_id, tw, th, collide_info}
 		end
-		print("path->:", path)
-
+		
 		local tx, ty = 0, 0
 		local cfg = string.format(sprite_template, name)
 		cfg = load(cfg)()

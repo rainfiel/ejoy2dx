@@ -1,9 +1,9 @@
 
 local utls = require "ejoy2dx.utls"
 local vector2 = require "ejoy2dx.vector2"
-local bezier = require "ejoy2dx.bezier.bezier"
-local bspline = require "ejoy2dx.bezier.bspline"
-local catmull = require "ejoy2dx.bezier.catmull"
+local bezier = require "bezier.bezier"
+local bspline = require "bezier.bspline"
+local catmull = require "bezier.catmull"
 local angle = require "ejoy2dx.angle"
 
 local global = require "global"

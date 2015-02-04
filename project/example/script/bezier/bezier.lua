@@ -1,4 +1,4 @@
-local vector = require "ejoy2dx.bezier.vector"
+local vector = require "bezier.vector"
 
 local Bezier = {}
 Bezier.__index = Bezier
