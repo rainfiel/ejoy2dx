@@ -5,9 +5,9 @@
     <EJOY2D>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), ejoy2d.root))</EJOY2D>
     <EJOY2D_ROOT>$(EJOY2D)\..\..\..\ejoy2d\</EJOY2D_ROOT>
     <EJOY2DX_ROOT>$(EJOY2D)\..\..\..\src\</EJOY2DX_ROOT>
-    <EJOY2DX_EXE>$(EJOY2D)\..\..\..\platform\msvc\output\$(Configuration)\</EJOY2DX_EXE>
+    <EJOY2DX_EXE>$(EJOY2D)\output\$(Configuration)\</EJOY2DX_EXE>
     <EJOY2D_OBJ>$(EJOY2D)\obj\$(Configuration)\$(ProjectName)\</EJOY2D_OBJ>
-    <EJOY2D_LIB>$(EJOY2D)\..\..\..\platform\msvc\lib\$(Configuration)\</EJOY2D_LIB>
+    <EJOY2D_LIB>$(EJOY2D)\lib\$(Configuration)\</EJOY2D_LIB>
     <EJOY2D_LUA>$(EJOY2D)\..\..\..\ejoy2d\lua</EJOY2D_LUA>
     <EJOY2D_GLEW>$(EJOY2D)\..\..\..\platform\msvc\src\glew\</EJOY2D_GLEW>
   </PropertyGroup>
