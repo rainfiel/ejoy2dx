@@ -47,6 +47,8 @@ def create_msvc(prj_name, folder):
 	args=(guid, prj_name, "%(AdditionalIncludeDirectories)", "%(PreprocessorDefinitions)", "%(AdditionalDependencies)")
 	format_file(os.path.join(prj_dir, "%s.vcxproj"%prj_name), *args)
 
+	print("msvc project created")
+
 def main(prj_name):
 	py_path = os.getcwd()
 	root = os.path.join(py_path, "../..")
