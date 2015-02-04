@@ -24,6 +24,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\src\clib\main\lualibs.h">
+      <Filter>clib\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\main\winfw.h">
+      <Filter>clib\main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\debug_log.h">
+      <Filter>clib\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\filesystem.h">
+      <Filter>clib\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\lhttplib.h">
+      <Filter>clib\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\liosutil.h">
+      <Filter>clib\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\platform_init.h">
+      <Filter>clib\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\sound.h">
+      <Filter>clib\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image.h">
+      <Filter>clib\utls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image_write.h">
+      <Filter>clib\utls</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\ejoy2d\lib\array.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
@@ -105,38 +135,32 @@
     <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\render.h">
       <Filter>ejoy2d\render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image.h">
-      <Filter>clib\utls</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image_write.h">
-      <Filter>clib\utls</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\main\lualibs.h">
-      <Filter>clib\main</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\main\winfw.h">
-      <Filter>clib\main</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\debug_log.h">
-      <Filter>clib\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\filesystem.h">
-      <Filter>clib\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\lhttplib.h">
-      <Filter>clib\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\liosutil.h">
-      <Filter>clib\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\platform_init.h">
-      <Filter>clib\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\src\clib\platform\sound.h">
-      <Filter>clib\platform</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\filesystem.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\os_utls.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\window.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winfont.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winmain.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\clib\main\lualibs.c">
+      <Filter>clib\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\clib\main\winfw.c">
+      <Filter>clib\main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\clib\utls\image.c">
+      <Filter>clib\utls</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\..\ejoy2d\lib\dfont.c">
       <Filter>ejoy2d</Filter>
     </ClCompile>
@@ -205,30 +229,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\render.c">
       <Filter>ejoy2d\render</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\main\filesystem.c">
-      <Filter>winmain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\main\os_utls.c">
-      <Filter>winmain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\main\window.c">
-      <Filter>winmain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\main\winfont.c">
-      <Filter>winmain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\main\winmain.c">
-      <Filter>winmain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\clib\utls\image.c">
-      <Filter>clib\utls</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\clib\main\lualibs.c">
-      <Filter>clib\main</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\src\clib\main\winfw.c">
-      <Filter>clib\main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

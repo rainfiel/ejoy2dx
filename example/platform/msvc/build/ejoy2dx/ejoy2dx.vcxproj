@@ -81,14 +81,14 @@
     <ClCompile Include="..\..\..\..\..\ejoy2d\lib\sprite.c" />
     <ClCompile Include="..\..\..\..\..\ejoy2d\lib\spritepack.c" />
     <ClCompile Include="..\..\..\..\..\ejoy2d\lib\texture.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\filesystem.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\os_utls.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\window.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winfont.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winmain.c" />
     <ClCompile Include="..\..\..\..\..\src\clib\main\lualibs.c" />
     <ClCompile Include="..\..\..\..\..\src\clib\main\winfw.c" />
     <ClCompile Include="..\..\..\..\..\src\clib\utls\image.c" />
-    <ClCompile Include="..\..\src\main\filesystem.c" />
-    <ClCompile Include="..\..\src\main\os_utls.c" />
-    <ClCompile Include="..\..\src\main\window.c" />
-    <ClCompile Include="..\..\src\main\winfont.c" />
-    <ClCompile Include="..\..\src\main\winmain.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DE06B161-F6C3-4955-972A-960DAC9845E0}</ProjectGuid>

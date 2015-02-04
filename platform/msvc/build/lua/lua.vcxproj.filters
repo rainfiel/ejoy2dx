@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lapi.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lauxlib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lbaselib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lbitlib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lcode.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lcorolib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lctype.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ldblib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ldebug.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ldo.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ldump.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lfunc.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lgc.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\linit.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\liolib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\llex.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lmathlib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lmem.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\loadlib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lobject.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lopcodes.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\loslib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lparser.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lstate.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lstring.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lstrlib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ltable.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ltablib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\ltm.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lundump.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lutf8lib.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lvm.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lua\lzio.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lapi.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lauxlib.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lcode.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lctype.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\ldebug.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\ldo.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lfunc.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lgc.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\llex.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\llimits.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lmem.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lobject.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lopcodes.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lparser.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lprefix.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lstate.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lstring.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\ltable.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\ltm.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lua.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lua.hpp" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\luaconf.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lualib.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lundump.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lvm.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lua\lzio.h" />
+  </ItemGroup>
+</Project>

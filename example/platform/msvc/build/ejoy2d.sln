@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "lua\lua.vcxproj", "{D26A01D4-8C09-4427-A01F-CA1F96452412}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "..\..\..\..\platform\msvc\build\lua\lua.vcxproj", "{D26A01D4-8C09-4427-A01F-CA1F96452412}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "glew\glew.vcxproj", "{22CDD41B-BEDE-4031-BD9B-AF304A5F3A4C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "..\..\..\..\platform\msvc\build\glew\glew.vcxproj", "{22CDD41B-BEDE-4031-BD9B-AF304A5F3A4C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib-1.2.7-win32", "zlib\zlib-1.2.7-win32.vcxproj", "{D345D40F-F37F-4A14-8A25-87C28D407D33}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib-1.2.7-win32", "..\..\..\..\platform\msvc\build\zlib\zlib-1.2.7-win32.vcxproj", "{D345D40F-F37F-4A14-8A25-87C28D407D33}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ejoy2dx", "ejoy2dx\ejoy2dx.vcxproj", "{DE06B161-F6C3-4955-972A-960DAC9845E0}"
 	ProjectSection(ProjectDependencies) = postProject
