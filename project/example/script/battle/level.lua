@@ -108,8 +108,8 @@ end
 
 function mt:touch(what, x, y)
 	local touched, hit_x, hit_y = self:find_touched(x, y)
-	if touched then
-		-- print(touched, touched.usr_data.name, x, y, hit_x, hit_y)
+	if touched and what == "END" then
+		print(touched, touched.usr_data.name, x, y, hit_x, hit_y)
 	end
 end
 

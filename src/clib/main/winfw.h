@@ -1,8 +1,8 @@
 #ifndef ejoy2d_windows_fw_h
 #define ejoy2d_windows_fw_h
 
-#define WIDTH 2048
-#define HEIGHT 1024
+#define WIDTH 992
+#define HEIGHT 672
 
 #define TOUCH_BEGIN 0
 #define TOUCH_END 1
