@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\ejoy2d.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\ejoy2d.props" />
+  </ImportGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\array.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\dfont.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\ejoy2dgame.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\fault.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\label.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\list.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\lmatrix.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\lrenderbuffer.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\material.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\matrix.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\opengl.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\particle.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\platform_print.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\ppm.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\renderbuffer.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\blendmode.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\block.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\carray.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\log.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\render\render.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\scissor.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\screen.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\screenshot.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\shader.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\sprite.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\spritepack.h" />
+    <ClInclude Include="..\..\..\..\..\ejoy2d\lib\texture.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\main\lualibs.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\main\winfw.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\debug_log.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\filesystem.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\lhttplib.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\liosutil.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\platform_init.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\platform\sound.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image.h" />
+    <ClInclude Include="..\..\..\..\..\src\clib\utls\stb_image_write.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\dfont.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\ejoy2dgame.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\fault.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\label.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lmatrix.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lparticle.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lrenderbuffer.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lshader.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\lsprite.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\matrix.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\particle.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\ppm.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\renderbuffer.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\carray.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\log.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\render\render.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\scissor.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\screen.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\screenshot.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\shader.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\sprite.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\spritepack.c" />
+    <ClCompile Include="..\..\..\..\..\ejoy2d\lib\texture.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\filesystem.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\os_utls.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\window.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winfont.c" />
+    <ClCompile Include="..\..\..\..\..\platform\msvc\src\main\winmain.c" />
+    <ClCompile Include="..\..\..\..\..\src\clib\main\lualibs.c" />
+    <ClCompile Include="..\..\..\..\..\src\clib\main\winfw.c" />
+    <ClCompile Include="..\..\..\..\..\src\clib\utls\image.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{%s}</ProjectGuid>
+    <RootNamespace>%s</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(EJOY2D_OBJ)$(ProjectName)</IntDir>
+    <TargetName>ej2dx</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\include\;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;$(EJOY2DX_ROOT)\clib\platform;$(EJOY2DX_ROOT)\msvc\src\zlib-vs2012\src;$(EJOY2DX_ROOT)\clib\main;$(EJOY2DX_ROOT)\clib\utls;$(EJOY2D)\src\zlib;%s</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJOY2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%s</PreprocessorDefinitions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(EJOY2D_LIB)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;zlib.lib;lua.lib;glew.lib;%s</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
