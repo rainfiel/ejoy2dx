@@ -10,10 +10,12 @@ _register(lua_State *L, lua_CFunction func, const char * libname) {
 
 int luaopen_image(lua_State *L);
 int luaopen_osutil(lua_State* L);
+int luaopen_serialize(lua_State *L);
 
 void
 init_lua_libs(lua_State* L) {
 	_register(L, luaopen_image, "ejoy2dx.image.c");
 	_register(L, luaopen_osutil, "ejoy2dx.osutil.c");
+	_register(L, luaopen_serialize, "ejoy2dx.serialize.c");
 
 }

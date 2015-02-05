@@ -230,5 +230,8 @@
     <ClCompile Include="$(EJOY2D_ROOT)lib\render\render.c">
       <Filter>ejoy2d\render</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\src\clib\utls\serialize.c">
+      <Filter>clib\utls</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

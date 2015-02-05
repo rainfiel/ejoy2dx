@@ -89,6 +89,7 @@
     <ClCompile Include="$(EJOY2DX_ROOT)clib\main\lualibs.c" />
     <ClCompile Include="$(EJOY2DX_ROOT)clib\main\winfw.c" />
     <ClCompile Include="$(EJOY2DX_ROOT)clib\utls\image.c" />
+    <ClCompile Include="..\..\..\..\..\..\src\clib\utls\serialize.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{467a1330-ac64-11e4-82f8-d52fcc5b651b}</ProjectGuid>
