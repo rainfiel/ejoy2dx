@@ -48,10 +48,13 @@ def main(prj_name):
 	root = os.path.join(py_path, "../../project")
 	tpl_dir = os.path.join(py_path, "template")
 	prj_dir = os.path.join(root, prj_name)
-	if os.path.exists(prj_dir):
+	if os.path.exists(prj_dir) and (os.path.exists(os.path.join(prj_dir, "asset")) or\
+			os.path.exists(os.path.join(prj_dir, "script")) or\
+			os.path.exists(os.path.join(prj_dir, "platform"))):
 		raise Exception("the project directory is exists:"+prj_dir)
 
-	shutil.copytree(tpl_dir, prj_dir)
+	for i in os.listdir(tpl_dir):
+		shutil.copytree(os.path.join(tpl_dir, i), os.path.join(prj_dir, i))
 
 	create_msvc(prj_name, os.path.join(prj_dir, "platform/msvc"))
 

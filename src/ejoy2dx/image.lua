@@ -64,7 +64,7 @@ function M:load_image(path, name, collide, ani_callback)
 
 			self.textures[path] = {tex_id, tw, th, collide_info}
 		end
-		
+
 		local tx, ty = 0, 0
 		local cfg = string.format(sprite_template, name)
 		cfg = load(cfg)()
@@ -179,20 +179,17 @@ end
 --alpha
 --{r, g, b, a}
 --{r, g, b}
+local color_fmt = {"B", nil, "BBB", "BBBB"}
 function M:create_custom_texture(width, height, color)
 	local pix = nil
 	local comp = nil
 	if type(color) == "number" then
-		pix = string.char(color)
 		comp = 1
-	elseif #color == 4 then
-		pix = string.char(color[1])..string.char(color[2])..string.char(color[3])..string.char(color[4])
-		comp = 4
-	elseif #color == 3 then
-		pix = string.char(color[1])..string.char(color[2])..string.char(color[3])
-		comp = 3
+	else
+		comp = #color
+		assert(comp == 4 or comp == 3)
 	end
-	assert(pix)
+	pix = color_fmt[comp]:pack(table.unpack(color))
 	local pixes = {}
 	for i=1, width do
 		for j=1, height do

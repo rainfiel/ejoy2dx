@@ -2,6 +2,7 @@ local ej = require "ejoy2d"
 local fw = require "ejoy2d.framework"
 local pack = require "ejoy2d.simplepackage"
 local sprite = require "ejoy2d.sprite"
+local image = require "ejoy2dx.image"
 
 local level = require "battle.level"
 local ani_mgr = require "battle.ani_mgr"
@@ -22,6 +23,7 @@ local lv = level.new("levelkillhouse1.json")
 local debug_label = sprite.label({width=500, height=300,size=20,color=0xFFFFFFFF, edge=0})
 debug_label.text = "#[blue]DON'T PANIC#[stop]"
 
+local polygon = image:create_polygon({17,17, 200, 17, 200, 70, 17, 70})
 
 local game = {}
 function game.update()
@@ -37,7 +39,8 @@ function game.drawframe()
 
 	avatar:draw()
 	ani_mgr:draw()
-	
+
+	polygon:draw()
 	debug_label:draw({x=40,y=40})
 end
 
