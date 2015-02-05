@@ -17,6 +17,7 @@ struct WINDOWGAME {
 };
 
 static struct WINDOWGAME *G = NULL;
+static struct STARTUP_INFO *STARTUP = NULL;
 
 static const char * startscript =
 "local path, script = ...\n"
@@ -58,9 +59,11 @@ traceback(lua_State *L) {
 }
 
 void
-ejoy2d_win_init(int argc, char *argv[]) {
+ejoy2d_win_init(struct STARTUP_INFO* startup) {
+	STARTUP = startup;
 	G = create_game();
-	screen_init(WIDTH,HEIGHT,1.0f);
+
+	screen_init(startup->width,startup->height,startup->scale);
 	lua_State *L = ejoy2d_game_lua(G->game);
 	
 	init_lua_libs(L);
@@ -73,12 +76,10 @@ ejoy2d_win_init(int argc, char *argv[]) {
 		fault("%s", msg);
 	}
 
-	int i;
-	for (i=1;i<argc;i++) {
-		lua_pushstring(L, argv[i]);
-	}
+	lua_pushstring(L, startup->folder);
+	lua_pushstring(L, startup->script);
 
-	err = lua_pcall(L, argc-1, 0, tb);
+	err = lua_pcall(L, 2, 0, tb);
 	if (err) {
 		const char *msg = lua_tostring(L,-1);
 		fault("%s", msg);
@@ -89,9 +90,28 @@ ejoy2d_win_init(int argc, char *argv[]) {
 	ejoy2d_game_start(G->game);
 }
 
+static void
+ejoy2d_check_reload() {
+	if (!G || !STARTUP) return;
+
+	lua_State *L = ejoy2d_game_lua(G->game);
+	lua_getfield(L, LUA_REGISTRYINDEX, "ejoy_reload");
+	int reload_flag = lua_toboolean(L, -1);
+	lua_pop(L, 1);
+
+	if (reload_flag) {
+		STARTUP->reload_count = STARTUP->reload_count + 1;
+
+		free(G);
+		ejoy2d_win_init(STARTUP);
+	}
+
+}
+
 void
-ejoy2d_win_update() {
-	ejoy2d_game_update(G->game, 0.01f);
+ejoy2d_win_update(float delta) {
+	ejoy2d_game_update(G->game, delta);
+	ejoy2d_check_reload();
 }
 
 void

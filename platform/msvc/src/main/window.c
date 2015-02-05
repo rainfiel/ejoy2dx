@@ -86,7 +86,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 	}
 	case WM_TIMER : {
-		ejoy2d_win_update();
+		ejoy2d_win_update(0.01);
 		InvalidateRect(hWnd, NULL , FALSE);
 		break;
 	}
@@ -159,7 +159,25 @@ int
 main(int argc, char *argv[]) {
 	register_class();
 	HWND wnd = create_window(WIDTH,HEIGHT);
-	ejoy2d_win_init(argc, argv);
+
+	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
+	if (argc >= 2){
+		startup->folder = argv[1];
+		startup->script = NULL;
+	} else if (argc >= 3) {
+		startup->script = argv[2];
+	} else {
+		startup->folder = "";
+		startup->script = NULL;
+	}
+	startup->orix = 0;
+	startup->oriy = 0;
+	startup->width = WIDTH;
+	startup->height = HEIGHT;
+	startup->scale = 1.0;
+	startup->reload_count = 0;
+
+	ejoy2d_win_init(startup);
 
 	ShowWindow(wnd, SW_SHOWDEFAULT);
 	UpdateWindow(wnd);

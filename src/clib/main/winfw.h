@@ -8,9 +8,18 @@
 #define TOUCH_END 1
 #define TOUCH_MOVE 2
 
-void ejoy2d_win_init(int argc, char *argv[]);
+struct STARTUP_INFO{
+	int orix, oriy;
+	int width, height;
+	float scale;
+	char* folder;
+	char* script;
+	int reload_count;
+};
+
+void ejoy2d_win_init(struct STARTUP_INFO* startup);
 void ejoy2d_win_frame();
-void ejoy2d_win_update();
+void ejoy2d_win_update(float delta);
 void ejoy2d_win_touch(int x, int y,int touch);
 
 #endif
