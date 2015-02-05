@@ -20,11 +20,15 @@ static struct WINDOWGAME *G = NULL;
 static struct STARTUP_INFO *STARTUP = NULL;
 
 static const char * startscript =
-"local path, script = ...\n"
+"local path, script, startup = ...\n"
+//"for k,v in pairs(startup) do print(k, v) end\n"
+
 "script = script or [[main.lua]]\n"
 "if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
 "path = string.match(path,[[(.*)\\[^\\]*$]])\n"
-"require(\"ejoy2d.framework\").WorkDir = path\n"
+"local fw=require(\"ejoy2d.framework\")\n"
+"fw.WorkDir = path\n"
+"fw.GameInfo = startup\n"
 
 //ejoy2dx path
 "local ej2dx = path .. [[\\..\\..\\src]] .. [[\\?.lua;]] .. path .. [[\\..\\..\\src]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
@@ -58,8 +62,28 @@ traceback(lua_State *L) {
 	return 1;
 }
 
+static void
+push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
+	lua_newtable(L);
+	lua_pushinteger(L, start->orix);
+	lua_setfield(L, -2, "orix");
+	lua_pushinteger(L, start->oriy);
+	lua_setfield(L, -2, "oriy");
+
+	lua_pushinteger(L, start->width);
+	lua_setfield(L, -2, "width");
+	lua_pushinteger(L, start->height);
+	lua_setfield(L, -2, "height");
+
+	lua_pushnumber(L, start->scale);
+	lua_setfield(L, -2, "scale");
+	lua_pushinteger(L, start->reload_count);
+	lua_setfield(L, -2, "reload_count");
+}
+
 void
 ejoy2d_win_init(struct STARTUP_INFO* startup) {
+	//free it
 	STARTUP = startup;
 	G = create_game();
 
@@ -79,7 +103,8 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 	lua_pushstring(L, startup->folder);
 	lua_pushstring(L, startup->script);
 
-	err = lua_pcall(L, 2, 0, tb);
+	push_startup_info(L, startup);
+	err = lua_pcall(L, 3, 0, tb);
 	if (err) {
 		const char *msg = lua_tostring(L,-1);
 		fault("%s", msg);
