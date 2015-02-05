@@ -8,7 +8,7 @@ pack.load {
 	pattern = fw.WorkDir..[[/asset/?]]
 }
 
-local logo = image:load_image(utls.get_path("logo.png"))
+local logo = image:load_image("logo.png")
 
 local game = {}
 local screencoord = { x = 496, y = 316, scale = 1 }

@@ -5,6 +5,7 @@ local vector2 = require "ejoy2dx.vector2"
 local image = require "ejoy2dx.image"
 local os_utls = require "ejoy2dx.os_utls"
 local image_c = require "ejoy2dx.image.c"
+local utls = require "ejoy2dx.utls"
 
 local M = {}
 
@@ -80,8 +81,8 @@ end
 local function draw_entity_to_map(ent, collide_image, lv)
 	local pic, w, h = image:get_collide_info(ent)
 	local m0, m1, m2, m3, m4, m5 = matrix(ent.matrix):export()
-	local x0, y0, x1, y1 = math.floor(-w/2), math.floor(-h/2), 
-												 math.ceil(w/2), math.ceil(h/2)			
+	local x0, y0, x1, y1 = math.floor(-w/2), math.floor(-h/2),
+												 math.ceil(w/2), math.ceil(h/2)
 
 	local lx, ly = 1, 1
 	for y=y0, y1 do
@@ -103,6 +104,7 @@ end
 
 
 function M.get_collide_data(path, lv)
+	path = utls.get_path(path)
 	if not M.has_collide_file(path) then
 		local width, height = lv.width, lv.height
 		local base, entities = lv.wall, lv.entities

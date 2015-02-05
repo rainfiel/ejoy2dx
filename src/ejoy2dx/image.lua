@@ -1,5 +1,6 @@
 
 local image_c = require "ejoy2dx.image.c"
+local utls = require "ejoy2dx.utls"
 
 local sprite = require "ejoy2d.sprite"
 local pack = require "ejoy2d.spritepack"
@@ -38,6 +39,7 @@ function M.save_image( ... )
 end
 
 function M:load_image(path, name, collide, ani_callback)
+	path = utls.get_path(path)
 	self.packages = self.packages or {}
 	local cobj = nil
 	name = name or ""

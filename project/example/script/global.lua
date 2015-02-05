@@ -14,7 +14,7 @@ M.collide_wall_edge = 253
 M.collide_static 		= 200
 
 function M.texture_path(path)
-	path = utls.get_path(path)
+	-- path = utls.get_path(path)
 	path = string.gsub(path, "(.dds)", ".png")
 	-- path = string.gsub(path, "(.tga)", ".png")
 	return path

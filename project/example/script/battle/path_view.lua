@@ -8,7 +8,7 @@ local mt = {}
 mt.__index = mt
 
 -- local brick_path = utls.get_path("data/textures/fx/player_path_highlighted.tga")
-local brick_path = utls.get_path("data/textures/fx/red_dot.tga")
+local brick_path = "data/textures/fx/red_dot.tga"
 
 function mt:init()
 	self.bricks = {}

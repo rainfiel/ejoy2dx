@@ -3,7 +3,7 @@ local utls = require "ejoy2dx.utls"
 local ani_mgr = require "battle.ani_mgr"
 local image = require "ejoy2dx.image"
 
-local shadow_path = utls.get_path("data/textures/fx/human_shadow.tga")
+local shadow_path = "data/textures/fx/human_shadow.tga"
 
 local mt = {}
 mt.__index = mt
@@ -122,7 +122,7 @@ end
 
 function M:draw(srt)
 	if not self.avatars then return end
-	
+
 	for _, v in ipairs(self.avatars) do
 		v:draw(srt)
 	end
