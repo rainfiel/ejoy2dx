@@ -161,15 +161,15 @@ main(int argc, char *argv[]) {
 	HWND wnd = create_window(WIDTH,HEIGHT);
 
 	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
+	startup->folder = "";
+	startup->script = NULL;
 	if (argc >= 2){
 		startup->folder = argv[1];
 		startup->script = NULL;
-	} else if (argc >= 3) {
+	} 
+	if (argc >= 3) {
 		startup->script = argv[2];
-	} else {
-		startup->folder = "";
-		startup->script = NULL;
-	}
+	} 
 	startup->orix = 0;
 	startup->oriy = 0;
 	startup->width = WIDTH;
