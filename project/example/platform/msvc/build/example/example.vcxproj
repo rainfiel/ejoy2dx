@@ -138,6 +138,9 @@
       <AdditionalDependencies>opengl32.lib;zlib.lib;lua.lib;glew.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>echo $(EJOY2DX_EXE)$(TargetName)$(TargetExt) $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -151,6 +154,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>echo $(EJOY2DX_EXE)$(TargetName)$(TargetExt) $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
