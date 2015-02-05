@@ -187,7 +187,6 @@ function M:create_custom_texture(width, height, color)
 		comp = 1
 	else
 		comp = #color
-		assert(comp == 4 or comp == 3)
 	end
 	pix = color_fmt[comp]:pack(table.unpack(color))
 	local pixes = {}
