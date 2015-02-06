@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "array.h"
+#include "ejoy2d.h"
 
 #define TYPE_NIL 0
 #define TYPE_BOOLEAN 1
@@ -700,7 +701,7 @@ deseristring(lua_State *L) {
 	return lua_gettop(L) - 1;
 }
 
-int
+EJOY_API int
 luaopen_serialize(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "pack", _pack },

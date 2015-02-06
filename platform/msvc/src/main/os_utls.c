@@ -3,6 +3,7 @@
 #include "filesystem.h"
 #include <stdlib.h>
 #include <sys/stat.h>
+#include "ejoy2d.h"
 
 static int
 _read_file(lua_State* L) {
@@ -62,7 +63,8 @@ _exists(lua_State* L) {
 	return 1;
 }
 
-int luaopen_osutil(lua_State* L) {
+EJOY_API int 
+luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
 
 	luaL_Reg l[] = {

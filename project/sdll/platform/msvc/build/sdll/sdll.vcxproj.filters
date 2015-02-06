@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="winmain">
+      <UniqueIdentifier>{0e90bf8a-b9c9-4b4f-ba9e-4610c20caa4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="clib">
+      <UniqueIdentifier>{2bcfc16b-7085-439f-af7d-ba0cbf0249ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="clib\main">
+      <UniqueIdentifier>{23fe61c0-2a34-4456-8606-67a3aeb184a8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\lualibs.h">
+      <Filter>clib\main</Filter>
+    </ClInclude>
+    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\winfw.h">
+      <Filter>clib\main</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\window.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\winmain.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\lualibs.c">
+      <Filter>clib\main</Filter>
+    </ClCompile>
+    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\winfw.c">
+      <Filter>clib\main</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

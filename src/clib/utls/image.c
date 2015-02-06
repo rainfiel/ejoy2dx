@@ -11,6 +11,7 @@
 
 #include "lua.h"
 #include "lauxlib.h"
+#include "ejoy2d.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -235,7 +236,7 @@ _texture_update(lua_State *L) {
 }
 
 
-int
+EJOY_API int
 luaopen_image(lua_State *L) {
 	//loadimage = image_rawdata + rawdata_to_texture
 	luaL_Reg l[] = {
