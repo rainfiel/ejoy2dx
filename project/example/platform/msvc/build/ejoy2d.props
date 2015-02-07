@@ -6,11 +6,14 @@
     <_ROOT_>$(EJ2DX_PRJ_ROOT)\..\..\..\..</_ROOT_>
     <EJ2D_ROOT>$(_ROOT_)\ejoy2d\</EJ2D_ROOT>
     <EJ2D_LUA>$(EJ2D_ROOT)\lua</EJ2D_LUA>
-    <EJ2DX_ROOT>$(_ROOT_)\src</EJ2DX_ROOT>
-    <EJOY2DX_EXE>$(EJ2DX_PRJ_ROOT)\output\$(Configuration)</EJOY2DX_EXE>
-    <EJOY2DX_OBJ>$(EJ2DX_PRJ_ROOT)\obj\$(Configuration)\$(ProjectName)</EJOY2D_OBJ>
-    <EJOY2DX_LIB>$(EJ2DX_PRJ_ROOT)\lib\$(Configuration)</EJOY2D_LIB>
-    <EJOY2D_GLEW>$(_ROOT_)\platform\msvc\src\glew</EJOY2D_GLEW>
+    <EJ2DX_ROOT>$(_ROOT_)\src\clib</EJ2DX_ROOT>
+    <EJOY2DX_EXE>$(EJ2DX_PRJ_ROOT)\output\$(Configuration)\</EJOY2DX_EXE>
+    <EJOY2DX_OBJ>$(EJ2DX_PRJ_ROOT)\obj\$(Configuration)\$(ProjectName)\</EJOY2DX_OBJ>
+    <EJOY2DX_LIB>$(EJ2DX_PRJ_ROOT)\lib\$(Configuration)\</EJOY2DX_LIB>
+    <EJ2DX_GLEW>$(_ROOT_)\platform\msvc\src\glew</EJ2DX_GLEW>
+    <EJ2DX_INCLUDE>$(_ROOT_)\platform\msvc\include</EJ2DX_INCLUDE>
+    <EJ2DX_UTLS>$(EJ2DX_ROOT)\utls</EJ2DX_UTLS>
+    <EJ2DX_FRAMEWORK>$(EJ2DX_ROOT)\framework</EJ2DX_FRAMEWORK>
   </PropertyGroup>
   <PropertyGroup>
     <IntDir>$(EJOY2DX_OBJ)</IntDir>
