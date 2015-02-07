@@ -77,7 +77,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>zlib</TargetName>
-    <IntDir>$(EJOY2D_OBJ)$(ProjectName)</IntDir>
+    <IntDir>$(EJOY2DX_OBJ)$(ProjectName)</IntDir>
+    <OutDir>$(EJOY2DX_LIB)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -100,7 +101,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>$(EJOY2D)/src/zlib/win32/zlib.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>$(EJ2DX_ZLIB)/win32/zlib.def</ModuleDefinitionFile>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>

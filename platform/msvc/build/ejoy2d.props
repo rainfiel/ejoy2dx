@@ -2,14 +2,20 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <EJOY2D>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), ejoy2d.root))</EJOY2D>
-    <EJOY2D_ROOT>$(EJOY2D)\..\..\ejoy2d\</EJOY2D_ROOT>
-    <EJOY2DX_ROOT>$(EJOY2D)\..\..\src\</EJOY2DX_ROOT>
-    <EJOY2DX_EXE>$(MSBuildStartupDirectory)\..\output\$(Configuration)\</EJOY2DX_EXE>
-    <EJOY2D_OBJ>$(MSBuildStartupDirectory)\..\obj\$(Configuration)\$(ProjectName)\</EJOY2D_OBJ>
-    <EJOY2D_LIB>$(MSBuildStartupDirectory)\..\lib\$(Configuration)\</EJOY2D_LIB>
-    <EJOY2D_LUA>$(EJOY2D)\..\..\ejoy2d\lua</EJOY2D_LUA>
-    <EJOY2D_GLEW>$(EJOY2D)\src\glew\</EJOY2D_GLEW>
+    <EJ2DX_PRJ_ROOT>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), ejoy2d.root))</EJ2DX_PRJ_ROOT>
+    <EJ2DX_INCLUDE>$(EJ2DX_PRJ_ROOT)\include</EJ2DX_INCLUDE>
+    <EJ2DX_GLEW>$(EJ2DX_PRJ_ROOT)\src\glew</EJ2DX_GLEW>
+    <EJ2DX_MAIN>$(EJ2DX_PRJ_ROOT)\src\main</EJ2DX_MAIN>
+    <EJ2DX_ZLIB>$(EJ2DX_PRJ_ROOT)\src\zlib</EJ2DX_ZLIB>
+    <EJ2DX_ROOT>$(EJ2DX_PRJ_ROOT)\..\..\src\clib</EJ2DX_ROOT>
+    <EJ2DX_FRAMEWORK>$(EJ2DX_ROOT)\framework</EJ2DX_FRAMEWORK>
+    <EJ2DX_PLATFORM>$(EJ2DX_ROOT)\platform</EJ2DX_PLATFORM>
+    <EJ2DX_UTLS>$(EJ2DX_ROOT)\utls</EJ2DX_UTLS>
+    <EJ2D_ROOT>$(EJ2DX_PRJ_ROOT)\..\..\ejoy2d</EJ2D_ROOT>
+    <EJ2D_LUA>$(EJ2D_ROOT)\lua</EJ2D_LUA>
+    <EJOY2DX_EXE>$(SolutionDir)\..\output\$(Configuration)\</EJOY2DX_EXE>
+    <EJOY2DX_OBJ>$(SolutionDir)\..\obj\$(Configuration)\$(ProjectName)\</EJOY2DX_OBJ>
+    <EJOY2DX_LIB>$(SolutionDir)\..\lib\$(Configuration)\</EJOY2DX_LIB>
   </PropertyGroup>
   <PropertyGroup>
     <IntDir>$(EJOY2D_OBJ)</IntDir>

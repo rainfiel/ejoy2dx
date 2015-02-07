@@ -19,76 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(EJOY2D_ROOT)lib\array.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\dfont.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\ejoy2dgame.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\fault.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\label.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\list.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\lmatrix.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\lrenderbuffer.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\material.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\matrix.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\opengl.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\particle.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\platform_print.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\ppm.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\renderbuffer.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\render\blendmode.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\render\block.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\render\carray.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\render\log.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\render\render.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\scissor.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\screen.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\screenshot.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\shader.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\sprite.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\spritepack.h" />
-    <ClInclude Include="$(EJOY2D_ROOT)lib\texture.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\lualibs.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\winfw.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\debug_log.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\filesystem.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\lhttplib.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\liosutil.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\platform_init.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\platform\sound.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\utls\stb_image.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\utls\stb_image_write.h" />
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c" />
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c" />
+    <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(EJOY2D_ROOT)lib\dfont.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\ejoy2dgame.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\fault.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\label.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\lmatrix.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\lparticle.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\lrenderbuffer.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\lshader.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\lsprite.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\matrix.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\particle.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\ppm.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\renderbuffer.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\render\carray.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\render\log.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\render\render.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\scissor.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\screen.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\screenshot.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\shader.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\sprite.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\spritepack.c" />
-    <ClCompile Include="$(EJOY2D_ROOT)lib\texture.c" />
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\filesystem.c" />
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\os_utls.c" />
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\window.c" />
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\winfont.c" />
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\winmain.c" />
-    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\lualibs.c" />
-    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\winfw.c" />
-    <ClCompile Include="$(EJOY2DX_ROOT)clib\utls\image.c" />
+    <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{%s}</ProjectGuid>
@@ -119,23 +55,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(EJOY2D_OBJ)$(ProjectName)</IntDir>
+    <IntDir>$(EJOY2DX_OBJ)$(ProjectName)</IntDir>
     <TargetName>ej2dx</TargetName>
+    <OutDir>$(EJOY2DX_LIB)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\include\;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;$(EJOY2DX_ROOT)\clib\platform;$(EJOY2DX_ROOT)\msvc\src\zlib-vs2012\src;$(EJOY2DX_ROOT)\clib\main;$(EJOY2DX_ROOT)\clib\utls;$(EJOY2D)\src\zlib;%s</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJOY2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%s</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_UTLS);$(EJ2DX_FRAMEWORK);%s</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJ2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%s</PreprocessorDefinitions>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
+      <CallingConvention>Cdecl</CallingConvention>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>$(EJOY2D_LIB)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;zlib.lib;lua.lib;glew.lib;%s</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;zlib.lib;glew.lib;lua.lib;ejoy2dx.lib;%s</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
