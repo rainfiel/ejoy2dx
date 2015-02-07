@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommand>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>$(EJOY2D)\..\..\</LocalDebuggerCommandArguments>
-    <LocalDebuggerWorkingDirectory>$(EJOY2D)\..\..\</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommandArguments>$(EJ2DX_PRJ_ROOT)\..\..\</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>$(EJ2DX_PRJ_ROOT)\..\..\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
 </Project>

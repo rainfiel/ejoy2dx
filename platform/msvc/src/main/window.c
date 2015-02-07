@@ -86,7 +86,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 	}
 	case WM_TIMER : {
-		ejoy2d_win_update(0.01);
+		ejoy2d_win_update(0.01f);
 		InvalidateRect(hWnd, NULL , FALSE);
 		break;
 	}

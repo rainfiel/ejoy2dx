@@ -62,7 +62,8 @@ _exists(lua_State* L) {
 	return 1;
 }
 
-int luaopen_osutil(lua_State* L) {
+int 
+luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
 
 	luaL_Reg l[] = {

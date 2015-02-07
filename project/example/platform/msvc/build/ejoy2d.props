@@ -2,19 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <EJOY2D>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), ejoy2d.root))</EJOY2D>
-    <_ROOT_>$(EJOY2D)\..\..\..\..\</_ROOT_>
-    <EJOY2D_ROOT>$(_ROOT_)ejoy2d\</EJOY2D_ROOT>
-    <EJOY2DX_ROOT>$(_ROOT_)src\</EJOY2DX_ROOT>
-    <EJOY2DX_EXE>$(EJOY2D)\output\$(Configuration)\</EJOY2DX_EXE>
-    <EJOY2D_OBJ>$(EJOY2D)\obj\$(Configuration)\$(ProjectName)\</EJOY2D_OBJ>
-    <EJOY2D_LIB>$(EJOY2D)\lib\$(Configuration)\</EJOY2D_LIB>
-    <EJOY2D_LUA>$(EJOY2D_ROOT)lua</EJOY2D_LUA>
-    <EJOY2D_GLEW>$(_ROOT_)platform\msvc\src\glew\</EJOY2D_GLEW>
+    <EJ2DX_PRJ_ROOT>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), ejoy2d.root))</EJ2DX_PRJ_ROOT>
+    <_ROOT_>$(EJ2DX_PRJ_ROOT)\..\..\..\..</_ROOT_>
+    <EJ2D_ROOT>$(_ROOT_)\ejoy2d\</EJ2D_ROOT>
+    <EJ2D_LUA>$(EJ2D_ROOT)\lua</EJ2D_LUA>
+    <EJ2DX_ROOT>$(_ROOT_)\src\clib</EJ2DX_ROOT>
+    <EJOY2DX_EXE>$(EJ2DX_PRJ_ROOT)\output\$(Configuration)\</EJOY2DX_EXE>
+    <EJOY2DX_OBJ>$(EJ2DX_PRJ_ROOT)\obj\$(Configuration)\$(ProjectName)\</EJOY2DX_OBJ>
+    <EJOY2DX_LIB>$(EJ2DX_PRJ_ROOT)\lib\$(Configuration)\</EJOY2DX_LIB>
+    <EJ2DX_GLEW>$(_ROOT_)\platform\msvc\src\glew</EJ2DX_GLEW>
+    <EJ2DX_INCLUDE>$(_ROOT_)\platform\msvc\include</EJ2DX_INCLUDE>
+    <EJ2DX_UTLS>$(EJ2DX_ROOT)\utls</EJ2DX_UTLS>
+    <EJ2DX_FRAMEWORK>$(EJ2DX_ROOT)\framework</EJ2DX_FRAMEWORK>
   </PropertyGroup>
   <PropertyGroup>
-    <IntDir>$(EJOY2D_OBJ)</IntDir>
-    <OutDir>$(EJOY2D_LIB)</OutDir>
+    <IntDir>$(EJOY2DX_OBJ)</IntDir>
+    <OutDir>$(EJOY2DX_LIB)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -31,20 +34,20 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <BuildMacro Include="EJOY2D">
-      <Value>$(EJOY2D)</Value>
+    <BuildMacro Include="EJ2DX_PRJ_ROOT">
+      <Value>$(EJ2DX_PRJ_ROOT)</Value>
     </BuildMacro>
     <BuildMacro Include="EJOY2DX_EXE">
       <Value>$(EJOY2DX_EXE)</Value>
     </BuildMacro>
-    <BuildMacro Include="EJOY2D_ROOT">
-      <Value>$(EJOY2D_ROOT)</Value>
+    <BuildMacro Include="EJ2D_ROOT">
+      <Value>$(EJ2D_ROOT)</Value>
     </BuildMacro>
-    <BuildMacro Include="EJOY2D_OBJ">
-      <Value>$(EJOY2D_OBJ)</Value>
+    <BuildMacro Include="EJOY2DX_OBJ">
+      <Value>$(EJOY2DX_OBJ)</Value>
     </BuildMacro>
-    <BuildMacro Include="EJOY2D_LIB">
-      <Value>$(EJOY2D_LIB)</Value>
+    <BuildMacro Include="EJOY2DX_OBJ">
+      <Value>$(EJOY2DX_OBJ)</Value>
     </BuildMacro>
     <BuildMacro Include="EJOY2D_LUA">
       <Value>$(EJOY2D_LUA)</Value>
