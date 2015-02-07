@@ -19,14 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\lualibs.h" />
-    <ClInclude Include="$(EJOY2DX_ROOT)clib\main\winfw.h" />
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c" />
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c" />
+    <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\window.c" />
-    <ClCompile Include="$(_ROOT_)platform\msvc\src\main\winmain.c" />
-    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\lualibs.c" />
-    <ClCompile Include="$(EJOY2DX_ROOT)clib\main\winfw.c" />
+    <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{fdd5f6cf-ada3-11e4-9acc-f0c86b3f06bb}</ProjectGuid>
@@ -57,15 +55,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(EJOY2D_OBJ)$(ProjectName)</IntDir>
+    <IntDir>$(EJOY2DX_OBJ)$(ProjectName)</IntDir>
     <TargetName>ej2dx</TargetName>
+    <OutDir>$(EJOY2DX_LIB)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\..\..\..\..\platform\msvc\include;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;$(EJOY2DX_ROOT)\clib\platform;$(EJOY2DX_ROOT)\msvc\src\zlib-vs2012\src;$(EJOY2DX_ROOT)\clib\main;$(EJOY2DX_ROOT)\clib\utls;$(EJOY2D)\src\zlib;$(EJOY2D_LUA);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJOY2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_UTLS);$(EJ2DX_FRAMEWORK);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJ2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
       <CallingConvention>Cdecl</CallingConvention>
@@ -73,8 +72,8 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>$(EJOY2D_LIB)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;zlib.lib;glew.lib;lua.lib;ejdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;zlib.lib;glew.lib;lua.lib;ejoy2dx.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>

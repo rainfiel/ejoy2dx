@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sdll", "sdll\sdll.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "..\..\..\..\..\platform\msvc\build\lua\lua.vcxproj", "{D26A01D4-8C09-4427-A01F-CA1F96452412}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ejdll", "..\..\..\..\..\platform\msvc\build\ejdll\ejdll.vcxproj", "{7431851E-EE17-4922-8ADF-B3E1E42E6EC7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ejoy2dx", "..\..\..\..\..\platform\msvc\build\ejoy2dx\ejoy2dx.vcxproj", "{7431851E-EE17-4922-8ADF-B3E1E42E6EC7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D26A01D4-8C09-4427-A01F-CA1F96452412} = {D26A01D4-8C09-4427-A01F-CA1F96452412}
 	EndProjectSection
