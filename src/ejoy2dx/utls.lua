@@ -15,27 +15,27 @@ function M.seconds_to_frame(seconds)
 	return seconds * M.frame_per_second
 end
 
-function M.load_json(path, abs_path)
-	path = abs_path and path or get_path(path)
+function M.load_json(path)
+	path = get_path(path)
 	local str = os_utls.read_file(path)
 	if not str then return end
 	return json:decode(str)
 end
 
-function M.save_json(path, tbl, abs_path)
+function M.save_json(path, tbl)
 	local data = json:encode(tbl)
 	if not data then return end
-	path = abs_path and path or get_path(path)
+	path = get_path(path)
 	if os_utls.exists(path) then
 		os_utls.delete_file(path)
 	end
 	os_utls.write_file(path, data)
 end
 
-function M.save_json_pretty(path, tbl, abs_path)
+function M.save_json_pretty(path, tbl)
 	local data = json:encode_pretty(tbl)
 	if not data then return end
-	path = abs_path and path or get_path(path)
+	path = get_path(path)
 	os_utls.write_file(path, data)
 end
 
