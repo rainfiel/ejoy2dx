@@ -6,11 +6,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c" />
-    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c" />
-    <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c" />
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h" />
+    <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h">
+      <Filter>winmain</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
