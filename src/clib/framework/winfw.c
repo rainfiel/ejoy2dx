@@ -79,6 +79,12 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_setfield(L, -2, "scale");
 	lua_pushinteger(L, start->reload_count);
 	lua_setfield(L, -2, "reload_count");
+
+	if (start->serialized)	
+		lua_pushlightuserdata(L, start->serialized);
+	else
+		lua_pushnil(L);
+	lua_setfield(L, -2, "Serialized");
 }
 
 void
@@ -126,6 +132,10 @@ ejoy2d_check_reload() {
 
 	if (reload_flag) {
 		STARTUP->reload_count = STARTUP->reload_count + 1;
+
+		lua_getfield(L, LUA_REGISTRYINDEX, "seraized_texture");
+		STARTUP->serialized = lua_touserdata(L, -1);
+		lua_pop(L, 1);
 
 		free(G);
 		ejoy2d_win_init(STARTUP);

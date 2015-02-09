@@ -3,6 +3,9 @@ local fw = require "ejoy2d.framework"
 local pack = require "ejoy2d.simplepackage"
 local sprite = require "ejoy2d.sprite"
 local image = require "ejoy2dx.image"
+local texture = require "ejoy2dx.texture"
+texture:init()
+local game_stat = require "ejoy2dx.game_stat"
 
 local level = require "battle.level"
 local ani_mgr = require "battle.ani_mgr"
@@ -27,11 +30,18 @@ local polygon = image:create_polygon({17,17, 200, 17, 200, 70, 17, 70})
 
 local game = {}
 function game.update()
+	if not game_stat.is_active then
+		return
+	end
 	human:update()
 	ani_mgr:update()
 end
 
 function game.drawframe()
+	if not game_stat.is_active then
+		return
+	end
+
 	-- ej.clear(0xFFFFFFFF)
 	ej.clear()
 

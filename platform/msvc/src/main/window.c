@@ -176,6 +176,7 @@ main(int argc, char *argv[]) {
 	startup->height = HEIGHT;
 	startup->scale = 1.0;
 	startup->reload_count = 0;
+	startup->serialized = NULL;
 
 	ejoy2d_win_init(startup);
 

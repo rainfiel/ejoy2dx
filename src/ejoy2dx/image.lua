@@ -1,6 +1,7 @@
 
 local image_c = require "ejoy2dx.image.c"
 local utls = require "ejoy2dx.utls"
+local texture = require "ejoy2dx.texture"
 
 local sprite = require "ejoy2d.sprite"
 local pack = require "ejoy2d.spritepack"
@@ -29,42 +30,27 @@ return
 local mt = {}
 
 local M = {}
-M.texture_id = 0
-M.textures = {}
+M.packages = {}
+M.raw_data = {}
 
-
-----------------------------image-------------------------------
-function M.save_image( ... )
-	return image_c.saveimage(...)
-end
-
-function M:load_image(path, name, collide, ani_callback)
-	path = utls.get_path(path)
-	self.packages = self.packages or {}
-	local cobj = nil
-	name = name or ""
+function M:_get_packed_object(path, name, ani_callback, raw)
+	name = name or "default"
 	local package_id = path.."."..name
-	-- print(package_id, self.packages[package_id])
-	if not self.packages[package_id] then
-		local tex_id, tw, th
-		local hit = self.textures[path]
-		if hit then
-			tex_id, tw, th = table.unpack(hit)
-		end
-		if not tex_id then
-			tex_id = self:register_texture()
-
-			local collide_info
-			if collide then
+	local cobj = self.packages[package_id]
+	local tex_id, tw, th = texture:query_texture(path)
+	if not cobj then
+		if not tw or not th or raw then
+			tex_id = texture:add_texture(path)
+			if raw then
 				local comp, img_data
 				tw, th, comp, img_data = image_c.image_rawdata(path)
-				collide_info = self.collide_info(tw, th, comp, img_data)
+				local collide_info = self.collide_info(tw, th, comp, img_data)
 				image_c.rawdata_to_texture(tex_id, tw, th, comp, img_data)
+				self.raw_data[path] = collide_info
 			else
 				tw, th = image_c.loadimage(tex_id, path)
 			end
-
-			self.textures[path] = {tex_id, tw, th, collide_info}
+			texture:add_texture_info(path, tw, th)
 		end
 
 		local tx, ty = 0, 0
@@ -82,13 +68,17 @@ function M:load_image(path, name, collide, ani_callback)
 		cobj = pack_c.import({tex_id},meta.maxid,meta.size,meta.data, meta.data_sz)
 
 		self.packages[package_id] = cobj
-	else
-		cobj = self.packages[package_id]
 	end
+	return cobj, tw, th
+end
+
+----------------------------image-------------------------------
+function M:load_image(path, name, ani_callback)
+	path = utls.get_path(path)
+	local cobj, tw, th = self:_get_packed_object(path, name, ani_callback, false)
 	local spr = sprite.direct_new(cobj, 0)
 	spr.usr_data.path = path
-	local tex_info = self.textures[path]
-	return spr, tex_info[2], tex_info[3]
+	return spr, tw, th
 end
 
 function M.add_picture(...)
@@ -171,13 +161,12 @@ function M:create_polygon(points, color)
 	return sprite.direct_new(cobj, 0)
 end
 
---------------------------texture------------------------------
-function M:register_texture()
-	local tex_id = self.texture_id
-	self.texture_id = self.texture_id + 1
-	return tex_id
+function M.save_image( path, ... )
+	path = utls.get_path(path)
+	return image_c.saveimage( path, ...)
 end
 
+--------------------------texture------------------------------
 --alpha
 --{r, g, b, a}
 --{r, g, b}
@@ -198,13 +187,23 @@ function M:create_custom_texture(width, height, color)
 		end
 	end
 
-	local tid = self:register_texture()
+	local id = string.format("%d_%d_%s", width, height, pix)
+	local tid = texture:add_texture(id)
 	local pix_str = table.concat(pixes)
 	image_c.custom_texture(tid, width, height, comp, pix_str)
+	texture:add_texture_info(id, width, height)
 	return tid
 end
 
 ------------------------raw data info--------------------------
+function M:load_image_raw(path, name, ani_callback)
+	path = utls.get_path(path)
+	local cobj, tw, th = self:_get_packed_object(path, name, ani_callback, true)
+	local spr = sprite.direct_new(cobj, 0)
+	spr.usr_data.path = path
+	return spr, tw, th
+end
+
 function M.collide_info(tw, th, comp, img_data)
 	local info = {}
 	for i=1, th do
@@ -225,9 +224,11 @@ end
 function M:get_collide_info(spr)
 	local path = spr.usr_data.path
 	if not path then return end
-	local tex_info = self.textures[path]
-	if not tex_info then return end
-	return tex_info[4], tex_info[2], tex_info[3]
+	local tex_id, tw, th = texture:query_texture(path)
+	if not tex_id then return end
+	local raw = self.raw_data[path]
+	if not raw then return end
+	return raw, tw, th
 end
 
 return M

@@ -14,6 +14,7 @@ struct STARTUP_INFO{
 	float scale;
 	char* folder;
 	char* script;
+	void* serialized;
 	int reload_count;
 };
 

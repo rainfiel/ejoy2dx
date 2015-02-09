@@ -35,7 +35,8 @@ function mt:init(cfg)
 	collide_res = string.gsub(bg_res, "(.png)", "_collide.png")
 	local has_collide = collide.has_collide_file(collide_res)
 
-	self.wall, self.width, self.height = image:load_image(bg_res, "wall", not has_collide)
+	local loader = has_collide and image.load_image or image.load_image_raw
+	self.wall, self.width, self.height = loader(image, bg_res, "wall")
 	floor_res = string.gsub(bg_res, "(.png)", "_floor.png")
 	self.floor = image:load_image(floor_res, "floor")
 
@@ -50,7 +51,8 @@ function mt:init(cfg)
 			local tex = def.RenderObject2D.texture
 			tex = texture_path(tex)
 			local collidable = self.collidable(def)
-			local ent = image:load_image(tex, v.name, collidable and not has_collide)
+			loader = (collidable and not has_collide) and image.load_image_raw or image.load_image
+			local ent = loader(image, tex, v.name)
 			ent:ps(x, cfg.Size.height_pixels-y)
 			ent:sr(-v.rotation)
 			-- print(x, cfg.Size.height_pixels-y, "   ", matrix(ent.matrix):export())
@@ -75,7 +77,7 @@ function mt:init(cfg)
 			end
 		end
 	end
-	
+
 	self.collide_data = collide.get_collide_data( collide_res, self )
 end
 

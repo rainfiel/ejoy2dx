@@ -22,7 +22,7 @@ function mt:init(path, name, render_cfg)
 	self.time_per_frame = self.time_ms / self.frame_cnt
 	self.timer = self.time_per_frame
 
-	self.img = image:load_image(path, name, nil, function(cfg, tx, ty, tw, th)
+	self.img = image:load_image(path, name, function(cfg, tx, ty, tw, th)
 		self.width, self.height = tw, th
 		self.row = math.floor(self.height / self.frame_height)
 		self.col = math.floor(self.width / self.frame_width)
@@ -85,7 +85,7 @@ function mt:update()
 		end
 	end
 end
- 
+
 function mt:draw(srt)
 	if blend.begin_blend(self.render_cfg.blendMode) then
 		self.img:draw(srt)
