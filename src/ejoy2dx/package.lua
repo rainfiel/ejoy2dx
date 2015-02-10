@@ -43,6 +43,10 @@ pack.loader = {
 	lua = load_raw
 }
 
+function pack:register_loader(tag, loader)
+	rawset(self.loader, tag, loader)
+end
+
 function pack:path(pattern)
 	self.package_pattern = pattern
 end
