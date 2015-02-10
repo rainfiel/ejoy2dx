@@ -1,14 +1,10 @@
 local ej = require "ejoy2d"
+local ejoy2dx = require "ejoy2dx"
 local fw = require "ejoy2d.framework"
-local pack = require "ejoy2d.simplepackage"
+local package = require "ejoy2dx.package"
 local image = require "ejoy2dx.image"
-local utls = require "ejoy2dx.utls"
-local texture = require "ejoy2dx.texture"
-texture:init()
 
-pack.load {
-	pattern = fw.WorkDir..[[/asset/?]]
-}
+package:path(fw.WorkDir..[[/asset/?]])
 
 local logo = image:load_image("logo.png")
 
