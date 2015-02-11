@@ -1,9 +1,7 @@
 
 local ppm = require "ejoy2d.ppm"
-local sprite = require "ejoy2d.sprite"
 local spritepack = require "ejoy2d.spritepack"
 
-local ejoy2dx = require "ejoy2dx"
 local texture = require "ejoy2dx.texture"
 
 local function extname(str)
@@ -74,11 +72,10 @@ function pack:realname(filename)
 	return string.gsub(self.package_pattern,"([^?]*)?([^?]*)","%1"..filename.."%2")
 end
 
-function ejoy2dx.sprite(package, name)
+function pack:prepare_package(package)
 	if pack.packages[package] == nil then
 		pack:do_load(package)
 	end
-	return sprite.new(package, name)
 end
 
 return pack
