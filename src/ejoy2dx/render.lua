@@ -9,43 +9,54 @@ mt.__index = mt
 
 function mt:init()
 	self.sprites = {}
-end
-
-function mt:_draw()
-	for k, v in ipairs(self.sprites) do
-		v:draw(RenderManager:anchor(v.usr_data.render.anchor))
-	end
+	self.sorted_sprites = {}
+	self.sprite_count = 0
+	self.dirty = false
 end
 
 local function sort_order(left, right)
 	return left.usr_data.render.zorder < right.usr_data.render.zorder
 end
 
---OPT: batch add
-function mt:show(spr)
+function mt:_draw()
+	if self.dirty then
+		self.dirty = false
+
+		local old_cnt = #self.sprites
+		local cnt = 0
+		for k, v in pairs(self.sprites) do
+			cnt = cnt+1
+			self.sorted_sprites[cnt] = k
+		end
+		for i=cnt+1, old_cnt do
+			self.sorted_sprites[i] = nil
+		end
+		table.sort(self.sorted_sprites, sort_order)
+	end
+
+	for k, v in ipairs(self.sorted_sprites) do
+		v:draw(v.usr_data.render.anchor)
+	end
+end
+
+function mt:show(spr, zorder, anchor)
 	spr.usr_data.render = spr.usr_data.render or {}
 	local data = spr.usr_data.render
-	data.zorder = data.zorder or 0
-	data.anchor = data.anchor or RenderManager.top_left  --default top_left
-	table.insert(self.sprites, spr)
-	table.sort(self.sprites, sort_order)
+	data.zorder = zorder or 0
+	anchor = anchor or RenderManager.top_left
+	data.anchor = assert(RenderManager:anchor(anchor))
+	assert(not self.sprites[spr])
+	self.sprites[spr] = true
+	self.sprite_count = self.sprite_count + 1
+	self.dirty = true
 end
 
 function mt:hide(spr)
-	local data = spr.usr_data.render
-	if not data or not data.zorder then
-		return
+	if self.sprites[spr] then
+		self.sprites[spr] = nil
+		self.dirty = true
+		self.sprite_count = self.sprite_count + 1
 	end
-	local idx = 0
-	local cnt = #self.sprites
-	for i=1, cnt do
-		if self.sprites[i] ~= spr then
-			idx = idx + 1
-			self.sprites[idx] = self.sprites[i]
-		end
-	end
-	assert(idx == cnt-1)
-	self.sprites[cnt] = nil
 end
 
 function mt:dump()

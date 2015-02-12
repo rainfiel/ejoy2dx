@@ -11,6 +11,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#ifndef LOGIC_FRAME
+#define LOGIC_FRAME 30
+#endif
+
 struct WINDOWGAME {
 	struct game *game;
 	int intouch;
@@ -85,7 +89,10 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 		lua_pushlightuserdata(L, start->serialized);
 	else
 		lua_pushnil(L);
-	lua_setfield(L, -2, "Serialized");
+	lua_setfield(L, -2, "serialized");
+
+	lua_pushinteger(L, LOGIC_FRAME);
+	lua_setfield(L, -2, "logic_frame");
 }
 
 void
@@ -116,9 +123,9 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 		const char *msg = lua_tostring(L,-1);
 		fault("%s", msg);
 	}
-
 	lua_pop(L,1);
 
+	ejoy2d_game_logicframe(LOGIC_FRAME);
 	ejoy2d_game_start(G->game);
 }
 

@@ -8,7 +8,7 @@ local MAX_TEXTURE = 128
 local M = {}
 
 function M:init()
-	local serialized = fw.GameInfo.Serialized
+	local serialized = fw.GameInfo.serialized
 	if serialized then
 		self:deserialize_texture(serialized)
 	else
