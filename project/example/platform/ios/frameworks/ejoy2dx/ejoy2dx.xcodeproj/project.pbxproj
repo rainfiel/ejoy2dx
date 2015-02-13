@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE9DDFAF1A8DAFE90085776F /* ejoy2dx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AE9DDFAE1A8DAFE90085776F /* ejoy2dx.h */; };
+		AE9DDFB11A8DAFE90085776F /* ejoy2dx.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DDFB01A8DAFE90085776F /* ejoy2dx.m */; };
+		AE9DE4A41A8E0A500085776F /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4791A8E0A500085776F /* array.h */; };
+		AE9DE4A51A8E0A500085776F /* dfont.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE47A1A8E0A500085776F /* dfont.c */; };
+		AE9DE4A61A8E0A500085776F /* dfont.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE47B1A8E0A500085776F /* dfont.h */; };
+		AE9DE4A71A8E0A500085776F /* ejoy2d.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE47C1A8E0A500085776F /* ejoy2d.h */; };
+		AE9DE4A81A8E0A500085776F /* ejoy2dgame.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE47D1A8E0A500085776F /* ejoy2dgame.c */; };
+		AE9DE4A91A8E0A500085776F /* ejoy2dgame.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE47E1A8E0A500085776F /* ejoy2dgame.h */; };
+		AE9DE4AA1A8E0A500085776F /* fault.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE47F1A8E0A500085776F /* fault.c */; };
+		AE9DE4AB1A8E0A500085776F /* fault.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4801A8E0A500085776F /* fault.h */; };
+		AE9DE4AC1A8E0A500085776F /* label.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4811A8E0A500085776F /* label.c */; };
+		AE9DE4AD1A8E0A500085776F /* label.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4821A8E0A500085776F /* label.h */; };
+		AE9DE4AE1A8E0A500085776F /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4831A8E0A500085776F /* list.h */; };
+		AE9DE4AF1A8E0A500085776F /* lmatrix.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4841A8E0A500085776F /* lmatrix.c */; };
+		AE9DE4B01A8E0A500085776F /* lmatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4851A8E0A500085776F /* lmatrix.h */; };
+		AE9DE4B11A8E0A500085776F /* lparticle.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4861A8E0A500085776F /* lparticle.c */; };
+		AE9DE4B21A8E0A500085776F /* lrenderbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4871A8E0A500085776F /* lrenderbuffer.c */; };
+		AE9DE4B31A8E0A500085776F /* lrenderbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4881A8E0A500085776F /* lrenderbuffer.h */; };
+		AE9DE4B41A8E0A500085776F /* lshader.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4891A8E0A500085776F /* lshader.c */; };
+		AE9DE4B51A8E0A500085776F /* lsprite.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE48A1A8E0A500085776F /* lsprite.c */; };
+		AE9DE4B61A8E0A500085776F /* material.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE48B1A8E0A500085776F /* material.h */; };
+		AE9DE4B71A8E0A500085776F /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE48C1A8E0A500085776F /* matrix.c */; };
+		AE9DE4B81A8E0A500085776F /* matrix.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE48D1A8E0A500085776F /* matrix.h */; };
+		AE9DE4B91A8E0A500085776F /* opengl.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE48E1A8E0A500085776F /* opengl.h */; };
+		AE9DE4BA1A8E0A500085776F /* particle.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE48F1A8E0A500085776F /* particle.c */; };
+		AE9DE4BB1A8E0A500085776F /* particle.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4901A8E0A500085776F /* particle.h */; };
+		AE9DE4BC1A8E0A500085776F /* platform_print.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4911A8E0A500085776F /* platform_print.h */; };
+		AE9DE4BD1A8E0A500085776F /* ppm.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4921A8E0A500085776F /* ppm.c */; };
+		AE9DE4BE1A8E0A500085776F /* ppm.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4931A8E0A500085776F /* ppm.h */; };
+		AE9DE4BF1A8E0A500085776F /* renderbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4941A8E0A500085776F /* renderbuffer.c */; };
+		AE9DE4C01A8E0A500085776F /* renderbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4951A8E0A500085776F /* renderbuffer.h */; };
+		AE9DE4C11A8E0A500085776F /* scissor.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4961A8E0A500085776F /* scissor.c */; };
+		AE9DE4C21A8E0A500085776F /* scissor.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4971A8E0A500085776F /* scissor.h */; };
+		AE9DE4C31A8E0A500085776F /* screen.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4981A8E0A500085776F /* screen.c */; };
+		AE9DE4C41A8E0A500085776F /* screen.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4991A8E0A500085776F /* screen.h */; };
+		AE9DE4C51A8E0A500085776F /* screenshot.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE49A1A8E0A500085776F /* screenshot.c */; };
+		AE9DE4C61A8E0A500085776F /* screenshot.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE49B1A8E0A500085776F /* screenshot.h */; };
+		AE9DE4C71A8E0A500085776F /* shader.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE49C1A8E0A500085776F /* shader.c */; };
+		AE9DE4C81A8E0A500085776F /* shader.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE49D1A8E0A500085776F /* shader.h */; };
+		AE9DE4C91A8E0A500085776F /* sprite.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE49E1A8E0A500085776F /* sprite.c */; };
+		AE9DE4CA1A8E0A500085776F /* sprite.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE49F1A8E0A500085776F /* sprite.h */; };
+		AE9DE4CB1A8E0A500085776F /* spritepack.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4A01A8E0A500085776F /* spritepack.c */; };
+		AE9DE4CC1A8E0A500085776F /* spritepack.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4A11A8E0A500085776F /* spritepack.h */; };
+		AE9DE4CD1A8E0A510085776F /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4A21A8E0A500085776F /* texture.c */; };
+		AE9DE4CE1A8E0A510085776F /* texture.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4A31A8E0A500085776F /* texture.h */; };
+		AE9DE4D81A8E0A6E0085776F /* blendmode.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4D01A8E0A6E0085776F /* blendmode.h */; };
+		AE9DE4D91A8E0A6E0085776F /* block.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4D11A8E0A6E0085776F /* block.h */; };
+		AE9DE4DA1A8E0A6E0085776F /* carray.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4D21A8E0A6E0085776F /* carray.c */; };
+		AE9DE4DB1A8E0A6E0085776F /* carray.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4D31A8E0A6E0085776F /* carray.h */; };
+		AE9DE4DC1A8E0A6E0085776F /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4D41A8E0A6E0085776F /* log.c */; };
+		AE9DE4DD1A8E0A6E0085776F /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4D51A8E0A6E0085776F /* log.h */; };
+		AE9DE4DE1A8E0A6E0085776F /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE4D61A8E0A6E0085776F /* render.c */; };
+		AE9DE4DF1A8E0A6E0085776F /* render.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE4D71A8E0A6E0085776F /* render.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE9DE4731A8E09580085776F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE9DE46E1A8E09580085776F /* lua.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE9DE2AE1A8DF41F0085776F;
+			remoteInfo = lua;
+		};
+		AE9DE4751A8E09720085776F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE9DE46E1A8E09580085776F /* lua.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AE9DE2AD1A8DF41F0085776F;
+			remoteInfo = lua;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AE9DDFA91A8DAFE90085776F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				AE9DDFAF1A8DAFE90085776F /* ejoy2dx.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AE9DDFAB1A8DAFE90085776F /* libejoy2dx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libejoy2dx.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE9DDFAE1A8DAFE90085776F /* ejoy2dx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ejoy2dx.h; sourceTree = "<group>"; };
+		AE9DDFB01A8DAFE90085776F /* ejoy2dx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ejoy2dx.m; sourceTree = "<group>"; };
+		AE9DE46E1A8E09580085776F /* lua.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lua.xcodeproj; path = ../lua/lua.xcodeproj; sourceTree = "<group>"; };
+		AE9DE4791A8E0A500085776F /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = array.h; path = ../../../../../../../ejoy2d/lib/array.h; sourceTree = "<group>"; };
+		AE9DE47A1A8E0A500085776F /* dfont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dfont.c; path = ../../../../../../../ejoy2d/lib/dfont.c; sourceTree = "<group>"; };
+		AE9DE47B1A8E0A500085776F /* dfont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dfont.h; path = ../../../../../../../ejoy2d/lib/dfont.h; sourceTree = "<group>"; };
+		AE9DE47C1A8E0A500085776F /* ejoy2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ejoy2d.h; path = ../../../../../../../ejoy2d/lib/ejoy2d.h; sourceTree = "<group>"; };
+		AE9DE47D1A8E0A500085776F /* ejoy2dgame.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ejoy2dgame.c; path = ../../../../../../../ejoy2d/lib/ejoy2dgame.c; sourceTree = "<group>"; };
+		AE9DE47E1A8E0A500085776F /* ejoy2dgame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ejoy2dgame.h; path = ../../../../../../../ejoy2d/lib/ejoy2dgame.h; sourceTree = "<group>"; };
+		AE9DE47F1A8E0A500085776F /* fault.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fault.c; path = ../../../../../../../ejoy2d/lib/fault.c; sourceTree = "<group>"; };
+		AE9DE4801A8E0A500085776F /* fault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fault.h; path = ../../../../../../../ejoy2d/lib/fault.h; sourceTree = "<group>"; };
+		AE9DE4811A8E0A500085776F /* label.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = label.c; path = ../../../../../../../ejoy2d/lib/label.c; sourceTree = "<group>"; };
+		AE9DE4821A8E0A500085776F /* label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = label.h; path = ../../../../../../../ejoy2d/lib/label.h; sourceTree = "<group>"; };
+		AE9DE4831A8E0A500085776F /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = list.h; path = ../../../../../../../ejoy2d/lib/list.h; sourceTree = "<group>"; };
+		AE9DE4841A8E0A500085776F /* lmatrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmatrix.c; path = ../../../../../../../ejoy2d/lib/lmatrix.c; sourceTree = "<group>"; };
+		AE9DE4851A8E0A500085776F /* lmatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lmatrix.h; path = ../../../../../../../ejoy2d/lib/lmatrix.h; sourceTree = "<group>"; };
+		AE9DE4861A8E0A500085776F /* lparticle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lparticle.c; path = ../../../../../../../ejoy2d/lib/lparticle.c; sourceTree = "<group>"; };
+		AE9DE4871A8E0A500085776F /* lrenderbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lrenderbuffer.c; path = ../../../../../../../ejoy2d/lib/lrenderbuffer.c; sourceTree = "<group>"; };
+		AE9DE4881A8E0A500085776F /* lrenderbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lrenderbuffer.h; path = ../../../../../../../ejoy2d/lib/lrenderbuffer.h; sourceTree = "<group>"; };
+		AE9DE4891A8E0A500085776F /* lshader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lshader.c; path = ../../../../../../../ejoy2d/lib/lshader.c; sourceTree = "<group>"; };
+		AE9DE48A1A8E0A500085776F /* lsprite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lsprite.c; path = ../../../../../../../ejoy2d/lib/lsprite.c; sourceTree = "<group>"; };
+		AE9DE48B1A8E0A500085776F /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = material.h; path = ../../../../../../../ejoy2d/lib/material.h; sourceTree = "<group>"; };
+		AE9DE48C1A8E0A500085776F /* matrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = matrix.c; path = ../../../../../../../ejoy2d/lib/matrix.c; sourceTree = "<group>"; };
+		AE9DE48D1A8E0A500085776F /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = matrix.h; path = ../../../../../../../ejoy2d/lib/matrix.h; sourceTree = "<group>"; };
+		AE9DE48E1A8E0A500085776F /* opengl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = opengl.h; path = ../../../../../../../ejoy2d/lib/opengl.h; sourceTree = "<group>"; };
+		AE9DE48F1A8E0A500085776F /* particle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = particle.c; path = ../../../../../../../ejoy2d/lib/particle.c; sourceTree = "<group>"; };
+		AE9DE4901A8E0A500085776F /* particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = particle.h; path = ../../../../../../../ejoy2d/lib/particle.h; sourceTree = "<group>"; };
+		AE9DE4911A8E0A500085776F /* platform_print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_print.h; path = ../../../../../../../ejoy2d/lib/platform_print.h; sourceTree = "<group>"; };
+		AE9DE4921A8E0A500085776F /* ppm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ppm.c; path = ../../../../../../../ejoy2d/lib/ppm.c; sourceTree = "<group>"; };
+		AE9DE4931A8E0A500085776F /* ppm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ppm.h; path = ../../../../../../../ejoy2d/lib/ppm.h; sourceTree = "<group>"; };
+		AE9DE4941A8E0A500085776F /* renderbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = renderbuffer.c; path = ../../../../../../../ejoy2d/lib/renderbuffer.c; sourceTree = "<group>"; };
+		AE9DE4951A8E0A500085776F /* renderbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = renderbuffer.h; path = ../../../../../../../ejoy2d/lib/renderbuffer.h; sourceTree = "<group>"; };
+		AE9DE4961A8E0A500085776F /* scissor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = scissor.c; path = ../../../../../../../ejoy2d/lib/scissor.c; sourceTree = "<group>"; };
+		AE9DE4971A8E0A500085776F /* scissor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scissor.h; path = ../../../../../../../ejoy2d/lib/scissor.h; sourceTree = "<group>"; };
+		AE9DE4981A8E0A500085776F /* screen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = screen.c; path = ../../../../../../../ejoy2d/lib/screen.c; sourceTree = "<group>"; };
+		AE9DE4991A8E0A500085776F /* screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = screen.h; path = ../../../../../../../ejoy2d/lib/screen.h; sourceTree = "<group>"; };
+		AE9DE49A1A8E0A500085776F /* screenshot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = screenshot.c; path = ../../../../../../../ejoy2d/lib/screenshot.c; sourceTree = "<group>"; };
+		AE9DE49B1A8E0A500085776F /* screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = screenshot.h; path = ../../../../../../../ejoy2d/lib/screenshot.h; sourceTree = "<group>"; };
+		AE9DE49C1A8E0A500085776F /* shader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = shader.c; path = ../../../../../../../ejoy2d/lib/shader.c; sourceTree = "<group>"; };
+		AE9DE49D1A8E0A500085776F /* shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shader.h; path = ../../../../../../../ejoy2d/lib/shader.h; sourceTree = "<group>"; };
+		AE9DE49E1A8E0A500085776F /* sprite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sprite.c; path = ../../../../../../../ejoy2d/lib/sprite.c; sourceTree = "<group>"; };
+		AE9DE49F1A8E0A500085776F /* sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sprite.h; path = ../../../../../../../ejoy2d/lib/sprite.h; sourceTree = "<group>"; };
+		AE9DE4A01A8E0A500085776F /* spritepack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = spritepack.c; path = ../../../../../../../ejoy2d/lib/spritepack.c; sourceTree = "<group>"; };
+		AE9DE4A11A8E0A500085776F /* spritepack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spritepack.h; path = ../../../../../../../ejoy2d/lib/spritepack.h; sourceTree = "<group>"; };
+		AE9DE4A21A8E0A500085776F /* texture.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = texture.c; path = ../../../../../../../ejoy2d/lib/texture.c; sourceTree = "<group>"; };
+		AE9DE4A31A8E0A500085776F /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = texture.h; path = ../../../../../../../ejoy2d/lib/texture.h; sourceTree = "<group>"; };
+		AE9DE4D01A8E0A6E0085776F /* blendmode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blendmode.h; path = ../../../../../../../ejoy2d/lib/render/blendmode.h; sourceTree = "<group>"; };
+		AE9DE4D11A8E0A6E0085776F /* block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = block.h; path = ../../../../../../../ejoy2d/lib/render/block.h; sourceTree = "<group>"; };
+		AE9DE4D21A8E0A6E0085776F /* carray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = carray.c; path = ../../../../../../../ejoy2d/lib/render/carray.c; sourceTree = "<group>"; };
+		AE9DE4D31A8E0A6E0085776F /* carray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = carray.h; path = ../../../../../../../ejoy2d/lib/render/carray.h; sourceTree = "<group>"; };
+		AE9DE4D41A8E0A6E0085776F /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = ../../../../../../../ejoy2d/lib/render/log.c; sourceTree = "<group>"; };
+		AE9DE4D51A8E0A6E0085776F /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = log.h; path = ../../../../../../../ejoy2d/lib/render/log.h; sourceTree = "<group>"; };
+		AE9DE4D61A8E0A6E0085776F /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = render.c; path = ../../../../../../../ejoy2d/lib/render/render.c; sourceTree = "<group>"; };
+		AE9DE4D71A8E0A6E0085776F /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render.h; path = ../../../../../../../ejoy2d/lib/render/render.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE9DDFA81A8DAFE90085776F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE9DDFA21A8DAFE90085776F = {
+			isa = PBXGroup;
+			children = (
+				AE9DE46D1A8E094A0085776F /* Frameworks */,
+				AE9DDFAD1A8DAFE90085776F /* ejoy2dx */,
+				AE9DDFAC1A8DAFE90085776F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE9DDFAC1A8DAFE90085776F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DDFAB1A8DAFE90085776F /* libejoy2dx.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE9DDFAD1A8DAFE90085776F /* ejoy2dx */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE4781A8E0A3A0085776F /* ejoy2d */,
+				AE9DDFAE1A8DAFE90085776F /* ejoy2dx.h */,
+				AE9DDFB01A8DAFE90085776F /* ejoy2dx.m */,
+			);
+			path = ejoy2dx;
+			sourceTree = "<group>";
+		};
+		AE9DE46D1A8E094A0085776F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE46E1A8E09580085776F /* lua.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE9DE46F1A8E09580085776F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE4741A8E09580085776F /* liblua.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE9DE4781A8E0A3A0085776F /* ejoy2d */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE4CF1A8E0A5C0085776F /* render */,
+				AE9DE4791A8E0A500085776F /* array.h */,
+				AE9DE47A1A8E0A500085776F /* dfont.c */,
+				AE9DE47B1A8E0A500085776F /* dfont.h */,
+				AE9DE47C1A8E0A500085776F /* ejoy2d.h */,
+				AE9DE47D1A8E0A500085776F /* ejoy2dgame.c */,
+				AE9DE47E1A8E0A500085776F /* ejoy2dgame.h */,
+				AE9DE47F1A8E0A500085776F /* fault.c */,
+				AE9DE4801A8E0A500085776F /* fault.h */,
+				AE9DE4811A8E0A500085776F /* label.c */,
+				AE9DE4821A8E0A500085776F /* label.h */,
+				AE9DE4831A8E0A500085776F /* list.h */,
+				AE9DE4841A8E0A500085776F /* lmatrix.c */,
+				AE9DE4851A8E0A500085776F /* lmatrix.h */,
+				AE9DE4861A8E0A500085776F /* lparticle.c */,
+				AE9DE4871A8E0A500085776F /* lrenderbuffer.c */,
+				AE9DE4881A8E0A500085776F /* lrenderbuffer.h */,
+				AE9DE4891A8E0A500085776F /* lshader.c */,
+				AE9DE48A1A8E0A500085776F /* lsprite.c */,
+				AE9DE48B1A8E0A500085776F /* material.h */,
+				AE9DE48C1A8E0A500085776F /* matrix.c */,
+				AE9DE48D1A8E0A500085776F /* matrix.h */,
+				AE9DE48E1A8E0A500085776F /* opengl.h */,
+				AE9DE48F1A8E0A500085776F /* particle.c */,
+				AE9DE4901A8E0A500085776F /* particle.h */,
+				AE9DE4911A8E0A500085776F /* platform_print.h */,
+				AE9DE4921A8E0A500085776F /* ppm.c */,
+				AE9DE4931A8E0A500085776F /* ppm.h */,
+				AE9DE4941A8E0A500085776F /* renderbuffer.c */,
+				AE9DE4951A8E0A500085776F /* renderbuffer.h */,
+				AE9DE4961A8E0A500085776F /* scissor.c */,
+				AE9DE4971A8E0A500085776F /* scissor.h */,
+				AE9DE4981A8E0A500085776F /* screen.c */,
+				AE9DE4991A8E0A500085776F /* screen.h */,
+				AE9DE49A1A8E0A500085776F /* screenshot.c */,
+				AE9DE49B1A8E0A500085776F /* screenshot.h */,
+				AE9DE49C1A8E0A500085776F /* shader.c */,
+				AE9DE49D1A8E0A500085776F /* shader.h */,
+				AE9DE49E1A8E0A500085776F /* sprite.c */,
+				AE9DE49F1A8E0A500085776F /* sprite.h */,
+				AE9DE4A01A8E0A500085776F /* spritepack.c */,
+				AE9DE4A11A8E0A500085776F /* spritepack.h */,
+				AE9DE4A21A8E0A500085776F /* texture.c */,
+				AE9DE4A31A8E0A500085776F /* texture.h */,
+			);
+			name = ejoy2d;
+			sourceTree = "<group>";
+		};
+		AE9DE4CF1A8E0A5C0085776F /* render */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE4D01A8E0A6E0085776F /* blendmode.h */,
+				AE9DE4D11A8E0A6E0085776F /* block.h */,
+				AE9DE4D21A8E0A6E0085776F /* carray.c */,
+				AE9DE4D31A8E0A6E0085776F /* carray.h */,
+				AE9DE4D41A8E0A6E0085776F /* log.c */,
+				AE9DE4D51A8E0A6E0085776F /* log.h */,
+				AE9DE4D61A8E0A6E0085776F /* render.c */,
+				AE9DE4D71A8E0A6E0085776F /* render.h */,
+			);
+			name = render;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AE9DE4771A8E0A330085776F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE9DE4DB1A8E0A6E0085776F /* carray.h in Headers */,
+				AE9DE4D91A8E0A6E0085776F /* block.h in Headers */,
+				AE9DE4C21A8E0A500085776F /* scissor.h in Headers */,
+				AE9DE4BE1A8E0A500085776F /* ppm.h in Headers */,
+				AE9DE4B01A8E0A500085776F /* lmatrix.h in Headers */,
+				AE9DE4C61A8E0A500085776F /* screenshot.h in Headers */,
+				AE9DE4AE1A8E0A500085776F /* list.h in Headers */,
+				AE9DE4CE1A8E0A510085776F /* texture.h in Headers */,
+				AE9DE4A61A8E0A500085776F /* dfont.h in Headers */,
+				AE9DE4BB1A8E0A500085776F /* particle.h in Headers */,
+				AE9DE4C41A8E0A500085776F /* screen.h in Headers */,
+				AE9DE4CC1A8E0A500085776F /* spritepack.h in Headers */,
+				AE9DE4B81A8E0A500085776F /* matrix.h in Headers */,
+				AE9DE4D81A8E0A6E0085776F /* blendmode.h in Headers */,
+				AE9DE4A91A8E0A500085776F /* ejoy2dgame.h in Headers */,
+				AE9DE4AB1A8E0A500085776F /* fault.h in Headers */,
+				AE9DE4B61A8E0A500085776F /* material.h in Headers */,
+				AE9DE4B91A8E0A500085776F /* opengl.h in Headers */,
+				AE9DE4DF1A8E0A6E0085776F /* render.h in Headers */,
+				AE9DE4C81A8E0A500085776F /* shader.h in Headers */,
+				AE9DE4BC1A8E0A500085776F /* platform_print.h in Headers */,
+				AE9DE4AD1A8E0A500085776F /* label.h in Headers */,
+				AE9DE4DD1A8E0A6E0085776F /* log.h in Headers */,
+				AE9DE4A71A8E0A500085776F /* ejoy2d.h in Headers */,
+				AE9DE4B31A8E0A500085776F /* lrenderbuffer.h in Headers */,
+				AE9DE4CA1A8E0A500085776F /* sprite.h in Headers */,
+				AE9DE4C01A8E0A500085776F /* renderbuffer.h in Headers */,
+				AE9DE4A41A8E0A500085776F /* array.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AE9DDFAA1A8DAFE90085776F /* ejoy2dx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE9DDFBF1A8DAFE90085776F /* Build configuration list for PBXNativeTarget "ejoy2dx" */;
+			buildPhases = (
+				AE9DDFA71A8DAFE90085776F /* Sources */,
+				AE9DDFA81A8DAFE90085776F /* Frameworks */,
+				AE9DDFA91A8DAFE90085776F /* CopyFiles */,
+				AE9DE4771A8E0A330085776F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE9DE4761A8E09720085776F /* PBXTargetDependency */,
+			);
+			name = ejoy2dx;
+			productName = ejoy2dx;
+			productReference = AE9DDFAB1A8DAFE90085776F /* libejoy2dx.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE9DDFA31A8DAFE90085776F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = rainfiel;
+				TargetAttributes = {
+					AE9DDFAA1A8DAFE90085776F = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = AE9DDFA61A8DAFE90085776F /* Build configuration list for PBXProject "ejoy2dx" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AE9DDFA21A8DAFE90085776F;
+			productRefGroup = AE9DDFAC1A8DAFE90085776F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AE9DE46F1A8E09580085776F /* Products */;
+					ProjectRef = AE9DE46E1A8E09580085776F /* lua.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AE9DDFAA1A8DAFE90085776F /* ejoy2dx */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AE9DE4741A8E09580085776F /* liblua.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblua.a;
+			remoteRef = AE9DE4731A8E09580085776F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE9DDFA71A8DAFE90085776F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE9DE4AC1A8E0A500085776F /* label.c in Sources */,
+				AE9DE4DE1A8E0A6E0085776F /* render.c in Sources */,
+				AE9DE4AF1A8E0A500085776F /* lmatrix.c in Sources */,
+				AE9DE4B11A8E0A500085776F /* lparticle.c in Sources */,
+				AE9DE4BA1A8E0A500085776F /* particle.c in Sources */,
+				AE9DE4C71A8E0A500085776F /* shader.c in Sources */,
+				AE9DE4BD1A8E0A500085776F /* ppm.c in Sources */,
+				AE9DE4BF1A8E0A500085776F /* renderbuffer.c in Sources */,
+				AE9DE4B51A8E0A500085776F /* lsprite.c in Sources */,
+				AE9DE4C11A8E0A500085776F /* scissor.c in Sources */,
+				AE9DE4AA1A8E0A500085776F /* fault.c in Sources */,
+				AE9DE4C31A8E0A500085776F /* screen.c in Sources */,
+				AE9DE4CD1A8E0A510085776F /* texture.c in Sources */,
+				AE9DE4B71A8E0A500085776F /* matrix.c in Sources */,
+				AE9DE4B41A8E0A500085776F /* lshader.c in Sources */,
+				AE9DE4C51A8E0A500085776F /* screenshot.c in Sources */,
+				AE9DDFB11A8DAFE90085776F /* ejoy2dx.m in Sources */,
+				AE9DE4A51A8E0A500085776F /* dfont.c in Sources */,
+				AE9DE4C91A8E0A500085776F /* sprite.c in Sources */,
+				AE9DE4B21A8E0A500085776F /* lrenderbuffer.c in Sources */,
+				AE9DE4DA1A8E0A6E0085776F /* carray.c in Sources */,
+				AE9DE4DC1A8E0A6E0085776F /* log.c in Sources */,
+				AE9DE4A81A8E0A500085776F /* ejoy2dgame.c in Sources */,
+				AE9DE4CB1A8E0A500085776F /* spritepack.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE9DE4761A8E09720085776F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = lua;
+			targetProxy = AE9DE4751A8E09720085776F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AE9DDFBD1A8DAFE90085776F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../../../../../../ejoy2d/lua,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		AE9DDFBE1A8DAFE90085776F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../../../../../../ejoy2d/lua,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE9DDFC01A8DAFE90085776F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AE9DDFC11A8DAFE90085776F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE9DDFA61A8DAFE90085776F /* Build configuration list for PBXProject "ejoy2dx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9DDFBD1A8DAFE90085776F /* Debug */,
+				AE9DDFBE1A8DAFE90085776F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE9DDFBF1A8DAFE90085776F /* Build configuration list for PBXNativeTarget "ejoy2dx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9DDFC01A8DAFE90085776F /* Debug */,
+				AE9DDFC11A8DAFE90085776F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE9DDFA31A8DAFE90085776F /* Project object */;
+}
