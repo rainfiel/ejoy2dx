@@ -25,7 +25,7 @@ unload_texture(lua_State *L) {
 	return 0;
 }
 
-static TEXTURE_FORMAT
+static enum TEXTURE_FORMAT
 comp_to_texture_format(int comp) {
 	if (comp == 1) {
 		return TEXTURE_A8;
@@ -62,7 +62,7 @@ loadimage_raw(lua_State *L) {
 	unsigned char* img = stbi_load_from_memory(buffer, buff_size, &x, &y, &comp, 0);
 	free(buffer);
 
-	TEXTURE_FORMAT type;
+	enum TEXTURE_FORMAT type;
 	if (img)
 	{
 		type = comp_to_texture_format(comp);
@@ -96,7 +96,7 @@ do_texture_load(lua_State* L) {
 	int y = (int)luaL_checkinteger(L, 3);
 	int comp = (int)luaL_checkinteger(L, 4);
 
-	TEXTURE_FORMAT type = comp_to_texture_format(comp);
+	enum TEXTURE_FORMAT type = comp_to_texture_format(comp);
 	if (type == TEXTURE_INVALID)
 	{
 		return luaL_error(L, "invalid texture format:%d", comp);
@@ -151,7 +151,7 @@ loadimage(lua_State *L) {
 		printf("\n");
 	}*/
 
-	TEXTURE_FORMAT type;
+	enum TEXTURE_FORMAT type;
 	if (img) {
 		type = comp_to_texture_format(comp);
 		if (type == TEXTURE_INVALID)

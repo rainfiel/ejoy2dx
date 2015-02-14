@@ -21,8 +21,5 @@ ej2dx.dSYM/*
 *_peak.json
 win_run*
 sandbox
-project/example/platform/ios/frameworks/ejoy2dx/ejoy2dx.xcodeproj/xcuserdata/rainfiel.xcuserdatad/xcschemes
-project/example/platform/ios/frameworks/ejoy2dx/ejoy2dx.xcodeproj/project.xcworkspace
-project/example/platform/ios/frameworks/lua/lua.xcodeproj/project.xcworkspace
-Framework.xcscheme
-project/example/platform/ios/frameworks/lua/lua.xcodeproj/xcuserdata/rainfiel.xcuserdatad/xcschemes
+xcuserdata/
+project.xcworkspace/

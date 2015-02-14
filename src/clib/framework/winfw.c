@@ -1,3 +1,6 @@
+
+#include <stdbool.h>
+
 #include "opengl.h"
 #include "ejoy2dgame.h"
 #include "fault.h"
@@ -5,7 +8,6 @@
 #include "winfw.h"
 #include "lualibs.h"
 
-#include <windows.h>
 #include <lauxlib.h>
 
 #include <stdlib.h>
@@ -23,9 +25,29 @@ struct WINDOWGAME {
 static struct WINDOWGAME *G = NULL;
 static struct STARTUP_INFO *STARTUP = NULL;
 
+#define IOS 1
+#define WINDOWS 2
+
+#if EJOY2D_OS == IOS
 static const char * startscript =
 "local path, script, startup = ...\n"
-//"for k,v in pairs(startup) do print(k, v) end\n"
+
+"script = script or [[main.lua]]\n"
+"if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
+"local fw=require(\"ejoy2d.framework\")\n"
+"fw.WorkDir = path\n"
+"fw.GameInfo = startup\n"
+
+"local script_root = path .. [[/?.lua;]] .. path .. [[/?/init.lua;./?.lua;./?/init.lua]]\n"
+"local script_project = path .. [[/script/?.lua;]].. path .. [[/script]] .. [[/?/init.lua;./?.lua;./?/init.lua]]\n"
+"package.path = script_root..[[;]]..script_project\n"
+
+"local f = assert(loadfile(path..[[/script/]]..script))\n"
+"f(script)\n"
+;
+#else
+static const char * startscript =
+"local path, script, startup = ...\n"
 
 "script = script or [[main.lua]]\n"
 "if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
@@ -42,10 +64,11 @@ static const char * startscript =
 "local usr = path .. [[\\script\\?.lua;]].. path .. [[\\script]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 "package.path = ej2dx..[[;]]..ej2d..[[;]]..usr\n"
 
-"require([[script]])\n"
+//s"require([[script]])\n"
 "local f = assert(loadfile(path..[[\\script\\]]..script))\n"
 "f(script)\n"
 ;
+#endif
 
 static struct WINDOWGAME *
 create_game() {
