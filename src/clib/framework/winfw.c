@@ -42,6 +42,7 @@ static const char * startscript =
 "local script_project = path .. [[/script/?.lua;]].. path .. [[/script]] .. [[/?/init.lua;./?.lua;./?/init.lua]]\n"
 "package.path = script_root..[[;]]..script_project\n"
 
+"require([[script]])\n"
 "local f = assert(loadfile(path..[[/script/]]..script))\n"
 "f(script)\n"
 ;
@@ -64,7 +65,7 @@ static const char * startscript =
 "local usr = path .. [[\\script\\?.lua;]].. path .. [[\\script]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 "package.path = ej2dx..[[;]]..ej2d..[[;]]..usr\n"
 
-//s"require([[script]])\n"
+//"require([[script]])\n"
 "local f = assert(loadfile(path..[[\\script\\]]..script))\n"
 "f(script)\n"
 ;
