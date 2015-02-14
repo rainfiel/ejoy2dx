@@ -59,10 +59,9 @@ function mt:hide(spr)
 	end
 end
 
-function mt:dump()
-	for k, v in ipairs(self.sprites) do
-		print(k..":"..v.usr_data.render.zorder)
-	end
+function mt:clear()
+	self:init()
+	RenderManager:remove(self)
 end
 
 -----------------------------------------------------------
@@ -95,6 +94,18 @@ function RenderManager:create(layer)
 	table.sort(self.renders, sort_layer)
 	rd:init()
 	return rd
+end
+
+function RenderManager:remove(rd)
+	local idx=0
+	local cnt = #self.renders
+	for i=1, cnt do
+		if self.renders[i] ~= rd then
+			idx = idx + 1
+			self.renders[idx] = self.renders[i]
+		end
+	end
+	self.renders[cnt] = nil
 end
 
 function RenderManager:draw()
