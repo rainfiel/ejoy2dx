@@ -162,7 +162,7 @@
 		AE9DE6B11A8F44000085776F /* res */ = {
 			isa = PBXGroup;
 			children = (
-				AE9DE74E1AA049D60085776F /* scrip */,
+				AE9DE74E1AA049D60085776F /* script */,
 				AE9DE73C1AA042BC0085776F /* asset */,
 			);
 			name = res;
@@ -184,14 +184,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AE9DE74E1AA049D60085776F /* scrip */ = {
+		AE9DE74E1AA049D60085776F /* script */ = {
 			isa = PBXGroup;
 			children = (
 				AE9DE7531AA04A050085776F /* script */,
 				AE9DE7511AA049EC0085776F /* ejoy2dx */,
 				AE9DE74F1AA049E20085776F /* ejoy2d */,
 			);
-			name = scrip;
+			name = script;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
