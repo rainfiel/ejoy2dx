@@ -4,7 +4,6 @@ local sprite = require "ejoy2d.sprite"
 
 local ejoy2dx = require "ejoy2dx"
 local image = require "ejoy2dx.image"
-local package = require "ejoy2dx.package"
 local game_stat = require "ejoy2dx.game_stat"
 
 local level = require "battle.level"
@@ -13,22 +12,27 @@ local avatar = require "battle.avatar"
 local human = require "battle.human"
 local path = require "battle.path"
 
-package:path(fw.WorkDir..[[/asset/?]])
-
 path:init()
 human:init()
 level.init()
 ani_mgr:init("animations.json", "fx.json")
+
 local lv = level.new("levelkillhouse1.json")
+
+local render = ejoy2dx.render
+local sample_render = render:create(0)
 
 local debug_label = sprite.label({width=500, height=300,size=20,color=0xFFFFFFFF, edge=0})
 debug_label.text = "#[blue]DON'T PANIC#[stop]"
-local label_srt = {x=40, y=40}
+debug_label:ps(40, 40)
+sample_render:show(debug_label, 1)
 
 local polygon = image:create_polygon({17,17, 200, 17, 200, 70, 17, 70})
+sample_render:show(polygon)
 
 local mine = ejoy2dx.sprite("sample.lua", "mine")
-local mine_srt = {x=300, y=60, scale=0.7}
+mine:ps(300, 60, 0.7)
+sample_render:show(mine)
 
 local game = {}
 function game.update()
@@ -52,9 +56,7 @@ function game.drawframe()
 	avatar:draw()
 	ani_mgr:draw()
 
-	polygon:draw()
-	debug_label:draw(label_srt)
-	mine:draw(mine_srt)
+	render:draw()
 end
 
 function game.touch(what, x, y)
