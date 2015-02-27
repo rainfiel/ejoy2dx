@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE9DE5211A8EF9CD0085776F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5201A8EF9CD0085776F /* main.m */; };
+		AE9DE5241A8EF9CD0085776F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5231A8EF9CD0085776F /* AppDelegate.m */; };
+		AE9DE5271A8EF9CD0085776F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5261A8EF9CD0085776F /* ViewController.m */; };
+		AE9DE52C1A8EF9CD0085776F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE52B1A8EF9CD0085776F /* Images.xcassets */; };
+		AE9DE52F1A8EF9CD0085776F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE52D1A8EF9CD0085776F /* LaunchScreen.xib */; };
+		AE9DE5461A8EFA050085776F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE5451A8EFA050085776F /* OpenGLES.framework */; };
+		AE9DE6851A8F2DA40085776F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6841A8F2DA40085776F /* Foundation.framework */; };
+		AE9DE6B01A8F338B0085776F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6AF1A8F338B0085776F /* UIKit.framework */; };
+		AE9DE7131AA040EB0085776F /* winfw.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE7111AA040EB0085776F /* winfw.c */; };
+		AE9DE73D1AA042BC0085776F /* asset in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE73C1AA042BC0085776F /* asset */; };
+		AE9DE73E1AA043550085776F /* libejoy2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE72B1AA0414A0085776F /* libejoy2dx.a */; };
+		AE9DE73F1AA043580085776F /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE7231AA041450085776F /* liblua.a */; };
+		AE9DE7501AA049E20085776F /* ejoy2d in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE74F1AA049E20085776F /* ejoy2d */; };
+		AE9DE7521AA049EC0085776F /* ejoy2dx in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE7511AA049EC0085776F /* ejoy2dx */; };
+		AE9DE7541AA04A050085776F /* script in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE7531AA04A050085776F /* script */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE9DE7221AA041450085776F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE9DE71D1AA041450085776F /* lua.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE9DE2AE1A8DF41F0085776F;
+			remoteInfo = lua;
+		};
+		AE9DE72A1AA0414A0085776F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE9DE7241AA041490085776F /* ejoy2dx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE9DDFAB1A8DAFE90085776F;
+			remoteInfo = ejoy2dx;
+		};
+		AE9DE7401AA043C70085776F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE9DE7241AA041490085776F /* ejoy2dx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AE9DDFAA1A8DAFE90085776F;
+			remoteInfo = ejoy2dx;
+		};
+		AE9DE7421AA043CA0085776F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE9DE71D1AA041450085776F /* lua.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AE9DE2AD1A8DF41F0085776F;
+			remoteInfo = lua;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE9DE51B1A8EF9CD0085776F /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE9DE51F1A8EF9CD0085776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE9DE5201A8EF9CD0085776F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE9DE5221A8EF9CD0085776F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE9DE5231A8EF9CD0085776F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE9DE5251A8EF9CD0085776F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AE9DE5261A8EF9CD0085776F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AE9DE52B1A8EF9CD0085776F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AE9DE52E1A8EF9CD0085776F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AE9DE5451A8EFA050085776F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		AE9DE6841A8F2DA40085776F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AE9DE6861A8F2E0D0085776F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AE9DE6AF1A8F338B0085776F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AE9DE7111AA040EB0085776F /* winfw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = winfw.c; path = ../../../../../src/clib/framework/winfw.c; sourceTree = "<group>"; };
+		AE9DE7121AA040EB0085776F /* winfw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = winfw.h; path = ../../../../../src/clib/framework/winfw.h; sourceTree = "<group>"; };
+		AE9DE71D1AA041450085776F /* lua.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lua.xcodeproj; path = ../../../../platform/ios/frameworks/lua/lua.xcodeproj; sourceTree = "<group>"; };
+		AE9DE7241AA041490085776F /* ejoy2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ejoy2dx.xcodeproj; path = ../../../../platform/ios/frameworks/ejoy2dx/ejoy2dx.xcodeproj; sourceTree = "<group>"; };
+		AE9DE73C1AA042BC0085776F /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = asset; path = ../../asset; sourceTree = "<group>"; };
+		AE9DE74F1AA049E20085776F /* ejoy2d */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ejoy2d; path = ../../../../ejoy2d/ejoy2d; sourceTree = "<group>"; };
+		AE9DE7511AA049EC0085776F /* ejoy2dx */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ejoy2dx; path = ../../../../src/ejoy2dx; sourceTree = "<group>"; };
+		AE9DE7531AA04A050085776F /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = script; path = ../../script; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE9DE5181A8EF9CD0085776F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE9DE73F1AA043580085776F /* liblua.a in Frameworks */,
+				AE9DE73E1AA043550085776F /* libejoy2dx.a in Frameworks */,
+				AE9DE6B01A8F338B0085776F /* UIKit.framework in Frameworks */,
+				AE9DE6851A8F2DA40085776F /* Foundation.framework in Frameworks */,
+				AE9DE5461A8EFA050085776F /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE9DE5121A8EF9CD0085776F = {
+			isa = PBXGroup;
+			children = (
+				AE9DE6B11A8F44000085776F /* res */,
+				AE9DE5441A8EF9E50085776F /* Frameworks */,
+				AE9DE51D1A8EF9CD0085776F /* example */,
+				AE9DE51C1A8EF9CD0085776F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE9DE51C1A8EF9CD0085776F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE51B1A8EF9CD0085776F /* example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE9DE51D1A8EF9CD0085776F /* example */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE5741A8EFECE0085776F /* app */,
+				AE9DE51E1A8EF9CD0085776F /* Supporting Files */,
+			);
+			path = example;
+			sourceTree = "<group>";
+		};
+		AE9DE51E1A8EF9CD0085776F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE51F1A8EF9CD0085776F /* Info.plist */,
+				AE9DE5201A8EF9CD0085776F /* main.m */,
+				AE9DE6861A8F2E0D0085776F /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE9DE5441A8EF9E50085776F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE7241AA041490085776F /* ejoy2dx.xcodeproj */,
+				AE9DE71D1AA041450085776F /* lua.xcodeproj */,
+				AE9DE6AF1A8F338B0085776F /* UIKit.framework */,
+				AE9DE6841A8F2DA40085776F /* Foundation.framework */,
+				AE9DE5451A8EFA050085776F /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE9DE5741A8EFECE0085776F /* app */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE7111AA040EB0085776F /* winfw.c */,
+				AE9DE7121AA040EB0085776F /* winfw.h */,
+				AE9DE5221A8EF9CD0085776F /* AppDelegate.h */,
+				AE9DE5231A8EF9CD0085776F /* AppDelegate.m */,
+				AE9DE5251A8EF9CD0085776F /* ViewController.h */,
+				AE9DE5261A8EF9CD0085776F /* ViewController.m */,
+				AE9DE52B1A8EF9CD0085776F /* Images.xcassets */,
+				AE9DE52D1A8EF9CD0085776F /* LaunchScreen.xib */,
+			);
+			name = app;
+			sourceTree = "<group>";
+		};
+		AE9DE6B11A8F44000085776F /* res */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE74E1AA049D60085776F /* script */,
+				AE9DE73C1AA042BC0085776F /* asset */,
+			);
+			name = res;
+			sourceTree = "<group>";
+		};
+		AE9DE71E1AA041450085776F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE7231AA041450085776F /* liblua.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE9DE7251AA041490085776F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE72B1AA0414A0085776F /* libejoy2dx.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE9DE74E1AA049D60085776F /* script */ = {
+			isa = PBXGroup;
+			children = (
+				AE9DE7531AA04A050085776F /* script */,
+				AE9DE7511AA049EC0085776F /* ejoy2dx */,
+				AE9DE74F1AA049E20085776F /* ejoy2d */,
+			);
+			name = script;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE9DE51A1A8EF9CD0085776F /* example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE9DE53E1A8EF9CD0085776F /* Build configuration list for PBXNativeTarget "example" */;
+			buildPhases = (
+				AE9DE5171A8EF9CD0085776F /* Sources */,
+				AE9DE5181A8EF9CD0085776F /* Frameworks */,
+				AE9DE5191A8EF9CD0085776F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE9DE7431AA043CA0085776F /* PBXTargetDependency */,
+				AE9DE7411AA043C70085776F /* PBXTargetDependency */,
+			);
+			name = example;
+			productName = example;
+			productReference = AE9DE51B1A8EF9CD0085776F /* example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE9DE5131A8EF9CD0085776F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = rainfiel;
+				TargetAttributes = {
+					AE9DE51A1A8EF9CD0085776F = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = AE9DE5161A8EF9CD0085776F /* Build configuration list for PBXProject "example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE9DE5121A8EF9CD0085776F;
+			productRefGroup = AE9DE51C1A8EF9CD0085776F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AE9DE7251AA041490085776F /* Products */;
+					ProjectRef = AE9DE7241AA041490085776F /* ejoy2dx.xcodeproj */;
+				},
+				{
+					ProductGroup = AE9DE71E1AA041450085776F /* Products */;
+					ProjectRef = AE9DE71D1AA041450085776F /* lua.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				AE9DE51A1A8EF9CD0085776F /* example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AE9DE7231AA041450085776F /* liblua.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = liblua.a;
+			remoteRef = AE9DE7221AA041450085776F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AE9DE72B1AA0414A0085776F /* libejoy2dx.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libejoy2dx.a;
+			remoteRef = AE9DE72A1AA0414A0085776F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE9DE5191A8EF9CD0085776F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE9DE7521AA049EC0085776F /* ejoy2dx in Resources */,
+				AE9DE73D1AA042BC0085776F /* asset in Resources */,
+				AE9DE52F1A8EF9CD0085776F /* LaunchScreen.xib in Resources */,
+				AE9DE7541AA04A050085776F /* script in Resources */,
+				AE9DE52C1A8EF9CD0085776F /* Images.xcassets in Resources */,
+				AE9DE7501AA049E20085776F /* ejoy2d in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE9DE5171A8EF9CD0085776F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE9DE5271A8EF9CD0085776F /* ViewController.m in Sources */,
+				AE9DE5241A8EF9CD0085776F /* AppDelegate.m in Sources */,
+				AE9DE5211A8EF9CD0085776F /* main.m in Sources */,
+				AE9DE7131AA040EB0085776F /* winfw.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE9DE7411AA043C70085776F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ejoy2dx;
+			targetProxy = AE9DE7401AA043C70085776F /* PBXContainerItemProxy */;
+		};
+		AE9DE7431AA043CA0085776F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = lua;
+			targetProxy = AE9DE7421AA043CA0085776F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE9DE52D1A8EF9CD0085776F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE9DE52E1A8EF9CD0085776F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE9DE53C1A8EF9CD0085776F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE9DE53D1A8EF9CD0085776F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE9DE53F1A8EF9CD0085776F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = example/PrefixHeader.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"EJOY2D_OS=IOS",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"../../../../ejoy2d/lib/**",
+					"../../../../src/clib/**",
+					../../../../ejoy2d/lua,
+				);
+				INFOPLIST_FILE = example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE9DE5401A8EF9CD0085776F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = example/PrefixHeader.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "EJOY2D_OS=IOS";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"../../../../ejoy2d/lib/**",
+					"../../../../src/clib/**",
+					../../../../ejoy2d/lua,
+				);
+				INFOPLIST_FILE = example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE9DE5161A8EF9CD0085776F /* Build configuration list for PBXProject "example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9DE53C1A8EF9CD0085776F /* Debug */,
+				AE9DE53D1A8EF9CD0085776F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE9DE53E1A8EF9CD0085776F /* Build configuration list for PBXNativeTarget "example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9DE53F1A8EF9CD0085776F /* Debug */,
+				AE9DE5401A8EF9CD0085776F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE9DE5131A8EF9CD0085776F /* Project object */;
+}

@@ -43,6 +43,22 @@ def create_msvc(prj_name, folder):
 
 	print("msvc project created")
 
+def create_ios(prj_name, folder):
+	xcodeproj = os.path.join(folder, prj_name+".xcodeproj")
+	os.rename(os.path.join(folder, "example"), os.path.join(folder, prj_name))
+	os.rename(os.path.join(folder, "example.xcodeproj"), xcodeproj)
+
+	pbxproj = os.path.join(xcodeproj, "project.pbxproj")
+	f = open(pbxproj, "r")
+	txt = f.read()
+	f.close()
+	txt = txt.replace("example", prj_name)
+	f = open(pbxproj, "w")
+	f.write(txt)
+	f.close()
+
+	print("ios xcode project created")
+
 def main(prj_name):
 	py_path = os.getcwd()
 	root = os.path.join(py_path, "../../project")
@@ -57,6 +73,7 @@ def main(prj_name):
 		shutil.copytree(os.path.join(tpl_dir, i), os.path.join(prj_dir, i))
 
 	create_msvc(prj_name, os.path.join(prj_dir, "platform/msvc"))
+	create_ios(prj_name, os.path.join(prj_dir, "platform/ios"))
 
 if __name__ == '__main__':
 	if len(sys.argv) >= 2:
