@@ -137,7 +137,7 @@ register_class()
 	wndclass.cbWndExtra = 0;
 	wndclass.hInstance = GetModuleHandleW(0);
 	wndclass.hIcon = 0;
-	wndclass.hCursor = 0;
+	wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndclass.hbrBackground = 0;
 	wndclass.lpszMenuName = 0; 
 	wndclass.lpszClassName = CLASSNAME;
