@@ -8,7 +8,7 @@ local function get_path(path)
 end
 
 local M = {}
-M.frame_per_second = 30
+M.frame_per_second = fw.GameInfo.logic_frame
 M.frame_rate = 1 / M.frame_per_second
 
 function M.seconds_to_frame(seconds)
