@@ -73,7 +73,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;zlib.lib;glew.lib;lua.lib;ejoy2dx.lib;%s</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;zlib.lib;glew.lib;lua.lib;ejoy2dx.lib;winmm.lib;%s</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>

@@ -4,11 +4,14 @@
 #include <GL/wglew.h>
 #include <string.h>
 #include <stdlib.h>
+#include <mmsystem.h>
 #include "winfw.h"
 
 #define CLASSNAME L"EJOY"
 #define WINDOWNAME L"EJOY2D"
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
+
+static DWORD g_lastTime = 0;
 
 static void
 set_pixel_format_to_hdc(HDC hDC)
@@ -86,8 +89,16 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 	}
 	case WM_TIMER : {
-		ejoy2d_win_update(0.01f);
-		InvalidateRect(hWnd, NULL , FALSE);
+		DWORD now = timeGetTime();
+		if (g_lastTime == 0) {
+			g_lastTime = now;
+		} else {
+			float seconds = float((now-g_lastTime)/1000.f);
+			ejoy2d_win_update(seconds);
+			InvalidateRect(hWnd, NULL , FALSE);
+			g_lastTime = now;
+		}
+		
 		break;
 	}
 	case WM_DESTROY:
@@ -126,7 +137,7 @@ register_class()
 	wndclass.cbWndExtra = 0;
 	wndclass.hInstance = GetModuleHandleW(0);
 	wndclass.hIcon = 0;
-	wndclass.hCursor = 0;
+	wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndclass.hbrBackground = 0;
 	wndclass.lpszMenuName = 0; 
 	wndclass.lpszClassName = CLASSNAME;
