@@ -4,7 +4,6 @@ local sprite = require "ejoy2d.sprite"
 
 local ejoy2dx = require "ejoy2dx"
 local image = require "ejoy2dx.image"
-local game_stat = require "ejoy2dx.game_stat"
 
 local level = require "battle.level"
 local ani_mgr = require "battle.ani_mgr"
@@ -36,7 +35,7 @@ sample_render:show(mine)
 
 local game = {}
 function game.update()
-	if not game_stat.is_active then
+	if not ejoy2dx.game_stat.is_active then
 		return
 	end
 	human:update()
@@ -44,7 +43,7 @@ function game.update()
 end
 
 function game.drawframe()
-	if not game_stat.is_active then
+	if not ejoy2dx.game_stat.is_active then
 		return
 	end
 

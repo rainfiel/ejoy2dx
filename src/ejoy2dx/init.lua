@@ -19,4 +19,6 @@ ejoy2dx.render:init(fw.GameInfo.width, fw.GameInfo.height)
 ejoy2dx.animation = require("ejoy2dx.animation")
 ejoy2dx.animation:init(fw.GameInfo.logic_frame)
 
+ejoy2dx.game_stat = require("ejoy2dx.game_stat")
+
 return ejoy2dx
