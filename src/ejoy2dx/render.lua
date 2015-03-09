@@ -1,4 +1,5 @@
 
+local blend = require "ejoy2dx.blend"
 
 local RenderManager = {}
 RenderManager.renders = {}
@@ -34,12 +35,24 @@ function mt:_draw()
 		table.sort(self.sorted_sprites, sort_order)
 	end
 
+	local render
 	for k, v in ipairs(self.sorted_sprites) do
-		v:draw(v.usr_data.render.anchor)
+		if v.usr_data and v.usr_data.render.blend_mode then
+			render = v.usr_data.render
+			if blend.begin_blend(render.blend_mode) then
+				v:draw(render.anchor)
+				blend.end_blend()
+			end
+		else
+			v:draw(v.usr_data.render.anchor)
+		end
 	end
 end
 
 function mt:show(spr, zorder, anchor)
+	if not spr.usr_data then
+		spr.usr_data = {}
+	end
 	spr.usr_data.render = spr.usr_data.render or {}
 	local data = spr.usr_data.render
 	data.zorder = zorder or 0
