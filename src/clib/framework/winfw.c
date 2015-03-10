@@ -186,7 +186,7 @@ ejoy2d_win_frame() {
 	ejoy2d_game_drawframe(G->game);
 }
 
-void
+int
 ejoy2d_win_touch(int x, int y,int touch) {
 	switch (touch) {
 	case TOUCH_BEGIN:
@@ -197,12 +197,12 @@ ejoy2d_win_touch(int x, int y,int touch) {
 		break;
 	case TOUCH_MOVE:
 		if (!G->intouch) {
-			return;
+			return 0;
 		}
 		break;
 	}
 	// windows only support one touch id (0)
 	int id = 0;
-	ejoy2d_game_touch(G->game, id, x,y,touch);
+	return ejoy2d_game_touch(G->game, id, x,y,touch);
 }
 
