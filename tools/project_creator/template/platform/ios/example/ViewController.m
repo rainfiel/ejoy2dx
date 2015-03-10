@@ -22,7 +22,7 @@ static ViewController* _controller = nil;
 @implementation ViewController
 - (id)init {
 	_controller = [super init];
-	super.preferredFramesPerSecond = 60;
+	super.preferredFramesPerSecond = 30;
 	return _controller;
 }
 
@@ -66,7 +66,7 @@ static ViewController* _controller = nil;
 	#endif
 	
 	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
-	startup->folder = folder;
+	startup->folder = (char*)folder;
 	startup->script = NULL;
 	startup->orix = bounds.origin.x;
 	startup->oriy = bounds.origin.y;
@@ -118,6 +118,34 @@ static ViewController* _controller = nil;
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
+}
+
+- (BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gr {
+	return (disableGesture == 0 ? YES : NO);
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	// UITouch *touch = [touches anyObject];
+	for(UITouch *touch in touches) {
+		CGPoint p = [touch locationInView:touch.view];
+		disableGesture = ejoy2d_win_touch(p.x, p.y, TOUCH_BEGIN);
+	}
+}
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	// UITouch *touch = [touches anyObject];
+	for(UITouch *touch in touches) {
+		CGPoint p = [touch locationInView:touch.view];
+		ejoy2d_win_touch(p.x, p.y, TOUCH_MOVE);
+	}
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	// UITouch *touch = [touches anyObject];
+	for(UITouch *touch in touches) {
+		CGPoint p = [touch locationInView:touch.view];
+		ejoy2d_win_touch(p.x, p.y, TOUCH_END);
+	}
 }
 
 @end
