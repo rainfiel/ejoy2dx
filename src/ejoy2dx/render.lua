@@ -11,7 +11,6 @@ mt.__index = mt
 function mt:init()
 	self.sprites = {}
 	self.sorted_sprites = {}
-	self.sprite_count = 0
 	self.dirty = false
 end
 
@@ -23,7 +22,7 @@ function mt:_draw()
 	if self.dirty then
 		self.dirty = false
 
-		local old_cnt = #self.sprites
+		local old_cnt = #self.sorted_sprites
 		local cnt = 0
 		for k, v in pairs(self.sprites) do
 			cnt = cnt+1
@@ -60,7 +59,6 @@ function mt:show(spr, zorder, anchor)
 	data.anchor = assert(RenderManager:anchor(anchor))
 	assert(not self.sprites[spr])
 	self.sprites[spr] = true
-	self.sprite_count = self.sprite_count + 1
 	self.dirty = true
 end
 
@@ -68,13 +66,16 @@ function mt:hide(spr)
 	if self.sprites[spr] then
 		self.sprites[spr] = nil
 		self.dirty = true
-		self.sprite_count = self.sprite_count + 1
 	end
 end
 
 function mt:clear()
 	self:init()
 	RenderManager:remove(self)
+end
+
+function mt:count()
+	return #self.sorted_sprites
 end
 
 -----------------------------------------------------------
