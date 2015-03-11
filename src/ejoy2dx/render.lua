@@ -55,8 +55,14 @@ function mt:show(spr, zorder, anchor)
 	spr.usr_data.render = spr.usr_data.render or {}
 	local data = spr.usr_data.render
 	data.zorder = zorder or 0
-	anchor = anchor or RenderManager.top_left
-	data.anchor = assert(RenderManager:anchor(anchor))
+
+	if not anchor then
+		anchor = RenderManager:anchor(RenderManager.top_left)
+	elseif type(anchor) ~= "table" then
+		anchor = assert(RenderManager:anchor(anchor))
+	end
+	data.anchor = anchor
+
 	assert(not self.sprites[spr])
 	self.sprites[spr] = true
 	self.dirty = true
