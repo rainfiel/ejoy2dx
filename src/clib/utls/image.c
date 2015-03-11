@@ -234,6 +234,22 @@ _texture_update(lua_State *L) {
 	return 0;
 }
 
+static int
+_texture_sub_update(lua_State *L) {
+	int id = (int)luaL_checkinteger(L, 1);
+	int x = (int)luaL_checkinteger(L, 2);
+	int y = (int)luaL_checkinteger(L, 3);
+	int width = (int)luaL_checkinteger(L, 4);
+	int height = (int)luaL_checkinteger(L, 5);
+	unsigned char* data = (unsigned char*)luaL_checkstring(L, 6);
+
+	const char* err = texture_sub_update(id, x, y, width, height, data);
+	if (err) {
+		return luaL_error(L, "texture sub update failed:%s", err);
+	}
+	return 0;
+}
+
 
 int
 luaopen_image(lua_State *L) {
@@ -245,6 +261,7 @@ luaopen_image(lua_State *L) {
 		{ "saveimage", saveimage },
 		{ "custom_texture", create_custom_texture },
 		{ "texture_update", _texture_update },
+		{ "texture_sub_update", _texture_sub_update },
 		{ NULL, NULL },
 	};
 

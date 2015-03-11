@@ -33,7 +33,7 @@ local M = {}
 M.packages = {}
 M.raw_data = {}
 
-function M:_get_packed_object(path, name, ani_callback, raw)
+function M:_get_packed_object(path, name, pic_callback, raw)
 	name = name or "default"
 	local package_id = path.."."..name
 	local cobj = self.packages[package_id]
@@ -57,8 +57,8 @@ function M:_get_packed_object(path, name, ani_callback, raw)
 		local cfg = string.format(sprite_template, name)
 		cfg = load(cfg)()
 
-		if ani_callback then
-			ani_callback(cfg, tx, ty, tw, th)
+		if pic_callback then
+			pic_callback(cfg, tx, ty, tw, th)
 		else
 			self.add_picture(cfg, tx, ty, tw, th, mirror_x, mirror_y)
 		end
@@ -73,9 +73,9 @@ function M:_get_packed_object(path, name, ani_callback, raw)
 end
 
 ----------------------------image-------------------------------
-function M:load_image(path, name, ani_callback)
+function M:load_image(path, name, pic_callback)
 	path = utls.get_path(path)
-	local cobj, tw, th = self:_get_packed_object(path, name, ani_callback, false)
+	local cobj, tw, th = self:_get_packed_object(path, name, pic_callback, false)
 	local spr = sprite.direct_new(cobj, 0)
 	spr.usr_data.path = path
 	return spr, tw, th
@@ -195,10 +195,14 @@ function M:create_custom_texture(width, height, color)
 	return tid
 end
 
+function M:update_custom_texture(tid, x, y, w, h, data)
+	image_c.texture_sub_update(tid, x, y, w, h, data)
+end
+
 ------------------------raw data info--------------------------
-function M:load_image_raw(path, name, ani_callback)
+function M:load_image_raw(path, name, pic_callback)
 	path = utls.get_path(path)
-	local cobj, tw, th = self:_get_packed_object(path, name, ani_callback, true)
+	local cobj, tw, th = self:_get_packed_object(path, name, pic_callback, true)
 	local spr = sprite.direct_new(cobj, 0)
 	spr.usr_data.path = path
 	return spr, tw, th
