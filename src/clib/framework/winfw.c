@@ -206,3 +206,7 @@ ejoy2d_win_touch(int x, int y,int touch) {
 	return ejoy2d_game_touch(G->game, id, x,y,touch);
 }
 
+void
+ejoy2d_win_view_layout(int stat, int x, int y, int width, int height) {
+	ejoy2d_game_view_layout(G->game, stat, x, y, width, height);
+}

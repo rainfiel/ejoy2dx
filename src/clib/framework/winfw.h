@@ -22,5 +22,6 @@ void ejoy2d_win_init(struct STARTUP_INFO* startup);
 void ejoy2d_win_frame();
 void ejoy2d_win_update(float delta);
 int ejoy2d_win_touch(int x, int y,int touch);
+void ejoy2d_win_view_layout(int stat, int x, int y, int w, int h);
 
 #endif
