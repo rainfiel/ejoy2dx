@@ -9,7 +9,7 @@ function M:init()
 	self.active_colors = {}
 end
 
-function M:draw_points(spr, points, pcnt, color)
+function M:draw_points(srt, spr, points, pcnt, color)
 	if not points then return end
 	if pcnt <= 0 then return end
 	assert(pcnt*2<=#points)
@@ -33,7 +33,7 @@ function M:draw_points(spr, points, pcnt, color)
 		self.active_colors[i] = color
 	end
 
-	spr:matrix_multi_draw(nil, pcnt, self.active_matrix, self.active_colors)
+	spr:multi_draw(srt, pcnt, self.active_matrix, self.active_colors)
 end
 
 M:init()
