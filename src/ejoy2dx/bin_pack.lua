@@ -5,7 +5,7 @@ local image_c = require "ejoy2dx.image.c"
 
 local spritepack = require "ejoy2d.spritepack"
 
-local default_color = {255,255,255,255}
+local default_color = {0,0,0,0}
 local SCREEN_SCALE = 16
 
 local mt = {}
@@ -92,6 +92,7 @@ local function new_pic(idx, name, tx, ty, tw, th)
 	return pic, ani
 end
 
+--TODO fix space overflow
 function mt:shelf_pack()
 	local output = {}
 	table.sort(self.file_info, function(l, r)
