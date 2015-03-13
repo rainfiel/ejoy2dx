@@ -90,6 +90,7 @@
 		AE9DE6A81A8F2F640085776F /* font.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE6A51A8F2F640085776F /* font.m */; };
 		AE9DE6A91A8F2F640085776F /* liosutil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE6A61A8F2F640085776F /* liosutil.m */; };
 		AE9DE6AD1A8F30800085776F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6AC1A8F30800085776F /* Foundation.framework */; };
+		E6EFA5381AB33AC600D42B66 /* lmonitor.c in Sources */ = {isa = PBXBuildFile; fileRef = E6EFA5371AB33AC600D42B66 /* lmonitor.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,7 @@
 		AE9DE6A61A8F2F640085776F /* liosutil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = liosutil.m; path = ../../../src/liosutil.m; sourceTree = "<group>"; };
 		AE9DE6AC1A8F30800085776F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE9DE6AE1A8F31220085776F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E6EFA5371AB33AC600D42B66 /* lmonitor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmonitor.c; path = ../../../../../src/clib/utls/lmonitor.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +346,7 @@
 		AE9DE6881A8F2EBB0085776F /* utls */ = {
 			isa = PBXGroup;
 			children = (
+				E6EFA5371AB33AC600D42B66 /* lmonitor.c */,
 				AE9DE6891A8F2EE90085776F /* lualibs.c */,
 				AE9DE68A1A8F2EE90085776F /* lualibs.h */,
 				AE9DE68B1A8F2EE90085776F /* serialize.c */,
@@ -546,6 +549,7 @@
 				AE9DE6561A8F220D0085776F /* render.c in Sources */,
 				AE9DE6281A8F21F70085776F /* lmatrix.c in Sources */,
 				AE9DE62A1A8F21F70085776F /* lparticle.c in Sources */,
+				E6EFA5381AB33AC600D42B66 /* lmonitor.c in Sources */,
 				AE9DE6331A8F21F70085776F /* particle.c in Sources */,
 				AE9DE6401A8F21F70085776F /* shader.c in Sources */,
 				AE9DE6361A8F21F70085776F /* ppm.c in Sources */,
@@ -687,6 +691,7 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PREFIX_HEADER = ejoy2dx/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
@@ -694,6 +699,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					../../../../ejoy2d/lua,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -708,12 +714,14 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PREFIX_HEADER = ejoy2dx/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					../../../../ejoy2d/lua,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
