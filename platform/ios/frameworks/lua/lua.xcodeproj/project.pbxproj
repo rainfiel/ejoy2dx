@@ -521,6 +521,7 @@
 		AE9DE2C31A8DF41F0085776F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = LuaHeaders;
@@ -531,6 +532,7 @@
 		AE9DE2C41A8DF41F0085776F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = LuaHeaders;
