@@ -94,14 +94,14 @@ traceback(lua_State *L) {
 static void
 push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_newtable(L);
-	lua_pushinteger(L, start->orix);
+	lua_pushnumber(L, start->orix);
 	lua_setfield(L, -2, "orix");
-	lua_pushinteger(L, start->oriy);
+	lua_pushnumber(L, start->oriy);
 	lua_setfield(L, -2, "oriy");
 
-	lua_pushinteger(L, start->width);
+	lua_pushnumber(L, start->width);
 	lua_setfield(L, -2, "width");
-	lua_pushinteger(L, start->height);
+	lua_pushnumber(L, start->height);
 	lua_setfield(L, -2, "height");
 
 	lua_pushnumber(L, start->scale);
@@ -129,6 +129,7 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 	lua_State *L = ejoy2d_game_lua(G->game);
 	
 	init_lua_libs(L);
+	init_user_lua_libs(L);
 
 	lua_pushcfunction(L, traceback);
 	int tb = lua_gettop(L);
@@ -207,6 +208,6 @@ ejoy2d_win_touch(int x, int y,int touch) {
 }
 
 void
-ejoy2d_win_view_layout(int stat, int x, int y, int width, int height) {
+ejoy2d_win_view_layout(int stat, float x, float y, float width, float height) {
 	ejoy2d_game_view_layout(G->game, stat, x, y, width, height);
 }
