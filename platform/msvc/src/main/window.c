@@ -11,6 +11,9 @@
 #define WINDOWNAME L"EJOY2D"
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
 
+void init_user_lua_libs(lua_State *L) {
+}
+
 static DWORD g_lastTime = 0;
 
 static void
