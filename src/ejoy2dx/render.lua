@@ -103,16 +103,15 @@ function RenderManager:init(screen_width, screen_height)
 	self.anchors = {{x=0, y=0},{x=half_width, y=0},{x=screen_width, y=0},
 									{x=0, y=half_height},{x=half_width, y=half_height},{x=screen_width, y=half_height},
 									{x=0, y=screen_height},{x=half_width, y=screen_height},{x=screen_width, y=screen_height}}
-	local gameinfo = fw.GameInfo
-	gameinfo.width = screen_width
-	gameinfo.height = screen_height
 end
 
 function RenderManager:layout(w, h)
 	local gameinfo = fw.GameInfo
-	if gameinfo._width ~= w or gameinfo._height ~= h then
+	if gameinfo.width ~= w or gameinfo.height ~= h then
 		self:init(w, h)
-		gameinfo._width, gameinfo._height = w, h
+		gameinfo.width, gameinfo.height = w, h
+		fw.reset_screen(w, h, gameinfo.scale)
+		print("view layout:", w, h)
 		return true
 	end
 	return false
