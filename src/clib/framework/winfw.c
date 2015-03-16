@@ -208,7 +208,7 @@ ejoy2d_win_touch(int x, int y,int touch) {
 }
 
 void
-ejoy2d_win_gesture(int type, int x1, int y1, int x2, int y2, int state) {
+ejoy2d_win_gesture(int type, float x1, float y1, float x2, float y2, int state) {
 	ejoy2d_game_gesture(G->game, type, x1, y1, x2, y2, state);
 }
 
