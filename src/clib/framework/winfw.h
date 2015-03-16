@@ -3,6 +3,13 @@
 
 #include <lua.h>
 
+#define STATE_POSSIBLE    (0)
+#define STATE_BEGAN       (1)
+#define STATE_CHANGED     (2)
+#define STATE_ENDED       (3)
+#define STATE_CANCELLED   (4)
+#define STATE_FAILED      (5)
+
 #define WIDTH 992
 #define HEIGHT 672
 
@@ -26,6 +33,7 @@ void ejoy2d_win_init(struct STARTUP_INFO* startup);
 void ejoy2d_win_frame();
 void ejoy2d_win_update(float delta);
 int ejoy2d_win_touch(int x, int y,int touch);
+void ejoy2d_win_gesture(int type, int x1, int y1, int x2, int y2, int state);
 void ejoy2d_win_view_layout(int stat, float x, float y, float w, float h);
 
 #endif
