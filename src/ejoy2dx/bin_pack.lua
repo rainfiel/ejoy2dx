@@ -24,7 +24,7 @@ function mt:add(path)
 	local _, name = string.match(path, "(.-)([^\\/]-)%.?([^%.\\/]*)$")
 
 	if self.file_info[name] then return end
-	local tw, th, comp, img_data = image_c.image_rawdata(utls.get_path(path))
+	local tw, th, comp, img_data = image_c.image_rawdata(utls.get_path(path), 4)
 
 	local file = {tw, th, img_data, name}
 	self.file_info[name] = file

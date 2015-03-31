@@ -42,6 +42,7 @@ comp_to_texture_format(int comp) {
 static int
 loadimage_raw(lua_State *L) {
 	const char * filename = luaL_checkstring(L, 1);
+	int comp_req = (int)lua_tointeger(L, 2);
 
 	struct FileHandle *handle = pf_fileopen(filename, "rb");
 	if (handle == NULL){
@@ -59,8 +60,11 @@ loadimage_raw(lua_State *L) {
 
 	int x, y;
 	int comp;
-	unsigned char* img = stbi_load_from_memory(buffer, buff_size, &x, &y, &comp, 0);
+	unsigned char* img = stbi_load_from_memory(buffer, buff_size, &x, &y, &comp, comp_req);
 	free(buffer);
+	if (comp_req != 0){
+		comp = comp_req;
+	}
 
 	enum TEXTURE_FORMAT type;
 	if (img)
