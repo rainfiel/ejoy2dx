@@ -143,7 +143,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1);
 		else
 			ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
-		printf("%d\n", delta);
 		break;
 	}
 	}
