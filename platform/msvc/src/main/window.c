@@ -137,6 +137,14 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		ejoy2d_win_touch(x,y,TOUCH_MOVE);
 		break;
 	}
+	case WM_MOUSEWHEEL: {
+		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
+		if (delta < 0)
+			ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1);
+		else
+			ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
+		break;
+	}
 	}
 	return DefWindowProcW(hWnd, message, wParam, lParam);
 }
