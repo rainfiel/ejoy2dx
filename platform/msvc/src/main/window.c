@@ -13,8 +13,7 @@
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
 
 int luaopen_sound(lua_State* L);
-int luaopen_collide(lua_State* L);
-int luaopen_astar(lua_State *L);
+int luaopen_world(lua_State *L);
 
 static void
 _register(lua_State *L, lua_CFunction func, const char * libname) {
@@ -24,8 +23,7 @@ _register(lua_State *L, lua_CFunction func, const char * libname) {
 
 void init_user_lua_libs(lua_State *L) {
 	_register(L, luaopen_sound, "dk.sound.m");
-	_register(L, luaopen_collide, "dk.collide.m");
-	_register(L, luaopen_astar, "dk.astar.m");
+	_register(L, luaopen_world, "dk.world.m");
 }
 
 static DWORD g_lastTime = 0;
