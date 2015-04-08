@@ -14,6 +14,7 @@
 
 int luaopen_sound(lua_State* L);
 int luaopen_collide(lua_State* L);
+int luaopen_astar(lua_State *L);
 
 static void
 _register(lua_State *L, lua_CFunction func, const char * libname) {
@@ -24,9 +25,11 @@ _register(lua_State *L, lua_CFunction func, const char * libname) {
 void init_user_lua_libs(lua_State *L) {
 	_register(L, luaopen_sound, "dk.sound.m");
 	_register(L, luaopen_collide, "dk.collide.m");
+	_register(L, luaopen_astar, "dk.astar.m");
 }
 
 static DWORD g_lastTime = 0;
+static int g_disable_gesture = 0;
 
 static void
 set_pixel_format_to_hdc(HDC hDC)
@@ -123,12 +126,15 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		int x,y;
 		get_xy(lParam, &x, &y); 
 		ejoy2d_win_touch(x,y,TOUCH_END);
+		if (!g_disable_gesture) {
+			ejoy2d_win_gesture(2, x, y, 0, 0, 3); //TAP
+		}
 		break;
 	}
 	case WM_LBUTTONDOWN: {
 		int x,y;
 		get_xy(lParam, &x, &y); 
-		ejoy2d_win_touch(x,y,TOUCH_BEGIN);
+		g_disable_gesture = ejoy2d_win_touch(x,y,TOUCH_BEGIN);
 		break;
 	}
 	case WM_MOUSEMOVE: {
@@ -138,11 +144,13 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	case WM_MOUSEWHEEL: {
-		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
-		if (delta < 0)
-			ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1);
-		else
-			ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
+		if (!g_disable_gesture) {
+			short delta = GET_WHEEL_DELTA_WPARAM(wParam);
+			if (delta < 0)
+				ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1); //PINCH
+			else
+				ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
+		}
 		break;
 	}
 	}
