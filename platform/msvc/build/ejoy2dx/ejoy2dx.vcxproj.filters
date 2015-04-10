@@ -22,6 +22,9 @@
     <Filter Include="ejoy2dx\image">
       <UniqueIdentifier>{ae36eb55-5881-4d1e-990d-6d94328d518a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\tween">
+      <UniqueIdentifier>{7dbd2962-1a0a-44bd-b8c3-be61a2fdb06a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -135,6 +138,9 @@
     <ClInclude Include="..\..\..\..\src\clib\utls\lualibs.h">
       <Filter>ejoy2dx\utls</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\tween\easing.h">
+      <Filter>ejoy2dx\tween</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ejoy2d\lib\dfont.c">
@@ -223,6 +229,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\clib\utls\lualibs.c">
       <Filter>ejoy2dx\utls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\tween\easing.c">
+      <Filter>ejoy2dx\tween</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\tween\leasing.c">
+      <Filter>ejoy2dx\tween</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

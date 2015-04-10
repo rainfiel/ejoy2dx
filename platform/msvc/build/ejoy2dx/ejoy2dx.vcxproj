@@ -53,6 +53,7 @@
     <ClInclude Include="..\..\..\..\src\clib\platform\liosutil.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\platform_init.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\sound.h" />
+    <ClInclude Include="..\..\..\..\src\clib\tween\easing.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\lualibs.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\stb_image.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\stb_image_write.h" />
@@ -81,6 +82,8 @@
     <ClCompile Include="..\..\..\..\ejoy2d\lib\sprite.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\spritepack.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\texture.c" />
+    <ClCompile Include="..\..\..\..\src\clib\tween\easing.c" />
+    <ClCompile Include="..\..\..\..\src\clib\tween\leasing.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\image.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lualibs.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\serialize.c" />
