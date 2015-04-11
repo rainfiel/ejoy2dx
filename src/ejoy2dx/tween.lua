@@ -60,9 +60,9 @@ function mt:make(tween_type, times, wrap_mode, start_val, end_val)
 	start_val = start_val or 0
 	end_val = end_val or 1
 	if tween_type==self.tween_type and
-			times == self.times and
+			-- times == self.times and
 			wrap_mode == self.wrap_mode and
-			start_val == self.start_val and
+			-- start_val == self.start_val and
 			end_val == self.end_val then
 		return
 	end
@@ -73,7 +73,7 @@ function mt:make(tween_type, times, wrap_mode, start_val, end_val)
 	self.wrap_mode = wrap_mode or wrap_modes.Once
 	self.start_val = start_val
 	self.end_val = end_val or 1
-	self.frames = easing.easing(self.container, tween_type, self.start_val, self.end_val, times)
+	easing.easing(self.container, tween_type, self.start_val, self.end_val, times)
 
 	self.step_index = 0
 	self.delta = 1
@@ -84,7 +84,7 @@ function mt:step()
 	self.step_index = self.step_index + self.delta
 	local val = self.container[self.step_index]
 
-	if self.step_index == self.target then
+	if self.step_index >= self.target then
 		if self.wrap_mode == wrap_modes.Once then
 			return val, false
 		elseif self.wrap_mode == wrap_modes.Loop then
