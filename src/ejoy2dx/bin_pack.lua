@@ -33,8 +33,12 @@ end
 
 function mt:end_pack()
 	local pack_tbl = self:shelf_pack()
-	pack_tbl = spritepack.pack(pack_tbl)
-	spritepack.init(self.name, {self.texture_id}, pack_tbl)
+	self:new_pack(self.name, pack_tbl)
+end
+
+function mt:new_pack(name, tbl)
+	local p = spritepack.pack(tbl)
+	spritepack.init(name, {self.texture_id}, p)
 end
 
 ----------------------------shelf pack-----------------------
