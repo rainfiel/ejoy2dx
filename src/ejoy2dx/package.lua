@@ -36,7 +36,6 @@ end
 
 -------------------------------------------------------------------------------
 local pack = {}
-pack.packages = {}
 pack.loader = {
 	lua = load_raw
 }
@@ -58,13 +57,12 @@ function pack:load(tbl)
 end
 
 function pack:do_load(packname)
-	if self.packages[packname] then
-		return self.packages[packname]
-	end
+	local exist = spritepack.query_package(packname)
+	if exist then return exist end
 
 	local name, ext = splitpath(packname)
 	local loader = rawget(self.loader,ext)
-	self.packages[packname] = loader(packname, self:realname(name))
+	loader(packname, self:realname(name))
 end
 
 function pack:realname(filename)
@@ -73,7 +71,8 @@ function pack:realname(filename)
 end
 
 function pack:prepare_package(package)
-	if pack.packages[package] == nil then
+	local exist = spritepack.query_package(package)
+	if not exist then
 		pack:do_load(package)
 	end
 end

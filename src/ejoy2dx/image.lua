@@ -131,7 +131,7 @@ end
 
 function M:create_polygon(points, color)
 	if not self.share_polygon_texture then
-		self.share_polygon_texture = self:create_custom_texture(32, 32, {255, 0, 0, 128})
+		self.share_polygon_texture = self:create_custom_texture("__polygon__", 32, 32, {255, 0, 0, 128})
 	end
 
 	-- local cfg = string.format(polygon_template, name)
@@ -171,7 +171,7 @@ end
 --{r, g, b, a}
 --{r, g, b}
 local color_fmt = {"B", nil, "BBB", "BBBB"}
-function M:create_custom_texture(width, height, color)
+function M:create_custom_texture(name, width, height, color)
 	local pix = nil
 	local comp = nil
 	if type(color) == "number" then
@@ -187,7 +187,8 @@ function M:create_custom_texture(width, height, color)
 		end
 	end
 
-	local id = string.format("%d_%d_%s", width, height, pix)
+	-- local id = string.format("%d_%d_%s", width, height, pix)
+	local id = name
 	local tid = texture:add_texture(id)
 	local pix_str = table.concat(pixes)
 	image_c.custom_texture(tid, width, height, comp, pix_str)
@@ -199,6 +200,10 @@ function M:update_custom_texture(tid, x, y, w, h, data)
 	image_c.texture_sub_update(tid, x, y, w, h, data)
 end
 
+function M:remove_custom_texture(tid)
+	texture:remove_texture(tid)
+	image_c.unload_texture(tid)
+end
 ------------------------raw data info--------------------------
 function M:load_image_raw(path, name, pic_callback)
 	path = utls.get_path(path)

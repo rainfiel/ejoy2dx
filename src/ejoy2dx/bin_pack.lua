@@ -13,11 +13,13 @@ mt.__index = mt
 
 function mt:begin_pack()
 	assert(not self.texture_id)
-	self.texture_id = image:create_custom_texture(self.width, self.height, default_color)
+	self.texture_id = image:create_custom_texture(self.name, self.width, self.height, default_color)
 	self.raw = {}
 	self.max_id = 0
 
 	self.file_info = {}
+
+	self.packages = {}
 end
 
 function mt:add(path)
@@ -37,8 +39,16 @@ function mt:end_pack()
 end
 
 function mt:new_pack(name, tbl)
+	table.insert(self.packages, name)
 	local p = spritepack.pack(tbl)
 	spritepack.init(name, {self.texture_id}, p)
+end
+
+function mt:destroy()
+	for k, v in ipairs(self.packages) do
+		spritepack.remove(v)
+	end
+	image:remove_custom_texture(self.texture_id)
 end
 
 ----------------------------shelf pack-----------------------

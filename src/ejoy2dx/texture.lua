@@ -66,11 +66,17 @@ function M:add_texture_info(path, w, h)
 	end
 end
 
-function M:remove_texture(path)
-	assert(type(path) == "string")
-	local id = rawget(self.texture_map, path)
-	if not id then return end
-	remove(self.texture_map, id, path)
+function M:remove_texture(identify)
+	local id_type = type(identify)
+	if id_type == "string" then
+		local id = rawget(self.texture_map, identify)
+		if not id then return end
+		remove(self.texture_map, id, identify)
+	elseif id_type == "number" then
+		local path = rawget(self.texture_map, identify)
+		if not path then return end
+		remove(self.texture_map, identify, path)
+	end
 end
 
 function M:serialize_texture()

@@ -266,6 +266,7 @@ luaopen_image(lua_State *L) {
 		{ "custom_texture", create_custom_texture },
 		{ "texture_update", _texture_update },
 		{ "texture_sub_update", _texture_sub_update },
+		{ "unload_texture", unload_texture },
 		{ NULL, NULL },
 	};
 
