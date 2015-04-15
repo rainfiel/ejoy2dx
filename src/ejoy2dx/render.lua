@@ -37,19 +37,24 @@ function mt:_draw()
 
 	local render
 	for k, v in ipairs(self.sorted_sprites) do
-		if v.usr_data and v.usr_data.render.blend_mode then
-			render = v.usr_data.render
+		render = v.usr_data.render
+		if render.blend_mode then
 			if blend.begin_blend(render.blend_mode) then
 				v:draw(render.anchor)
 				blend.end_blend()
 			end
 		else
-			v:draw(v.usr_data.render.anchor)
+			v:draw(render.anchor)
+		end
+		if render.on_draw then
+			render.on_draw()
 		end
 	end
 end
 
 function mt:show(spr, zorder, anchor)
+	if self.sprites[spr] then return end
+
 	if not spr.usr_data then
 		spr.usr_data = {}
 	end
@@ -64,7 +69,6 @@ function mt:show(spr, zorder, anchor)
 	end
 	data.anchor = anchor
 
-	assert(not self.sprites[spr])
 	self.sprites[spr] = true
 	self.dirty = true
 end

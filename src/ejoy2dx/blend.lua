@@ -19,6 +19,8 @@ local M = {}
 M.blend_cfg = {
 	add = {1, 1},
 	add_masked = {1, 1},
+	multiply_inverse={0x0301, 0x0301},
+	multiply={0x0300, 0x0301},
 	-- overlay = {0x0302, 0x0303},
 	test = {0x0301, 0x0305}
 }
