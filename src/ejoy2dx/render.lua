@@ -118,6 +118,13 @@ local function sort_layer(left, right)
 	return left.layer < right.layer
 end
 
+local screen_anchors = {{x=0, y=0},{x=0, y=0},{x=0, y=0},
+												{x=0, y=0},{x=0, y=0},{x=0, y=0},
+												{x=0, y=0},{x=0, y=0},{x=0, y=0}}
+local function set_anchor(idx, x, y)
+	screen_anchors[idx].x = x
+	screen_anchors[idx].y = y
+end
 function RenderManager:init(screen_width, screen_height)
 	self.top_left, self.top_center, self.top_right,
 	self.center_left, self.center, self.center_right,
@@ -127,9 +134,18 @@ function RenderManager:init(screen_width, screen_height)
 		7,8,9
 	local half_width = screen_width / 2
 	local half_height = screen_height /2
-	self.anchors = {{x=0, y=0},{x=half_width, y=0},{x=screen_width, y=0},
-									{x=0, y=half_height},{x=half_width, y=half_height},{x=screen_width, y=half_height},
-									{x=0, y=screen_height},{x=half_width, y=screen_height},{x=screen_width, y=screen_height}}
+
+	set_anchor(1, 0, 0)
+	set_anchor(2, half_width, 0)
+	set_anchor(3, screen_width, 0)
+
+	set_anchor(4, 0, half_height)
+	set_anchor(5, half_width, half_height)
+	set_anchor(6, screen_width, half_height)
+
+	set_anchor(7, 0, screen_height)
+	set_anchor(8, half_width, screen_height)
+	set_anchor(9, screen_width, screen_height)
 end
 
 function RenderManager:layout(w, h)
@@ -138,14 +154,13 @@ function RenderManager:layout(w, h)
 		self:init(w, h)
 		gameinfo.width, gameinfo.height = w, h
 		fw.reset_screen(w, h, gameinfo.scale)
-		print("view layout:", w, h)
 		return true
 	end
 	return false
 end
 
 function RenderManager:anchor(anchor_id)
-	return self.anchors[anchor_id]
+	return screen_anchors[anchor_id]
 end
 
 function RenderManager:create(layer)
