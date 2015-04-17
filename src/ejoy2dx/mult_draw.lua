@@ -9,7 +9,7 @@ function M:init()
 	self.active_colors = {}
 end
 
-function M:draw_points(srt, spr, points, pcnt, color, rot)
+function M:draw_points(srt, spr, points, pcnt, color, rot, scale)
 	if not points then return end
 	if pcnt <= 0 then return end
 	assert(pcnt*2<=#points)
@@ -28,6 +28,7 @@ function M:draw_points(srt, spr, points, pcnt, color, rot)
 		x, y = points[2*i-1], points[2*i]
 		mat = self.matrix_cache[i]
 		mat:identity()
+		mat:scale(scale or 1)
 		mat:rot(rot or 0)
 		mat:trans(x, y)
 		self.active_matrix[i] = mat
