@@ -32,6 +32,7 @@ void init_user_lua_libs(lua_State* L);
 void ejoy2d_win_init(struct STARTUP_INFO* startup);
 void ejoy2d_win_frame();
 void ejoy2d_win_update(float delta);
+void ejoy2d_win_sync_frame();
 int ejoy2d_win_touch(int x, int y,int touch);
 void ejoy2d_win_gesture(int type, float x1, float y1, float x2, float y2, int state);
 void ejoy2d_win_view_layout(int stat, float x, float y, float w, float h);

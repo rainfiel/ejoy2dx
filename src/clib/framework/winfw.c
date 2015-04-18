@@ -91,6 +91,12 @@ traceback(lua_State *L) {
 	return 1;
 }
 
+static int
+force_sync_frame(lua_State* L) {
+	G->game->logic_time = G->game->real_time;
+	return 0;
+}
+
 static void
 push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_newtable(L);
@@ -130,6 +136,7 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 	
 	init_lua_libs(L);
 	init_user_lua_libs(L);
+	lua_register(L, "ejoy2dx_sync_frame", force_sync_frame);
 
 	lua_pushcfunction(L, traceback);
 	int tb = lua_gettop(L);
