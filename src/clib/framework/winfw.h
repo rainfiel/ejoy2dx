@@ -10,8 +10,8 @@
 #define STATE_CANCELLED   (4)
 #define STATE_FAILED      (5)
 
-#define WIDTH 992
-#define HEIGHT 672
+#define WIDTH 1024
+#define HEIGHT 768
 
 #define TOUCH_BEGIN 0
 #define TOUCH_END 1
