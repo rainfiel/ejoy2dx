@@ -14,9 +14,9 @@ font_create(int font_size, struct font_context *ctx) {
 			NSLog(@"  %@", name);
 		}
 	}*/
-//	UIFont* font = [UIFont fontWithName:@"STHeitiSC-Light" size:font_size];
+	UIFont* font = [UIFont fontWithName:@"STHeitiSC-Light" size:font_size];
 	//	UIFont* font = [UIFont fontWithName:@"STHeitiSC-Medium" size:font_size];
-	UIFont* font = [UIFont fontWithName:@"FZLTHK--GBK1-0" size:font_size];
+	//UIFont* font = [UIFont fontWithName:@"FZLTHK--GBK1-0" size:font_size];
 //	UIFont* font = [UIFont fontWithName:@"WenQuanYiMicroHei" size:font_size];
 //	UIFont* font = [UIFont fontWithName:@"DFYuanW7-GBK" size:font_size];
 	
