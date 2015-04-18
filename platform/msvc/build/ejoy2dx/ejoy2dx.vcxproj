@@ -85,6 +85,7 @@
     <ClCompile Include="..\..\..\..\src\clib\tween\easing.c" />
     <ClCompile Include="..\..\..\..\src\clib\tween\leasing.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\image.c" />
+    <ClCompile Include="..\..\..\..\src\clib\utls\lmonitor.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lualibs.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\serialize.c" />
     <ClCompile Include="..\..\src\main\filesystem.c" />

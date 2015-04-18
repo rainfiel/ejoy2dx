@@ -236,5 +236,8 @@
     <ClCompile Include="..\..\..\..\src\clib\tween\leasing.c">
       <Filter>ejoy2dx\tween</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\utls\lmonitor.c">
+      <Filter>ejoy2dx\utls</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
