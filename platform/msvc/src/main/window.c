@@ -29,6 +29,24 @@ void init_user_lua_libs(lua_State *L) {
 static DWORD g_lastTime = 0;
 static int g_disable_gesture = 0;
 
+struct EVENT_STAT {
+	int btn_down;
+	int last_x;
+	int last_y;
+	int disable_gesture;
+	int is_pan;
+};
+
+static EVENT_STAT g_event_stat;
+static void
+reset_event_stat() {
+	g_event_stat.btn_down = 0;
+	g_event_stat.last_x = 0;
+	g_event_stat.last_y = 0;
+	g_event_stat.disable_gesture = 0;
+	g_event_stat.is_pan = 0;
+}
+
 static void
 set_pixel_format_to_hdc(HDC hDC)
 {
@@ -68,7 +86,8 @@ init_window(HWND hWnd) {
 	if ( glewInit() != GLEW_OK ) {
 		exit(1);
 	}
-
+	
+	reset_event_stat();
 	glViewport(0, 0, WIDTH, HEIGHT);
 
 	ReleaseDC(hWnd, hDC);
@@ -123,32 +142,54 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONUP: {
 		int x,y;
 		get_xy(lParam, &x, &y); 
-		ejoy2d_win_touch(x,y,TOUCH_END);
-		if (!g_disable_gesture) {
-			ejoy2d_win_gesture(2, x, y, 0, 0, 3); //TAP
+		if (!g_event_stat.disable_gesture) {
+			if (g_event_stat.is_pan) {
+				ejoy2d_win_gesture(1, x-g_event_stat.last_x, y-g_event_stat.last_y, x, y, 3); //PAN
+			} else {
+				ejoy2d_win_gesture(2, x, y, 0, 0, 3); //TAP
+			}
+		} else {
+			ejoy2d_win_touch(x, y, TOUCH_END);
 		}
+		reset_event_stat();
 		break;
 	}
 	case WM_LBUTTONDOWN: {
 		int x,y;
 		get_xy(lParam, &x, &y); 
-		g_disable_gesture = ejoy2d_win_touch(x,y,TOUCH_BEGIN);
+		g_event_stat.btn_down = 1;
+		g_event_stat.disable_gesture = ejoy2d_win_touch(x,y,TOUCH_BEGIN);
+		g_event_stat.last_x = x;
+		g_event_stat.last_y = y;
 		break;
 	}
 	case WM_MOUSEMOVE: {
-		int x,y;
-		get_xy(lParam, &x, &y); 
-		ejoy2d_win_touch(x,y,TOUCH_MOVE);
+		if (g_event_stat.btn_down) {
+			int x,y;
+			get_xy(lParam, &x, &y); 
+			if (g_event_stat.disable_gesture) {
+				ejoy2d_win_touch(x,y,TOUCH_MOVE);
+			} else {
+				int stat = 0;
+				if (!g_event_stat.is_pan) {
+					stat = 1; // begin
+					g_event_stat.is_pan = 1;
+				}	else {
+					stat = 2; //change
+				}
+				ejoy2d_win_gesture(1, x-g_event_stat.last_x, y-g_event_stat.last_y, x, y, stat);
+			}
+			g_event_stat.last_x = x;
+			g_event_stat.last_y = y;
+		}
 		break;
 	}
 	case WM_MOUSEWHEEL: {
-		if (!g_disable_gesture) {
-			short delta = GET_WHEEL_DELTA_WPARAM(wParam);
-			if (delta < 0)
-				ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1); //PINCH
-			else
-				ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
-		}
+		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
+		if (delta < 0)
+			ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1); //PINCH
+		else
+			ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
 		break;
 	}
 	}
