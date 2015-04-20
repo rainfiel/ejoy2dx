@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <windowsx.h>
 
 #include <GL/glew.h>
 #include <GL/wglew.h>
@@ -185,11 +186,15 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	case WM_MOUSEWHEEL: {
+		POINT p;
+		p.x = GET_X_LPARAM(lParam);
+		p.y = GET_Y_LPARAM(lParam);
+		ScreenToClient(hWnd, &p);
 		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
 		if (delta < 0)
-			ejoy2d_win_gesture(3, 0, 0, 0.95, 0, 1); //PINCH
+			ejoy2d_win_gesture(3, p.x, p.y, 0.95, 0, 1); //PINCH
 		else
-			ejoy2d_win_gesture(3, 0, 0, 1.05, 0, 1);
+			ejoy2d_win_gesture(3, p.x, p.y, 1.05, 0, 1);
 		break;
 	}
 	}
