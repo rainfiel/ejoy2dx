@@ -44,7 +44,7 @@ static const char * startscript =
 "package.path = script_root..[[;]]..script_project\n"
 
 "require([[script]])\n"
-"local f = assert(loadfile(path..[[/script/]]..script))\n"
+"local f = assert(loadfile(path..[[/script/]]..lua_main))\n"
 "f()\n"
 ;
 #else
