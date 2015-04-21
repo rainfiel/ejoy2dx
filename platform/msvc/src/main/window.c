@@ -252,10 +252,14 @@ main(int argc, char *argv[]) {
 	if (argc >= 2){
 		startup->folder = argv[1];
 		startup->script = NULL;
+		startup->lua_root = NULL;
 	} 
 	if (argc >= 3) {
 		startup->script = argv[2];
 	} 
+	if (argc >= 4) {
+		startup->lua_root = argv[3];
+	}
 	startup->orix = 0;
 	startup->oriy = 0;
 	startup->width = WIDTH;

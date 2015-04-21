@@ -22,6 +22,7 @@ struct STARTUP_INFO{
 	float width, height;
 	float scale;
 	char* folder;
+	char* lua_root;
 	char* script;
 	void* serialized;
 	int reload_count;

@@ -30,9 +30,10 @@ static struct STARTUP_INFO *STARTUP = NULL;
 
 #if EJOY2D_OS == IOS
 static const char * startscript =
-"local path, script, startup = ...\n"
+"local path, lua_root, lua_main, startup = ...\n"
 
-"script = script or [[main.lua]]\n"
+"lua_main = lua_main or [[main.lua]]\n"
+//"lua_root = lua_root or [[script]]\n"
 "if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
 "local fw=require(\"ejoy2d.framework\")\n"
 "fw.WorkDir = path\n"
@@ -44,13 +45,14 @@ static const char * startscript =
 
 "require([[script]])\n"
 "local f = assert(loadfile(path..[[/script/]]..script))\n"
-"f(script)\n"
+"f()\n"
 ;
 #else
 static const char * startscript =
-"local path, script, startup = ...\n"
+"local path, lua_root, lua_main, startup = ...\n"
 
-"script = script or [[main.lua]]\n"
+"lua_main = lua_main or [[main.lua]]\n"
+"lua_root = lua_root or [[script]]\n"
 "if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
 "path = string.match(path,[[(.*)\\[^\\]*$]])\n"
 "local fw=require(\"ejoy2d.framework\")\n"
@@ -62,12 +64,12 @@ static const char * startscript =
 //ejoy2d path
 "local ej2d  = path .. [[\\..\\..\\ejoy2d]] .. [[\\?.lua;]] .. path .. [[\\..\\..\\ejoy2d]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 //user path
-"local usr = path .. [[\\script\\?.lua;]].. path .. [[\\script]] .. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
+"local usr = path .. [[\\]]..lua_root..[[\\?.lua;]].. path .. [[\\]]..lua_root.. [[\\?\\init.lua;.\\?.lua;.\\?\\init.lua]]\n"
 "package.path = ej2dx..[[;]]..ej2d..[[;]]..usr\n"
 
-"require([[script]])\n"
-"local f = assert(loadfile(path..[[\\script\\]]..script))\n"
-"f(script)\n"
+"require(lua_root)\n"
+"local f = assert(loadfile(path..[[\\]]..lua_root..[[\\]]..lua_main))\n"
+"f()\n"
 ;
 #endif
 
@@ -147,10 +149,11 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 	}
 
 	lua_pushstring(L, startup->folder);
+	lua_pushstring(L, startup->lua_root); 
 	lua_pushstring(L, startup->script);
 
 	push_startup_info(L, startup);
-	err = lua_pcall(L, 3, 0, tb);
+	err = lua_pcall(L, 4, 0, tb);
 	if (err) {
 		const char *msg = lua_tostring(L,-1);
 		fault("%s", msg);
