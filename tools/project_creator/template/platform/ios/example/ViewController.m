@@ -70,6 +70,7 @@ static ViewController* _controller = nil;
 	
 	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
 	startup->folder = (char*)folder;
+	startup->lua_root = NULL;
 	startup->script = NULL;
 	startup->orix = bounds.origin.x;
 	startup->oriy = bounds.origin.y;
