@@ -171,6 +171,11 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (g_event_stat.disable_gesture) {
 				ejoy2d_win_touch(x,y,TOUCH_MOVE);
 			} else {
+				int dx = x-g_event_stat.last_x;
+				int dy = y-g_event_stat.last_y;
+				if (!g_event_stat.is_pan) {
+					if (dx*dx+dy*dy < 25) break;
+				}
 				int stat = 0;
 				if (!g_event_stat.is_pan) {
 					stat = 1; // begin
