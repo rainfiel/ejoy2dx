@@ -38,7 +38,7 @@ function M:draw_points(srt, spr, points, pcnt, color, rot, scale)
 	spr:multi_draw(srt, pcnt, self.active_matrix, self.active_colors)
 end
 
-function M:test(touch_x, touch_y, srt, spr, points, pcnt, rot, scale)
+function M:test(touch_x, touch_y, srt, spr, points, pcnt, rot, scalex, scaley)
 	if not points then return end
 	if pcnt <= 0 then return end
 	assert(pcnt*2<=#points)
@@ -55,7 +55,7 @@ function M:test(touch_x, touch_y, srt, spr, points, pcnt, rot, scale)
 		x, y = points[2*i-1], points[2*i]
 		mat = self.matrix_cache[i]
 		mat:identity()
-		mat:scale(scale or 1)
+		mat:scale(scalex, scaley)
 		mat:rot(rot or 0)
 		mat:trans(x, y)
 		self.active_matrix[i] = mat
