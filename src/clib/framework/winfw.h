@@ -26,6 +26,7 @@ struct STARTUP_INFO{
 	char* script;
 	void* serialized;
 	int reload_count;
+	bool auto_rotate;
 };
 
 void init_user_lua_libs(lua_State* L);
@@ -37,5 +38,6 @@ void ejoy2d_win_sync_frame();
 int ejoy2d_win_touch(int x, int y,int touch);
 void ejoy2d_win_gesture(int type, float x1, float y1, float x2, float y2, int state);
 void ejoy2d_win_view_layout(int stat, float x, float y, float w, float h);
+bool ejoy2d_win_auto_rotate();
 
 #endif

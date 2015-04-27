@@ -272,6 +272,7 @@ main(int argc, char *argv[]) {
 	startup->scale = 1.0;
 	startup->reload_count = 0;
 	startup->serialized = NULL;
+	startup->auto_rotate = true;
 
 	ejoy2d_win_init(startup);
 

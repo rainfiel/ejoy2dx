@@ -117,6 +117,9 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_pushinteger(L, start->reload_count);
 	lua_setfield(L, -2, "reload_count");
 
+	lua_pushboolean(L, start->auto_rotate);
+	lua_setfield(L, -2, "auto_rotate");
+
 	if (start->serialized)	
 		lua_pushlightuserdata(L, start->serialized);
 	else
@@ -162,6 +165,18 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 
 	ejoy2d_game_logicframe(LOGIC_FRAME);
 	ejoy2d_game_start(G->game);
+}
+
+bool
+ejoy2d_win_auto_rotate() {
+	if (!G || !STARTUP) return false;
+	lua_State *L = ejoy2d_game_lua(G->game);
+	luaL_requiref(L, "ejoy2d.framework", NULL, 0);
+	lua_getfield(L, -1, "GameInfo");
+	lua_getfield(L, -1, "auto_rotate");
+	int auto_rotate = (int)lua_toboolean(L, -1);
+	lua_pop(L, 3);
+	return auto_rotate;
 }
 
 static void
