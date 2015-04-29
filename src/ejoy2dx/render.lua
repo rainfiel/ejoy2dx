@@ -48,7 +48,11 @@ function mt:test(x, y)
 				local anchor = spr.usr_data.render.anchor
 				local touched = spr:test(x, y, anchor)
 				if touched then
-					return callback, touched
+					if anchor.id then
+						return callback, touched, anchor.id, RenderManager:screen_to_world(anchor, x, y)
+					else
+						return callback, touched
+					end
 				end
 			end
 		end
@@ -118,9 +122,10 @@ local function sort_layer(left, right)
 	return left.layer < right.layer
 end
 
-local screen_anchors = {{x=0, y=0},{x=0, y=0},{x=0, y=0},
-												{x=0, y=0},{x=0, y=0},{x=0, y=0},
-												{x=0, y=0},{x=0, y=0},{x=0, y=0}}
+--TODO scale
+local screen_anchors = {{id=1,x=0, y=0},{id=2,x=0, y=0},{id=3,x=0, y=0},
+												{id=4,x=0, y=0},{id=5,x=0, y=0},{id=6,x=0, y=0},
+												{id=7,x=0, y=0},{id=8,x=0, y=0},{id=9,x=0, y=0}}
 local function set_anchor(idx, x, y)
 	screen_anchors[idx].x = x
 	screen_anchors[idx].y = y
@@ -146,6 +151,20 @@ function RenderManager:init(screen_width, screen_height)
 	set_anchor(7, 0, screen_height)
 	set_anchor(8, half_width, screen_height)
 	set_anchor(9, screen_width, screen_height)
+end
+
+function RenderManager:screen_to_world(anchor, x, y)
+	local scale = anchor.scale or 1
+	local wx = (x - anchor.x) / scale
+	local wy = (y - anchor.y) / scale
+	return wx, wy
+end
+
+function RenderManager:world_to_screen(anchor, x, y)
+	local scale = anchor.scale or 1
+	local sx = x * scale + anchor.x
+	local sy = y * scale + anchor.y
+	return sx, sy
 end
 
 function RenderManager:layout(w, h)
