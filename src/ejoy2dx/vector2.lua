@@ -134,6 +134,17 @@ local function lerp(x1, y1, x2, y2, t)
 				 y1 * ot + y2 * t
 end
 
+--[[
+< 0 clockwise
+= 0 in a lin
+> 0 counter clockwise
+]]--
+local function is_clockwise(ax, ay, bx, by, cx, cy)
+	local abx, aby = sub(bx, by, ax, ay)
+	local bcx, bcy = sub(cx, cy, bx, by)
+	return det(abx, aby, bcx, bcy)
+end
+
 -- the module
 return {
 	str = str,
@@ -165,5 +176,6 @@ return {
 	mirror        = mirror,
 	trim          = trim,
 	angleTo       = angleTo,
-	lerp					= lerp,
+	lerp						= lerp,
+	is_clockwise	= is_clockwise,
 }
