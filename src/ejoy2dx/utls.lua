@@ -28,6 +28,13 @@ function M.write_file(path, data)
 	os_utls.write_file(path, data)
 end
 
+function M.delete_file(path)
+	path = get_path(path)
+	if os_utls.exists(path) then
+		os_utls.delete_file(path)
+	end
+end
+
 function M.load_json(path)
 	local str = M.read_file(path)
 	if not str then return end
