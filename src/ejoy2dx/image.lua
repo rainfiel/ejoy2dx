@@ -81,6 +81,14 @@ function M:load_image(path, name, pic_callback)
 	return spr, tw, th
 end
 
+function M:remove_image(path)
+	local tex_id, tw, th = texture:query_texture(path)
+	if tex_id then
+		texture:remove_texture(tid)
+		image_c.unload_texture(tid)
+	end
+end
+
 function M.add_picture(...)
 	return M.add_picture_with_key(0.5, 0.5, ...)
 end
