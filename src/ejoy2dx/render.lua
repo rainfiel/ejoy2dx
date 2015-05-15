@@ -202,6 +202,10 @@ function RenderManager:remove(rd)
 	self.renders[cnt] = nil
 end
 
+function RenderManager:clear()
+	self.renders = {}
+end
+
 function RenderManager:draw()
 	for k, v in ipairs(self.renders) do
 		v:_draw()
