@@ -75,6 +75,10 @@ function mt:make(tween_type, times, wrap_mode, start_val, end_val)
 	self.end_val = end_val or 1
 	easing.easing(self.container, tween_type, self.start_val, self.end_val, times)
 
+	self:reset()
+end
+
+function mt:reset()
 	self.step_index = 0
 	self.delta = 1
 	self.target = self.times
