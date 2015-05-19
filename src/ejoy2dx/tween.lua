@@ -88,7 +88,7 @@ function mt:step()
 	self.step_index = self.step_index + self.delta
 	local val = self.container[self.step_index]
 
-	if self.step_index >= self.target then
+	if self.step_index > self.target then
 		if self.wrap_mode == wrap_modes.Once then
 			return val, false
 		elseif self.wrap_mode == wrap_modes.Loop then
