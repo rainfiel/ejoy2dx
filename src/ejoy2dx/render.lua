@@ -43,16 +43,18 @@ function mt:test(x, y)
 		local spr = sprites[i]
 		if spr.test then
 			local usr_data = spr.usr_data
-			local callback = usr_data.touch_callback
-			if callback then
+			local touch_callback = usr_data.touch_callback
+			local gesture_callback = usr_data.gesture_callback
+			if touch_callback and gesture_callback then
+				error("only support handle touch or gesture only")
+			end
+			if touch_callback or gesture_callback then
 				local anchor = spr.usr_data.render.anchor
 				local touched = spr:test(x, y, anchor)
 				if touched then
-					if anchor.id then
-						return callback, touched, anchor.id, RenderManager:screen_to_world(anchor, x, y)
-					else
-						return callback, touched
-					end
+					local callback = touch_callback or gesture_callback
+					local wx, wy = RenderManager:screen_to_world(anchor, x, y)
+					return callback, touched, anchor.id, wx, wy, gesture_callback~=nil
 				end
 			end
 		end
