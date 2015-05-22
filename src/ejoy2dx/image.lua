@@ -93,7 +93,7 @@ function M.add_picture(...)
 	return M.add_picture_with_key(0.5, 0.5, ...)
 end
 
-function M.add_picture_with_key(key_x,key_y,cfg,tx,ty,tw,th,mirror_x,mirror_y)
+function M.add_picture_with_key(key_x,key_y,cfg,tx,ty,tw,th,mirror_x,mirror_y,sx,sy)
 	local pic = 	{
 		{
 			tex = 1,
@@ -103,15 +103,17 @@ function M.add_picture_with_key(key_x,key_y,cfg,tx,ty,tw,th,mirror_x,mirror_y)
 		type = "picture",
 		id = #cfg
 	}
+	sx = sx or 1
+	sy = sy or 1
 
 	pic[1].src = {tx, ty,  tx, ty+th,
 									 tx+tw, ty+th,  tx+tw, ty}
 
-	tw = tw * SCREEN_SCALE
+	tw = tw * SCREEN_SCALE * sx
 	local sw = tw * key_x
 	sw = mirror_x and -sw or sw
 
-	th = th * SCREEN_SCALE
+	th = th * SCREEN_SCALE * sy
 	local sh = th * key_y
 	sh = mirror_y and -sh or sh
 	pic[1].screen = {-sw, -sh, -sw, th-sh, tw-sw, th-sh, tw-sw, -sh}

@@ -67,6 +67,14 @@ function mt:_draw()
 	local render
 	for k, v in ipairs(self.sorted_sprites) do
 		render = v.usr_data.render
+		if render.fade then
+			local rate, alive = render.fade:step()
+			if alive then
+				v.color = math.floor(0xFF * rate) << 24 | 0xFFFFFF
+			else
+				render.fade = nil
+			end
+		end
 		if render.blend_mode then
 			if blend.begin_blend(render.blend_mode) then
 				v:draw(render.anchor)
