@@ -82,10 +82,11 @@ function M:load_image(path, name, pic_callback)
 end
 
 function M:remove_image(path)
+	path = utls.get_path(path)
 	local tex_id, tw, th = texture:query_texture(path)
 	if tex_id then
-		texture:remove_texture(tid)
-		image_c.unload_texture(tid)
+		texture:remove_texture(tex_id)
+		image_c.unload_texture(tex_id)
 	end
 end
 
