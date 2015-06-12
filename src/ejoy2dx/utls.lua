@@ -15,6 +15,10 @@ function M.seconds_to_frame(seconds)
 	return seconds * M.frame_per_second
 end
 
+function M.frame_to_seconds(frame)
+	return frame / M.frame_per_second
+end
+
 function M.read_file(path)
 	path = get_path(path)
 	return os_utls.read_file(path)
