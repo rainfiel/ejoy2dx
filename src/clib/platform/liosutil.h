@@ -6,6 +6,5 @@
 #include "lauxlib.h"
 
 int luaopen_osutil(lua_State* L);
-int luaopen_ejoyplatform(lua_State *L);
 
 #endif

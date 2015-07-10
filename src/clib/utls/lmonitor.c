@@ -149,11 +149,11 @@ monitor_report(lua_State *L, lua_Debug *ar) {
 		case LUA_HOOKCALL:
 		case LUA_HOOKTAILCALL:
 			if (ar->name != NULL) {
-				n = snprintf(info, FNAME_MAX, "%*s%s\n", s->depth, "", ar->name);
+				n = snprintf(info, FNAME_MAX, "%*s%s\n", 1, "", ar->name);
 			} else if (ar->linedefined < 0) {
-				n = snprintf(info, FNAME_MAX, "%*s=\n", s->depth, "");
+				n = snprintf(info, FNAME_MAX, "%*s=\n", 1, "");
 			} else {
-				n = snprintf(info, FNAME_MAX, "%*s%s:%d\n", s->depth, "", ar->short_src, ar->linedefined);
+				n = snprintf(info, FNAME_MAX, "%*s%s:%d\n", 1, "", ar->short_src, ar->linedefined);
 			}
 			monitor_cat(s, info, n);
 			break;

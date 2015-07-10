@@ -23,6 +23,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		AE5C16E21B4FCA4F00666B0E /* lgeometry.c in Sources */ = {isa = PBXBuildFile; fileRef = AE5C16E11B4FCA4F00666B0E /* lgeometry.c */; };
 		AE9DE61D1A8F21F70085776F /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE5F21A8F21F60085776F /* array.h */; };
 		AE9DE61E1A8F21F70085776F /* dfont.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5F31A8F21F60085776F /* dfont.c */; };
 		AE9DE61F1A8F21F70085776F /* dfont.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE5F41A8F21F60085776F /* dfont.h */; };
@@ -137,6 +138,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE5C16E11B4FCA4F00666B0E /* lgeometry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgeometry.c; path = ../../../../../ejoy2d/lib/lgeometry.c; sourceTree = "<group>"; };
 		AE9DDFAB1A8DAFE90085776F /* libejoy2dx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libejoy2dx.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9DE46E1A8E09580085776F /* lua.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lua.xcodeproj; path = ../lua/lua.xcodeproj; sourceTree = "<group>"; };
 		AE9DE5F21A8F21F60085776F /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = array.h; path = ../../../../../ejoy2d/lib/array.h; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		AE9DE4781A8E0A3A0085776F /* ejoy2d */ = {
 			isa = PBXGroup;
 			children = (
+				AE5C16E11B4FCA4F00666B0E /* lgeometry.c */,
 				AE9DE5F21A8F21F60085776F /* array.h */,
 				AE9DE5F31A8F21F60085776F /* dfont.c */,
 				AE9DE5F41A8F21F60085776F /* dfont.h */,
@@ -559,6 +562,7 @@
 				AE9DE62E1A8F21F70085776F /* lsprite.c in Sources */,
 				AE9DE63A1A8F21F70085776F /* scissor.c in Sources */,
 				AE9DE6231A8F21F70085776F /* fault.c in Sources */,
+				AE5C16E21B4FCA4F00666B0E /* lgeometry.c in Sources */,
 				AE9DE63C1A8F21F70085776F /* screen.c in Sources */,
 				AE9DE68E1A8F2EE90085776F /* serialize.c in Sources */,
 				AE9DE6461A8F21F70085776F /* texture.c in Sources */,
