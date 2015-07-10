@@ -25,6 +25,7 @@
     <ClInclude Include="..\..\..\..\ejoy2d\lib\ejoy2dgame.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\fault.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\label.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lib\lgeometry.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\list.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\lmatrix.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\lrenderbuffer.h" />
@@ -63,6 +64,7 @@
     <ClCompile Include="..\..\..\..\ejoy2d\lib\ejoy2dgame.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\fault.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\label.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lib\lgeometry.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lmatrix.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lparticle.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lrenderbuffer.c" />

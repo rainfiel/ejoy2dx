@@ -141,6 +141,9 @@
     <ClInclude Include="..\..\..\..\src\clib\tween\easing.h">
       <Filter>ejoy2dx\tween</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\ejoy2d\lib\lgeometry.h">
+      <Filter>ejoy2d</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ejoy2d\lib\dfont.c">
@@ -238,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\clib\utls\lmonitor.c">
       <Filter>ejoy2dx\utls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\ejoy2d\lib\lgeometry.c">
+      <Filter>ejoy2d</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

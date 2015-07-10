@@ -222,5 +222,14 @@ function RenderManager:draw()
 	end
 end
 
+function RenderManager:fade(spr, tween)
+	local rd = spr.usr_data.render
+	if not rd then
+		rd = {}
+		spr.usr_data.render = rd
+	end
+	rd.fade = tween
+end
+
 
 return RenderManager
