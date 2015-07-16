@@ -69,16 +69,16 @@ function M:_get_packed_object(path, name, pic_callback, raw)
 
 		self.packages[package_id] = cobj
 	end
-	return cobj, tw, th
+	return cobj, tw, th, tex_id
 end
 
 ----------------------------image-------------------------------
 function M:load_image(path, name, pic_callback)
 	path = utls.get_path(path)
-	local cobj, tw, th = self:_get_packed_object(path, name, pic_callback, false)
+	local cobj, tw, th, tex_id = self:_get_packed_object(path, name, pic_callback, false)
 	local spr = sprite.direct_new(cobj, 0)
 	spr.usr_data.path = path
-	return spr, tw, th
+	return spr, tw, th, tex_id
 end
 
 function M:remove_image(path)
@@ -88,6 +88,13 @@ function M:remove_image(path)
 		texture:remove_texture(tex_id)
 		image_c.unload_texture(tex_id)
 	end
+end
+
+function M:texture_id(spr)
+	local p = spr.usr_data.path
+	if not p then return end
+	-- p = utls.get_path(p)
+	return texture:query_texture(p)
 end
 
 function M.add_picture(...)

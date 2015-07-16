@@ -29,6 +29,7 @@
     <ClInclude Include="..\..\..\..\ejoy2d\lib\list.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\lmatrix.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\lrenderbuffer.h" />
+    <ClInclude Include="..\..\..\..\ejoy2d\lib\lutls.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\material.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\matrix.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\opengl.h" />
@@ -70,6 +71,7 @@
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lrenderbuffer.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lshader.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lsprite.c" />
+    <ClCompile Include="..\..\..\..\ejoy2d\lib\lutls.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\matrix.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\particle.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\ppm.c" />
