@@ -1,6 +1,9 @@
 
+local ej = require "ejoy2d"
 local fw = require "ejoy2d.framework"
 local blend = require "ejoy2dx.blend"
+local image_c = require "ejoy2dx.image.c"
+local texture = require "ejoy2dx.texture"
 
 local RenderManager = {}
 RenderManager.renders = {}
@@ -13,6 +16,15 @@ function mt:init()
 	self.sprites = {}
 	self.sorted_sprites = {}
 	self.dirty = false
+
+	self.draw_call = self._draw
+end
+
+function mt:set_offscreen(tex_id, w, h, name)
+	self.offscreen_id = tex_id
+	self.w, self.h, self.name = w, h, name
+
+	self.draw_call = self._offscreen_draw
 end
 
 local function sort_order(left, right)
@@ -87,6 +99,12 @@ function mt:_draw()
 			render.on_draw()
 		end
 	end
+end
+
+function mt:_offscreen_draw()
+	image_c.active_rt(self.offscreen_id)
+	self:_draw()
+	image_c.active_rt(0)
 end
 
 function mt:show(spr, zorder, anchor)
@@ -192,6 +210,16 @@ function RenderManager:anchor(anchor_id)
 	return screen_anchors[anchor_id]
 end
 
+function RenderManager:create_offscreen(layer, w, h, name)
+	local tex_name = name..w..h
+	local tex_id = texture:add_texture(tex_name)
+	image_c.create_rt(tex_id, w, h)
+	image_c.active_rt(tex_id)
+	local rd = self:create(layer)
+	rd:set_offscreen(tex_id, w, h, name)
+	return rd
+end
+
 function RenderManager:create(layer)
 	local rd = setmetatable({layer=layer}, mt)
 	table.insert(self.renders, rd)
@@ -218,7 +246,7 @@ end
 
 function RenderManager:draw()
 	for k, v in ipairs(self.renders) do
-		v:_draw()
+		v:draw_call()
 	end
 end
 

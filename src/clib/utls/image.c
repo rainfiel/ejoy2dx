@@ -254,6 +254,38 @@ _texture_sub_update(lua_State *L) {
 	return 0;
 }
 
+static int
+create_rt(lua_State* L) {
+	int id = (int)luaL_checkinteger(L, 1);
+	int w = (int)luaL_checkinteger(L, 2);
+	int h = (int)luaL_checkinteger(L, 3);
+	const char* err = texture_new_rt(id, w, h);
+	if (err) {
+		return luaL_error(L, "create new rt failed:%s", err);
+	}
+	return 0;
+}
+
+static int
+delete_rt(lua_State* L) {
+	int id = (int)luaL_checkinteger(L, 1);
+	texture_delete_framebuffer(id);
+	return 0;
+}
+
+static int
+active_rt(lua_State*L ){
+	int id = (int)luaL_checkinteger(L, 1);
+	if (id < 0) {
+		texture_reset_rt();
+	} else {
+		const char* err = texture_active_rt(id);
+		if (err) {
+			return luaL_error(L, "active rt failed:%s", err);
+		}
+	}
+	return 0;
+}
 
 int
 luaopen_image(lua_State *L) {
@@ -267,6 +299,10 @@ luaopen_image(lua_State *L) {
 		{ "texture_update", _texture_update },
 		{ "texture_sub_update", _texture_sub_update },
 		{ "unload_texture", unload_texture },
+
+		{ "create_rt", create_rt }, 
+		{ "delete_rt", delete_rt },
+		{ "active_rt", active_rt },
 		{ NULL, NULL },
 	};
 

@@ -60,7 +60,7 @@ function M:_get_packed_object(path, name, pic_callback, raw)
 		if pic_callback then
 			pic_callback(cfg, tx, ty, tw, th)
 		else
-			self.add_picture(cfg, tx, ty, tw, th, mirror_x, mirror_y)
+			self.add_picture(cfg, tx, ty, tw, th)
 		end
 
 		local meta = assert(pack.pack(cfg))
@@ -88,6 +88,25 @@ function M:remove_image(path)
 		texture:remove_texture(tex_id)
 		image_c.unload_texture(tex_id)
 	end
+end
+
+function M:texture_sprite(name, tex_id, tw, th)
+	local package_id = name..tex_id
+	local cobj = self.packages[package_id]
+	if not cobj then
+		local tx, ty = 0, 0
+		local cfg = string.format(sprite_template, name)
+		cfg = load(cfg)()
+
+		self.add_picture(cfg, tx, ty, tw, th)
+		
+		local meta = assert(pack.pack(cfg))
+		assert(meta.texture == 1)
+		cobj = pack_c.import({tex_id},meta.maxid,meta.size,meta.data, meta.data_sz)
+
+		self.packages[package_id] = cobj
+	end
+	return sprite.direct_new(cobj, 0)
 end
 
 function M:texture_id(spr)
