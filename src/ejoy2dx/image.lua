@@ -98,7 +98,7 @@ function M:texture_sprite(name, tex_id, tw, th)
 		local cfg = string.format(sprite_template, name)
 		cfg = load(cfg)()
 
-		self.add_picture(cfg, tx, ty, tw, th)
+		self.add_picture(cfg, tx, ty, tw, th, false, true)
 		
 		local meta = assert(pack.pack(cfg))
 		assert(meta.texture == 1)
@@ -138,15 +138,22 @@ function M.add_picture_with_key(key_x,key_y,cfg,tx,ty,tw,th,mirror_x,mirror_y,sx
 
 	tw = tw * SCREEN_SCALE * sx
 	local sw = tw * key_x
-	sw = mirror_x and -sw or sw
 
 	th = th * SCREEN_SCALE * sy
 	local sh = th * key_y
-	sh = mirror_y and -sh or sh
-	pic[1].screen = {-sw, -sh, -sw, th-sh, tw-sw, th-sh, tw-sw, -sh}
+	local screen = {-sw, -sh, -sw, th-sh, tw-sw, th-sh, tw-sw, -sh}
+	if mirror_x then
+		screen[1], screen[3] = screen[3], screen[1]
+		screen[5], screen[7] = screen[7], screen[5]
+	end
+	if mirror_y then
+		screen[2], screen[4] = screen[4], screen[2]
+		screen[6], screen[8] = screen[8], screen[6]
+	end
+	pic[1].screen = screen
 
 	table.insert(cfg, pic)
-	return pic.id
+	return pic.id, pic[1].screen
 end
 
 function M.add_component(cfg, comp)
