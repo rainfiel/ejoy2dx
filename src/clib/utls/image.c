@@ -1,5 +1,6 @@
 
 #include "texture.h"
+#include "shader.h"
 #include "array.h"
 #include "filesystem.h"
 #include <array.h>
@@ -275,6 +276,8 @@ delete_rt(lua_State* L) {
 
 static int
 active_rt(lua_State*L ){
+	shader_flush();
+
 	int id = (int)luaL_checkinteger(L, 1);
 	if (id < 0) {
 		texture_reset_rt();

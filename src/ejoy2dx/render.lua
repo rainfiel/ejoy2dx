@@ -102,13 +102,18 @@ function mt:_draw()
 end
 
 function mt:_offscreen_draw()
+	local gameinfo = fw.GameInfo
 	image_c.active_rt(self.offscreen_id)
+	fw.reset_screen(self.w, self.h, gameinfo.scale)
 	self:_draw()
 	image_c.active_rt(0)
+	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
 end
 
 function mt:show(spr, zorder, anchor)
 	if self.sprites[spr] then return end
+
+	if self.offscreen_id then anchor = nil end
 
 	if not spr.usr_data then
 		spr.usr_data = {}
