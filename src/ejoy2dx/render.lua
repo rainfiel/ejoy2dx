@@ -104,6 +104,7 @@ end
 function mt:_offscreen_draw()
 	local gameinfo = fw.GameInfo
 	image_c.active_rt(self.offscreen_id)
+	ej.clear()
 	fw.reset_screen(self.w, self.h, gameinfo.scale)
 	self:_draw()
 	image_c.active_rt(0)
