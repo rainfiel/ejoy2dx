@@ -104,10 +104,13 @@ end
 function mt:_offscreen_draw()
 	local gameinfo = fw.GameInfo
 	image_c.active_rt(self.offscreen_id)
+	fw.reset_screen(self.w, self.h, 1)
 	ej.clear()
-	fw.reset_screen(self.w, self.h, gameinfo.scale)
+
 	self:_draw()
-	image_c.active_rt(0)
+
+	image_c.active_rt(-1)
+--	ios_bind_drawable()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
 end
 
@@ -220,7 +223,6 @@ function RenderManager:create_offscreen(layer, w, h, name)
 	local tex_name = name..w..h
 	local tex_id = texture:add_texture(tex_name)
 	image_c.create_rt(tex_id, w, h)
-	image_c.active_rt(tex_id)
 	local rd = self:create(layer)
 	rd:set_offscreen(tex_id, w, h, name)
 	return rd
