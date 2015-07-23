@@ -112,6 +112,7 @@ function mt:_offscreen_draw()
 	image_c.active_rt(-1)
 --	ios_bind_drawable()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
+	self.draw_call = nil
 end
 
 function mt:show(spr, zorder, anchor)
@@ -254,7 +255,9 @@ end
 
 function RenderManager:draw()
 	for k, v in ipairs(self.renders) do
-		v:draw_call()
+		if v.draw_call then
+			v:draw_call()
+		end
 	end
 end
 
