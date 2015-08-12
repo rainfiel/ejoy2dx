@@ -49,13 +49,17 @@
     <ClInclude Include="..\..\..\..\ejoy2d\lib\sprite.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\spritepack.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\texture.h" />
+    <ClInclude Include="..\..\..\..\src\clib\lsocket\win_compat.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\debug_log.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\filesystem.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\lhttplib.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\liosutil.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\platform_init.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\sound.h" />
+    <ClInclude Include="..\..\..\..\src\clib\sproto\msvcint.h" />
+    <ClInclude Include="..\..\..\..\src\clib\sproto\sproto.h" />
     <ClInclude Include="..\..\..\..\src\clib\tween\easing.h" />
+    <ClInclude Include="..\..\..\..\src\clib\utls\lpeg\lpeg.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\lualibs.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\stb_image.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\stb_image_write.h" />
@@ -86,10 +90,17 @@
     <ClCompile Include="..\..\..\..\ejoy2d\lib\sprite.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\spritepack.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\texture.c" />
+    <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket.c" />
+    <ClCompile Include="..\..\..\..\src\clib\lsocket\win_compat.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sproto\lsproto.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sproto\sproto.c" />
     <ClCompile Include="..\..\..\..\src\clib\tween\easing.c" />
     <ClCompile Include="..\..\..\..\src\clib\tween\leasing.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\image.c" />
+    <ClCompile Include="..\..\..\..\src\clib\utls\lcrypt.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lmonitor.c" />
+    <ClCompile Include="..\..\..\..\src\clib\utls\lpeg\lpeg.c" />
+    <ClCompile Include="..\..\..\..\src\clib\utls\ltimesync.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lualibs.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\serialize.c" />
     <ClCompile Include="..\..\src\main\filesystem.c" />
@@ -144,7 +155,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>

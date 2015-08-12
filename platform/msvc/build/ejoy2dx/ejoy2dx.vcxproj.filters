@@ -25,6 +25,15 @@
     <Filter Include="ejoy2dx\tween">
       <UniqueIdentifier>{7dbd2962-1a0a-44bd-b8c3-be61a2fdb06a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\lsocket">
+      <UniqueIdentifier>{ac71e896-4806-443a-adbb-c5dd2b4335b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ejoy2dx\sproto">
+      <UniqueIdentifier>{eca27574-e336-46b1-a4fa-a1f44f226f88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ejoy2dx\utls\lpeg">
+      <UniqueIdentifier>{f16bbed7-802e-457c-9479-fed268333786}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -147,6 +156,18 @@
     <ClInclude Include="..\..\..\..\ejoy2d\lib\lutls.h">
       <Filter>ejoy2d</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lsocket\win_compat.h">
+      <Filter>ejoy2dx\lsocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\sproto\msvcint.h">
+      <Filter>ejoy2dx\sproto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\sproto\sproto.h">
+      <Filter>ejoy2dx\sproto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\utls\lpeg\lpeg.h">
+      <Filter>ejoy2dx\utls\lpeg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ejoy2d\lib\dfont.c">
@@ -250,6 +271,27 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\ejoy2d\lib\lutls.c">
       <Filter>ejoy2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket.c">
+      <Filter>ejoy2dx\lsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lsocket\win_compat.c">
+      <Filter>ejoy2dx\lsocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\sproto\lsproto.c">
+      <Filter>ejoy2dx\sproto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\sproto\sproto.c">
+      <Filter>ejoy2dx\sproto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\utls\lcrypt.c">
+      <Filter>ejoy2dx\utls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\utls\ltimesync.c">
+      <Filter>ejoy2dx\utls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\utls\lpeg\lpeg.c">
+      <Filter>ejoy2dx\utls\lpeg</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
