@@ -71,7 +71,7 @@ gettime() {
 
 static int
 llocaltime(lua_State *L) {
-	struct time * t = (time*)lua_touserdata(L, lua_upvalueindex(1));
+	struct time * t = (struct time*)lua_touserdata(L, lua_upvalueindex(1));
 	uint64_t ct = gettime();
 	lua_pushinteger(L, ct - t->start_time);
 	return 1;
@@ -85,7 +85,7 @@ static int
 lsync(lua_State *L) {
 	int request_time = luaL_checkinteger(L,1);
 	int global_time = luaL_checkinteger(L,2);
-	struct time * t = (time*)lua_touserdata(L, lua_upvalueindex(1));
+	struct time * t = (struct time*)lua_touserdata(L, lua_upvalueindex(1));
 	uint64_t now = gettime();
 	int local_time = (int)(now - t->start_time);
 	int lag = local_time - request_time;
@@ -131,7 +131,7 @@ lsync(lua_State *L) {
 
 static int
 lglobaltime(lua_State *L) {
-	struct time * t = (time*)lua_touserdata(L, lua_upvalueindex(1));
+	struct time * t = (struct time*)lua_touserdata(L, lua_upvalueindex(1));
 	if (t->time_elapse < 0) {
 		return 0;
 	}
@@ -170,7 +170,7 @@ luaopen_timesync(lua_State *L) {
 		{ NULL, NULL },
 	};
 	luaL_newlibtable(L,l);
-	struct time * t = (time*)lua_newuserdata(L, sizeof(*t));
+	struct time * t = (struct time*)lua_newuserdata(L, sizeof(*t));
 	init(t);
 	luaL_setfuncs(L,l,1);
 

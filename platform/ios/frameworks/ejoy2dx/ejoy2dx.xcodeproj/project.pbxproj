@@ -93,6 +93,14 @@
 		AE9DE6A81A8F2F640085776F /* font.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE6A51A8F2F640085776F /* font.m */; };
 		AE9DE6A91A8F2F640085776F /* liosutil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE6A61A8F2F640085776F /* liosutil.m */; };
 		AE9DE6AD1A8F30800085776F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6AC1A8F30800085776F /* Foundation.framework */; };
+		E6E8D42F1B7E3F240049F8AC /* lpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = E6E8D42D1B7E3F240049F8AC /* lpeg.c */; };
+		E6E8D4301B7E3F240049F8AC /* lpeg.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E8D42E1B7E3F240049F8AC /* lpeg.h */; };
+		E6E8D4331B7E406D0049F8AC /* lsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E6E8D4321B7E406D0049F8AC /* lsocket.c */; };
+		E6E8D4381B7E40BE0049F8AC /* lsproto.c in Sources */ = {isa = PBXBuildFile; fileRef = E6E8D4351B7E40BE0049F8AC /* lsproto.c */; };
+		E6E8D4391B7E40BE0049F8AC /* sproto.c in Sources */ = {isa = PBXBuildFile; fileRef = E6E8D4361B7E40BE0049F8AC /* sproto.c */; };
+		E6E8D43A1B7E40BE0049F8AC /* sproto.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E8D4371B7E40BE0049F8AC /* sproto.h */; };
+		E6E8D43D1B7E41030049F8AC /* lcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = E6E8D43B1B7E41030049F8AC /* lcrypt.c */; };
+		E6E8D43E1B7E41030049F8AC /* ltimesync.c in Sources */ = {isa = PBXBuildFile; fileRef = E6E8D43C1B7E41030049F8AC /* ltimesync.c */; };
 		E6EFA5381AB33AC600D42B66 /* lmonitor.c in Sources */ = {isa = PBXBuildFile; fileRef = E6EFA5371AB33AC600D42B66 /* lmonitor.c */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +221,14 @@
 		AE9DE6A61A8F2F640085776F /* liosutil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = liosutil.m; path = ../../../src/liosutil.m; sourceTree = "<group>"; };
 		AE9DE6AC1A8F30800085776F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE9DE6AE1A8F31220085776F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E6E8D42D1B7E3F240049F8AC /* lpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lpeg.c; path = ../../../../../src/clib/utls/lpeg/lpeg.c; sourceTree = "<group>"; };
+		E6E8D42E1B7E3F240049F8AC /* lpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lpeg.h; path = ../../../../../src/clib/utls/lpeg/lpeg.h; sourceTree = "<group>"; };
+		E6E8D4321B7E406D0049F8AC /* lsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lsocket.c; path = ../../../../../src/clib/lsocket/lsocket.c; sourceTree = "<group>"; };
+		E6E8D4351B7E40BE0049F8AC /* lsproto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lsproto.c; path = ../../../../../src/clib/sproto/lsproto.c; sourceTree = "<group>"; };
+		E6E8D4361B7E40BE0049F8AC /* sproto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sproto.c; path = ../../../../../src/clib/sproto/sproto.c; sourceTree = "<group>"; };
+		E6E8D4371B7E40BE0049F8AC /* sproto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sproto.h; path = ../../../../../src/clib/sproto/sproto.h; sourceTree = "<group>"; };
+		E6E8D43B1B7E41030049F8AC /* lcrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lcrypt.c; path = ../../../../../src/clib/utls/lcrypt.c; sourceTree = "<group>"; };
+		E6E8D43C1B7E41030049F8AC /* ltimesync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ltimesync.c; path = ../../../../../src/clib/utls/ltimesync.c; sourceTree = "<group>"; };
 		E6EFA5371AB33AC600D42B66 /* lmonitor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lmonitor.c; path = ../../../../../src/clib/utls/lmonitor.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,6 +360,8 @@
 		AE9DE6871A8F2EAC0085776F /* ejoy2dx */ = {
 			isa = PBXGroup;
 			children = (
+				E6E8D4341B7E40870049F8AC /* sproto */,
+				E6E8D4311B7E3F470049F8AC /* socket */,
 				AE9DE6A31A8F2F440085776F /* platform_ios */,
 				AE9DE6961A8F2F2C0085776F /* platform */,
 				AE9DE68F1A8F2F010085776F /* image */,
@@ -355,6 +373,9 @@
 		AE9DE6881A8F2EBB0085776F /* utls */ = {
 			isa = PBXGroup;
 			children = (
+				E6E8D43B1B7E41030049F8AC /* lcrypt.c */,
+				E6E8D43C1B7E41030049F8AC /* ltimesync.c */,
+				E6E8D42B1B7E3EFA0049F8AC /* lpeg */,
 				E6EFA5371AB33AC600D42B66 /* lmonitor.c */,
 				AE9DE6891A8F2EE90085776F /* lualibs.c */,
 				AE9DE68A1A8F2EE90085776F /* lualibs.h */,
@@ -396,6 +417,33 @@
 			name = platform_ios;
 			sourceTree = "<group>";
 		};
+		E6E8D42B1B7E3EFA0049F8AC /* lpeg */ = {
+			isa = PBXGroup;
+			children = (
+				E6E8D42D1B7E3F240049F8AC /* lpeg.c */,
+				E6E8D42E1B7E3F240049F8AC /* lpeg.h */,
+			);
+			name = lpeg;
+			sourceTree = "<group>";
+		};
+		E6E8D4311B7E3F470049F8AC /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				E6E8D4321B7E406D0049F8AC /* lsocket.c */,
+			);
+			name = socket;
+			sourceTree = "<group>";
+		};
+		E6E8D4341B7E40870049F8AC /* sproto */ = {
+			isa = PBXGroup;
+			children = (
+				E6E8D4351B7E40BE0049F8AC /* lsproto.c */,
+				E6E8D4361B7E40BE0049F8AC /* sproto.c */,
+				E6E8D4371B7E40BE0049F8AC /* sproto.h */,
+			);
+			name = sproto;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -429,8 +477,10 @@
 				AE9DE69E1A8F2F3F0085776F /* filesystem.h in Headers */,
 				AE9DE6571A8F220D0085776F /* render.h in Headers */,
 				AE9DE6411A8F21F70085776F /* shader.h in Headers */,
+				E6E8D4301B7E3F240049F8AC /* lpeg.h in Headers */,
 				AE9DE69F1A8F2F3F0085776F /* lhttplib.h in Headers */,
 				AE9DE6351A8F21F70085776F /* platform_print.h in Headers */,
+				E6E8D43A1B7E40BE0049F8AC /* sproto.h in Headers */,
 				AE9DE6951A8F2F160085776F /* stb_image.h in Headers */,
 				AE9DE6261A8F21F70085776F /* label.h in Headers */,
 				AE9DE68D1A8F2EE90085776F /* lualibs.h in Headers */,
@@ -555,9 +605,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE9DE6A91A8F2F640085776F /* liosutil.m in Sources */,
+				E6E8D43D1B7E41030049F8AC /* lcrypt.c in Sources */,
 				AE9DE6251A8F21F70085776F /* label.c in Sources */,
 				AE9DE6561A8F220D0085776F /* render.c in Sources */,
 				AE9DE6281A8F21F70085776F /* lmatrix.c in Sources */,
+				E6E8D4391B7E40BE0049F8AC /* sproto.c in Sources */,
 				AE9DE62A1A8F21F70085776F /* lparticle.c in Sources */,
 				E6EFA5381AB33AC600D42B66 /* lmonitor.c in Sources */,
 				AE9DE6331A8F21F70085776F /* particle.c in Sources */,
@@ -567,6 +619,7 @@
 				AE9DE6A81A8F2F640085776F /* font.m in Sources */,
 				AE9DE6381A8F21F70085776F /* renderbuffer.c in Sources */,
 				AE5C16E61B5E4DAB00666B0E /* lutls.c in Sources */,
+				E6E8D42F1B7E3F240049F8AC /* lpeg.c in Sources */,
 				AE9DE62E1A8F21F70085776F /* lsprite.c in Sources */,
 				AE9DE63A1A8F21F70085776F /* scissor.c in Sources */,
 				AE9DE6231A8F21F70085776F /* fault.c in Sources */,
@@ -576,8 +629,10 @@
 				AE9DE6461A8F21F70085776F /* texture.c in Sources */,
 				AE9DE6301A8F21F70085776F /* matrix.c in Sources */,
 				AE9DE62D1A8F21F70085776F /* lshader.c in Sources */,
+				E6E8D4331B7E406D0049F8AC /* lsocket.c in Sources */,
 				AE9DE63E1A8F21F70085776F /* screenshot.c in Sources */,
 				AE9DE61E1A8F21F70085776F /* dfont.c in Sources */,
+				E6E8D4381B7E40BE0049F8AC /* lsproto.c in Sources */,
 				AE9DE6421A8F21F70085776F /* sprite.c in Sources */,
 				AE9DE62B1A8F21F70085776F /* lrenderbuffer.c in Sources */,
 				AE9DE6521A8F220D0085776F /* carray.c in Sources */,
@@ -585,6 +640,7 @@
 				AE9DE6211A8F21F70085776F /* ejoy2dgame.c in Sources */,
 				AE9DE6931A8F2F160085776F /* image.c in Sources */,
 				AE9DE68C1A8F2EE90085776F /* lualibs.c in Sources */,
+				E6E8D43E1B7E41030049F8AC /* ltimesync.c in Sources */,
 				AE9DE6441A8F21F70085776F /* spritepack.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
