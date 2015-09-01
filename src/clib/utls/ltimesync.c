@@ -3,6 +3,7 @@
 #include <string.h>
 #include <lua.h>
 #include <lauxlib.h>
+#include <stdbool.h>
 
 #ifdef _WIN32
 #include <WinSock2.h>

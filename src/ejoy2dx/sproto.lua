@@ -38,6 +38,10 @@ function sproto.parse(ptext)
 	return sproto.new(pbin)
 end
 
+function sproto:dump()
+	core.dumpproto(self.__cobj)
+end
+
 function sproto:host( packagename )
 	packagename = packagename or  "package"
 	local obj = {
