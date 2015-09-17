@@ -278,7 +278,7 @@ static int
 active_rt(lua_State*L ){
 	shader_flush();
 
-	int id = (int)luaL_checkinteger(L, 1);
+	int id = (int)luaL_optinteger(L, 1, -1);
 	if (id < 0) {
 		texture_reset_rt();
 	} else {

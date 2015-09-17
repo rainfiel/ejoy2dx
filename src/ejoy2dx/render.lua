@@ -109,7 +109,7 @@ function mt:_offscreen_draw()
 
 	self:_draw()
 
-	image_c.active_rt(-1)
+	image_c.active_rt()
 --	ios_bind_drawable()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
 	self.draw_call = nil
