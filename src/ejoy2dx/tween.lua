@@ -81,22 +81,20 @@ end
 function mt:reset()
 	self.step_index = 0
 	self.delta = 1
-	self.target = self.times
 end
 
 function mt:step()
 	self.step_index = self.step_index + self.delta
 	local val = self.container[self.step_index]
 
-	if self.step_index > self.target then
+	if not val then
 		if self.wrap_mode == wrap_modes.Once then
 			return val, false
 		elseif self.wrap_mode == wrap_modes.Loop then
-			self.step_index = 1 - self.delta
+			self.step_index = 0
 			return val, false
 		elseif self.wrap_mode == wrap_modes.PingPong then
 			self.delta = -self.delta
-			self.target = self.target == 1 and self.times or 1
 			return val, false
 		end
 	end
@@ -128,7 +126,6 @@ function mt:test()
 
 	self.step_index = 0
 	self.delta = 1
-	self.target = self.times
 end
 
 

@@ -48,6 +48,12 @@ function mt:resort()
 	end
 end
 
+function mt:set_order(spr, zorder)
+	if not self.sprites[spr] then return end
+	spr.usr_data.render.zorder = zorder
+	self.dirty = true
+end
+
 function mt:test(x, y)
 	local sprites = self.sorted_sprites
 	local cnt = #sprites

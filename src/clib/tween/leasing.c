@@ -74,11 +74,11 @@ _easing(lua_State* L) {
 
 	AHEasingFunction func = easing_funcs[type];
 
-	for (counter=1; counter <= times; counter++) {
+	for (counter=0; counter <= times; counter++) {
 		float rate = counter / times;
 		float val = start + delta * func(rate);
 		lua_pushnumber(L, val);
-		lua_rawseti(L, 1, counter);
+		lua_rawseti(L, 1, counter+1);
 	}
 
 	return 0;

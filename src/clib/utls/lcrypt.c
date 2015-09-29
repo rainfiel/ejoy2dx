@@ -338,8 +338,13 @@ static int
 lrandomkey(lua_State *L) {
 	char tmp[8];
 	int i;
+	char x = 0;
 	for (i=0;i<8;i++) {
 		tmp[i] = rand() & 0xff;
+		x ^= tmp[i];
+	}
+	if (x==0) {
+		tmp[0] |= 1;	// avoid 0
 	}
 	lua_pushlstring(L, tmp, 8);
 	return 1;
@@ -718,13 +723,19 @@ static int
 ldhsecret(lua_State *L) {
 	uint32_t x[2], y[2];
 	read64(L, x, y);
-	uint64_t r = powmodp((uint64_t)x[0] | (uint64_t)x[1]<<32,
-		(uint64_t)y[0] | (uint64_t)y[1]<<32);
+	uint64_t xx = (uint64_t)x[0] | (uint64_t)x[1]<<32;
+	uint64_t yy = (uint64_t)y[0] | (uint64_t)y[1]<<32;
+	if (xx == 0)
+		xx = 1;
+	if (yy == 0)
+		yy = 1;
+	uint64_t r = powmodp(xx, yy);
 
 	push64(L, r);
 
 	return 1;
 }
+
 
 #define G 5
 
