@@ -7,6 +7,23 @@ local sprite = require "ejoy2d.sprite"
 local pack = require "ejoy2d.spritepack"
 local pack_c = require "ejoy2d.spritepack.c"
 
+local function default_collide_info(tw, th, comp, img_data)
+	local info = {}
+	for i=1, th do
+		local line = {}
+		for j=1, tw do
+			local pos = ((i-1) * tw + j) * comp
+			local alpha = string.byte(img_data, pos, pos) or 0
+
+			table.insert(line, alpha)
+			-- table.insert(info, alpha)
+		end
+		table.insert(info, line)
+		-- print(i.."--->"..table.concat(line, "|"))
+	end
+	return info
+end
+
 local SCREEN_SCALE = 16
 local sprite_template = [[
 return
@@ -32,6 +49,7 @@ local mt = {}
 local M = {}
 M.packages = {}
 M.raw_data = {}
+M.collide_info_handler = default_collide_info
 
 function M:_get_packed_object(path, name, pic_callback, raw)
 	name = name or "default"
@@ -44,7 +62,7 @@ function M:_get_packed_object(path, name, pic_callback, raw)
 			if raw then
 				local comp, img_data
 				tw, th, comp, img_data = image_c.image_rawdata(path)
-				local collide_info = self.collide_info(tw, th, comp, img_data)
+				local collide_info = self.collide_info_handler(tw, th, comp, img_data)
 				image_c.rawdata_to_texture(tex_id, tw, th, comp, img_data)
 				self.raw_data[path] = collide_info
 			else
@@ -90,7 +108,7 @@ function M:remove_image(path)
 	end
 end
 
-function M:texture_sprite(name, tex_id, tw, th)
+function M:texture_sprite(name, tex_id, tw, th, flip_y)
 	local package_id = name..tex_id
 	local cobj = self.packages[package_id]
 	if not cobj then
@@ -98,7 +116,7 @@ function M:texture_sprite(name, tex_id, tw, th)
 		local cfg = string.format(sprite_template, name)
 		cfg = load(cfg)()
 
-		self.add_picture(cfg, tx, ty, tw, th, false, true)
+		self.add_picture(cfg, tx, ty, tw, th, false, flip_y)
 		
 		local meta = assert(pack.pack(cfg))
 		assert(meta.texture == 1)
@@ -255,23 +273,6 @@ function M:load_image_raw(path, name, pic_callback)
 	local spr = sprite.direct_new(cobj, 0)
 	spr.usr_data.path = path
 	return spr, tw, th
-end
-
-function M.collide_info(tw, th, comp, img_data)
-	local info = {}
-	for i=1, th do
-		local line = {}
-		for j=1, tw do
-			local pos = ((i-1) * tw + j) * comp
-			local alpha = string.byte(img_data, pos, pos) or 0
-
-			table.insert(line, alpha)
-			-- table.insert(info, alpha)
-		end
-		table.insert(info, line)
-		-- print(i.."--->"..table.concat(line, "|"))
-	end
-	return info
 end
 
 function M:get_collide_info(spr)

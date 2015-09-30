@@ -15,6 +15,7 @@
 
 int luaopen_sound(lua_State* L);
 int luaopen_world(lua_State *L);
+int luaopen_fog(lua_State* L);
 
 static void
 _register(lua_State *L, lua_CFunction func, const char * libname) {
@@ -25,6 +26,7 @@ _register(lua_State *L, lua_CFunction func, const char * libname) {
 void init_user_lua_libs(lua_State *L) {
 	_register(L, luaopen_sound, "dk.sound.m");
 	_register(L, luaopen_world, "dk.world.m");
+	_register(L, luaopen_fog, "dk.fog.m");
 }
 
 static DWORD g_lastTime = 0;

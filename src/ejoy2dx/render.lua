@@ -20,8 +20,9 @@ function mt:init()
 	self.draw_call = self._draw
 end
 
-function mt:set_offscreen(tex_id, w, h, name)
+function mt:set_offscreen(tex_id, w, h, name, drawonce)
 	self.offscreen_id = tex_id
+	self.drawonce = drawonce
 	self.w, self.h, self.name = w, h, name
 
 	self.draw_call = self._offscreen_draw
@@ -116,9 +117,11 @@ function mt:_offscreen_draw()
 	self:_draw()
 
 	image_c.active_rt()
---	ios_bind_drawable()
+	--	ios_bind_drawable()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
-	self.draw_call = nil
+	if self.drawonce then
+		self.draw_call = nil
+	end
 end
 
 function mt:show(spr, zorder, anchor)
@@ -226,12 +229,12 @@ function RenderManager:anchor(anchor_id)
 	return screen_anchors[anchor_id]
 end
 
-function RenderManager:create_offscreen(layer, w, h, name)
+function RenderManager:create_offscreen(layer, w, h, name, drawonce)
 	local tex_name = name..w..h
 	local tex_id = texture:add_texture(tex_name)
 	image_c.create_rt(tex_id, w, h)
 	local rd = self:create(layer)
-	rd:set_offscreen(tex_id, w, h, name)
+	rd:set_offscreen(tex_id, w, h, name, drawonce)
 	return rd
 end
 
