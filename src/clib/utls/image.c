@@ -246,7 +246,9 @@ _texture_sub_update(lua_State *L) {
 	int y = (int)luaL_checkinteger(L, 3);
 	int width = (int)luaL_checkinteger(L, 4);
 	int height = (int)luaL_checkinteger(L, 5);
-	unsigned char* data = (unsigned char*)luaL_checkstring(L, 6);
+	unsigned char* data = (unsigned char*)lua_tostring(L, 6);
+	if (!data)
+		data = (unsigned char*)lua_touserdata(L, 6);
 
 	const char* err = texture_sub_update(id, x, y, width, height, data);
 	if (err) {
@@ -290,6 +292,16 @@ active_rt(lua_State*L ){
 	return 0;
 }
 
+static int
+read_pixels(lua_State* L) {
+	int w = (int)luaL_checkinteger(L, 1);
+	int h = (int)luaL_checkinteger(L, 2);
+	unsigned char * buff =  (unsigned char*)lua_newuserdata(L, w * h * sizeof(unsigned char) * 4);
+	read_rt_pixels(w, h, buff);
+
+	return 1;
+}
+
 int
 luaopen_image(lua_State *L) {
 	//loadimage = image_rawdata + rawdata_to_texture
@@ -306,6 +318,7 @@ luaopen_image(lua_State *L) {
 		{ "create_rt", create_rt }, 
 		{ "delete_rt", delete_rt },
 		{ "active_rt", active_rt },
+		{ "read_pixels", read_pixels },
 		{ NULL, NULL },
 	};
 
