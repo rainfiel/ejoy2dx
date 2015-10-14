@@ -7,3 +7,6 @@ url=https://github.com/rainfiel/lsocket
 [submodule "src/clib/sproto"]
 	path = src/clib/sproto
 url=https://github.com/rainfiel/sproto
+[submodule "src/clib/Liekkas"]
+	path = src/clib/Liekkas
+	url = https://github.com/rainfiel/Liekkas.git

@@ -34,6 +34,12 @@
     <Filter Include="ejoy2dx\utls\lpeg">
       <UniqueIdentifier>{f16bbed7-802e-457c-9479-fed268333786}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\Liekkas">
+      <UniqueIdentifier>{a96ccdc8-fff9-4831-9b2f-a6225253d2fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ejoy2dx\Liekkas\decode">
+      <UniqueIdentifier>{eab05d84-aa54-40f4-9f4a-29ebdaaf65d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -168,6 +174,12 @@
     <ClInclude Include="..\..\..\..\src\clib\utls\lpeg\lpeg.h">
       <Filter>ejoy2dx\utls\lpeg</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal.h">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.h">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ejoy2d\lib\dfont.c">
@@ -293,5 +305,28 @@
     <ClCompile Include="..\..\..\..\src\clib\utls\lpeg\lpeg.c">
       <Filter>ejoy2dx\utls\lpeg</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal.c">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.c">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_mp3.c">
+      <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_ogg.c">
+      <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_tools.c">
+      <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_wav.c">
+      <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_hardware_mac_ios.m">
+      <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -49,6 +49,8 @@
     <ClInclude Include="..\..\..\..\ejoy2d\lib\sprite.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\spritepack.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\texture.h" />
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal.h" />
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.h" />
     <ClInclude Include="..\..\..\..\src\clib\lsocket\win_compat.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\debug_log.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\filesystem.h" />
@@ -90,6 +92,12 @@
     <ClCompile Include="..\..\..\..\ejoy2d\lib\sprite.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\spritepack.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\texture.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_mp3.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_ogg.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_tools.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_wav.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.c" />
     <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket.c" />
     <ClCompile Include="..\..\..\..\src\clib\lsocket\win_compat.c" />
     <ClCompile Include="..\..\..\..\src\clib\sproto\lsproto.c" />
@@ -106,6 +114,9 @@
     <ClCompile Include="..\..\src\main\filesystem.c" />
     <ClCompile Include="..\..\src\main\os_utls.c" />
     <ClCompile Include="..\..\src\main\winfont.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_hardware_mac_ios.m" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7431851E-EE17-4922-8ADF-B3E1E42E6EC7}</ProjectGuid>
@@ -145,7 +156,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_FRAMEWORK);$(EJ2DX_PLATFORM);$(EJ2DX_UTLS);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_FRAMEWORK);$(EJ2DX_PLATFORM);$(EJ2DX_UTLS);$(EJ2DX_INCLUDE)\OpenAL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJ2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;EJOY2D_BUILD_AS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
@@ -155,7 +166,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;Ws2_32.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>

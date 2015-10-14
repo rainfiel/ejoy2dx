@@ -18,6 +18,8 @@ int luaopen_crypt(lua_State *L);
 int luaopen_timesync(lua_State *L);
 int luaopen_sproto_core(lua_State *L);
 int luaopen_lpeg (lua_State *L);
+int luaopen_oal(lua_State *L);
+int luaopen_oal_decode(lua_State *L);
 
 void
 init_lua_libs(lua_State* L) {
@@ -30,6 +32,8 @@ init_lua_libs(lua_State* L) {
 	_register(L, luaopen_timesync, "ejoy2dx.timesync.c");
 	_register(L, luaopen_sproto_core, "ejoy2dx.sproto.c");
 	_register(L, luaopen_lpeg, "ejoy2dx.lpeg.c");
+	_register(L, luaopen_oal, "oal");
+	_register(L, luaopen_oal_decode, "oal.decode");
   
 #ifdef DEBUG
   _register(L, luaopen_monitor, "ejoy2dx.lmonitor.c");
