@@ -8,20 +8,21 @@ local pack = require "ejoy2d.spritepack"
 local pack_c = require "ejoy2d.spritepack.c"
 
 local function default_collide_info(tw, th, comp, img_data)
-	local info = {}
-	for i=1, th do
-		local line = {}
-		for j=1, tw do
-			local pos = ((i-1) * tw + j) * comp
-			local alpha = string.byte(img_data, pos, pos) or 0
+	-- local info = {}
+	-- for i=1, th do
+	-- 	local line = {}
+	-- 	for j=1, tw do
+	-- 		local pos = ((i-1) * tw + j) * comp
+	-- 		local alpha = string.byte(img_data, pos, pos) or 0
 
-			table.insert(line, alpha)
-			-- table.insert(info, alpha)
-		end
-		table.insert(info, line)
-		-- print(i.."--->"..table.concat(line, "|"))
-	end
-	return info
+	-- 		table.insert(line, alpha)
+	-- 		-- table.insert(info, alpha)
+	-- 	end
+	-- 	table.insert(info, line)
+	-- 	-- print(i.."--->"..table.concat(line, "|"))
+	-- end
+	-- return info
+	return img_data
 end
 
 local SCREEN_SCALE = 16
@@ -64,7 +65,7 @@ function M:_get_packed_object(path, name, pic_callback, raw)
 				tw, th, comp, img_data = image_c.image_rawdata(path)
 				local collide_info = self.collide_info_handler(tw, th, comp, img_data)
 				image_c.rawdata_to_texture(tex_id, tw, th, comp, img_data)
-				self.raw_data[path] = collide_info
+				self.raw_data[path] = {collide_info, comp}
 			else
 				tw, th = image_c.loadimage(tex_id, path)
 			end
@@ -282,7 +283,7 @@ function M:get_collide_info(spr)
 	if not tex_id then return end
 	local raw = self.raw_data[path]
 	if not raw then return end
-	return raw, tw, th
+	return raw[1], raw[2], tw, th
 end
 
 return M
