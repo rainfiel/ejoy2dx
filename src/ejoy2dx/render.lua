@@ -16,6 +16,7 @@ function mt:init()
 	self.sprites = {}
 	self.sorted_sprites = {}
 	self.dirty = false
+	self.show_order = 0
 
 	self.draw_call = self._draw
 end
@@ -29,7 +30,13 @@ function mt:set_offscreen(tex_id, w, h, name, drawonce)
 end
 
 local function sort_order(left, right)
-	return left.usr_data.render.zorder < right.usr_data.render.zorder
+	local left_render = left.usr_data.render
+	local right_render = right.usr_data.render
+	if left_render.zorder == right_render.zorder then
+		return left_render.show_order < right_render.show_order
+	else
+		return left_render.zorder < right_render.zorder
+	end
 end
 
 function mt:resort()
@@ -135,6 +142,8 @@ function mt:show(spr, zorder, anchor)
 	spr.usr_data.render = spr.usr_data.render or {}
 	local data = spr.usr_data.render
 	data.zorder = zorder or 0
+	data.show_order = self.show_order
+	self.show_order = self.show_order + 1
 
 	if not anchor then
 		anchor = RenderManager:anchor(RenderManager.top_left)
