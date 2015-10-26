@@ -62,6 +62,12 @@ function mt:set_order(spr, zorder)
 	self.dirty = true
 end
 
+function mt:test_spr(spr, x, y)
+	local render = spr.usr_data.render
+	if not render then return end
+	return spr:test(x, y, render.anchor)
+end
+
 function mt:test(x, y)
 	local sprites = self.sorted_sprites
 	local cnt = #sprites

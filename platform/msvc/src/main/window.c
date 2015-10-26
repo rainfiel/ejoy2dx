@@ -151,7 +151,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		get_xy(lParam, &x, &y); 
 		if (!g_event_stat.disable_gesture) {
 			if (g_event_stat.is_pan) {
-				ejoy2d_win_gesture(1, x-g_event_stat.last_x, y-g_event_stat.last_y, 0, 0, 3); //PAN
+				ejoy2d_win_gesture(1, x-g_event_stat.last_x, y-g_event_stat.last_y, x, y, 3); //PAN
 			} else {
 				ejoy2d_win_gesture(2, x, y, 0, 0, 3); //TAP
 			}
