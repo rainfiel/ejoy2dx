@@ -36,8 +36,9 @@ struct EVENT_STAT {
 	int btn_down;
 	int last_x;
 	int last_y;
+	DWORD last_change_time;
 	int disable_gesture;
-	int is_pan;
+	bool is_pan;
 };
 
 static EVENT_STAT g_event_stat;
@@ -46,8 +47,9 @@ reset_event_stat() {
 	g_event_stat.btn_down = 0;
 	g_event_stat.last_x = 0;
 	g_event_stat.last_y = 0;
+	g_event_stat.last_change_time = 0;
 	g_event_stat.disable_gesture = 0;
-	g_event_stat.is_pan = 0;
+	g_event_stat.is_pan = false;
 }
 
 static void
@@ -151,7 +153,11 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		get_xy(lParam, &x, &y); 
 		if (!g_event_stat.disable_gesture) {
 			if (g_event_stat.is_pan) {
-				ejoy2d_win_gesture(1, x-g_event_stat.last_x, y-g_event_stat.last_y, x, y, 3); //PAN
+				int dx = x-g_event_stat.last_x;
+				int dy = y-g_event_stat.last_y;
+				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
+				if (seconds < 0.000001f) seconds = 0.033f;
+				ejoy2d_win_gesture(1, dx, dy, dx/seconds, dy/seconds, 3); //PAN
 			} else {
 				ejoy2d_win_gesture(2, x, y, 0, 0, 3); //TAP
 			}
@@ -168,6 +174,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		g_event_stat.disable_gesture = ejoy2d_win_touch(x,y,TOUCH_BEGIN);
 		g_event_stat.last_x = x;
 		g_event_stat.last_y = y;
+		g_event_stat.last_change_time = timeGetTime();
 		break;
 	}
 	case WM_MOUSEMOVE: {
@@ -185,14 +192,17 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				int stat = 0;
 				if (!g_event_stat.is_pan) {
 					stat = 1; // begin
-					g_event_stat.is_pan = 1;
+					g_event_stat.is_pan = true;
 				}	else {
 					stat = 2; //change
 				}
-				ejoy2d_win_gesture(1, x-g_event_stat.last_x, y-g_event_stat.last_y, x, y, stat);
+				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
+				if (seconds < 0.000001f) seconds = 0.033f;
+				ejoy2d_win_gesture(1, dx, dy, dx / seconds, dy / seconds, stat);
 			}
 			g_event_stat.last_x = x;
 			g_event_stat.last_y = y;
+			g_event_stat.last_change_time = timeGetTime();
 		}
 		break;
 	}
@@ -203,9 +213,9 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		ScreenToClient(hWnd, &p);
 		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
 		if (delta < 0)
-			ejoy2d_win_gesture(3, p.x, p.y, 0.95, 0, 1); //PINCH
+			ejoy2d_win_gesture(3, p.x, p.y, 0.95f, 0, 1); //PINCH
 		else
-			ejoy2d_win_gesture(3, p.x, p.y, 1.05, 0, 1);
+			ejoy2d_win_gesture(3, p.x, p.y, 1.05f, 0, 1);
 		break;
 	}
 	}
