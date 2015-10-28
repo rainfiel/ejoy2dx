@@ -93,9 +93,12 @@ function mt:test(x, y)
 	end
 end
 
+local hide_list = {}
+local hide_list_cnt = 0
 function mt:_draw()
 	self:resort()
 
+	hide_list_cnt = 0
 	local render
 	for k, v in ipairs(self.sorted_sprites) do
 		render = v.usr_data.render
@@ -116,8 +119,14 @@ function mt:_draw()
 			v:draw(render.anchor)
 		end
 		if render.on_draw then
-			render.on_draw()
+			if render.on_draw() then
+				table.insert(hide_list, v)
+				hide_list_cnt = hide_list_cnt+1
+			end
 		end
+	end
+	for i=1, hide_list_cnt do
+		self:hide(hide_list[i])
 	end
 end
 
