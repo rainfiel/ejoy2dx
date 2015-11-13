@@ -26,12 +26,12 @@ M.blend_cfg = {
 }
 
 function M.begin_blend(mode)
-	if not mode or mode == "normal" then return true end
+	if not mode or mode == "normal" or mode == "none" then return true end
 	if type(mode) == "function" then
 		mode()
 	else
 		local cfg = rawget(M.blend_cfg, mode)
-		if not cfg then return end
+		if not cfg then return false end
 		shader.blend(cfg[1], cfg[2])
 	end
 	return true

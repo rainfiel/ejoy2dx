@@ -291,9 +291,17 @@ main(int argc, char *argv[]) {
 	startup->auto_rotate = true;
 
 	ejoy2d_win_init(startup);
-
+	
 	ShowWindow(wnd, SW_SHOWDEFAULT);
 	UpdateWindow(wnd);
+
+	if (argc > 4) {
+		for (int i=4; i<argc; i++) {
+			if (strcmp(argv[i], "no_window") == 0) {
+				ShowWindow(wnd, SW_HIDE);
+			}
+		}
+	}
 
 	MSG msg;
 	while (GetMessage(&msg, NULL, 0, 0)) {
