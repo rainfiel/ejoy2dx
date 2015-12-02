@@ -127,6 +127,7 @@ function mt:_draw()
 	end
 	for i=1, hide_list_cnt do
 		self:hide(hide_list[i])
+		hide_list[i] = nil
 	end
 end
 
@@ -169,6 +170,10 @@ function mt:show(spr, zorder, anchor)
 
 	self.sprites[spr] = true
 	self.dirty = true
+
+	if self.drawonce and self.offscreen_id then
+		self.draw_call = self._offscreen_draw
+	end
 end
 
 function mt:hide(spr)
