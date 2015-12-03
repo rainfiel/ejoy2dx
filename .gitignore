@@ -1,7 +1,6 @@
 lib/
 obj/
 output/
-doorkickers/
 ej2dx
 ej2dx.dSYM/*
 *.exe
@@ -20,6 +19,5 @@ ej2dx.dSYM/*
 *_collide.png
 *_peak.json
 win_run*
-sandbox
 xcuserdata/
 project.xcworkspace/

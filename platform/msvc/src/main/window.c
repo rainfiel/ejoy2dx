@@ -6,28 +6,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <mmsystem.h>
-#include <lauxlib.h>
 #include "winfw.h"
 
 #define CLASSNAME L"EJOY"
 #define WINDOWNAME L"EJOY2D"
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
-
-int luaopen_sound(lua_State* L);
-int luaopen_world(lua_State *L);
-int luaopen_fog(lua_State* L);
-
-static void
-_register(lua_State *L, lua_CFunction func, const char * libname) {
-  luaL_requiref(L, libname, func, 0);
-  lua_pop(L, 1);
-}
-
-void init_user_lua_libs(lua_State *L) {
-	_register(L, luaopen_sound, "dk.sound.m");
-	_register(L, luaopen_world, "dk.world.m");
-	_register(L, luaopen_fog, "dk.fog.m");
-}
 
 static DWORD g_lastTime = 0;
 static int g_disable_gesture = 0;

@@ -13,9 +13,10 @@
     <EJ2DX_UTLS>$(EJ2DX_ROOT)\utls</EJ2DX_UTLS>
     <EJ2D_ROOT>$(EJ2DX_PRJ_ROOT)\..\..\ejoy2d</EJ2D_ROOT>
     <EJ2D_LUA>$(EJ2D_ROOT)\lua</EJ2D_LUA>
-    <EJOY2DX_EXE>$(SolutionDir)\..\output\$(Configuration)\</EJOY2DX_EXE>
-    <EJOY2DX_OBJ>$(SolutionDir)\..\obj\$(Configuration)\$(ProjectName)\</EJOY2DX_OBJ>
-    <EJOY2DX_LIB>$(SolutionDir)\..\lib\$(Configuration)\</EJOY2DX_LIB>
+    <EJOY2DX_EXE>$(SolutionDir)..\output\$(Configuration)\</EJOY2DX_EXE>
+    <EJOY2DX_OBJ>$(SolutionDir)..\obj\$(Configuration)\$(ProjectName)</EJOY2DX_OBJ>
+    <EJOY2DX_LIB>$(SolutionDir)..\lib\$(Configuration)\</EJOY2DX_LIB>
+    <EJOY2DX_COMMON_LIB>$(EJ2DX_PRJ_ROOT)\common_lib</EJOY2DX_COMMON_LIB>
   </PropertyGroup>
   <PropertyGroup>
     <IntDir>$(EJOY2D_OBJ)</IntDir>

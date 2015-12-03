@@ -165,7 +165,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(EJOY2DX_LIB);$(EJOY2DX_COMMON_LIB)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;Ws2_32.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
