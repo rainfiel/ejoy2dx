@@ -33,6 +33,9 @@ end
 function game.on_pause()
 end
 
+function game.gesture()
+end
+
 ej.start(game)
 
 
