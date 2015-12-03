@@ -22,7 +22,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\common\user_lua.cpp">
+    <ClInclude Include="..\..\..\common\user_lua.c">
       <Filter>winmain</Filter>
     </ClInclude>
   </ItemGroup>

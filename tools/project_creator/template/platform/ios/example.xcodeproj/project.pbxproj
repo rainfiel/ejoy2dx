@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0A17561C0FDC6000D31C04 /* user_lua.c in Sources */ = {isa = PBXBuildFile; fileRef = AE0A17551C0FDC6000D31C04 /* user_lua.c */; };
 		AE9DE5211A8EF9CD0085776F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5201A8EF9CD0085776F /* main.m */; };
 		AE9DE5241A8EF9CD0085776F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5231A8EF9CD0085776F /* AppDelegate.m */; };
 		AE9DE5271A8EF9CD0085776F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5261A8EF9CD0085776F /* ViewController.m */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		AE9DE51B1A8EF9CD0085776F /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0A17551C0FDC6000D31C04 /* user_lua.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = user_lua.c; path = ../../common/user_lua.c; sourceTree = "<group>"; };
 		AE9DE51F1A8EF9CD0085776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE9DE5201A8EF9CD0085776F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE9DE5221A8EF9CD0085776F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		AE9DE5741A8EFECE0085776F /* app */ = {
 			isa = PBXGroup;
 			children = (
+				AE0A17551C0FDC6000D31C04 /* user_lua.c */,
 				AE9DE7111AA040EB0085776F /* winfw.c */,
 				AE9DE7121AA040EB0085776F /* winfw.h */,
 				AE9DE5221A8EF9CD0085776F /* AppDelegate.h */,
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE0A17561C0FDC6000D31C04 /* user_lua.c in Sources */,
 				AE9DE5271A8EF9CD0085776F /* ViewController.m in Sources */,
 				AE9DE5241A8EF9CD0085776F /* AppDelegate.m in Sources */,
 				AE9DE5211A8EF9CD0085776F /* main.m in Sources */,

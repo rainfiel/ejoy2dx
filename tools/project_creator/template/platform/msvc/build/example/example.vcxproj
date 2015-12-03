@@ -22,7 +22,7 @@
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c" />
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c" />
     <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c" />
-    <ClCompile Include="..\..\..\common\user_lua.cpp" />
+    <ClCompile Include="..\..\..\common\user_lua.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h" />
