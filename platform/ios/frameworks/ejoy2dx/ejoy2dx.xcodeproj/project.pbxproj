@@ -26,6 +26,9 @@
 		AE5C16E21B4FCA4F00666B0E /* lgeometry.c in Sources */ = {isa = PBXBuildFile; fileRef = AE5C16E11B4FCA4F00666B0E /* lgeometry.c */; };
 		AE5C16E61B5E4DAB00666B0E /* lutls.c in Sources */ = {isa = PBXBuildFile; fileRef = AE5C16E41B5E4DAB00666B0E /* lutls.c */; };
 		AE5C16E71B5E4DAB00666B0E /* lutls.h in Headers */ = {isa = PBXBuildFile; fileRef = AE5C16E51B5E4DAB00666B0E /* lutls.h */; };
+		AE75C0CF1C0FDBC700A839A2 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = AE75C0CC1C0FDBC700A839A2 /* easing.c */; };
+		AE75C0D01C0FDBC700A839A2 /* easing.h in Headers */ = {isa = PBXBuildFile; fileRef = AE75C0CD1C0FDBC700A839A2 /* easing.h */; };
+		AE75C0D11C0FDBC700A839A2 /* leasing.c in Sources */ = {isa = PBXBuildFile; fileRef = AE75C0CE1C0FDBC700A839A2 /* leasing.c */; };
 		AE9DE61D1A8F21F70085776F /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE5F21A8F21F60085776F /* array.h */; };
 		AE9DE61E1A8F21F70085776F /* dfont.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE5F31A8F21F60085776F /* dfont.c */; };
 		AE9DE61F1A8F21F70085776F /* dfont.h in Headers */ = {isa = PBXBuildFile; fileRef = AE9DE5F41A8F21F60085776F /* dfont.h */; };
@@ -160,6 +163,9 @@
 		AE5C16E11B4FCA4F00666B0E /* lgeometry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgeometry.c; path = ../../../../../ejoy2d/lib/lgeometry.c; sourceTree = "<group>"; };
 		AE5C16E41B5E4DAB00666B0E /* lutls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lutls.c; path = ../../../../../ejoy2d/lib/lutls.c; sourceTree = "<group>"; };
 		AE5C16E51B5E4DAB00666B0E /* lutls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lutls.h; path = ../../../../../ejoy2d/lib/lutls.h; sourceTree = "<group>"; };
+		AE75C0CC1C0FDBC700A839A2 /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = easing.c; path = ../../../../../src/clib/tween/easing.c; sourceTree = "<group>"; };
+		AE75C0CD1C0FDBC700A839A2 /* easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = easing.h; path = ../../../../../src/clib/tween/easing.h; sourceTree = "<group>"; };
+		AE75C0CE1C0FDBC700A839A2 /* leasing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = leasing.c; path = ../../../../../src/clib/tween/leasing.c; sourceTree = "<group>"; };
 		AE9DDFAB1A8DAFE90085776F /* libejoy2dx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libejoy2dx.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9DE46E1A8E09580085776F /* lua.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lua.xcodeproj; path = ../lua/lua.xcodeproj; sourceTree = "<group>"; };
 		AE9DE5F21A8F21F60085776F /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = array.h; path = ../../../../../ejoy2d/lib/array.h; sourceTree = "<group>"; };
@@ -262,6 +268,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE75C0CA1C0FDBA900A839A2 /* tween */ = {
+			isa = PBXGroup;
+			children = (
+				AE75C0CC1C0FDBC700A839A2 /* easing.c */,
+				AE75C0CD1C0FDBC700A839A2 /* easing.h */,
+				AE75C0CE1C0FDBC700A839A2 /* leasing.c */,
+			);
+			name = tween;
+			sourceTree = "<group>";
+		};
 		AE9DDFA21A8DAFE90085776F = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +394,7 @@
 		AE9DE6871A8F2EAC0085776F /* ejoy2dx */ = {
 			isa = PBXGroup;
 			children = (
+				AE75C0CA1C0FDBA900A839A2 /* tween */,
 				AED31F341BE3435E00763B22 /* Liekkas */,
 				E6E8D4341B7E40870049F8AC /* sproto */,
 				E6E8D4311B7E3F470049F8AC /* socket */,
@@ -501,6 +518,7 @@
 				AE9DE6371A8F21F70085776F /* ppm.h in Headers */,
 				AE9DE6291A8F21F70085776F /* lmatrix.h in Headers */,
 				AE9DE63F1A8F21F70085776F /* screenshot.h in Headers */,
+				AE75C0D01C0FDBC700A839A2 /* easing.h in Headers */,
 				AE9DE6271A8F21F70085776F /* list.h in Headers */,
 				AE9DE6471A8F21F70085776F /* texture.h in Headers */,
 				AED31F461BE343AD00763B22 /* oal_decode.h in Headers */,
@@ -670,6 +688,7 @@
 				AE5C16E61B5E4DAB00666B0E /* lutls.c in Sources */,
 				E6E8D42F1B7E3F240049F8AC /* lpeg.c in Sources */,
 				AE9DE62E1A8F21F70085776F /* lsprite.c in Sources */,
+				AE75C0D11C0FDBC700A839A2 /* leasing.c in Sources */,
 				AE9DE63A1A8F21F70085776F /* scissor.c in Sources */,
 				AE9DE6231A8F21F70085776F /* fault.c in Sources */,
 				AE5C16E21B4FCA4F00666B0E /* lgeometry.c in Sources */,
@@ -677,6 +696,7 @@
 				AE9DE68E1A8F2EE90085776F /* serialize.c in Sources */,
 				AE9DE6461A8F21F70085776F /* texture.c in Sources */,
 				AE9DE6301A8F21F70085776F /* matrix.c in Sources */,
+				AE75C0CF1C0FDBC700A839A2 /* easing.c in Sources */,
 				AED31F3F1BE3439800763B22 /* ad_tools.c in Sources */,
 				AE9DE62D1A8F21F70085776F /* lshader.c in Sources */,
 				E6E8D4331B7E406D0049F8AC /* lsocket.c in Sources */,
