@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "winfw.h"
 
+#import <lua.h>
+#import <lauxlib.h>
 
 static ViewController* _controller = nil;
 
@@ -37,6 +39,7 @@ static ViewController* _controller = nil;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	[self setGesture ];
 	
 	self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 	
@@ -59,14 +62,15 @@ static ViewController* _controller = nil;
 	
 	NSString *appFolderPath = [[NSBundle mainBundle] resourcePath];
 	const char* folder = [appFolderPath UTF8String];
-	#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
 		screenScale = [[UIScreen mainScreen] nativeScale];
 	}
-	#endif
+#endif
 	
 	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
 	startup->folder = (char*)folder;
+	startup->lua_root = NULL;
 	startup->script = NULL;
 	startup->orix = bounds.origin.x;
 	startup->oriy = bounds.origin.y;
@@ -96,6 +100,11 @@ static ViewController* _controller = nil;
 	}
 }
 
+-(BOOL)prefersStatusBarHidden
+{
+	return YES;
+}
+
 - (void)update
 {
 	ejoy2d_win_update(self.timeSinceLastUpdate);
@@ -120,10 +129,109 @@ static ViewController* _controller = nil;
 	// Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate {
+	return YES;
+}
+
+- (void)viewDidLayoutSubviews {
+	CGRect bounds = [[UIScreen mainScreen] bounds];
+	
+	
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+	float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+	if (version >= 8.0) {
+		ejoy2d_win_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
+		return;
+	}
+#endif
+	
+	UIDeviceOrientation ori = [[UIDevice currentDevice] orientation];
+	if (ori == UIDeviceOrientationLandscapeLeft || ori == UIDeviceOrientationLandscapeRight) {
+		ejoy2d_win_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
+	} else {
+		ejoy2d_win_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
+	}
+}
+
+//gesture
 - (BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gr {
 	return (disableGesture == 0 ? YES : NO);
 }
 
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *) gr shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *) ogr {
+	return YES;
+}
+
+- (void) setGesture
+{
+	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]
+																 initWithTarget:self action:@selector(handlePan:)];
+	pan.delegate = self;
+	[[self view] addGestureRecognizer:pan];
+	
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+																 initWithTarget:self action:@selector(handleTap:)];
+	tap.delegate = self;
+	[[self view] addGestureRecognizer:tap];
+	
+	UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]
+																		 initWithTarget:self action:@selector(handlePinch:)];
+	pinch.delegate = self;
+	[[self view] addGestureRecognizer:pinch];
+	
+	UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc]
+																				 initWithTarget:self action:@selector(handleLongPress:)];
+	press.delegate = self;
+	[[self view] addGestureRecognizer:press];
+}
+
+static int
+getStateCode(UIGestureRecognizerState state) {
+	switch(state) {
+		case UIGestureRecognizerStatePossible: return STATE_POSSIBLE;
+		case UIGestureRecognizerStateBegan: return STATE_BEGAN;
+		case UIGestureRecognizerStateChanged: return STATE_CHANGED;
+		case UIGestureRecognizerStateEnded: return STATE_ENDED;
+		case UIGestureRecognizerStateCancelled: return STATE_CANCELLED;
+		case UIGestureRecognizerStateFailed: return STATE_FAILED;
+			
+			// recognized == ended
+			// case UIGestureRecognizerStateRecognized: return STATE_RECOGNIZED;
+			
+		default: return STATE_POSSIBLE;
+	}
+}
+
+- (void) handlePan:(UIPanGestureRecognizer *) gr {
+	int state = getStateCode(gr.state);
+	CGPoint trans = [gr translationInView:self.view];
+	// CGPoint p = [gr locationInView:self.view];
+	CGPoint v = [gr velocityInView:self.view];
+	[gr setTranslation:CGPointMake(0,0) inView:self.view];
+	ejoy2d_win_gesture(1, trans.x, trans.y, v.x, v.y, state);
+}
+
+- (void) handleTap:(UITapGestureRecognizer *) gr {
+	int state = getStateCode(gr.state);
+	CGPoint p = [gr locationInView:self.view];
+	ejoy2d_win_gesture(2, p.x, p.y, 0, 0, state);
+}
+
+- (void) handlePinch:(UIPinchGestureRecognizer *) gr {
+	int state = getStateCode(gr.state);
+	CGPoint p = [gr locationInView:self.view];
+	ejoy2d_win_gesture(3, p.x, p.y, (gr.scale * 1024.0), 0.0, state);
+	gr.scale = 1;
+}
+
+- (void) handleLongPress:(UILongPressGestureRecognizer *) gr {
+	int state = getStateCode(gr.state);
+	CGPoint p = [gr locationInView:self.view];
+	ejoy2d_win_gesture(4, p.x, p.y, 0, 0, state);
+}
+
+
+//touch
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {

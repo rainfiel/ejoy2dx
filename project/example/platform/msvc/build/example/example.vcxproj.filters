@@ -21,4 +21,9 @@
       <Filter>winmain</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\common\user_lua.c">
+      <Filter>winmain</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

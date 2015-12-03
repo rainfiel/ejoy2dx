@@ -22,12 +22,13 @@
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c" />
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c" />
     <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c" />
+    <ClCompile Include="..\..\..\common\user_lua.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3ddb4500-aea3-11e4-b96d-febcc46da803}</ProjectGuid>
+    <ProjectGuid>{c93568b0-9967-11e5-a2c9-005056c00008}</ProjectGuid>
     <RootNamespace>example</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -77,7 +78,7 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>echo start $(EJOY2DX_EXE)$(TargetName)$(TargetExt) $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
+      <Command>echo $(EJOY2DX_EXE)$(TargetName)$(TargetExt) $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +94,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>echo $(EJOY2DX_EXE)$(TargetName)$(TargetExt) $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
+      <Command>echo start $(EJOY2DX_EXE)$(TargetName)$(TargetExt) $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
