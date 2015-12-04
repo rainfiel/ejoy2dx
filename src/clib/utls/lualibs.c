@@ -20,6 +20,7 @@ int luaopen_sproto_core(lua_State *L);
 int luaopen_lpeg (lua_State *L);
 int luaopen_oal(lua_State *L);
 int luaopen_oal_decode(lua_State *L);
+int luaopen_lzma(lua_State *L);
 
 void
 init_lua_libs(lua_State* L) {
@@ -34,6 +35,7 @@ init_lua_libs(lua_State* L) {
 	_register(L, luaopen_lpeg, "ejoy2dx.lpeg.c");
 	_register(L, luaopen_oal, "oal");
 	_register(L, luaopen_oal_decode, "oal.decode");
+	_register(L, luaopen_lzma, "ejoy2dx.lzma.c");
   
 #ifdef DEBUG
   _register(L, luaopen_monitor, "ejoy2dx.lmonitor.c");

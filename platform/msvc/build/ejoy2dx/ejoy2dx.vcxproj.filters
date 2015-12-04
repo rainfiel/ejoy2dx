@@ -40,6 +40,9 @@
     <Filter Include="ejoy2dx\Liekkas\decode">
       <UniqueIdentifier>{eab05d84-aa54-40f4-9f4a-29ebdaaf65d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\lzma">
+      <UniqueIdentifier>{e8ce14a0-f0ff-4e24-a646-c557b0c15495}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -179,6 +182,72 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.h">
       <Filter>ejoy2dx\Liekkas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\7zCrc.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Bcj2.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Bra.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\CpuArch.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Delta.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\LzAlloc.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\LzFind.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\LzHash.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Lzma2Dec.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Lzma2Enc.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Lzma86.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\LzmaDec.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\LzmaEnc.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\LzmaLib.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Ppmd.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Ppmd7.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\RotateDefs.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Sha256.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Types.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\Xz.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\XzCrc64.h">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\lzma\XzEnc.h">
+      <Filter>ejoy2dx\lzma</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +391,90 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_wav.c">
       <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrcOpt.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\7zStream.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Bcj2.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Bra.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Bra86.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\BraIA64.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\CpuArch.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Delta.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\LzAlloc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\LzFind.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Lzma2Dec.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Lzma2Enc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Lzma86Dec.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Lzma86Enc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\LzmaDec.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\LzmaEnc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\LzmaLib.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Ppmd7.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Ppmd7Dec.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Ppmd7Enc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Sha256.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\Xz.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\XzCrc64.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\XzDec.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\XzEnc.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\XzIn.c">
+      <Filter>ejoy2dx\lzma</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\lzma\llzma.c">
+      <Filter>ejoy2dx\lzma</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
