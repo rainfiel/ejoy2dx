@@ -33,6 +33,15 @@ local mine = ejoy2dx.sprite("sample.lua", "mine")
 mine:ps(300, 60, 0.7)
 sample_render:show(mine)
 
+
+local grid = require "ejoy2dx.grid"
+local g = grid(999, {"", "雄鹿", "野兔"})
+g:show()
+g:position(340, 20)
+g:add_row({"雄鹿",	"3, 3", "0, 2"})
+g:add_row({"野兔",	"2, 0", "2, 2"})
+
+
 local game = {}
 function game.update()
 	if not ejoy2dx.game_stat.is_active then

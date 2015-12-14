@@ -3,8 +3,8 @@ local simple_ui = require "ejoy2dx.simple_ui"
 
 local defalut_cell_width = 110
 local defalut_cell_height = 30
-local defalut_cell_frame_color = 0xFF669977
-local defalut_cell_color = 0xFF666666
+local defalut_cell_frame_color = 0xFF000000
+local defalut_cell_color = 0xFF333333
 local default_font_size = 16
 local default_font_y_offset = (defalut_cell_height - default_font_size)/2
 
