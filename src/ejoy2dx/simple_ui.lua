@@ -2,6 +2,7 @@
 local geo = require "ejoy2d.geometry"
 local render_mgr = require "ejoy2dx.render"
 local fw = require "ejoy2d.framework"
+local spr = require "ejoy2d.sprite.c"
 
 local screen_width = fw.GameInfo.width
 local screen_height = fw.GameInfo.height
@@ -43,13 +44,21 @@ function panel_mt:draw()
 	if self.matrix then
 		geo.matrix(table.unpack(self.matrix))
 	end
+	local has_scissor = false
 	for k, v in ipairs(self.controls) do
-		local ctrl = rawget(geo, v[1])
+		local head = v[1]
+		local ctrl = rawget(geo, head)
 		if ctrl then
 			ctrl(table.unpack(v, 2))
+			has_scissor = has_scissor or head=="scissor"
+		elseif head == "label" then
+			spr.drawtext(table.unpack(v, 2))
 		else
-			v[1]:draw()
+			head:draw()
 		end
+	end
+	if has_scissor then
+		geo.scissor()
 	end
 end
 
@@ -57,6 +66,8 @@ end
 -- geo.box(x,y,w,h,color)
 -- geo.polygon(hexagon, color)
 -- geo.frame(x,y,w,h,color,border)
+-- geo.scissor(x,y,w,h)
+-- spr.drawtext(text,x,y,w,charsize,color,edge,align)
 function panel_mt:add_control(...)
 	table.insert(self.controls, {...})
 end
