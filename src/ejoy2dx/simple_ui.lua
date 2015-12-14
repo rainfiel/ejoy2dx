@@ -2,7 +2,7 @@
 local geo = require "ejoy2d.geometry"
 local render_mgr = require "ejoy2dx.render"
 local fw = require "ejoy2d.framework"
-local spr = require "ejoy2d.sprite.c"
+local spr = require "ejoy2d.sprite"
 
 local screen_width = fw.GameInfo.width
 local screen_height = fw.GameInfo.height
@@ -30,7 +30,6 @@ function panel_mt:position(x, y)
 	end
 	self.matrix[13] = 2 * x / screen_width
 	self.matrix[14] = -2 * y / screen_height
-	print(table.concat(self.matrix, ";"))
 end
 
 function panel_mt:scale(scale1, scale2)
