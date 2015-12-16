@@ -28,6 +28,7 @@ WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /*lpCmdLine*
 		freopen_s(&new_file, "CONIN$", "r", stdin);
 		freopen_s(&new_file, "CONOUT$", "w", stdout);
 		freopen_s(&new_file, "CONOUT$", "w", stderr);
+		SetConsoleOutputCP(CP_UTF8);
 		onexit(exit_event);
 	}
 

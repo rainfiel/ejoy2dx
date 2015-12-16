@@ -19,17 +19,17 @@ function M.frame_to_seconds(frame)
 	return frame / M.frame_per_second
 end
 
-function M.read_file(path)
+function M.read_file(path,...)
 	path = get_path(path)
-	return os_utls.read_file(path)
+	return os_utls.read_file(path,...)
 end
 
-function M.write_file(path, data)
+function M.write_file(path, data,...)
 	path = get_path(path)
 	if os_utls.exists(path) then
 		os_utls.delete_file(path)
 	end
-	os_utls.write_file(path, data)
+	os_utls.write_file(path, data,...)
 end
 
 function M.delete_file(path)
