@@ -33,6 +33,9 @@ function panel_mt:position(x, y)
 end
 
 function panel_mt:scale(scale1, scale2)
+	if not self.matrix then
+		self.matrix = {1.0,0,0,0,	0,1.0,0,0,	0,0,1.0,0,	0,0,0,1.0}
+	end
 	scale2 = scale2 or scale1
 	self.matrix[1] = scale1
 	self.matrix[6] = scale2
