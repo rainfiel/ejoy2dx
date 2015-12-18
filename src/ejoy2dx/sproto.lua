@@ -82,6 +82,25 @@ function sproto:pdecode(typename, ...)
 	return core.decode(st, core.unpack(...))
 end
 
+function sproto:default(typename, type)
+	if type == nil then
+		return core.default(querytype(self, typename))
+	else
+		local p = queryproto(self, typename)
+		if type == "REQUEST" then
+			if p.request then
+				return core.default(p.request)
+			end
+		elseif type == "RESPONSE" then
+			if p.response then
+				return core.default(p.response)
+			end
+		else
+			error "Invalid type"
+		end
+	end
+end
+
 local function queryproto(self, pname)
 	local v = self.__pcache[pname]
 	if not v then
