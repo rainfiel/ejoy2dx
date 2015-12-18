@@ -1,11 +1,11 @@
 
 local simple_ui = require "ejoy2dx.simple_ui"
 
-local defalut_cell_width = 110
-local defalut_cell_height = 30
+local defalut_cell_width = 70
+local defalut_cell_height = 18
 local defalut_cell_frame_color = 0xFF000000
 local defalut_cell_color = 0xFF333333
-local default_font_size = 16
+local default_font_size = 12
 local default_font_y_offset = (defalut_cell_height - default_font_size)/2
 
 local row_mt = {}
@@ -68,6 +68,10 @@ end
 
 function grid_mt:scale( ... )
 	self.root:scale(...)
+end
+
+function grid_mt:clear()
+	self.rows = {}
 end
 
 return function(layer, titles)
