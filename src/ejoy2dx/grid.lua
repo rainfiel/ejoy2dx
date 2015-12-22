@@ -44,7 +44,6 @@ function grid_mt:set_title(titles)
 			defalut_cell_width, defalut_cell_height, defalut_cell_frame_color,2)
 		cell:add_control("label", v,x+defalut_cell_width/2,default_font_y_offset,
 			0,default_font_size,0xFF00FF00,true)
-		table.insert(self.titles, cell)
 	end
 end
 
@@ -52,6 +51,14 @@ function grid_mt:add_row(data)
 	local row = setmetatable({data=data, parent=self, index=#self.rows+1}, row_mt)
 	row:init()
 	table.insert(self.rows, row)
+end
+
+function grid_mt:width()
+	return defalut_cell_width * #self.titles
+end
+
+function grid_mt:row_height()
+	return defalut_cell_height
 end
 
 function grid_mt:show()
