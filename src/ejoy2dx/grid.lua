@@ -25,6 +25,12 @@ function row_mt:init()
 	end
 end
 
+function row_mt:hide()
+	for k, v in ipairs(self.cells) do
+		v:hide()
+	end
+end
+
 ----------------------------------------------------------------------------
 
 local grid_mt = {}
@@ -71,6 +77,9 @@ function grid_mt:scale( ... )
 end
 
 function grid_mt:clear()
+	for k, v in ipairs(self.rows) do
+		v:hide()
+	end
 	self.rows = {}
 end
 
