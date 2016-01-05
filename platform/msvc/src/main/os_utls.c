@@ -66,6 +66,47 @@ _exists(lua_State* L) {
 	return 1;
 }
 
+// modes:
+//   "d" for Documents
+//   "l" for Library
+//   "c" for Caches
+static int
+_get_path(lua_State* L) {
+	const char* filename = luaL_checkstring(L, 1);
+	const char* mode = luaL_checkstring(L, 2);
+
+	luaL_requiref(L, "ejoy2d.framework", NULL, 0);
+	lua_getfield(L, -1, "WorkDir");
+	const char* root = luaL_checkstring(L, -1);
+	lua_pop(L, 2);
+	
+	const char* mode_name;
+	switch (mode[0])
+	{
+	case 'd':
+		mode_name = "Documents/";
+		break;
+	case 'l':
+		mode_name = "Library/";
+		break;
+	case 'c':
+		mode_name = "Library/Caches";
+		break;
+	default:
+		luaL_error(L, "unsupport path mode:%s", mode);
+		return 0;
+	}
+	luaL_Buffer buffer;
+	luaL_buffinit(L, &buffer);
+	luaL_addstring(&buffer, root);
+	luaL_addstring(&buffer, "/data/");
+	luaL_addstring(&buffer, mode_name);
+	luaL_addstring(&buffer, filename);
+	luaL_pushresult(&buffer);
+
+	return 1;
+}
+
 static char*
 to_unicode(const char* str)  
 {  
@@ -112,6 +153,7 @@ luaopen_osutil(lua_State* L) {
 		{"write_file", _write_file},
 		{"delete_file", _delete_file},
 		{"to_utf8", _to_utf8},
+		{"get_path", _get_path},
 		
 		{NULL, NULL}
 	};
