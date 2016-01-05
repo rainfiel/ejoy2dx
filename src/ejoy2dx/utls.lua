@@ -3,6 +3,11 @@ local fw = require "ejoy2d.framework"
 local json = require "ejoy2dx.json"
 local os_utls = require "ejoy2dx.os_utls"
 
+ -- modes:
+ --   "d" for Documents
+ --   "l" for Library
+ --   "c" for Caches
+ --		nil for bundle
 local function get_path(path, mode)
 	if not mode then
 		return string.format("%s/asset/%s", fw.WorkDir, path)
@@ -23,42 +28,42 @@ function M.frame_to_seconds(frame)
 	return frame / M.frame_per_second
 end
 
-function M.read_file(path,...)
-	path = get_path(path)
+function M.read_file(path,mode,...)
+	path = get_path(path,mode)
 	return os_utls.read_file(path,...)
 end
 
-function M.write_file(path, data,...)
-	path = get_path(path)
+function M.write_file(path,mode,data,...)
+	path = get_path(path,mode)
 	if os_utls.exists(path) then
 		os_utls.delete_file(path)
 	end
 	os_utls.write_file(path, data,...)
 end
 
-function M.delete_file(path)
-	path = get_path(path)
+function M.delete_file(path,mode)
+	path = get_path(path,mode)
 	if os_utls.exists(path) then
 		os_utls.delete_file(path)
 	end
 end
 
-function M.load_json(path)
-	local str = M.read_file(path)
+function M.load_json(path,mode)
+	local str = M.read_file(path,mode)
 	if not str then return end
 	return json:decode(str)
 end
 
-function M.save_json(path, tbl)
+function M.save_json(path,mode,tbl)
 	local data = json:encode(tbl)
 	if not data then return end
-	M.write_file(path, data)
+	M.write_file(path,mode,data)
 end
 
-function M.save_json_pretty(path, tbl)
+function M.save_json_pretty(path,mode,tbl)
 	local data = json:encode_pretty(tbl)
 	if not data then return end
-	path = get_path(path)
+	path = get_path(path,mode)
 	os_utls.write_file(path, data)
 end
 
