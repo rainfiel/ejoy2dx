@@ -70,6 +70,35 @@ _delete_file(lua_State* L) {
   return 0;
 }
 
+// modes:
+//   "d" for Documents
+//   "l" for Library
+//   "c" for Caches
+static int
+_get_path(lua_State* L) {
+	const char* filename = luaL_checkstring(L, 1);
+	const char* mode = luaL_checkstring(L, 2);
+	NSSearchPathDirectory directory;
+	if(mode[0] == 'd') {
+		directory = NSDocumentDirectory;
+	} else if(mode[0] == 'l') {
+		directory = NSLibraryDirectory;
+	} else if(mode[0] == 'c') {
+		directory = NSCachesDirectory;
+	} else {
+		return luaL_error(L, "unknown mode '%s' for 'get_path'", mode);
+	}
+	
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(directory, NSUserDomainMask, YES);
+	if([paths count] == 0) {
+		return luaL_error(L, "NSSearchPathForDirectoriesInDomains returns nothing!");
+	}
+	
+	NSString* nsFilename = [NSString stringWithUTF8String:filename];
+	NSString* path = [[paths objectAtIndex:0] stringByAppendingPathComponent:nsFilename];
+	lua_pushstring(L, [path UTF8String]);
+	return 1;
+}
 
 int luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
@@ -79,6 +108,7 @@ int luaopen_osutil(lua_State* L) {
 		{"read_file", _read_file},
 		{"write_file", _write_file},
 		{"delete_file", _delete_file},
+		{"get_path", _get_path},
 		
 		{NULL, NULL}
 	};
