@@ -3,8 +3,12 @@ local fw = require "ejoy2d.framework"
 local json = require "ejoy2dx.json"
 local os_utls = require "ejoy2dx.os_utls"
 
-local function get_path(path)
-	return string.format("%s/asset/%s", fw.WorkDir, path)
+local function get_path(path, mode)
+	if not mode then
+		return string.format("%s/asset/%s", fw.WorkDir, path)
+	else
+		return os_utls.get_path(path, mode)
+	end
 end
 
 local M = {}
