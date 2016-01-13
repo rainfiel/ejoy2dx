@@ -92,10 +92,10 @@ function mt:step()
 			return val, false
 		elseif self.wrap_mode == wrap_modes.Loop then
 			self.step_index = 0
-			return val, false
+			return self:step()
 		elseif self.wrap_mode == wrap_modes.PingPong then
 			self.delta = -self.delta
-			return val, false
+			return self:step()
 		end
 	end
 	return val, true
