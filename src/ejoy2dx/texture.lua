@@ -3,7 +3,7 @@ local fw = require "ejoy2d.framework"
 local serialize = require "ejoy2dx.serialize.c"
 
 -- This limit defined in texture.c
-local MAX_TEXTURE = 128
+local MAX_TEXTURE = 512
 
 local M = {}
 

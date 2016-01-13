@@ -10,9 +10,6 @@
 #define STATE_CANCELLED   (4)
 #define STATE_FAILED      (5)
 
-#define WIDTH 1024
-#define HEIGHT 768
-
 #define TOUCH_BEGIN 0
 #define TOUCH_END 1
 #define TOUCH_MOVE 2
@@ -21,9 +18,9 @@ struct STARTUP_INFO{
 	float orix, oriy;
 	float width, height;
 	float scale;
-	char* folder;
-	char* lua_root;
-	char* script;
+	const char* folder;
+	const char* lua_root;
+	const char* script;
 	void* serialized;
 	int reload_count;
 	bool auto_rotate;

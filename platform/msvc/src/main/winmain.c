@@ -20,19 +20,9 @@ exit_event() {
 int __stdcall
 WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /*lpCmdLine*/, int /*nCmdShow*/) {
 	int argc = __argc;
-	if (strcmp(__argv[argc-1], "no_console") == 0) {
-		argc--;
-	} else {
-		FILE* new_file;
-		AllocConsole();
-		freopen_s(&new_file, "CONIN$", "r", stdin);
-		freopen_s(&new_file, "CONOUT$", "w", stdout);
-		freopen_s(&new_file, "CONOUT$", "w", stderr);
-		SetConsoleOutputCP(CP_UTF8);
-		onexit(exit_event);
-	}
 
-	int retval = main(argc, __argv);
+	onexit(exit_event);
+	int retval = main(__argc, __argv);
 	has_exception = false;
 	return retval;
 }

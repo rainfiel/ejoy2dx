@@ -8,6 +8,11 @@
 #include <mmsystem.h>
 #include "winfw.h"
 
+#include "argparse.h"
+
+static int WIDTH = 1024;
+static int HEIGHT = 768;
+
 #define CLASSNAME L"EJOY"
 #define WINDOWNAME L"EJOY2D"
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
@@ -246,24 +251,41 @@ create_window(int w, int h) {
 }
 
 int
-main(int argc, char *argv[]) {
+main(int argc, const char *argv[]) {
+	int no_window = 0;
+	int no_console = 0;
+	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
+	startup->folder = NULL;
+	startup->lua_root = NULL;
+	startup->script = NULL;
+
+	struct argparse_option options[] = {
+		OPT_BOOLEAN('e', "no_window", &no_window, "hide main window"),
+		OPT_BOOLEAN('c', "no_console", &no_console, "hide console"),
+		OPT_STRING('d', "work_dir", &startup->folder, "work directory"),
+		OPT_STRING('r', "lua_root", &startup->lua_root, "lua script path"),
+		OPT_STRING('m', "main_lua", &startup->script, "startup lua script file"),
+		OPT_INTEGER('w', "width", &WIDTH, "windows width"),
+		OPT_INTEGER('h', "height", &HEIGHT, "windows height"),
+	};
+	struct argparse argparse;
+  argparse_init(&argparse, options, NULL, 0);
+  argparse_describe(&argparse, NULL, NULL);
+  argc = argparse_parse(&argparse, argc, argv);
+
+	if (no_console==0){
+		FILE* new_file;
+		AllocConsole();
+		freopen_s(&new_file, "CONIN$", "r", stdin);
+		freopen_s(&new_file, "CONOUT$", "w", stdout);
+		freopen_s(&new_file, "CONOUT$", "w", stderr);
+		SetConsoleOutputCP(CP_UTF8);
+	}
+
+
 	register_class();
 	HWND wnd = create_window(WIDTH,HEIGHT);
 
-	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
-	startup->folder = "";
-	startup->script = NULL;
-	if (argc >= 2){
-		startup->folder = argv[1];
-		startup->script = NULL;
-		startup->lua_root = NULL;
-	} 
-	if (argc >= 3) {
-		startup->script = argv[2];
-	} 
-	if (argc >= 4) {
-		startup->lua_root = argv[3];
-	}
 	startup->orix = 0;
 	startup->oriy = 0;
 	startup->width = WIDTH;
@@ -278,12 +300,8 @@ main(int argc, char *argv[]) {
 	ShowWindow(wnd, SW_SHOWDEFAULT);
 	UpdateWindow(wnd);
 
-	if (argc > 4) {
-		for (int i=4; i<argc; i++) {
-			if (strcmp(argv[i], "no_window") == 0) {
-				ShowWindow(wnd, SW_HIDE);
-			}
-		}
+	if (no_window == 1) {
+		ShowWindow(wnd, SW_HIDE);
 	}
 
 	MSG msg;
