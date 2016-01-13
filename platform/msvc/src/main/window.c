@@ -258,6 +258,7 @@ main(int argc, const char *argv[]) {
 	startup->folder = NULL;
 	startup->lua_root = NULL;
 	startup->script = NULL;
+	startup->user_data = NULL;
 
 	struct argparse_option options[] = {
 		OPT_BOOLEAN('e', "no_window", &no_window, "hide main window"),
@@ -265,6 +266,7 @@ main(int argc, const char *argv[]) {
 		OPT_STRING('d', "work_dir", &startup->folder, "work directory"),
 		OPT_STRING('r', "lua_root", &startup->lua_root, "lua script path"),
 		OPT_STRING('m', "main_lua", &startup->script, "startup lua script file"),
+		OPT_STRING('u', "user_data", &startup->user_data, "user data"),
 		OPT_INTEGER('w', "width", &WIDTH, "windows width"),
 		OPT_INTEGER('h', "height", &HEIGHT, "windows height"),
 	};
@@ -281,7 +283,6 @@ main(int argc, const char *argv[]) {
 		freopen_s(&new_file, "CONOUT$", "w", stderr);
 		SetConsoleOutputCP(CP_UTF8);
 	}
-
 
 	register_class();
 	HWND wnd = create_window(WIDTH,HEIGHT);

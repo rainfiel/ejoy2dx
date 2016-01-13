@@ -126,6 +126,12 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 		lua_pushnil(L);
 	lua_setfield(L, -2, "serialized");
 
+	if (start->user_data)
+		lua_pushstring(L, start->user_data);
+	else
+		lua_pushnil(L);
+	lua_setfield(L, -2, "user_data");
+
 	lua_pushinteger(L, LOGIC_FRAME);
 	lua_setfield(L, -2, "logic_frame");
 }

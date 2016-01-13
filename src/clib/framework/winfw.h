@@ -21,6 +21,7 @@ struct STARTUP_INFO{
 	const char* folder;
 	const char* lua_root;
 	const char* script;
+	const char* user_data;
 	void* serialized;
 	int reload_count;
 	bool auto_rotate;
