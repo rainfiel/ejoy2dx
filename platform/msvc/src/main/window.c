@@ -230,7 +230,7 @@ register_class()
 }
 
 static HWND
-create_window(int w, int h) {
+create_window(int w, int h, const char* title) {
 	RECT rect;
 
 	rect.left=0;
@@ -240,12 +240,26 @@ create_window(int w, int h) {
 
 	AdjustWindowRect(&rect,WINDOWSTYLE,0);
 
-	HWND wnd=CreateWindowExW(0,CLASSNAME,WINDOWNAME,
+	int len = lstrlenA(title);
+	int w_len = MultiByteToWideChar(CP_ACP, 0, title, len, NULL, 0);
+	wchar_t * w_title=NULL;
+	if (w_len>0)
+	{
+			w_title = new wchar_t[w_len+1];
+			MultiByteToWideChar(CP_ACP, 0, title, len, w_title, w_len);
+			w_title[w_len] = 0;
+	} 
+
+	HWND wnd=CreateWindowExW(0,CLASSNAME,w_title,
 		WINDOWSTYLE, CW_USEDEFAULT,0,
 		rect.right-rect.left,rect.bottom-rect.top,
 		0,0,
 		GetModuleHandleW(0),
 		0);
+		
+	if (w_title) {
+		delete [] w_title;
+	}
 
 	return wnd;
 }
@@ -254,6 +268,7 @@ int
 main(int argc, const char *argv[]) {
 	int no_window = 0;
 	int no_console = 0;
+	const char* title = "EJOY2D";
 	struct STARTUP_INFO* startup = (struct STARTUP_INFO*)malloc(sizeof(struct STARTUP_INFO));
 	startup->folder = NULL;
 	startup->lua_root = NULL;
@@ -269,6 +284,7 @@ main(int argc, const char *argv[]) {
 		OPT_STRING('u', "user_data", &startup->user_data, "user data"),
 		OPT_INTEGER('w', "width", &WIDTH, "windows width"),
 		OPT_INTEGER('h', "height", &HEIGHT, "windows height"),
+		OPT_STRING('t', "title", &title, "windows title"),
 	};
 	struct argparse argparse;
   argparse_init(&argparse, options, NULL, 0);
@@ -285,7 +301,7 @@ main(int argc, const char *argv[]) {
 	}
 
 	register_class();
-	HWND wnd = create_window(WIDTH,HEIGHT);
+	HWND wnd = create_window(WIDTH,HEIGHT,title);
 
 	startup->orix = 0;
 	startup->oriy = 0;
