@@ -101,6 +101,10 @@ function mt:step()
 	return val, true
 end
 
+function mt:get_value(index)
+	return self.container[index]
+end
+
 function mt:test()
 	if self.wrap_mode == wrap_modes.Once then
 		while true do

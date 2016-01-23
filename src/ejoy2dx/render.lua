@@ -4,6 +4,9 @@ local fw = require "ejoy2d.framework"
 local blend = require "ejoy2dx.blend"
 local image_c = require "ejoy2dx.image.c"
 local texture = require "ejoy2dx.texture"
+local tween = require "ejoy2dx.tween"
+
+local floor = math.floor
 
 local RenderManager = {}
 RenderManager.renders = {}
@@ -17,6 +20,7 @@ function mt:init()
 	self.sorted_sprites = {}
 	self.dirty = false
 	self.show_order = 0
+	self.fadeout_tween = nil
 
 	self.draw_call = self._draw
 end
@@ -100,28 +104,50 @@ function mt:_draw()
 
 	hide_list_cnt = 0
 	local render
+	local hided = false
+	local alpha
 	for k, v in ipairs(self.sorted_sprites) do
+		hided = false
+		alpha = 0xFF
 		render = v.usr_data.render
-		if render.fade then
-			local rate, alive = render.fade:step()
+		local fade = render.fade
+		if fade then
+			local rate, alive = fade:step()
 			if alive then
-				v.color = math.floor(0xFF * rate) << 24 | 0xFFFFFF
+				alpha = floor(alpha * rate)
+				v.color = alpha << 24 | 0xFFFFFF
 			else
 				render.fade = nil
 			end
 		end
-		if render.blend_mode then
-			if blend.begin_blend(render.blend_mode) then
-				v:draw(render.anchor)
-				blend.end_blend()
+		local fadeout_index = render.fadeout_index
+		if fadeout_index then
+			local rate = self.fadeout_tween:get_value(fadeout_index)
+			if rate then
+				render.fadeout_index = fadeout_index + 1
+				alpha = floor(alpha * rate)
+				v.color = alpha << 24 | 0xFFFFFF
+			else
+				v.color = 0xFFFFFFFF
+				render.fadeout_index = nil
+				hided = true
 			end
-		else
-			v:draw(render.anchor)
 		end
-		if render.on_draw then
-			if render.on_draw() then
-				table.insert(hide_list, v)
-				hide_list_cnt = hide_list_cnt+1
+
+		if hided then
+			table.insert(hide_list, v)
+			hide_list_cnt = hide_list_cnt+1
+		else	
+			if render.blend_mode then
+				if blend.begin_blend(render.blend_mode) then
+					v:draw(render.anchor)
+					blend.end_blend()
+				end
+			else
+				v:draw(render.anchor)
+			end
+			if render.on_draw then
+				hided = render.on_draw()
 			end
 		end
 	end
@@ -176,10 +202,21 @@ function mt:show(spr, zorder, anchor)
 	end
 end
 
-function mt:hide(spr)
+function mt:hide(spr, fade)
 	if self.sprites[spr] then
-		self.sprites[spr] = nil
-		self.dirty = true
+		if fade then
+			local render = spr.usr_data.render
+			if not render.fadeout_index then
+				if not self.fadeout_tween then
+					self.fadeout_tween = tween.new()
+					self.fadeout_tween:make(tween.type.Linear, 15, tween.wrap_mode.Once, 1, 0)
+				end
+				render.fadeout_index = 1
+			end
+		else
+			self.sprites[spr] = nil
+			self.dirty = true
+		end
 	end
 end
 
