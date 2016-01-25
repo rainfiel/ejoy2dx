@@ -26,9 +26,6 @@ debug_label.text = "#[blue]DON'T PANIC#[stop]"
 debug_label:ps(40, 40)
 sample_render:show(debug_label, 1)
 
-local polygon = image:create_polygon({17,17, 200, 17, 200, 70, 17, 70})
-sample_render:show(polygon)
-
 local mine = ejoy2dx.sprite("sample.lua", "mine")
 mine:ps(300, 60, 0.7)
 sample_render:show(mine)
@@ -70,12 +67,14 @@ end
 function game.touch(what, x, y)
 	lv:touch(what, x, y)
 	avatar:touch(what, x, y)
+	return true --disable gesture
 end
 
 function game.message(...)
 end
 
-function game.handle_error(...)
+function game.handle_error(type, msg)
+	print(type, msg)
 end
 
 function game.on_resume()

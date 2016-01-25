@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <mmsystem.h>
-#include "winfw.h"
+#include "fw.h"
 
 #include "argparse.h"
 
@@ -92,7 +92,7 @@ init_window(HWND hWnd) {
 
 static void
 update_frame(HDC hDC) {
-	ejoy2d_win_frame();
+	ejoy2d_fw_frame();
 	SwapBuffers(hDC);
 
 }
@@ -126,7 +126,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			g_lastTime = now;
 		} else {
 			float seconds = float((now-g_lastTime)/1000.f);
-			ejoy2d_win_update(seconds);
+			ejoy2d_fw_update(seconds);
 			InvalidateRect(hWnd, NULL , FALSE);
 			g_lastTime = now;
 		}
@@ -145,12 +145,12 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				int dy = y-g_event_stat.last_y;
 				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
 				if (seconds < 0.000001f) seconds = 0.033f;
-				ejoy2d_win_gesture(1, dx, dy, dx/seconds, dy/seconds, 3); //PAN
+				ejoy2d_fw_gesture(1, dx, dy, dx/seconds, dy/seconds, 3); //PAN
 			} else {
-				ejoy2d_win_gesture(2, x, y, 0, 0, 3); //TAP
+				ejoy2d_fw_gesture(2, x, y, 0, 0, 3); //TAP
 			}
 		} else {
-			ejoy2d_win_touch(x, y, TOUCH_END);
+			ejoy2d_fw_touch(x, y, TOUCH_END);
 		}
 		reset_event_stat();
 		break;
@@ -159,7 +159,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		int x,y;
 		get_xy(lParam, &x, &y); 
 		g_event_stat.btn_down = 1;
-		g_event_stat.disable_gesture = ejoy2d_win_touch(x,y,TOUCH_BEGIN);
+		g_event_stat.disable_gesture = ejoy2d_fw_touch(x,y,TOUCH_BEGIN);
 		g_event_stat.last_x = x;
 		g_event_stat.last_y = y;
 		g_event_stat.last_change_time = timeGetTime();
@@ -170,7 +170,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			int x,y;
 			get_xy(lParam, &x, &y); 
 			if (g_event_stat.disable_gesture) {
-				ejoy2d_win_touch(x,y,TOUCH_MOVE);
+				ejoy2d_fw_touch(x,y,TOUCH_MOVE);
 			} else {
 				int dx = x-g_event_stat.last_x;
 				int dy = y-g_event_stat.last_y;
@@ -186,7 +186,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				}
 				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
 				if (seconds < 0.000001f) seconds = 0.033f;
-				ejoy2d_win_gesture(1, dx, dy, dx / seconds, dy / seconds, stat);
+				ejoy2d_fw_gesture(1, dx, dy, dx / seconds, dy / seconds, stat);
 			}
 			g_event_stat.last_x = x;
 			g_event_stat.last_y = y;
@@ -201,9 +201,9 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		ScreenToClient(hWnd, &p);
 		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
 		if (delta < 0)
-			ejoy2d_win_gesture(3, p.x, p.y, 0.95f, 0, 1); //PINCH
+			ejoy2d_fw_gesture(3, p.x, p.y, 0.95f, 0, 1); //PINCH
 		else
-			ejoy2d_win_gesture(3, p.x, p.y, 1.05f, 0, 1);
+			ejoy2d_fw_gesture(3, p.x, p.y, 1.05f, 0, 1);
 		break;
 	}
 	}
@@ -312,7 +312,7 @@ main(int argc, const char *argv[]) {
 	startup->serialized = NULL;
 	startup->auto_rotate = true;
 
-	ejoy2d_win_init(startup);
+	ejoy2d_fw_init(startup);
 	
 	ShowWindow(wnd, SW_SHOWDEFAULT);
 	UpdateWindow(wnd);

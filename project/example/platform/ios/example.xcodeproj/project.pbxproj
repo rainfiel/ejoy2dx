@@ -16,7 +16,7 @@
 		AE9DE5461A8EFA050085776F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE5451A8EFA050085776F /* OpenGLES.framework */; };
 		AE9DE6851A8F2DA40085776F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6841A8F2DA40085776F /* Foundation.framework */; };
 		AE9DE6B01A8F338B0085776F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6AF1A8F338B0085776F /* UIKit.framework */; };
-		AE9DE7131AA040EB0085776F /* winfw.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE7111AA040EB0085776F /* winfw.c */; };
+		AE9DE7131AA040EB0085776F /* fw.c in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE7111AA040EB0085776F /* fw.c */; };
 		AE9DE73D1AA042BC0085776F /* asset in Resources */ = {isa = PBXBuildFile; fileRef = AE9DE73C1AA042BC0085776F /* asset */; };
 		AE9DE73E1AA043550085776F /* libejoy2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE72B1AA0414A0085776F /* libejoy2dx.a */; };
 		AE9DE73F1AA043580085776F /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE7231AA041450085776F /* liblua.a */; };
@@ -71,8 +71,8 @@
 		AE9DE6841A8F2DA40085776F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE9DE6861A8F2E0D0085776F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		AE9DE6AF1A8F338B0085776F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AE9DE7111AA040EB0085776F /* winfw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = winfw.c; path = ../../../../../src/clib/framework/winfw.c; sourceTree = "<group>"; };
-		AE9DE7121AA040EB0085776F /* winfw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = winfw.h; path = ../../../../../src/clib/framework/winfw.h; sourceTree = "<group>"; };
+		AE9DE7111AA040EB0085776F /* fw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fw.c; path = ../../../../../src/clib/framework/fw.c; sourceTree = "<group>"; };
+		AE9DE7121AA040EB0085776F /* fw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fw.h; path = ../../../../../src/clib/framework/fw.h; sourceTree = "<group>"; };
 		AE9DE71D1AA041450085776F /* lua.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = lua.xcodeproj; path = ../../../../platform/ios/frameworks/lua/lua.xcodeproj; sourceTree = "<group>"; };
 		AE9DE7241AA041490085776F /* ejoy2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ejoy2dx.xcodeproj; path = ../../../../platform/ios/frameworks/ejoy2dx/ejoy2dx.xcodeproj; sourceTree = "<group>"; };
 		AE9DE73C1AA042BC0085776F /* asset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = asset; path = ../../asset; sourceTree = "<group>"; };
@@ -150,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				AE0A17551C0FDC6000D31C04 /* user_lua.c */,
-				AE9DE7111AA040EB0085776F /* winfw.c */,
-				AE9DE7121AA040EB0085776F /* winfw.h */,
+				AE9DE7111AA040EB0085776F /* fw.c */,
+				AE9DE7121AA040EB0085776F /* fw.h */,
 				AE9DE5221A8EF9CD0085776F /* AppDelegate.h */,
 				AE9DE5231A8EF9CD0085776F /* AppDelegate.m */,
 				AE9DE5251A8EF9CD0085776F /* ViewController.h */,
@@ -303,7 +303,7 @@
 				AE9DE5271A8EF9CD0085776F /* ViewController.m in Sources */,
 				AE9DE5241A8EF9CD0085776F /* AppDelegate.m in Sources */,
 				AE9DE5211A8EF9CD0085776F /* main.m in Sources */,
-				AE9DE7131AA040EB0085776F /* winfw.c in Sources */,
+				AE9DE7131AA040EB0085776F /* fw.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

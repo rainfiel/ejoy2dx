@@ -23,11 +23,11 @@
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c" />
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\argparse.h" />
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\argparse.c" />
-    <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c" />
+    <ClCompile Include="$(_ROOT_)\src\clib\framework\fw.c" />
     <ClCompile Include="..\..\..\common\user_lua.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h" />
+    <ClInclude Include="$(_ROOT_)\src\clib\framework\fw.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{%s}</ProjectGuid>

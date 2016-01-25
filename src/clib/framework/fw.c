@@ -5,7 +5,7 @@
 #include "ejoy2dgame.h"
 #include "fault.h"
 #include "screen.h"
-#include "winfw.h"
+#include "fw.h"
 #include "lualibs.h"
 
 #include <lauxlib.h>
@@ -137,7 +137,7 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 }
 
 void
-ejoy2d_win_init(struct STARTUP_INFO* startup) {
+ejoy2d_fw_init(struct STARTUP_INFO* startup) {
 	//free it
 	STARTUP = startup;
 	G = create_game();
@@ -171,10 +171,10 @@ ejoy2d_win_init(struct STARTUP_INFO* startup) {
 
 	ejoy2d_game_logicframe(LOGIC_FRAME);
 	ejoy2d_game_start(G->game);
-}
+}	
 
 bool
-ejoy2d_win_auto_rotate() {
+ejoy2d_fw_auto_rotate() {
 	if (!G || !STARTUP) return false;
 	lua_State *L = ejoy2d_game_lua(G->game);
 	luaL_requiref(L, "ejoy2d.framework", NULL, 0);
@@ -202,24 +202,29 @@ ejoy2d_check_reload() {
 		lua_pop(L, 1);
 
 		free(G);
-		ejoy2d_win_init(STARTUP);
+		ejoy2d_fw_init(STARTUP);
 	}
 
 }
 
 void
-ejoy2d_win_update(float delta) {
+ejoy2d_fw_message(int ID,const char* msg,const char* data, lua_Number n){
+	ejoy2d_game_message(G->game, ID, msg, data, n);
+}
+
+void
+ejoy2d_fw_update(float delta) {
 	ejoy2d_game_update(G->game, delta);
 	ejoy2d_check_reload();
 }
 
 void
-ejoy2d_win_frame() {
+ejoy2d_fw_frame() {
 	ejoy2d_game_drawframe(G->game);
 }
 
 int
-ejoy2d_win_touch(int x, int y,int touch) {
+ejoy2d_fw_touch(int x, int y,int touch) {
 	switch (touch) {
 	case TOUCH_BEGIN:
 		G->intouch = 1;
@@ -239,11 +244,11 @@ ejoy2d_win_touch(int x, int y,int touch) {
 }
 
 void
-ejoy2d_win_gesture(int type, float x1, float y1, float x2, float y2, int state) {
+ejoy2d_fw_gesture(int type, float x1, float y1, float x2, float y2, int state) {
 	ejoy2d_game_gesture(G->game, type, x1, y1, x2, y2, state);
 }
 
 void
-ejoy2d_win_view_layout(int stat, float x, float y, float width, float height) {
+ejoy2d_fw_view_layout(int stat, float x, float y, float width, float height) {
 	ejoy2d_game_view_layout(G->game, stat, x, y, width, height);
 }

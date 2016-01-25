@@ -142,6 +142,11 @@ _to_utf8(lua_State* L) {
 	return 1;
 }
 
+static int
+_input(lua_State* L) {
+	return 0;
+}
+
 int 
 luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
@@ -154,6 +159,7 @@ luaopen_osutil(lua_State* L) {
 		{"delete_file", _delete_file},
 		{"to_utf8", _to_utf8},
 		{"get_path", _get_path},
+		//{"input", _input},
 		
 		{NULL, NULL}
 	};

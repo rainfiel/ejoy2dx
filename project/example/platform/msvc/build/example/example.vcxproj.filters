@@ -9,15 +9,21 @@
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\window.c">
       <Filter>winmain</Filter>
     </ClCompile>
-    <ClCompile Include="$(_ROOT_)\src\clib\framework\winfw.c">
+    <ClCompile Include="$(_ROOT_)\src\clib\framework\fw.c">
       <Filter>winmain</Filter>
     </ClCompile>
     <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\winmain.c">
       <Filter>winmain</Filter>
     </ClCompile>
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\argparse.h">
+      <Filter>winmain</Filter>
+    </ClCompile>
+    <ClCompile Include="$(_ROOT_)\platform\msvc\src\main\argparse.c">
+      <Filter>winmain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(_ROOT_)\src\clib\framework\winfw.h">
+    <ClInclude Include="$(_ROOT_)\src\clib\framework\fw.h">
       <Filter>winmain</Filter>
     </ClInclude>
   </ItemGroup>

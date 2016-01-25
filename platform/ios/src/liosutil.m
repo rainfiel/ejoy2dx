@@ -70,6 +70,77 @@ _delete_file(lua_State* L) {
   return 0;
 }
 
+@interface TextLenLimiter : UITextField<UITextFieldDelegate>
+@property
+  int  maxlen;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+@end
+
+@implementation TextLenLimiter
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+  NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+  
+  if (newString.length > self.maxlen)
+  {
+    return NO;
+  }
+  
+  return YES;
+}
+@end
+
+static TextLenLimiter *s_txt_len_limiter = nil;
+
+static int
+_input(lua_State* L) {
+    const char* strTitle = luaL_checkstring(L,1);
+    int iid = luaL_checkinteger(L, 2);
+    const char* cancelButtonTitle = luaL_checkstring(L,3);
+    const char* okButtonTitle = luaL_checkstring(L, 4);
+    const char* defaultText = luaL_checkstring(L,5);
+    
+    int style = luaL_optinteger(L, 6, 0);
+    int max_len = luaL_optinteger(L, 7, 256);
+  
+    if(s_txt_len_limiter == nil){
+      s_txt_len_limiter = [[TextLenLimiter alloc] init];
+    }
+    s_txt_len_limiter.maxlen = max_len;
+  
+    // logout
+    RIButtonItem *cancelItem = [RIButtonItem item];
+    cancelItem.label = [NSString stringWithUTF8String:cancelButtonTitle];
+    cancelItem.action = ^(UIAlertView *alertView)
+    {
+       //ejoy2d_win_message(iid, "CANCEL", NULL);
+      ejoy2d_message_cancel(iid);
+    };
+
+    RIButtonItem *okItem = [RIButtonItem item];
+    okItem.label = [NSString stringWithUTF8String:okButtonTitle];
+
+    okItem.action = ^(UIAlertView * alertView)
+    {
+        NSString *inputText = [[alertView textFieldAtIndex:0] text];
+        //ejoy2d_win_message(iid, "FINISH", [inputText UTF8String]);
+        ejoy2d_message_finish(iid, [inputText UTF8String]);
+    };
+
+    NSString *title = [NSString stringWithUTF8String:strTitle];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:nil cancelButtonItem:cancelItem otherButtonItems:okItem, nil];
+    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [[alertView textFieldAtIndex:0] setKeyboardType:(UIKeyboardType)style];
+    [[alertView textFieldAtIndex:0] setDelegate:s_txt_len_limiter];
+  
+    if (defaultText) {
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        textField.text = [NSString stringWithUTF8String:defaultText];
+    }
+    [alertView show];
+    return 0;
+}
+
 // modes:
 //   "d" for Documents
 //   "l" for Library
@@ -109,6 +180,7 @@ int luaopen_osutil(lua_State* L) {
 		{"write_file", _write_file},
 		{"delete_file", _delete_file},
 		{"get_path", _get_path},
+    {"input", _input},
 		
 		{NULL, NULL}
 	};

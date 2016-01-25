@@ -14,6 +14,9 @@
 #define TOUCH_END 1
 #define TOUCH_MOVE 2
 
+#define ejoy2d_message_finish(i,d) ejoy2d_fw_message((i),"FINISH",(d),0)
+#define ejoy2d_message_cancel(i) ejoy2d_fw_message((i),"CANCEL",NULL,0)
+
 struct STARTUP_INFO{
 	float orix, oriy;
 	float width, height;
@@ -29,13 +32,13 @@ struct STARTUP_INFO{
 
 void init_user_lua_libs(lua_State* L);
 
-void ejoy2d_win_init(struct STARTUP_INFO* startup);
-void ejoy2d_win_frame();
-void ejoy2d_win_update(float delta);
-void ejoy2d_win_sync_frame();
-int ejoy2d_win_touch(int x, int y,int touch);
-void ejoy2d_win_gesture(int type, float x1, float y1, float x2, float y2, int state);
-void ejoy2d_win_view_layout(int stat, float x, float y, float w, float h);
-bool ejoy2d_win_auto_rotate();
+void ejoy2d_fw_init(struct STARTUP_INFO* startup);
+void ejoy2d_fw_frame();
+void ejoy2d_fw_update(float delta);
+int ejoy2d_fw_touch(int x, int y,int touch);
+void ejoy2d_fw_gesture(int type, float x1, float y1, float x2, float y2, int state);
+void ejoy2d_fw_view_layout(int stat, float x, float y, float w, float h);
+bool ejoy2d_fw_auto_rotate();
+void ejoy2d_fw_message(int ID,const char* msg,const char* data, lua_Number n);
 
 #endif
