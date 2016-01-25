@@ -14,13 +14,6 @@ M.read_file = osutls.read_file
 M.delete_file = osutls.delete_file
 M.write_file = osutls.write_file
 M.get_path = osutls.get_path
-M.input = function( ... )
-	if not osutls.input then
-		return false
-	else
-		osutls.input(...)
-		return true
-	end
-end
+M.input = osutls.input
 
 return M
