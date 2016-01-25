@@ -1,5 +1,7 @@
 
 #import "liosutil.h"
+#import "ejoy2dgame.h"
+#import <UIKit/UIKit.h>
 
 static int
 _exists(lua_State* L) {
@@ -95,49 +97,47 @@ static TextLenLimiter *s_txt_len_limiter = nil;
 static int
 _input(lua_State* L) {
     const char* strTitle = luaL_checkstring(L,1);
-    int iid = luaL_checkinteger(L, 2);
+    int iid = (int)luaL_checkinteger(L, 2);
     const char* cancelButtonTitle = luaL_checkstring(L,3);
     const char* okButtonTitle = luaL_checkstring(L, 4);
     const char* defaultText = luaL_checkstring(L,5);
     
-    int style = luaL_optinteger(L, 6, 0);
-    int max_len = luaL_optinteger(L, 7, 256);
+    int style = (int)luaL_optinteger(L, 6, 0);
+    int max_len = (int)luaL_optinteger(L, 7, 256);
   
     if(s_txt_len_limiter == nil){
       s_txt_len_limiter = [[TextLenLimiter alloc] init];
     }
     s_txt_len_limiter.maxlen = max_len;
-  
-    // logout
-    RIButtonItem *cancelItem = [RIButtonItem item];
-    cancelItem.label = [NSString stringWithUTF8String:cancelButtonTitle];
-    cancelItem.action = ^(UIAlertView *alertView)
-    {
-       //ejoy2d_win_message(iid, "CANCEL", NULL);
-      ejoy2d_message_cancel(iid);
-    };
-
-    RIButtonItem *okItem = [RIButtonItem item];
-    okItem.label = [NSString stringWithUTF8String:okButtonTitle];
-
-    okItem.action = ^(UIAlertView * alertView)
-    {
-        NSString *inputText = [[alertView textFieldAtIndex:0] text];
-        //ejoy2d_win_message(iid, "FINISH", [inputText UTF8String]);
-        ejoy2d_message_finish(iid, [inputText UTF8String]);
-    };
-
-    NSString *title = [NSString stringWithUTF8String:strTitle];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:nil cancelButtonItem:cancelItem otherButtonItems:okItem, nil];
-    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [[alertView textFieldAtIndex:0] setKeyboardType:(UIKeyboardType)style];
-    [[alertView textFieldAtIndex:0] setDelegate:s_txt_len_limiter];
-  
-    if (defaultText) {
-        UITextField *textField = [alertView textFieldAtIndex:0];
-        textField.text = [NSString stringWithUTF8String:defaultText];
-    }
-    [alertView show];
+	
+		NSString *title = [NSString stringWithUTF8String:strTitle];
+		UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+	
+		[alertView addTextFieldWithConfigurationHandler:^(UITextField *textField)
+			{
+				if (defaultText) {
+					textField.text = [NSString stringWithUTF8String:defaultText];
+				}
+				[textField setKeyboardType:(UIKeyboardType)style];
+				[textField setDelegate:s_txt_len_limiter];
+			}];
+	
+		UIAlertAction *okAction = [UIAlertAction actionWithTitle:[NSString stringWithUTF8String:okButtonTitle] style:UIAlertActionStyleDefault
+																									 handler:^(UIAlertAction *action)
+														 {
+															 UITextField * textField = alertView.textFields.firstObject;
+															 ejoy2d_game_message_l(L, iid, "FINISH", [textField.text UTF8String], 0);
+														 }];
+		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[NSString stringWithUTF8String:cancelButtonTitle] style:UIAlertActionStyleDefault
+																									 handler:^(UIAlertAction *action)
+														 {
+															 ejoy2d_game_message_l(L, iid, "CANCEL", nil, 0);
+														 }];
+	
+		[alertView addAction:okAction];
+		[alertView addAction:cancelAction];
+		UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
+		[root presentViewController:alertView animated:YES completion:nil];
     return 0;
 }
 
