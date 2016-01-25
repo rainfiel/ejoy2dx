@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "winfw.h"
+#import "fw.h"
 
 #import <lua.h>
 #import <lauxlib.h>
@@ -79,7 +79,7 @@ static ViewController* _controller = nil;
 	startup->scale = screenScale;
 	startup->reload_count = 0;
 	startup->serialized = NULL;
-	ejoy2d_win_init(startup);
+	ejoy2d_fw_init(startup);
 }
 
 -(void)viewDidUnload
@@ -107,12 +107,12 @@ static ViewController* _controller = nil;
 
 - (void)update
 {
-	ejoy2d_win_update(self.timeSinceLastUpdate);
+	ejoy2d_fw_update(self.timeSinceLastUpdate);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-	ejoy2d_win_frame();
+	ejoy2d_fw_frame();
 }
 
 - (void)dealloc
@@ -140,16 +140,16 @@ static ViewController* _controller = nil;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 	float version = [[[UIDevice currentDevice] systemVersion] floatValue];
 	if (version >= 8.0) {
-		ejoy2d_win_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
+		ejoy2d_fw_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
 		return;
 	}
 #endif
 	
 	UIDeviceOrientation ori = [[UIDevice currentDevice] orientation];
 	if (ori == UIDeviceOrientationLandscapeLeft || ori == UIDeviceOrientationLandscapeRight) {
-		ejoy2d_win_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
+		ejoy2d_fw_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
 	} else {
-		ejoy2d_win_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
+		ejoy2d_fw_view_layout(1, bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height);
 	}
 }
 
@@ -208,26 +208,26 @@ getStateCode(UIGestureRecognizerState state) {
 	// CGPoint p = [gr locationInView:self.view];
 	CGPoint v = [gr velocityInView:self.view];
 	[gr setTranslation:CGPointMake(0,0) inView:self.view];
-	ejoy2d_win_gesture(1, trans.x, trans.y, v.x, v.y, state);
+	ejoy2d_fw_gesture(1, trans.x, trans.y, v.x, v.y, state);
 }
 
 - (void) handleTap:(UITapGestureRecognizer *) gr {
 	int state = getStateCode(gr.state);
 	CGPoint p = [gr locationInView:self.view];
-	ejoy2d_win_gesture(2, p.x, p.y, 0, 0, state);
+	ejoy2d_fw_gesture(2, p.x, p.y, 0, 0, state);
 }
 
 - (void) handlePinch:(UIPinchGestureRecognizer *) gr {
 	int state = getStateCode(gr.state);
 	CGPoint p = [gr locationInView:self.view];
-	ejoy2d_win_gesture(3, p.x, p.y, (gr.scale * 1024.0), 0.0, state);
+	ejoy2d_fw_gesture(3, p.x, p.y, (gr.scale * 1024.0), 0.0, state);
 	gr.scale = 1;
 }
 
 - (void) handleLongPress:(UILongPressGestureRecognizer *) gr {
 	int state = getStateCode(gr.state);
 	CGPoint p = [gr locationInView:self.view];
-	ejoy2d_win_gesture(4, p.x, p.y, 0, 0, state);
+	ejoy2d_fw_gesture(4, p.x, p.y, 0, 0, state);
 }
 
 
@@ -236,7 +236,7 @@ getStateCode(UIGestureRecognizerState state) {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {
 		CGPoint p = [touch locationInView:touch.view];
-		disableGesture = ejoy2d_win_touch(p.x, p.y, TOUCH_BEGIN);
+		disableGesture = ejoy2d_fw_touch(p.x, p.y, TOUCH_BEGIN);
 	}
 }
 
@@ -244,7 +244,7 @@ getStateCode(UIGestureRecognizerState state) {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {
 		CGPoint p = [touch locationInView:touch.view];
-		ejoy2d_win_touch(p.x, p.y, TOUCH_MOVE);
+		ejoy2d_fw_touch(p.x, p.y, TOUCH_MOVE);
 	}
 }
 
@@ -252,7 +252,7 @@ getStateCode(UIGestureRecognizerState state) {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {
 		CGPoint p = [touch locationInView:touch.view];
-		ejoy2d_win_touch(p.x, p.y, TOUCH_END);
+		ejoy2d_fw_touch(p.x, p.y, TOUCH_END);
 	}
 }
 
