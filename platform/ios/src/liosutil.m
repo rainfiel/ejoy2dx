@@ -98,9 +98,9 @@ static int
 _input(lua_State* L) {
     const char* strTitle = luaL_checkstring(L,1);
     int iid = (int)luaL_checkinteger(L, 2);
-    const char* cancelButtonTitle = luaL_checkstring(L,3);
+    const char* cancelButtonTitle = luaL_optstring(L,3, nil);
     const char* okButtonTitle = luaL_checkstring(L, 4);
-    const char* defaultText = luaL_checkstring(L,5);
+    const char* defaultText = luaL_optstring(L,5, nil);
     
     int style = (int)luaL_optinteger(L, 6, 0);
     int max_len = (int)luaL_optinteger(L, 7, 256);
@@ -128,14 +128,17 @@ _input(lua_State* L) {
 															 UITextField * textField = alertView.textFields.firstObject;
 															 ejoy2d_game_message_l(L, iid, "FINISH", [textField.text UTF8String], 0);
 														 }];
-		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[NSString stringWithUTF8String:cancelButtonTitle] style:UIAlertActionStyleDefault
-																									 handler:^(UIAlertAction *action)
-														 {
-															 ejoy2d_game_message_l(L, iid, "CANCEL", nil, 0);
-														 }];
-	
 		[alertView addAction:okAction];
-		[alertView addAction:cancelAction];
+	
+		if (cancelButtonTitle) {
+			UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[NSString stringWithUTF8String:cancelButtonTitle] style:UIAlertActionStyleDefault
+																													 handler:^(UIAlertAction *action)
+																		 {
+																			 ejoy2d_game_message_l(L, iid, "CANCEL", nil, 0);
+																		 }];
+			[alertView addAction:cancelAction];
+		}
+
 		UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
 		[root presentViewController:alertView animated:YES completion:nil];
     return 0;
