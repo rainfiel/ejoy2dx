@@ -11,6 +11,9 @@ local avatar = require "battle.avatar"
 local human = require "battle.human"
 local path = require "battle.path"
 
+local interpreter = require "ejoy2dx.interpreter"
+interpreter:run(8819)
+
 path:init()
 human:init()
 level.init()
@@ -41,6 +44,7 @@ g:add_row({"野兔",	"2, 0", "2, 2"})
 
 local game = {}
 function game.update()
+	interpreter:update()
 	if not ejoy2dx.game_stat.is_active then
 		return
 	end

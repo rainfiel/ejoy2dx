@@ -10,3 +10,6 @@ url=https://github.com/rainfiel/sproto
 [submodule "src/clib/Liekkas"]
 	path = src/clib/Liekkas
 	url = https://github.com/rainfiel/Liekkas.git
+[submodule "tools/lua-crust"]
+	path = tools/lua-crust
+	url = https://github.com/rainfiel/lua-crust.git
