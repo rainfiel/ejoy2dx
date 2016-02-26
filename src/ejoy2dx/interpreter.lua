@@ -214,9 +214,11 @@ function M:run(port)
 		print("INTERPRETER: run failed->", err)
 	else
 		print("INTERPRETER: running on "..ip..":"..port)
+		self.ip = ip
+		self.port = port
+		self.socket = socket
+		self.connects = {}
 	end
-	self.socket = socket
-	self.connects = {}
 end
 
 local closed_conn = {}

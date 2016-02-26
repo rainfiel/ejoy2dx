@@ -25,8 +25,13 @@ local render = ejoy2dx.render
 local sample_render = render:create(0)
 
 local debug_label = sprite.label({width=500, height=300,size=20,color=0xFFFFFFFF, edge=0})
-debug_label.text = "#[blue]DON'T PANIC#[stop]"
-debug_label:ps(40, 40)
+local info = "#[blue]DON'T PANIC#[stop]"
+if interpreter.ip then
+	info = info..string.format("\n#[green]lua-crust server:%s:%s#[stop]", interpreter.ip, interpreter.port)
+end
+
+debug_label.text = info
+debug_label:ps(40, 60)
 sample_render:show(debug_label, 1)
 
 local mine = ejoy2dx.sprite("sample.lua", "mine")
