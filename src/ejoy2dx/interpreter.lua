@@ -69,9 +69,40 @@ function conn_mt:recv()
 	return true
 end
 
+function conn_mt:do_send(txt)
+	local n = #txt
+	local wt = self.conn:send(txt)
+	if not wt or wt < n then
+		lsocket.select(nil, {self.conn})
+		wt = wt or 0
+		n = n - wt
+	end
+	if wt < n then
+		txt = txt:sub(wt+1)
+		wt = self.conn:send(txt)
+		if not wt or wt < n then
+			return txt:sub((wt or 0) + 1)
+		end
+	end
+end
+
 function conn_mt:send(type, msg)
 	local txt = json:encode({type=type,msg=msg})
-	self.conn:send(txt)
+	if self.send_buffer then
+		self.send_buffer = self.send_buffer..txt
+	else
+		self.send_buffer = self:do_send(txt)
+	end
+end
+
+function conn_mt:update()
+	if not self:recv() then 
+		return false
+	end
+	if self.send_buffer then
+		self.send_buffer = self:do_send(self.send_buffer)
+	end
+	return true
 end
 
 function conn_mt:result(ok, ...)
@@ -137,6 +168,9 @@ local function dump_tbl(tbl, layer)
 			local len = utf8.len(str)
 			if not len then
 				str = crypt.base64encode(str)
+				if string.len(str) > 10 * 1024 then
+					str = string.sub(str, 1, 10 * 1024)
+				end
 			end
 			ret[key] = str
 		end
@@ -190,7 +224,7 @@ local closed_count = 0
 function M:update()
 	if not self.socket then return end
 	for k in next, self.connects do
-		if not self.connects[k]:recv() then
+		if not self.connects[k]:update() then
 			self.connects[k] = nil
 		end
 	end
