@@ -16,7 +16,6 @@ ej2dx.dSYM/*
 *.opensdf
 *.ipch
 *.sln.cache
-*_collide.png
 *_peak.json
 win_run*
 xcuserdata/
