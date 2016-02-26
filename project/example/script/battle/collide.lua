@@ -14,6 +14,7 @@ function M.point_hit(lv, x, y)
 	y = math.floor(y+0.5)
 
 	local data = lv.collide_data
+	if not data then return false end
 	x, y = lv:screen_to_scene(x, y)
 	local w, h = lv.width, lv.height
 	local point = y * w + x
@@ -106,25 +107,7 @@ end
 function M.get_collide_data(path, lv)
 	path = utls.get_path(path)
 	if not M.has_collide_file(path) then
-		local width, height = lv.width, lv.height
-		local base, entities = lv.wall, lv.entities
-
-		local collide_image = image:get_collide_info(base)
-		for k, v in ipairs(entities) do
-			if v.usr_data.collidable then
-				draw_entity_to_map(v, collide_image, lv)
-			end
-		end
-
-		local buffer = {}
-		for i=1, height do
-			for j=1, width do
-				table.insert(buffer, string.char(collide_image[i][j]))
-			end
-		end
-		buffer = table.concat(buffer)
-		image.save_image(path, width, height, 1, buffer, 0)
-		print('new collide map has saved to:'..path)
+		return
 	end
 	local tw, th, comp, img_data = image_c.image_rawdata(path)
 	return img_data

@@ -79,6 +79,8 @@ static ViewController* _controller = nil;
 	startup->scale = screenScale;
 	startup->reload_count = 0;
 	startup->serialized = NULL;
+	startup->auto_rotate = false;
+	startup->user_data = NULL;
 	ejoy2d_fw_init(startup);
 }
 
