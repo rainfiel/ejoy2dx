@@ -12,7 +12,7 @@ conn_mt.__index = conn_mt
 
 local help_tbl = {
 	print="print(...), eval a print statement just as lua",
-	env="env(level), fetch serialized env table and display it in Namespace, table that out of level will not be serialized, the default level=3",
+	env="env(level), fetch serialized env table and display it in Namespace, table that out of level will not be serialized, the default level=2",
 	clear_env="clear_env(), clear env table of this connection",
 	disconnect="disconnect(), close the current connection",	
 	reload="reload(), reload the LVM and restart the game",
@@ -220,13 +220,28 @@ function M:run(port)
 		print("INTERPRETER: run failed, no ip")
 		return
 	end
+	self.ip = ip
+	self.port = port
+	self:broadcast(ip, port)
+	self:init_server(ip, port)
+end
+
+function M:broadcast(ip, port)
+	local udp = lsocket.bind("mcast", ip, 2606)
+	if not udp then return end
+
+	local msg = json:encode({ip=ip,port=port})
+	udp:sendto(msg, "224.0.0.224", 2606)
+	udp:close()
+	print("INTERPRETER: broadcast done")
+end
+
+function M:init_server(ip, port)	
 	local socket, err = lsocket.bind("tcp", ip, port)
 	if err then
 		print("INTERPRETER: run failed->", err)
 	else
 		print("INTERPRETER: running on "..ip..":"..port)
-		self.ip = ip
-		self.port = port
 		self.socket = socket
 		self.connects = {}
 	end
