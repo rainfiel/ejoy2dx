@@ -15,11 +15,13 @@ local help_tbl = {
 	env="env(level), fetch serialized env table and display it in Namespace, table that out of level will not be serialized, the default level=3",
 	clear_env="clear_env(), clear env table of this connection",
 	disconnect="disconnect(), close the current connection",	
+	reload="reload(), reload the LVM and restart the game",
 	help="help(), refresh help info",
 }
 local help_txt = json:encode(help_tbl)
 
 function conn_mt:init()
+	self.default_level = 2
 	local function rmt_print(...)
 		local args = {...}
 		local str = {}
@@ -29,24 +31,33 @@ function conn_mt:init()
 		str = table.concat(str, "\t")
 		table.insert(self.results, str)
 	end
-	local function dump_env(layer)
-		self:dump_env(layer or 3)
+	local function dump_env(lv)
+		lv = lv or self.default_level
+		self.default_level = lv
+		self:dump_env(self.default_level)
 	end
 	local function clear_env()
 		self.env = setmetatable(self.origin_env(), {__index=_SYS_ENV})
-		self:dump_env(3)
+		self:dump_env(1)
 	end
 	local function disconnect()
 		self.disconnected = true
 		self:send("disconnect")
 		self.results = nil
 	end
+	local function reload()
+		disconnect()
+
+		local game_stat = require "ejoy2dx.game_stat"
+		game_stat:reload()
+	end
 	local function help()
 		self:send("help", help_txt)
 		self.results = nil
 	end
 	self.origin_env = function( ... )
-		return {print=rmt_print, env=dump_env, clear_env=clear_env, disconnect=disconnect, help=help}
+		return {print=rmt_print, env=dump_env, clear_env=clear_env, 
+						disconnect=disconnect, help=help, reload=reload}
 	end
 	self.env = setmetatable(self.origin_env(), {__index=_SYS_ENV})
 end
@@ -157,12 +168,12 @@ local function iter_tbl(tbl, ref)
 	return ret
 end
 
-local function dump_tbl(tbl, layer)
+local function dump_tbl(tbl, lv)
 	local ret = {}
 	for k, v in pairs(tbl) do
 		local key = tostring(k)
-		if layer > 0 and type(v) == "table" then
-			ret[key] = dump_tbl(v, layer-1)
+		if lv > 0 and type(v) == "table" then
+			ret[key] = dump_tbl(v, lv-1)
 		else
 			local str = tostring(v)
 			local len = utf8.len(str)
@@ -178,11 +189,11 @@ local function dump_tbl(tbl, layer)
 	return ret
 end
 
-function conn_mt:dump_env(layer)
+function conn_mt:dump_env(lv)
 	-- local ref = {}
 	-- ref[self.env] = "env"
 	-- local tbl = iter_tbl(self.env, ref)
-	local tbl = dump_tbl(self.env, layer)
+	local tbl = dump_tbl(self.env, lv)
 	local txt = json:encode(tbl)
 	self:send("env", txt)
 	self.results = nil
@@ -221,8 +232,12 @@ function M:run(port)
 	end
 end
 
-local closed_conn = {}
-local closed_count = 0
+function M:stop()
+	if self.socket then
+		self.socket:close()
+	end
+end
+
 function M:update()
 	if not self.socket then return end
 	for k in next, self.connects do

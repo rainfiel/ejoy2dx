@@ -95,6 +95,10 @@ end
 function game.gesture()
 end
 
+function game.on_reload()
+	interpreter:stop()
+end
+
 ej.start(game)
 
 

@@ -201,6 +201,8 @@ ejoy2d_check_reload() {
 		STARTUP->serialized = lua_touserdata(L, -1);
 		lua_pop(L, 1);
 
+		ejoy2d_game_reload(G->game);
+
 		free(G);
 		ejoy2d_fw_init(STARTUP);
 	}
