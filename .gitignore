@@ -20,3 +20,4 @@ ej2dx.dSYM/*
 win_run*
 xcuserdata/
 project.xcworkspace/
+*.pyc

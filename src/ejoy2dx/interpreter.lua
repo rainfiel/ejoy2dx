@@ -3,10 +3,12 @@ local _SYS_ENV = _ENV
 local _MY_ENV = {}
 local _ENV = setmetatable(_MY_ENV, {__index=_SYS_ENV})
 
+local ejoy2dx = require "ejoy2dx"
 local lsocket = require "ejoy2dx.socket.c"
 local json = require "ejoy2dx.json"
 local crypt = require "ejoy2dx.crypt.c"
 
+local M = {}
 local conn_mt = {}
 conn_mt.__index = conn_mt
 
@@ -16,6 +18,7 @@ local help_tbl = {
 	clear_env="clear_env(), clear env table of this connection",
 	disconnect="disconnect(), close the current connection",	
 	reload="reload(), reload the LVM and restart the game",
+	inject="inject(conn_id), inject to an another connection",
 	help="help(), refresh help info",
 }
 local help_txt = json:encode(help_tbl)
@@ -23,6 +26,10 @@ local help_txt = json:encode(help_tbl)
 function conn_mt:init()
 	self.default_level = 2
 	local function rmt_print(...)
+		if not self.results then
+			print(...)
+			return
+		end
 		local args = {...}
 		local str = {}
 		for _,v in ipairs(args) do
@@ -48,8 +55,17 @@ function conn_mt:init()
 	local function reload()
 		disconnect()
 
-		local game_stat = require "ejoy2dx.game_stat"
-		game_stat:reload()
+		ejoy2dx.game_stat:reload()
+	end
+	local function inject(conn_id)
+		assert(conn_id ~= self.id, "can't inject ot yourself")
+		local host = M:get_conn(conn_id)
+		if not host then
+			error("nonexistent host:"..conn_id)
+		else
+			self.env.host_id = conn_id
+			dump_env()
+		end
 	end
 	local function help()
 		self:send("help", help_txt)
@@ -57,7 +73,7 @@ function conn_mt:init()
 	end
 	self.origin_env = function( ... )
 		return {print=rmt_print, env=dump_env, clear_env=clear_env, 
-						disconnect=disconnect, help=help, reload=reload}
+						disconnect=disconnect, help=help, reload=reload, inject=inject, id=self.id}
 	end
 	self.env = setmetatable(self.origin_env(), {__index=_SYS_ENV})
 end
@@ -65,17 +81,23 @@ end
 function conn_mt:recv()
 	if self.disconnected then return false end
 
-	local msg, err = self.conn:recv()
+	local msg = self.conn:recv()
 	if msg then
+		while true do
+			local recv = self.conn:recv()
+			if recv then
+				msg = msg..recv
+			else
+				break
+			end
+		end
 		self:parse(msg)
 		print(string.format("INTERPRETER:%s>>>%q", self.id, msg))
 	elseif msg == nil then
-		if err then
-			print("INTERPRETER:conn recv error->", self.id, " ", err)
-		else
-			print("INTERPRETER:conn closed->", self.id)
-		end
+		print("INTERPRETER:conn closed->", self.id)
 		return false
+	elseif msg == false then
+		return true
 	end
 	return true
 end
@@ -146,6 +168,7 @@ function conn_mt:parse(msg)
 	if chunk then
 		self:result(pcall(chunk))
 	else
+		print("loaderr:", err)
 		self:send("error", err or "load error")
 	end
 end
@@ -193,7 +216,17 @@ function conn_mt:dump_env(lv)
 	-- local ref = {}
 	-- ref[self.env] = "env"
 	-- local tbl = iter_tbl(self.env, ref)
-	local tbl = dump_tbl(self.env, lv)
+	local env_tbl
+	if self.env.host_id then
+		local conn = M:get_conn(self.env.host_id)
+		if conn then
+			env_tbl = conn.env
+		end
+	end
+	if not env_tbl then
+		env_tbl = self.env
+	end
+	local tbl = dump_tbl(env_tbl, lv)
 	local txt = json:encode(tbl)
 	self:send("env", txt)
 	self.results = nil
@@ -212,8 +245,6 @@ local function local_ip()
 	end
 end
 
-local M = {}
-
 function M:run(port)
 	local ip = local_ip()
 	if not ip then 
@@ -224,6 +255,9 @@ function M:run(port)
 	self.port = port
 	self:broadcast(ip, port)
 	self:init_server(ip, port)
+
+	self.timer = 30
+	ejoy2dx.game_stat:pause()
 end
 
 function M:broadcast(ip, port)
@@ -254,6 +288,12 @@ function M:stop()
 end
 
 function M:update()
+	if self.timer and self.timer > 0 then
+		self.timer = self.timer - 1
+		if self.timer <= 0 then
+			ejoy2dx.game_stat:resume()
+		end
+	end
 	if not self.socket then return end
 	for k in next, self.connects do
 		if not self.connects[k]:update() then
@@ -273,6 +313,10 @@ function M:update()
 	if conn == nil and ip then
 		print("INTERPRETER: accept err->"..ip)
 	end
+end
+
+function M:get_conn(id)
+	return self.connects[id]
 end
 
 return M

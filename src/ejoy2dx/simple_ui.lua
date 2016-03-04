@@ -62,6 +62,9 @@ function panel_mt:draw()
 	if has_scissor then
 		geo.scissor()
 	end
+	if self.matrix then
+		geo.matrix(1.0,0,0,0,	0,1.0,0,0,	0,0,1.0,0,	0,0,0,1.0)
+	end
 end
 
 -- geo.line(x1,y1,x2,y2,color)
@@ -76,7 +79,7 @@ end
 
 local function new_panel(render)
 	if type(render) == "number" then
-		render = render_mgr:create(render)
+		render = render_mgr:create(render, "simple_ui_"..render)
 	end
 	local raw = {render=render, usr_data={}, controls={}, is_root=true}
 	local ret = setmetatable(raw, panel_mt)

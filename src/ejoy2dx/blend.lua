@@ -16,6 +16,7 @@ local shader = require "ejoy2d.shader"
 
 local M = {}
 
+--"hide" is reserved for editor
 M.blend_cfg = {
 	add = {1, 1},
 	add_masked = {1, 1},

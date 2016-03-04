@@ -85,7 +85,7 @@ function mt:test(x, y)
 				error("only support handle touch or gesture only")
 			end
 			if touch_callback or gesture_callback then
-				local anchor = spr.usr_data.render.anchor
+				local anchor = usr_data.render.anchor
 				local touched = spr:test(x, y, anchor)
 				if touched then
 					local callback = touch_callback or gesture_callback
@@ -232,6 +232,7 @@ end
 -----------------------------------------------------------
 
 local function sort_layer(left, right)
+	assert(left.layer~=right.layer, left.layer)
 	return left.layer < right.layer
 end
 
@@ -299,17 +300,25 @@ function RenderManager:create_offscreen(layer, w, h, name, drawonce)
 	local tex_name = name..w..h
 	local tex_id = texture:add_texture(tex_name)
 	image_c.create_rt(tex_id, w, h)
-	local rd = self:create(layer)
+	local rd = self:create(layer, name)
 	rd:set_offscreen(tex_id, w, h, name, drawonce)
 	return rd
 end
 
-function RenderManager:create(layer)
-	local rd = setmetatable({layer=layer}, mt)
+function RenderManager:create(layer, name)
+	local rd = setmetatable({layer=layer, name=name}, mt)
 	table.insert(self.renders, rd)
 	table.sort(self.renders, sort_layer)
 	rd:init()
 	return rd
+end
+
+function RenderManager:get(layer)
+	for k, v in ipairs(self.renders) do
+		if v.layer == layer then
+			return v
+		end
+	end
 end
 
 function RenderManager:remove(rd)
@@ -332,6 +341,24 @@ function RenderManager:draw()
 	for k, v in ipairs(self.renders) do
 		if v.draw_call then
 			v:draw_call()
+		end
+	end
+end
+
+function RenderManager:test(x, y)
+	for n=#self.renders, 1, -1 do
+		local v = self.renders[n]
+		local sprites = v.sorted_sprites
+		local cnt = #sprites
+		for i=cnt, 1, -1 do
+			local spr = sprites[i]
+			if spr.test then
+				local anchor = spr.usr_data.render.anchor
+				local touched = spr:test(x, y, anchor)
+				if touched then
+					return touched, spr
+				end
+			end
 		end
 	end
 end
