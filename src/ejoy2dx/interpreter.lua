@@ -236,10 +236,12 @@ end
 
 local function local_ip()
 	local interfaces = lsocket.getinterfaces()
+	local global = require "global"
+	print(global.print_tbl(interfaces))
 	if not interfaces then return end
 	for _, v in ipairs(interfaces) do
 		--TODO LAN ip
-		if v.family == "inet" and (v.name=="en0" or v.name=="Local Area Connection") then
+		if v.family == "inet" and (v.name=="en0" or v.name=="Local Area Connection" or v.name=="Wireless Network Connection") then
 			return v.addr
 		end
 	end
