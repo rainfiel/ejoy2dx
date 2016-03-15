@@ -86,7 +86,8 @@ function mt:test(x, y)
 			end
 			if touch_callback or gesture_callback then
 				local anchor = usr_data.render.anchor
-				local touched = spr:test(x, y, anchor)
+				local touched, lx, ly = spr:test(x, y, anchor)
+				self.last_test_x, self.last_test_y = lx, ly
 				if touched then
 					local callback = touch_callback or gesture_callback
 					local wx, wy = RenderManager:screen_to_world(anchor, x, y)

@@ -35,6 +35,17 @@ function M.normalise(angle)
 	end
 end
 
+function M.atan(x, y)
+	local deg = math.deg(math.atan(y/x))
+	if deg < 0 then
+		return (x < 0 and y > 0) and deg + 180 or deg
+	elseif deg > 0 then
+		return (x < 0 and y < 0) and deg + 180 or deg
+	else
+		return x < 0 and 180 or deg
+	end
+end
+
 function M.add(left, right)
 	return M.normalise(left+right)
 end
