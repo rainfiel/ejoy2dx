@@ -19,7 +19,6 @@
 
 struct WINDOWGAME {
 	struct game *game;
-	int intouch;
 };
 
 static struct WINDOWGAME *G = NULL;
@@ -77,7 +76,6 @@ static struct WINDOWGAME *
 create_game() {
 	struct WINDOWGAME * g = (struct WINDOWGAME *)malloc(sizeof(*g));
 	g->game = ejoy2d_game();
-	g->intouch = 0;
 	return g;
 }
 
@@ -226,22 +224,7 @@ ejoy2d_fw_frame() {
 }
 
 int
-ejoy2d_fw_touch(int x, int y,int touch) {
-	switch (touch) {
-	case TOUCH_BEGIN:
-		G->intouch = 1;
-		break;
-	case TOUCH_END:
-		G->intouch = 0;
-		break;
-	case TOUCH_MOVE:
-		if (!G->intouch) {
-			return 0;
-		}
-		break;
-	}
-	// windows only support one touch id (0)
-	int id = 0;
+ejoy2d_fw_touch(int x, int y,int touch, int id) {
 	return ejoy2d_game_touch(G->game, id, x,y,touch);
 }
 

@@ -73,6 +73,7 @@ function mt:test_spr(spr, x, y)
 end
 
 function mt:test(x, y)
+	self.last_test_x, self.last_test_y = nil, nil
 	local sprites = self.sorted_sprites
 	local cnt = #sprites
 	for i=cnt, 1, -1 do
