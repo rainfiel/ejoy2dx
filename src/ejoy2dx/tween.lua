@@ -83,6 +83,10 @@ function mt:reset()
 	self.delta = 1
 end
 
+function mt:dead()
+	self.step_index = self.times + 1
+end
+
 function mt:step()
 	self.step_index = self.step_index + self.delta
 	local val = self.container[self.step_index]
