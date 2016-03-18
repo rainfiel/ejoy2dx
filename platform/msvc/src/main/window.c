@@ -150,7 +150,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				ejoy2d_fw_gesture(2, x, y, 0, 0, 3); //TAP
 			}
 		} else {
-			ejoy2d_fw_touch(x, y, TOUCH_END);
+			ejoy2d_fw_touch(x, y, TOUCH_END, 1);
 		}
 		reset_event_stat();
 		break;
@@ -159,7 +159,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		int x,y;
 		get_xy(lParam, &x, &y); 
 		g_event_stat.btn_down = 1;
-		g_event_stat.disable_gesture = ejoy2d_fw_touch(x,y,TOUCH_BEGIN);
+		g_event_stat.disable_gesture = ejoy2d_fw_touch(x,y,TOUCH_BEGIN, 1);
 		g_event_stat.last_x = x;
 		g_event_stat.last_y = y;
 		g_event_stat.last_change_time = timeGetTime();
@@ -170,7 +170,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			int x,y;
 			get_xy(lParam, &x, &y); 
 			if (g_event_stat.disable_gesture) {
-				ejoy2d_fw_touch(x,y,TOUCH_MOVE);
+				ejoy2d_fw_touch(x,y,TOUCH_MOVE, 1);
 			} else {
 				int dx = x-g_event_stat.last_x;
 				int dy = y-g_event_stat.last_y;

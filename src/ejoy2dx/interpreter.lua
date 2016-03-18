@@ -237,7 +237,6 @@ end
 local function local_ip()
 	local interfaces = lsocket.getinterfaces()
 	local global = require "global"
-	print(global.print_tbl(interfaces))
 	if not interfaces then return end
 	for _, v in ipairs(interfaces) do
 		--TODO LAN ip
