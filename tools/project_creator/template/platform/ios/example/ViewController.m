@@ -159,7 +159,7 @@ static ViewController* _controller = nil;
 }
 
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *) gr shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *) ogr {
-	return YES;
+    return ejoy2d_fw_simul_gesture();
 }
 
 - (void) setGesture
