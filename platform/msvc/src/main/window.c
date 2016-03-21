@@ -145,7 +145,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				int dy = y-g_event_stat.last_y;
 				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
 				if (seconds < 0.000001f) seconds = 0.033f;
-				ejoy2d_fw_gesture(1, dx, dy, dx/seconds, dy/seconds, 3); //PAN
+				ejoy2d_fw_gesture(1, x, y, dx/seconds, dy/seconds, 3); //PAN
 			} else {
 				ejoy2d_fw_gesture(2, x, y, 0, 0, 3); //TAP
 			}
@@ -186,7 +186,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				}
 				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
 				if (seconds < 0.000001f) seconds = 0.033f;
-				ejoy2d_fw_gesture(1, dx, dy, dx / seconds, dy / seconds, stat);
+				ejoy2d_fw_gesture(1, x, y, dx / seconds, dy / seconds, stat);
 			}
 			g_event_stat.last_x = x;
 			g_event_stat.last_y = y;
