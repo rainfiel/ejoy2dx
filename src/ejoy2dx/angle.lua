@@ -13,6 +13,17 @@ function M.same_sign_angle(angle, closest)
 	end
 end
 
+function M.turn_range(from , to)
+	local diff = to - from
+	return diff < 0 and diff + 360 or diff
+end
+
+function M.is_between(angle, min, max)
+	local diff = M.turn_range(min, angle)
+	local range = M.turn_range(min, max)
+	return diff <= range
+end
+
 function M.decay(src, dst, half_life, dtime)
 	dst = M.same_sign_angle(src, dst)
 
