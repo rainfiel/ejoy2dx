@@ -118,7 +118,7 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_pushboolean(L, start->auto_rotate);
 	lua_setfield(L, -2, "auto_rotate");
     
-    lua_pushboolean(L, false);
+    lua_pushboolean(L, true);
     lua_setfield(L, -2, "simul_gesture");
 
 	if (start->serialized)	
