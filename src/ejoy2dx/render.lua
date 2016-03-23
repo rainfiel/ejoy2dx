@@ -209,11 +209,11 @@ function mt:hide(spr, fade)
 		if fade then
 			local render = spr.usr_data.render
 			if not render.fadeout_index then
-				if not self.fadeout_tween then
-					self.fadeout_tween = tween.new()
-					self.fadeout_tween:make(tween.type.Linear, 15, tween.wrap_mode.Once, 1, 0)
-				end
 				render.fadeout_index = 1
+			end
+			if not self.fadeout_tween then
+				self.fadeout_tween = tween.new()
+				self.fadeout_tween:make(tween.type.Linear, 15, tween.wrap_mode.Once, 1, 0)
 			end
 		else
 			self.sprites[spr] = nil
