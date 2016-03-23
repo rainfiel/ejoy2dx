@@ -123,7 +123,7 @@ function mt:_draw()
 			end
 		end
 		local fadeout_index = render.fadeout_index
-		if fadeout_index then
+		if fadeout_index and self.fadeout_tween then
 			local rate = self.fadeout_tween:get_value(fadeout_index)
 			if rate then
 				render.fadeout_index = fadeout_index + 1
@@ -206,8 +206,8 @@ end
 
 function mt:hide(spr, fade)
 	if self.sprites[spr] then
+		local render = spr.usr_data.render
 		if fade then
-			local render = spr.usr_data.render
 			if not render.fadeout_index then
 				render.fadeout_index = 1
 			end
@@ -216,6 +216,7 @@ function mt:hide(spr, fade)
 				self.fadeout_tween:make(tween.type.Linear, 15, tween.wrap_mode.Once, 1, 0)
 			end
 		else
+			render.fadeout_index = nil
 			self.sprites[spr] = nil
 			self.dirty = true
 		end
