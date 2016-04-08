@@ -139,6 +139,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONUP: {
 		int x,y;
 		get_xy(lParam, &x, &y); 
+		ejoy2d_fw_touch(x, y, TOUCH_END, 1);
 		if (!g_event_stat.disable_gesture) {
 			if (g_event_stat.is_pan) {
 				int dx = x-g_event_stat.last_x;
@@ -149,8 +150,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			} else {
 				ejoy2d_fw_gesture(2, x, y, 0, 0, 3); //TAP
 			}
-		} else {
-			ejoy2d_fw_touch(x, y, TOUCH_END, 1);
 		}
 		reset_event_stat();
 		break;
@@ -169,9 +168,8 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (g_event_stat.btn_down) {
 			int x,y;
 			get_xy(lParam, &x, &y); 
-			if (g_event_stat.disable_gesture) {
-				ejoy2d_fw_touch(x,y,TOUCH_MOVE, 1);
-			} else {
+			ejoy2d_fw_touch(x,y,TOUCH_MOVE, 1);
+			if (!g_event_stat.disable_gesture) {
 				int dx = x-g_event_stat.last_x;
 				int dy = y-g_event_stat.last_y;
 				if (!g_event_stat.is_pan) {
