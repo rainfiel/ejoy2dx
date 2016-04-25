@@ -163,7 +163,7 @@ function mt:_offscreen_draw()
 	local gameinfo = fw.GameInfo
 	image_c.active_rt(self.offscreen_id)
 	fw.reset_screen(self.w, self.h, 1)
-	ej.clear()
+	-- ej.clear()
 
 	self:_draw()
 
@@ -172,6 +172,7 @@ function mt:_offscreen_draw()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
 	if self.drawonce then
 		self.draw_call = nil
+		self.sprites = {}
 	end
 end
 
