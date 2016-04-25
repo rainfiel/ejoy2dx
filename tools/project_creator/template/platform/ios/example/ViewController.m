@@ -236,7 +236,7 @@ getStateCode(UIGestureRecognizerState state) {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {
 		CGPoint p = [touch locationInView:touch.view];
-		disableGesture = ejoy2d_fw_touch(p.x, p.y, TOUCH_BEGIN);
+		disableGesture = ejoy2d_fw_touch(p.x, p.y, TOUCH_BEGIN,0);
 	}
 }
 
@@ -244,7 +244,7 @@ getStateCode(UIGestureRecognizerState state) {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {
 		CGPoint p = [touch locationInView:touch.view];
-		ejoy2d_fw_touch(p.x, p.y, TOUCH_MOVE);
+		ejoy2d_fw_touch(p.x, p.y, TOUCH_MOVE,0);
 	}
 }
 
@@ -252,7 +252,7 @@ getStateCode(UIGestureRecognizerState state) {
 	// UITouch *touch = [touches anyObject];
 	for(UITouch *touch in touches) {
 		CGPoint p = [touch locationInView:touch.view];
-		ejoy2d_fw_touch(p.x, p.y, TOUCH_END);
+		ejoy2d_fw_touch(p.x, p.y, TOUCH_END,0);
 	}
 }
 
