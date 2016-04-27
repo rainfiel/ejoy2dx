@@ -22,6 +22,7 @@ struct WINDOWGAME {
 };
 
 static struct WINDOWGAME *G = NULL;
+static struct WINDOWGAME *G2 = NULL; //TODO container
 static struct STARTUP_INFO *STARTUP = NULL;
 
 #define IOS 1
@@ -91,12 +92,6 @@ traceback(lua_State *L) {
 	return 1;
 }
 
-static int
-force_sync_frame(lua_State* L) {
-	G->game->logic_time = G->game->real_time;
-	return 0;
-}
-
 static void
 push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_newtable(L);
@@ -137,19 +132,19 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 	lua_setfield(L, -2, "logic_frame");
 }
 
-void
-ejoy2d_fw_init(struct STARTUP_INFO* startup) {
-	//free it
-	STARTUP = startup;
-	G = create_game();
+static int
+force_sync_frame(lua_State* L) {
+	G->game->logic_time = G->game->real_time;
+	return 0;
+}
 
-	screen_init(startup->width,startup->height,startup->scale);
-	lua_State *L = ejoy2d_game_lua(G->game);
-	
+struct WINDOWGAME*
+new_game(const char* lua_root, const char* script) {
+	struct WINDOWGAME* wg = create_game();
+	lua_State* L = ejoy2d_game_lua(wg->game);
 	init_lua_libs(L);
 	init_user_lua_libs(L);
-	lua_register(L, "ejoy2dx_sync_frame", force_sync_frame);
-
+	
 	lua_pushcfunction(L, traceback);
 	int tb = lua_gettop(L);
 	int err = luaL_loadstring(L, startscript);
@@ -158,17 +153,57 @@ ejoy2d_fw_init(struct STARTUP_INFO* startup) {
 		fault("%s", msg);
 	}
 
-	lua_pushstring(L, startup->folder);
-	lua_pushstring(L, startup->lua_root); 
-	lua_pushstring(L, startup->script);
+	lua_pushstring(L, STARTUP->folder);
+	lua_pushstring(L, lua_root); 
+	lua_pushstring(L, script);
 
-	push_startup_info(L, startup);
+	push_startup_info(L, STARTUP);
 	err = lua_pcall(L, 4, 0, tb);
 	if (err) {
 		const char *msg = lua_tostring(L,-1);
 		fault("%s", msg);
 	}
 	lua_pop(L,1);
+
+	return wg;
+}
+
+static int
+lnew_game(lua_State* L) {
+	if (!G2) {
+		const char *root = luaL_checkstring(L, 1);
+		const char *script = luaL_checkstring(L, 2);
+		G2 = new_game(root, script);
+		ejoy2d_game_start(G2->game);
+	}
+	return 0;
+}
+
+static int
+lclose_game(lua_State* L) {
+	if (G2) {
+		if (G2->game && G2->game->L) {
+			lua_close(G2->game->L);
+			G2->game->L = NULL;
+		}
+		free(G2->game);
+		G2=NULL;
+	}
+	return 0;
+}
+
+void
+ejoy2d_fw_init(struct STARTUP_INFO* startup) {
+	screen_init(startup->width,startup->height,startup->scale);
+
+	//free it
+	STARTUP = startup;
+	G = new_game(STARTUP->lua_root, STARTUP->script);
+
+	lua_State *L = ejoy2d_game_lua(G->game);
+	lua_register(L, "ejoy2dx_sync_frame", force_sync_frame);
+	lua_register(L, "ejoy2dx_new_lvm", lnew_game);
+	lua_register(L, "ejoy2dx_close_lvm", lclose_game);
 
 	ejoy2d_game_logicframe(LOGIC_FRAME);
 	ejoy2d_game_start(G->game);
@@ -229,6 +264,9 @@ ejoy2d_fw_message(int ID,const char* msg,const char* data, lua_Number n){
 
 void
 ejoy2d_fw_update(float delta) {
+	if (G2) {
+		ejoy2d_game_update(G2->game, delta);
+	}
 	ejoy2d_game_update(G->game, delta);
 	ejoy2d_check_reload();
 }
