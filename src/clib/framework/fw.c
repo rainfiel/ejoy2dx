@@ -130,6 +130,13 @@ push_startup_info(lua_State* L, struct STARTUP_INFO* start) {
 
 	lua_pushinteger(L, LOGIC_FRAME);
 	lua_setfield(L, -2, "logic_frame");
+    
+#ifdef DEBUG
+    lua_pushboolean(L, false);
+#else
+    lua_pushboolean(L, true);
+#endif
+    lua_setfield(L, -2, "is_release");
 }
 
 static int
