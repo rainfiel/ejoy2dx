@@ -40,6 +40,8 @@ int ejoy2d_fw_touch(int x, int y,int touch, int id);
 void ejoy2d_fw_gesture(int type, float x1, float y1, float x2, float y2, int state);
 void ejoy2d_fw_view_layout(int stat, float x, float y, float w, float h);
 void ejoy2d_fw_message(int ID,const char* msg,const char* data, lua_Number n);
+void ejoy2d_fw_pause();
+void ejoy2d_fw_resume();
 
 bool ejoy2d_fw_auto_rotate();
 bool ejoy2d_fw_simul_gesture();

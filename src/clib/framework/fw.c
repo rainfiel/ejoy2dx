@@ -297,3 +297,13 @@ void
 ejoy2d_fw_view_layout(int stat, float x, float y, float width, float height) {
 	ejoy2d_game_view_layout(G->game, stat, x, y, width, height);
 }
+
+void
+ejoy2d_fw_pause() {
+    ejoy2d_game_pause(G->game);
+}
+
+void
+ejoy2d_fw_resume() {
+    ejoy2d_game_resume(G->game);
+}
