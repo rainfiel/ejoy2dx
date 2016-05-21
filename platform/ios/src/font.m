@@ -33,11 +33,35 @@ void
 font_size(const char *str, int unicode, struct font_context *ctx) {
     NSString * tmp = [NSString stringWithUTF8String: str];
     //TODO handle ios 7 for deprecated method
-    CGSize sz = [tmp sizeWithFont:(__bridge UIFont *)(ctx->font)];
+    
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+      CGSize sz = [tmp sizeWithAttributes:
+                   @{NSFontAttributeName:(__bridge UIFont*)(ctx->font)}];
+      ctx->w = (int)ceilf(sz.width);
+      ctx->h = (int)ceilf(sz.height);
+                     
+    } else {
+      CGSize sz = [tmp sizeWithFont:(__bridge UIFont *)(ctx->font)];
   
-    ctx->w = (int)sz.width;
-    ctx->h = (int)sz.height;
+      ctx->w = (int)sz.width;
+      ctx->h = (int)sz.height;
+    }
   
+}
+
+static void
+dump(int w, int h, uint32_t *src) {
+    static char map[] = "_123456789abcdef";
+    int i,j;
+    for (i=0;i<h;i++) {
+        for (j=0;j<w;j++) {
+            printf("%c",map[((src[w*i+j]>>24)&0xff)/16]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    printf("\n");
+    printf("\n");
 }
 
 static inline void
@@ -71,6 +95,7 @@ _font_glyph_gray(NSString* str, void* buffer, struct font_context* ctx){
   }
   UIGraphicsPopContext();
   CGContextRelease(context);
+ //   dump(ctx->w, ctx->h, buffer);
 }
 
 //static inline void
@@ -103,18 +128,6 @@ convert_rgba_to_alpha(int sz, uint32_t * src, uint8_t *dest) {
 	}
 }
 
-/*
-static void
-dump(int w, int h, uint32_t *src) {
-  static char map[] = "_123456789abcdef";
-  int i,j;
-  for (i=0;i<h;i++) {
-    for (j=0;j<w;j++) {
-      printf("%c",map[((src[w*i+j]>>24)&0xff)/16]);
-    }
-    printf("\n");
-  }
-}*/
 
 static inline void
 _font_glyph_rgba(NSString* str, void* buffer, struct font_context* ctx){
