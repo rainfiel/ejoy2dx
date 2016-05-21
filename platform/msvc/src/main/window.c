@@ -204,6 +204,20 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			ejoy2d_fw_gesture(3, p.x, p.y, 1.05f, 0, 1);
 		break;
 	}
+	case WM_KEYDOWN: {
+		char chr[2];
+		chr[0] = (char)wParam;
+		chr[1] = '\0';
+		ejoy2d_fw_message(-1, "KEYDOWN", chr, (int)lParam);
+		break;
+	}
+	case WM_KEYUP: {
+		char chr[2];
+		chr[0] = (char)wParam;
+		chr[1] = '\0';
+		ejoy2d_fw_message(-1, "KEYUP", chr, (int)lParam);
+		break;
+	}
 	}
 	return DefWindowProcW(hWnd, message, wParam, lParam);
 }
