@@ -22,7 +22,8 @@ font_create(int font_size, struct font_context *ctx) {
 	
 //	UIFont* font = [UIFont fontWithName:@"HiraMinProN-W6" size:font_size];
 	ctx->font = (__bridge void *)font;
-	ctx->dc = NULL;    
+  ctx->ascent = (int)ceilf(font.descender/2);
+	ctx->dc = NULL;
 }
 
 void
@@ -32,14 +33,15 @@ font_release(struct font_context *ctx) {
 void 
 font_size(const char *str, int unicode, struct font_context *ctx) {
     NSString * tmp = [NSString stringWithUTF8String: str];
-    //TODO handle ios 7 for deprecated method
-    
+  
     if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
-      CGSize sz = [tmp sizeWithAttributes:
-                   @{NSFontAttributeName:(__bridge UIFont*)(ctx->font)}];
+      CGSize constraint = CGSizeMake(NSUIntegerMax, NSUIntegerMax);
+      NSDictionary *attributes = @{NSFontAttributeName: (__bridge UIFont *)ctx->font};
+      CGRect rect = [tmp boundingRectWithSize:constraint options:NSStringDrawingUsesFontLeading attributes:attributes context:nil];
+      CGSize sz = rect.size;
+      
       ctx->w = (int)ceilf(sz.width);
       ctx->h = (int)ceilf(sz.height);
-                     
     } else {
       CGSize sz = [tmp sizeWithFont:(__bridge UIFont *)(ctx->font)];
   
@@ -85,7 +87,7 @@ _font_glyph_gray(NSString* str, void* buffer, struct font_context* ctx){
    UIGraphicsPushContext(context);
   
   if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
-    [str drawAtPoint:CGPointMake(0, 0) withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+    [str drawAtPoint:CGPointMake(0, ctx->ascent) withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        (__bridge id)(ctx->font), NSFontAttributeName,
                                                        [UIColor colorWithWhite:1.0f alpha:1.0f],NSForegroundColorAttributeName,
                                                        nil]];
