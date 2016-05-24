@@ -120,7 +120,7 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(EJ2D_LUA);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
-      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;LUA_COMPAT_ALL;WIN32;_DEBUG;_LIB;LUA_PARSE_CH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;LUA_COMPAT_ALL;WIN32;_DEBUG;_LIB;LUA_PARSE_CH;LUA_USE_APICHECK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
