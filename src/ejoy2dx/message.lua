@@ -47,8 +47,9 @@ local function input(title, ok_text, cancel_text, default_text, style, max_len)
 	if not os_utls.input then return end
 
 	local id, node = add_message()
-	os_utls.input(title, id, cancel_text, ok_text, default_text, style, max_len)
-	return node
+	if os_utls.input(title, id, cancel_text, ok_text, default_text, style, max_len) then
+		return node
+	end
 end
 
 local function char(handlers)

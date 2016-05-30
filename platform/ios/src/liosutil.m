@@ -101,7 +101,11 @@ _input(lua_State* L) {
     const char* cancelButtonTitle = luaL_optstring(L,3, nil);
     const char* okButtonTitle = luaL_checkstring(L, 4);
     const char* defaultText = luaL_optstring(L,5, nil);
-    
+  
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+      return 0;
+    }
+  
     int style = (int)luaL_optinteger(L, 6, 0);
     int max_len = (int)luaL_optinteger(L, 7, 256);
   
@@ -139,9 +143,10 @@ _input(lua_State* L) {
 			[alertView addAction:cancelAction];
 		}
 
-		UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
-		[root presentViewController:alertView animated:YES completion:nil];
-    return 0;
+		UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [root presentViewController:alertView animated:YES completion:nil];
+    lua_pushboolean(L, true);
+    return 1;
 }
 
 // modes:

@@ -481,7 +481,7 @@ get_real(lua_State *L, struct read_block *rb) {
 	double * pn = (double*)rb_read(rb, &n, sizeof(n));
 	if (pn == NULL)
 		invalid_stream(L,rb);
-	memcpy(&n, pn, sizeof(n));
+	memcpy((void*)&n, (void*)pn, sizeof(n));
 	return n;
 }
 
