@@ -4,15 +4,36 @@ local table = require "table"
 local packbytes
 local packvalue
 
-function packbytes(str)
-	return string.pack("<s4",str)
-end
+if _VERSION == "Lua 5.3" then
+	function packbytes(str)
+		return string.pack("<s4",str)
+	end
 
-function packvalue(id)
-	id = (id + 1) * 2
-	return string.pack("<I2",id)
-end
+	function packvalue(id)
+		id = (id + 1) * 2
+		return string.pack("<I2",id)
+	end
+else
+	function packbytes(str)
+		local size = #str
+		local a = size % 256
+		size = math.floor(size / 256)
+		local b = size % 256
+		size = math.floor(size / 256)
+		local c = size % 256
+		size = math.floor(size / 256)
+		local d = size
+		return string.char(a)..string.char(b)..string.char(c)..string.char(d) .. str
+	end
 
+	function packvalue(id)
+		id = (id + 1) * 2
+		assert(id >=0 and id < 65536)
+		local a = id % 256
+		local b = math.floor(id / 256)
+		return string.char(a) .. string.char(b)
+	end
+end
 
 local P = lpeg.P
 local S = lpeg.S
@@ -49,6 +70,7 @@ local name = C(word)
 local typename = C(word * ("." * word) ^ 0)
 local tag = R"09" ^ 1 / tonumber
 local mainkey = "(" * blank0 * name * blank0 * ")"
+local decimal = "(" * blank0 * C(tag) * blank0 * ")"
 
 local function multipat(pat)
 	return Ct(blank0 * (pat * blanks) ^ 0 * pat^0 * blank0)
@@ -60,7 +82,7 @@ end
 
 local typedef = P {
 	"ALL",
-	FIELD = namedpat("field", (name * blanks * tag * blank0 * ":" * blank0 * (C"*")^0 * typename * mainkey^0)),
+	FIELD = namedpat("field", (name * blanks * tag * blank0 * ":" * blank0 * (C"*")^-1 * typename * (mainkey +  decimal)^0)),
 	STRUCT = P"{" * multipat(V"FIELD" + V"TYPE") * P"}",
 	TYPE = namedpat("type", P"." * name * blank0 * V"STRUCT" ),
 	SUBPROTO = Ct((C"request" + C"response") * blanks * (typename + V"STRUCT")),
@@ -113,8 +135,12 @@ function convert.type(all, obj)
 			end
 			local mainkey = f[5]
 			if mainkey then
-				assert(field.array)
-				field.key = mainkey
+				if fieldtype == "integer" then
+					field.decimal = mainkey
+				else
+					assert(field.array)
+					field.key = mainkey
+				end
 			end
 			field.typename = fieldtype
 		else
@@ -173,7 +199,7 @@ local function check_protocol(r)
 		local request = v.request
 		local response = v.response
 		local p = map[tag]
-		
+
 		if p then
 			error(string.format("redefined protocol tag %d at %s", tag, name))
 		end
@@ -254,7 +280,11 @@ local function packfield(f)
 	table.insert(strtbl, "\0\0")	-- name	(tag = 0, ref an object)
 	if f.buildin then
 		table.insert(strtbl, packvalue(f.buildin))	-- buildin (tag = 1)
-		table.insert(strtbl, "\1\0")	-- skip (tag = 2)
+		if f.decimal then
+			table.insert(strtbl, packvalue(f.decimal))	-- f.buildin must be decimal(3)
+		else
+			table.insert(strtbl, "\1\0")	-- skip (tag = 2)
+		end
 		table.insert(strtbl, packvalue(f.tag))		-- tag (tag = 3)
 	else
 		table.insert(strtbl, "\1\0")	-- skip (tag = 1)
@@ -278,6 +308,7 @@ local function packtype(name, t, alltypes)
 		tmp.array = f.array
 		tmp.name = f.name
 		tmp.tag = f.tag
+		tmp.decimal = f.decimal
 
 		tmp.buildin = buildin_types[f.typename]
 		local subtype
@@ -319,9 +350,6 @@ local function packtype(name, t, alltypes)
 end
 
 local function packproto(name, p, alltypes)
---	if p.request == nil then
---		error(string.format("Protocol %s need request", name))
---	end
 	if p.request then
 		local request = alltypes[p.request]
 		if request == nil then
