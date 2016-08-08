@@ -1,6 +1,7 @@
 
 local ppm = require "ejoy2d.ppm"
 local spritepack = require "ejoy2d.spritepack"
+local simplepackage = require "ejoy2d.simplepackage"
 
 local image_c = require "ejoy2dx.image.c"
 local texture = require "ejoy2dx.texture"
@@ -82,7 +83,7 @@ function pack:do_load(packname)
 
 	local name, ext = splitpath(packname)
 	local loader = rawget(self.loader,ext)
-	loader(packname, self:realname(name), ext)
+	return loader(packname, self:realname(name), ext)
 end
 
 function pack:realname(filename)
@@ -90,10 +91,15 @@ function pack:realname(filename)
 	return string.gsub(self.package_pattern,"([^?]*)?([^?]*)","%1"..filename.."%2")
 end
 
-function pack:prepare_package(package)
+function pack:prepare_package(package, add_to_simple)
 	local exist = spritepack.query_package(package)
 	if not exist then
-		pack:do_load(package)
+		exist = pack:do_load(package)
+	end
+	if add_to_simple then
+		local name, ext = splitpath(package)
+		simplepackage.add_package(name, exist)
+		spritepack.alias(package, name)
 	end
 end
 
