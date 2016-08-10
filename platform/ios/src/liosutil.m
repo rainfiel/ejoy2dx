@@ -3,6 +3,11 @@
 #import "ejoy2dgame.h"
 #import <UIKit/UIKit.h>
 
+static UIViewController *controller=NULL;
+void set_view_controller(void *p) {
+    controller  = (__bridge UIViewController*)p;
+}
+
 static int
 _exists(lua_State* L) {
   const char* path = luaL_checkstring(L, 1);
@@ -102,10 +107,6 @@ _input(lua_State* L) {
     const char* okButtonTitle = luaL_checkstring(L, 4);
     const char* defaultText = luaL_optstring(L,5, nil);
   
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
-      return 0;
-    }
-  
     int style = (int)luaL_optinteger(L, 6, 0);
     int max_len = (int)luaL_optinteger(L, 7, 256);
   
@@ -131,6 +132,7 @@ _input(lua_State* L) {
 														 {
 															 UITextField * textField = alertView.textFields.firstObject;
 															 ejoy2d_game_message_l(L, iid, "FINISH", [textField.text UTF8String], 0);
+                                                             [alertView.view removeFromSuperview];
 														 }];
 		[alertView addAction:okAction];
 	
@@ -139,12 +141,14 @@ _input(lua_State* L) {
 																													 handler:^(UIAlertAction *action)
 																		 {
 																			 ejoy2d_game_message_l(L, iid, "CANCEL", nil, 0);
+                                                                             [alertView.view removeFromSuperview];
 																		 }];
 			[alertView addAction:cancelAction];
 		}
-
-		UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
-    [root presentViewController:alertView animated:YES completion:nil];
+    
+    bool loaded = [controller isViewLoaded];
+    [controller.view addSubview:alertView.view];
+    [controller presentViewController:alertView animated:YES completion:nil];
     lua_pushboolean(L, true);
     return 1;
 }

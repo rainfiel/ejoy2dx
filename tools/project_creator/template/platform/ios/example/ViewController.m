@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "fw.h"
+#import "liosutil.h"
 
 #import <lua.h>
 #import <lauxlib.h>
@@ -25,6 +26,7 @@ static ViewController* _controller = nil;
 - (id)init {
 	_controller = [super init];
 	super.preferredFramesPerSecond = 30;
+	set_view_controller((__bridge void *)(_controller));
 	return _controller;
 }
 
