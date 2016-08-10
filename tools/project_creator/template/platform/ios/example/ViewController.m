@@ -14,6 +14,7 @@
 #import <lauxlib.h>
 
 static ViewController* _controller = nil;
+static NSString *appFolderPath = nil;
 
 @interface ViewController () {
 	int disableGesture;
@@ -62,7 +63,7 @@ static ViewController* _controller = nil;
      bounds.origin.x, bounds.origin.y,
      bounds.size.width, bounds.size.height);
 	
-	NSString *appFolderPath = [[NSBundle mainBundle] resourcePath];
+	appFolderPath = [[NSBundle mainBundle] resourcePath];
 	const char* folder = [appFolderPath UTF8String];
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
