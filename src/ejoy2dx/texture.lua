@@ -50,8 +50,8 @@ function M:add_texture(path)
 	end
 
 	if not id then
-		id = self.texture_map.texture_count
 		self.texture_map.texture_count = self.texture_map.texture_count + 1
+		id = self.texture_map.texture_count
 		assert(self.texture_map.texture_count <= MAX_TEXTURE)
 		insert(self.texture_map, id, path)
 	end
