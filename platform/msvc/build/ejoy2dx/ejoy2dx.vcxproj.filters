@@ -43,6 +43,15 @@
     <Filter Include="ejoy2dx\lzma">
       <UniqueIdentifier>{e8ce14a0-f0ff-4e24-a646-c557b0c15495}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2d\script">
+      <UniqueIdentifier>{1b78972d-cfe1-4208-a5df-8a539dbbdd58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ejoy2dx\script">
+      <UniqueIdentifier>{8ae4e87b-26fc-4314-913f-e1d70c413623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ejoy2dx\script\Liekkas">
+      <UniqueIdentifier>{c27621d4-bcba-4446-ab1e-57556c50f075}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -480,6 +489,108 @@
   <ItemGroup>
     <None Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_hardware_mac_ios.m">
       <Filter>ejoy2dx\Liekkas\decode</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\geometry.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\init.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\matrix.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\particle.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\richtext.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\shader.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\simplepackage.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\sprite.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\spritepack.lua">
+      <Filter>ejoy2d\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\game_stat.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\grid.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\image.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\init.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\interpreter.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\json.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\message.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\mult_draw.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\os_utls.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\package.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\render.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\simple_ui.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\sproto.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\sprotoparser.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\texture.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\tween.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\utls.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\vector2.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\angle.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\animation.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\bin_pack.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\blend.lua">
+      <Filter>ejoy2dx\script</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\Liekkas\audio.lua">
+      <Filter>ejoy2dx\script\Liekkas</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\Liekkas\music.lua">
+      <Filter>ejoy2dx\script\Liekkas</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\Liekkas\sound.lua">
+      <Filter>ejoy2dx\script\Liekkas</Filter>
     </None>
   </ItemGroup>
 </Project>

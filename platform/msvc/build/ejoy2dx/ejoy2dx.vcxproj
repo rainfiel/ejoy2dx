@@ -166,7 +166,41 @@
     <ClCompile Include="..\..\src\main\winfont.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\geometry.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\init.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\matrix.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\particle.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\richtext.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\shader.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\simplepackage.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\sprite.lua" />
+    <None Include="..\..\..\..\ejoy2d\ejoy2d\spritepack.lua" />
     <None Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_hardware_mac_ios.m" />
+    <None Include="..\..\..\..\src\ejoy2dx\angle.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\animation.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\bin_pack.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\blend.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\game_stat.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\grid.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\image.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\init.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\interpreter.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\json.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\Liekkas\audio.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\Liekkas\music.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\Liekkas\sound.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\message.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\mult_draw.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\os_utls.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\package.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\render.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\simple_ui.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\sproto.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\sprotoparser.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\texture.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\tween.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\utls.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\vector2.lua" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7431851E-EE17-4922-8ADF-B3E1E42E6EC7}</ProjectGuid>
