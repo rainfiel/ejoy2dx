@@ -1,4 +1,5 @@
 
+local utls = require "ejoy2dx.utls"
 
 local floor = math.floor
 
@@ -11,18 +12,27 @@ function AnimationManager:init(logic_frame)
 	self.animations = {}
 end
 
-function AnimationManager:play(spr, num_loops, callback)
+function AnimationManager:play(spr, callback)
 	assert(not self.animations[spr])
 
 	spr.usr_data.anim = spr.usr_data.anim or {}
 	local config = spr.usr_data.anim
+	
 	config.frame = 0
-	config.num_loops = num_loops or -1 --n for n loops, -1 for loop, 0 for gone
+	config.frame_delta = self.animation_frame_per_frame
+	config.duration = utls.frame_to_seconds(spr.frame_count / self.animation_frame_per_frame)
+	config.set_duration = function(self, t)
+		local factor = self.duration / t
+		self.frame_delta = AnimationManager.animation_frame_per_frame * factor
+	end
+
+	config.num_loops = -1 --n for n loops, -1 for loop, 0 for gone
 	config.playing = true
 	config.callback = callback
 	spr.frame = 0
 
 	self.animations[spr] = true
+	return config
 end
 
 function AnimationManager:stop(spr)
@@ -41,7 +51,7 @@ local function update_imp(spr)
 		return false
 	end
 
-	config.frame = config.frame + AnimationManager.animation_frame_per_frame
+	config.frame = config.frame + config.frame_delta
 	local frame = floor(config.frame)
 	spr.frame = frame
 

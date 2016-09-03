@@ -82,6 +82,7 @@ static NSString *appFolderPath = nil;
 	startup->scale = screenScale;
 	startup->reload_count = 0;
 	startup->serialized = NULL;
+	startup->user_data = NULL;
 	ejoy2d_fw_init(startup);
 }
 
