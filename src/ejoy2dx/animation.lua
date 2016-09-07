@@ -12,26 +12,28 @@ function AnimationManager:init(logic_frame)
 	self.animations = {}
 end
 
+local function set_duration(ani_cfg, t)
+	local factor = ani_cfg.duration / t
+	ani_cfg.frame_delta = AnimationManager.animation_frame_per_frame * factor
+end
+
 function AnimationManager:play(spr, callback)
 	assert(not self.animations[spr])
 
 	spr.usr_data.anim = spr.usr_data.anim or {}
 	local config = spr.usr_data.anim
 	
-	config.frame = 0
-	config.frame_delta = self.animation_frame_per_frame
-	config.duration = utls.frame_to_seconds(spr.frame_count / self.animation_frame_per_frame)
-	config.set_duration = function(self, t)
-		local factor = self.duration / t
-		self.frame_delta = AnimationManager.animation_frame_per_frame * factor
-	end
-
-	config.num_loops = -1 --n for n loops, -1 for loop, 0 for gone
-	config.playing = true
-	config.callback = callback
-	spr.frame = 0
+	self:reset(spr, config)
 
 	self.animations[spr] = true
+	return config
+end
+
+function AnimationManager:replay(spr)
+	local config = spr.usr_data.anim
+	if config then
+		self:reset(spr, config)
+	end
 	return config
 end
 
@@ -47,6 +49,18 @@ end
 
 function AnimationManager:is_play(spr)
 	return self.animations[spr]
+end
+
+function AnimationManager:reset(spr, config)
+	config.frame = 0
+	config.frame_delta = self.animation_frame_per_frame
+	config.duration = utls.frame_to_seconds(spr.frame_count / self.animation_frame_per_frame)
+	config.set_duration = set_duration
+
+	config.num_loops = -1 --n for n loops, -1 for loop, 0 for gone
+	config.playing = true
+	config.callback = callback
+	spr.frame = 0
 end
 
 local function update_imp(spr)
