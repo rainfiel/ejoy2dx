@@ -45,6 +45,10 @@ function AnimationManager:stop(spr)
 	end
 end
 
+function AnimationManager:is_play(spr)
+	return self.animations[spr]
+end
+
 local function update_imp(spr)
 	local config = spr.usr_data.anim
 	if not config or not config.playing then
@@ -56,7 +60,7 @@ local function update_imp(spr)
 	spr.frame = frame
 
 	if config.num_loops > 0 and
-			(frame // spr.frame_count) >= config.num_loops then
+			((frame+1) // spr.frame_count) >= config.num_loops then
 		if config.callback then
 			config.callback()
 			config.callback = nil
