@@ -240,7 +240,9 @@ end
 -----------------------------------------------------------
 
 local function sort_layer(left, right)
-	assert(left.layer~=right.layer, left.layer)
+	if left ~= right then
+		assert(left.layer~=right.layer, left.layer)
+	end
 	return left.layer < right.layer
 end
 
