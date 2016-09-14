@@ -250,9 +250,10 @@ end
 local screen_anchors = {{id=1,x=0, y=0},{id=2,x=0, y=0},{id=3,x=0, y=0},
 												{id=4,x=0, y=0},{id=5,x=0, y=0},{id=6,x=0, y=0},
 												{id=7,x=0, y=0},{id=8,x=0, y=0},{id=9,x=0, y=0}}
-local function set_anchor(idx, x, y)
+local function set_anchor(idx, x, y, scale)
 	screen_anchors[idx].x = x
 	screen_anchors[idx].y = y
+	screen_anchors[idx].scale = scale or 1
 end
 function RenderManager:init(screen_width, screen_height)
 	self.top_left, self.top_center, self.top_right,
@@ -261,6 +262,8 @@ function RenderManager:init(screen_width, screen_height)
 	= 1,2,3,
 		4,5,6,
 		7,8,9
+
+	self.screen_width, self.screen_height = screen_width, screen_height
 	local half_width = screen_width / 2
 	local half_height = screen_height /2
 
@@ -275,6 +278,36 @@ function RenderManager:init(screen_width, screen_height)
 	set_anchor(7, 0, screen_height)
 	set_anchor(8, half_width, screen_height)
 	set_anchor(9, screen_width, screen_height)
+end
+
+function RenderManager:fixed_adapter(design_width, design_height)
+	local screen_width, screen_height = self.screen_width, self.screen_height
+	self.design_width, self.design_height = design_width, design_height
+	local design_aspect_ratio = design_height / design_width
+	local screen_aspect_ratio = screen_height / screen_width
+
+	local dx, dy, scale = 0, 0, 1
+	if screen_aspect_ratio >= design_aspect_ratio then
+		-- top & bottom black
+		scale = screen_width / design_width
+		dy = (screen_height - scale * design_height) / 2
+	else
+		-- left & right black
+		scale = screen_height / design_height
+		dx = (screen_width - scale * design_width) / 2
+	end
+
+	set_anchor(1, 	dx, dy, scale)
+	set_anchor(2, 	screen_width/2, dy, scale)
+	set_anchor(3, 	screen_width-dx, dy, scale)
+
+	set_anchor(4, 	dx, screen_height/2, scale)
+	set_anchor(5, 	screen_width/2, screen_height/2, scale)
+	set_anchor(6, 	screen_width-dx, screen_height/2, scale)
+
+	set_anchor(7, 	dx, screen_height-dy, scale)
+	set_anchor(8, 	screen_width/2, screen_height-dy, scale)
+	set_anchor(9, 	screen_width-dx, screen_height-dy, scale)
 end
 
 function RenderManager:screen_to_world(anchor, x, y)
