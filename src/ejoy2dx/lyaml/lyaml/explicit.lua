@@ -24,8 +24,8 @@
 
 --- @module lyaml.explicit
 
-local functional = require "ejoy2dx.lyaml.functional"
-local implicit   = require "ejoy2dx.lyaml.implicit"
+local functional = require "ejoy2dx.lyaml.lyaml.functional"
+local implicit   = require "ejoy2dx.lyaml.lyaml.implicit"
 
 local anyof, id = functional.anyof, functional.id
 

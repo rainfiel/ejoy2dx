@@ -61,7 +61,7 @@ emit_STREAM_START (lua_State *L, lyaml_emitter *emitter)
    {
       emitter->error++;
       luaL_addsize (&emitter->errbuff,
-                    sprintf_s (luaL_prepbuffer (&emitter->errbuff),
+                    sprintf_s (luaL_prepbuffer (&emitter->errbuff), emitter->errbuff.size,
                              "invalid stream encoding '%s'", encoding));
    }
 #undef MENTRY

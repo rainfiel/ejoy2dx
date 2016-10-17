@@ -25,7 +25,7 @@
 --- @module lyaml.implicit
 
 
-local NULL = require "ejoy2dx.lyaml.functional".NULL
+local NULL = require "ejoy2dx.lyaml.lyaml.functional".NULL
 
 
 local is_null = {

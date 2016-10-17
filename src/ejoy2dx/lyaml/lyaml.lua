@@ -29,9 +29,9 @@
 
 
 local yaml       = require "ejoy2dx.yaml.c"
-local explicit   = require "ejoy2dx.lyaml.explicit"
-local implicit   = require "ejoy2dx.lyaml.implicit"
-local functional = require "ejoy2dx.lyaml.functional"
+local explicit   = require "ejoy2dx.lyaml.lyaml.explicit"
+local implicit   = require "ejoy2dx.lyaml.lyaml.implicit"
+local functional = require "ejoy2dx.lyaml.lyaml.functional"
 
 local anyof, id, isnull =
   functional.anyof, functional.id, functional.isnull
