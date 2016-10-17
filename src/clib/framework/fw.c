@@ -202,6 +202,17 @@ lclose_game(lua_State* L) {
 	return 0;
 }
 
+#define FLUOR_FUNC(X) \
+static int _fluor##X(lua_State *L) { \
+    int nargs = (int)luaL_checkinteger(L, 1);           \
+    int nresults = (int)luaL_checkinteger(L,2);         \
+    lua_call(L, nargs, nresults);                       \
+    return nresults;                                    \
+}                                                   \
+	
+FLUOR_FUNC(1)
+FLUOR_FUNC(2)
+
 void
 ejoy2d_fw_init(struct STARTUP_INFO* startup) {
 	screen_init(startup->width,startup->height,startup->scale);
@@ -214,6 +225,8 @@ ejoy2d_fw_init(struct STARTUP_INFO* startup) {
 	lua_register(L, "ejoy2dx_sync_frame", force_sync_frame);
 	lua_register(L, "ejoy2dx_new_lvm", lnew_game);
 	lua_register(L, "ejoy2dx_close_lvm", lclose_game);
+    lua_register(L, "fluor1", _fluor1);
+    lua_register(L, "fluor2", _fluor2);
 
 	ejoy2d_game_logicframe(LOGIC_FRAME);
 	ejoy2d_game_start(G->game);
