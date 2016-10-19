@@ -33,6 +33,10 @@
 
 #include "lyaml.h"
 
+#ifdef _WIN32
+#define snprintf _snprintf
+#endif
+
 #if LUA_VERSION_NUM == 502 || LUA_VERSION_NUM == 503
 #  define lua_objlen lua_rawlen
 #  define lua_strlen lua_rawlen
