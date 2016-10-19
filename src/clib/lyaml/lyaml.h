@@ -107,7 +107,7 @@
 	lua_pushstring (L, #_k);			\
 	lua_rawget     (L, -2);				\
 	if (!lua_isnil (L, -1)) {			\
-	  _k = _strdup (lua_tostring (L, -1));		\
+	  _k = strdup (lua_tostring (L, -1));		\
 	} else { _k = NULL; }
 
 #define RAWGET_YAML_CHARP(_k)				\
@@ -129,7 +129,7 @@
 	lua_pushstring (L, _s);				\
 	lua_rawget     (L, -2);				\
 	if (!lua_isnil (L, -1)) {			\
-	   _v = (yaml_char_t *) _strdup (lua_tostring (L, -1)); \
+	   _v = (yaml_char_t *) strdup (lua_tostring (L, -1)); \
 	} else { _v = NULL; }
 
 #define RAWGET_PUSHTABLE(_k)						\
