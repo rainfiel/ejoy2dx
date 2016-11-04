@@ -152,6 +152,10 @@ function mt:_draw()
 			if render.on_draw then
 				hided = render.on_draw()
 			end
+			if hided then
+				table.insert(hide_list, v)
+				hide_list_cnt = hide_list_cnt+1
+			end
 		end
 	end
 	for i=1, hide_list_cnt do
