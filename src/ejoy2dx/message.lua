@@ -18,14 +18,14 @@ end
 function msg_mt:on_keydown(char, param)
 	local handler = self.handlers.down[char]
 	if handler then
-		handler(is_repeat(param))
+		handler(char, is_repeat(param))
 	end
 end
 
 function msg_mt:on_keyup(char, param)
 	local handler = self.handlers.up[char]
 	if handler then
-		handler()
+		handler(char)
 	end
 end
 ------------------------------------------------------------
@@ -73,6 +73,7 @@ local function on_message(id, stat, str_data, num_data)
 			node.on_cancel(str_data, num_data)
 		end
 	elseif stat == "KEYDOWN" then
+		print("..........:", str_data)
 		if node.on_keydown then
 			node:on_keydown(str_data, num_data)
 		end
