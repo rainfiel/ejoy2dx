@@ -73,7 +73,6 @@ local function on_message(id, stat, str_data, num_data)
 			node.on_cancel(str_data, num_data)
 		end
 	elseif stat == "KEYDOWN" then
-		print("..........:", str_data)
 		if node.on_keydown then
 			node:on_keydown(str_data, num_data)
 		end
