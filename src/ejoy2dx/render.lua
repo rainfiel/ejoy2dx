@@ -178,12 +178,15 @@ function mt:_offscreen_draw()
 	self:_draw()
 
 	image_c.active_rt()
-	--	ios_bind_drawable()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
 	if self.drawonce then
 		self.draw_call = nil
 		self.sprites = {}
 		self.sorted_sprites = {}
+	end
+
+	if self.on_offscreen_draw then
+		self.on_offscreen_draw()
 	end
 end
 
@@ -209,7 +212,7 @@ function mt:show(spr, zorder, anchor)
 	self.sprites[spr] = true
 	self.dirty = true
 
-	if self.drawonce and self.offscreen_id then
+	if self.offscreen_id then
 		self.draw_call = self._offscreen_draw
 	end
 end
