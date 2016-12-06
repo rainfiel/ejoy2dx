@@ -16,4 +16,12 @@ M.write_file = osutls.write_file
 M.get_path = osutls.get_path
 M.input = osutls.input
 
+M.is_key_down = function( ... )
+	if OS == "WINDOWS" then
+		return osutls.is_key_down(...)
+	else
+		return false
+	end
+end
+
 return M

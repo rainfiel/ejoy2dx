@@ -147,6 +147,18 @@ _input(lua_State* L) {
 	return 0;
 }
 
+static int
+_is_key_down(lua_State *L) {
+	int vk = (int)luaL_checkinteger(L, 1);
+	short stat = GetKeyState(vk);
+
+	if (stat & 0x8000)
+		lua_pushboolean(L, true);
+	else
+		lua_pushboolean(L, false);
+	return 1;
+}
+
 int 
 luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
@@ -160,6 +172,7 @@ luaopen_osutil(lua_State* L) {
 		{"to_utf8", _to_utf8},
 		{"get_path", _get_path},
 		//{"input", _input},
+		{"is_key_down", _is_key_down},
 		
 		{NULL, NULL}
 	};

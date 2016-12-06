@@ -39,7 +39,6 @@ local drag_src_y = nil
 local function on_touch(x,y,what,id)
 	if what == 1 then --begin
 		local touched, root = render:test(x, y)
-		print(touched, root)
 		if touched then
 			drag_target = touched
 			focus_sprite = touched
@@ -206,6 +205,9 @@ function new_sprite(packname, name)
 end
 
 function del_sprite(layer, idx, ...)
+	focus_sprite = nil
+	focus_sprite_root = nil
+
 	local r = render:get(layer)
 	if r then
 		local spr = get_sprite(layer, idx, ...)
