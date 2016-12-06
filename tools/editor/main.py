@@ -28,7 +28,7 @@ class FlatNotebookDemo(wx.Frame):
 
     def __init__(self, parent, log):
 
-        wx.Frame.__init__(self, parent, title="FlatNotebook Demo", size=(800,600))
+        wx.Frame.__init__(self, parent, title="ejoy2dx", size=(800,600))
         self.log = log
 
         self._bShowImages = False
@@ -82,6 +82,7 @@ class FlatNotebookDemo(wx.Frame):
 
         exp = "connect('%s', %s)" % (data['ip'], data['port'])
         self.connect = connect.connect(data['ip'], data['port'])
+        connect.send_file(self.connect, "lua/hotkey.lua")
         connect.send_file(self.connect, "lua/bdbox.lua")
         connect.send_file(self.connect, "lua/crust.lua")
 
@@ -170,6 +171,9 @@ class FlatNotebookDemo(wx.Frame):
 
         dispatcher.send(signal='Editor.EditMode', sender=self, edit_mode=self.edit_mode)
 
+    def OnRefreshEnv(self, evt):
+        self.Refresh()
+
     def Refresh(self):
         msg = self.Send("env(5)")
         if msg:
@@ -177,12 +181,33 @@ class FlatNotebookDemo(wx.Frame):
             ps = msg.get('package_source')
             if ps:
                 self.packs.set_data(ps)
+                self.pack_data = ps
             rd = msg.get('renders')
             if rd:
                 self.renders.set_data(rd, ps)
 
-    def OnRefreshEnv(self, evt):
-        self.Refresh()
+    def NewSprite(self, pack, name):
+        renders = None
+        if name.isdigit():
+            renders = self.Send("new_sprite('%s',%s)" % (pack, name))
+        else:
+            renders = self.Send("new_sprite('%s', '%s')" % (pack, name))
+
+        if renders:
+            renders = json.loads(renders)
+            self.renders.set_data(renders, self.pack_data)
+
+    def DelSprite(self, arg):
+        renders = self.Send("del_sprite(%s)" % arg)
+        if renders:
+            renders = json.loads(renders)
+            self.renders.set_data(renders, self.pack_data)
+
+    def Move(self, arg, tar):
+        renders = self.Send("move_to_render(%s, %s)" % (tar, arg))
+        if renders:
+            renders = json.loads(renders)
+            self.renders.set_data(renders, self.pack_data)
 
     def Send(self, exp):
         if self.connect:

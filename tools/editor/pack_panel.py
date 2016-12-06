@@ -53,10 +53,7 @@ class pack_panel(wx.Panel):
 
     def new_sprite(self, evt):
         if len(self.menu_data) == 2:
-            if self.menu_data[1].isdigit():
-                self.main.Send("new_sprite('%s',%s)" % (self.menu_data[0], self.menu_data[1]))
-            else:
-                self.main.Send("new_sprite('%s', '%s')" % (self.menu_data[0], self.menu_data[1]))
+            self.main.NewSprite(self.menu_data[0], self.menu_data[1])
 
     def show_menu(self, tree, item):
         self.menu_data = tree.GetPyData(item)

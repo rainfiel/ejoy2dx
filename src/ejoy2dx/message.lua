@@ -1,5 +1,6 @@
 
 local os_utls = require "ejoy2dx.os_utls"
+local keymap = require "ejoy2dx.keymap"
 
 ------------------------------------------------------------
 --keydown and keyup
@@ -15,17 +16,28 @@ local function is_repeat(param)
 	return is_bit_set(param, 30)
 end
 
+local function char_to_vk(char)
+	local vk = string.unpack("B", char)
+	return keymap[vk]
+end
+
 function msg_mt:on_keydown(char, param)
-	local handler = self.handlers.down[char]
+	local vk = char_to_vk(char)
+	if not vk then return end
+
+	local handler = self.handlers.down[vk]
 	if handler then
-		handler(char, is_repeat(param))
+		handler(vk, is_repeat(param))
 	end
 end
 
 function msg_mt:on_keyup(char, param)
-	local handler = self.handlers.up[char]
+	local vk = char_to_vk(char)
+	if not vk then return end
+
+	local handler = self.handlers.up[vk]
 	if handler then
-		handler(char)
+		handler(vk)
 	end
 end
 ------------------------------------------------------------
