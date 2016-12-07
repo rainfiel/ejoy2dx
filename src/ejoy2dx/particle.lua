@@ -9,14 +9,48 @@ function M:preload(name, path)
 	self.configs[name] = load(cfg, "particle", "t", {})()
 end
 
-function M:new(packname, name)
-	local pack = self.configs[packname]
+local function get_cfg(packname, name)
+	local pack = M.configs[packname]
 	assert(pack, packname)
 	local cfg = pack[name]
 	assert(cfg, packname.."."..name)
+	return cfg
+end
+
+function M:new(packname, name)
+	local cfg = get_cfg(packname, name)
 	local p = c.new(cfg)
 	c.reset(p)
+
+	local usr_data = c.usr_data(p)
+	usr_data.packname = packname
+	usr_data.name = name
 	return p
+end
+
+function M:update_para(p, att_name, att_val)
+	local usr_data = c.usr_data(p)
+	if not usr_data.cfg then
+		local new_cfg = {}
+		local cfg = get_cfg(usr_data.packname, usr_data.name)
+		for k, v in pairs(cfg) do
+			rawset(new_cfg, k, v)
+		end
+		usr_data.cfg = new_cfg
+	end
+	local cfg = usr_data.cfg
+	local att_type = type(att_name)
+	if att_type == "table" then
+		for k, v in pairs(att_name) do
+			cfg[k] = v
+		end
+	elseif att_type == "string" then
+		cfg[att_name] = att_val
+	else
+		error("particle update_para arg error:"..tostring(att_name))
+	end
+
+	c.reset(p, cfg)
 end
 
 return M
