@@ -2,6 +2,7 @@
 local ejoy2dx = require "ejoy2dx"
 local sprite = require "ejoy2d.sprite"
 local spritepack = require "ejoy2d.spritepack"
+local particle = require "ejoy2dx.particle"
 local render = require "ejoy2dx.render"
 local framework = require "ejoy2d.framework"
 local matrix = require "ejoy2d.matrix"
@@ -9,6 +10,7 @@ local matrix = require "ejoy2d.matrix"
 --globals
 ------------------------------------------------------------------
 package_source = {}  		-- all package res
+particle_source = particle.configs
 package_edit = {} 		  -- user created packages
 sprite_sample = {}			-- editor created sprite
 focus_sprite = nil				-- current focuse sprite
@@ -202,6 +204,12 @@ function new_sprite(packname, name)
 	focus_sprite_root = spr
 	bdbox.show_bd(spr, spr)
 	env(nil, "renders")
+end
+
+function new_particle(packname, name)
+	if not focus_sprite then return end
+	local p = particle:new(packname, name)
+	focus_sprite:set_particle(p)
 end
 
 function del_sprite(layer, idx, ...)

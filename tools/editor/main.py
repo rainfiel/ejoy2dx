@@ -19,6 +19,7 @@ except ImportError: # if it's not there locally, try the wxPython lib.
 
 import pack_panel
 import render_panel
+import particle_panel
 import images
 
 #----------------------------------------------------------------------
@@ -28,7 +29,7 @@ class FlatNotebookDemo(wx.Frame):
 
     def __init__(self, parent, log):
 
-        wx.Frame.__init__(self, parent, title="ejoy2dx", size=(800,600))
+        wx.Frame.__init__(self, parent, title="ejoy2dx", size=(1000,600))
         self.log = log
 
         self._bShowImages = False
@@ -120,11 +121,15 @@ class FlatNotebookDemo(wx.Frame):
         bookStyle = FNB.FNB_NODRAG
 
         self.book = FNB.FlatNotebook(self, wx.ID_ANY, agwStyle=bookStyle)
+
         self.packs = pack_panel.pack_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
-        self.book.AddPage(self.packs, "pack", True)
+        self.particles = particle_panel.particle_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
+
+        self.book.AddPage(self.packs, "pack")
+        self.book.AddPage(self.particles, "particle")
 
         self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
-        self.book.AddPage(self.renders, "render", True)
+        self.book.AddPage(self.renders, "render")
         # self.render_tree = custom_tree.CustomTreeCtrl(renders)
 
         self.book.Tile(wx.HORIZONTAL)
@@ -185,6 +190,9 @@ class FlatNotebookDemo(wx.Frame):
             rd = msg.get('renders')
             if rd:
                 self.renders.set_data(rd, ps)
+            particle = msg.get('particle_source')
+            if particle:
+                self.particles.set_data(particle)
 
     def NewSprite(self, pack, name):
         renders = None
@@ -196,6 +204,9 @@ class FlatNotebookDemo(wx.Frame):
         if renders:
             renders = json.loads(renders)
             self.renders.set_data(renders, self.pack_data)
+
+    def NewParticle(self, pack, name):
+        self.Send("new_particle('%s', '%s')" % (pack, name))
 
     def DelSprite(self, arg):
         renders = self.Send("del_sprite(%s)" % arg)
