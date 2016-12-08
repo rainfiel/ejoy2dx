@@ -28,6 +28,14 @@ function M:new(packname, name)
 	return p
 end
 
+function M:active(p, act)
+	if act then
+		c.reset(p)
+	else
+		c.deactive(p)
+	end
+end
+
 function M:update_para(p, att_name, att_val)
 	local usr_data = c.usr_data(p)
 	if not usr_data.cfg then
