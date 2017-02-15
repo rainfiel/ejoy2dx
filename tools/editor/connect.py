@@ -1,3 +1,4 @@
+#coding:utf-8
 
 import json
 import socket
@@ -26,7 +27,8 @@ def create_discover():
 
 def discover(sock):
     try:
-        msg, addr = sock.recvfrom(64)
+        msg, addr = sock.recvfrom(4096)
+        print(len(msg), msg)
         return json.loads(msg)
     except Exception, e:
         return None

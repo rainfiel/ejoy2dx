@@ -4,6 +4,7 @@ local sprite = require "ejoy2d.sprite"
 local spritepack = require "ejoy2d.spritepack"
 local particle = require "ejoy2dx.particle"
 local render = require "ejoy2dx.render"
+local interpreter = require "ejoy2dx.interpreter"
 local framework = require "ejoy2d.framework"
 local matrix = require "ejoy2d.matrix"
 
@@ -38,15 +39,33 @@ local message_handler = framework.EJOY2D_MESSAGE
 local drag_target = nil
 local drag_src_x = nil
 local drag_src_y = nil
+
+local function on_select_sprite(root, spr)
+	if focus_sprite_root == root and focus_sprite == spr then
+		return
+	end
+	focus_sprite = spr
+	focus_sprite_root = root
+
+	bdbox.clear()
+	if not focus_sprite_root or not focus_sprite then return end
+	bdbox.show_bd(focus_sprite_root, focus_sprite)
+
+	local p = focus_sprite:get_particle()
+	if p then
+		local cfg = particle:get_para(p)
+		interpreter:broadcast({ope="particle_cfg", data=cfg})
+	end
+end
+
 local function on_touch(x,y,what,id)
 	if what == 1 then --begin
 		local touched, root = render:test(x, y)
 		if touched then
 			drag_target = touched
-			focus_sprite = touched
-			focus_sprite_root = root
 			drag_src_x, drag_src_y = x, y
-			bdbox.show_bd(focus_sprite_root, drag_target)
+
+			on_select_sprite(root, touched)			
 		end
 	elseif what == 3 then --move
 		if drag_target then
@@ -160,9 +179,22 @@ local function c_direct_new(packname, id)
 end
 sprite.direct_new = c_direct_new
 
---render
+--upward
 ------------------------------------------------------------------
+function u_del_current_sprite()
+	if focus_sprite_root == focus_sprite and focus_sprite then
+		info_render:hide(focus_sprite)
+		info_render:resort()
+		bdbox.clear()
+		focus_sprite = nil
+		focus_sprite_root = nil
 
+		interpreter:broadcast({ope="delete"})
+	end
+end
+
+--downward
+------------------------------------------------------------------
 function set_render_visible(layer, visible)
 	local r = render:get(layer)
 	if r then
@@ -200,9 +232,8 @@ function new_sprite(packname, name)
 	info_render:resort()
 	table.insert(sprite_sample, spr)
 	sprite_sample[spr] = #sprite_sample
-	focus_sprite = spr
-	focus_sprite_root = spr
-	bdbox.show_bd(spr, spr)
+
+	on_select_sprite(spr, spr)
 	env(nil, "renders")
 end
 
@@ -213,9 +244,6 @@ function new_particle(packname, name)
 end
 
 function del_sprite(layer, idx, ...)
-	focus_sprite = nil
-	focus_sprite_root = nil
-
 	local r = render:get(layer)
 	if r then
 		local spr = get_sprite(layer, idx, ...)
@@ -224,6 +252,9 @@ function del_sprite(layer, idx, ...)
 			r:resort()
 			bdbox.clear()
 			env(nil, "renders")
+
+			focus_sprite = nil
+			focus_sprite_root = nil
 		end
 	end
 end
@@ -252,12 +283,8 @@ function toggle_child_visible(layer, idx, ...)
 end
 
 function select_sprite(layer, idx, ...)
-	if focus_sprite then
-		bdbox.clear()
-		focus_sprite = nil
-	end
-	focus_sprite, focus_sprite_root = get_sprite(layer, idx, ...)
-	bdbox.show_bd(focus_sprite_root, focus_sprite)
+	local a, b = get_sprite(layer, idx, ...)
+	on_select_sprite(a, b)
 end
 
 function move_to_render(tar_layer, layer, idx, ...)
@@ -273,4 +300,11 @@ function move_to_render(tar_layer, layer, idx, ...)
 			env(nil, "renders")
 		end
 	end
+end
+
+function set_particle_attr(key, val)
+	if not focus_sprite then return end
+	local p = focus_sprite:get_particle()
+	if not p then return end
+	particle:update_para(p, key, val)
 end

@@ -266,18 +266,21 @@ function M:run(port)
 	end
 	self.ip = ip
 	self.port = port
-	self:broadcast(ip, port)
+	self:broadcast()
 	self:init_server(ip, port)
 
 	self.timer = 30
 	ejoy2dx.game_stat:pause()
 end
 
-function M:broadcast(ip, port)
-	local udp = lsocket.bind("mcast", ip, 2606)
+function M:broadcast(msg)
+	local udp = lsocket.bind("mcast", self.ip, 2606)
 	if not udp then return end
 
-	local msg = json:encode({ip=ip,port=port})
+	local msg = msg  or {}
+	msg.ip = self.ip
+	msg.port = self.port
+	msg = json:encode(msg)
 	udp:sendto(msg, "224.0.0.224", 2606)
 	udp:close()
 	print("INTERPRETER: broadcast done")

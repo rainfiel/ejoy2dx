@@ -41,11 +41,16 @@ end
 
 local handlers = {down={}, up={}}
 
-handlers.down[keymap.VK_SPACE] = function(char, is_repeat)
-	-- if is_repeat then return end
-end
+-- handlers.down[keymap.VK_SPACE] = function(char, is_repeat)
+-- 	-- if is_repeat then return end
+-- end
 
-handlers.up[keymap.VK_SPACE] = function(char)
+-- handlers.up[keymap.VK_SPACE] = function(char)
+-- end
+
+handlers.down[keymap.VK_DELETE] = function(char, is_repeat)
+	if is_repeat then return end
+	u_del_current_sprite()
 end
 
 local joystick = {[keymap.VK_D]=0, [keymap.VK_S]=90, [keymap.VK_A]=180, [keymap.VK_W]=270,

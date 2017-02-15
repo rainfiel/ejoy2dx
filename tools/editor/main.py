@@ -1,3 +1,5 @@
+#coding:utf-8
+
 import wx
 
 import os
@@ -21,6 +23,8 @@ import pack_panel
 import render_panel
 import particle_panel
 import images
+from wishes.main import JsonPanel
+from prop.particle import ParticleProp
 
 #----------------------------------------------------------------------
 import connect
@@ -29,7 +33,7 @@ class FlatNotebookDemo(wx.Frame):
 
     def __init__(self, parent, log):
 
-        wx.Frame.__init__(self, parent, title="ejoy2dx", size=(1000,600))
+        wx.Frame.__init__(self, parent, title="ejoy2dx", size=(1100,600))
         self.log = log
 
         self._bShowImages = False
@@ -76,16 +80,26 @@ class FlatNotebookDemo(wx.Frame):
         data = connect.discover(self.discover)
         if not data: return
 
-        self.discover.close()
-        self.discover = None
-        self.discover_timer.Stop()
-        self.discover_timer = None
+        # self.discover.close()
+        # self.discover = None
+        # self.discover_timer.Stop()
+        # self.discover_timer = None
 
-        exp = "connect('%s', %s)" % (data['ip'], data['port'])
-        self.connect = connect.connect(data['ip'], data['port'])
-        connect.send_file(self.connect, "lua/hotkey.lua")
-        connect.send_file(self.connect, "lua/bdbox.lua")
-        connect.send_file(self.connect, "lua/crust.lua")
+        if not self.connect:
+            exp = "connect('%s', %s)" % (data['ip'], data['port'])
+            self.connect = connect.connect(data['ip'], data['port'])
+            connect.send_file(self.connect, "lua/hotkey.lua")
+            connect.send_file(self.connect, "lua/bdbox.lua")
+            connect.send_file(self.connect, "lua/crust.lua")
+            return
+
+        ope = data["ope"]
+        if not ope: return
+
+        if ope == "delete":
+            self.Refresh()
+        elif ope == "particle_cfg":
+            self.SetParticle(data["data"])
 
     def CreateMenuBar(self):
 
@@ -118,7 +132,7 @@ class FlatNotebookDemo(wx.Frame):
         mainSizer = wx.BoxSizer(wx.HORIZONTAL)
         self.SetSizer(mainSizer)
 
-        bookStyle = FNB.FNB_NODRAG
+        bookStyle = FNB.FNB_NODRAG #FNB.FNB_BOTTOM
 
         self.book = FNB.FlatNotebook(self, wx.ID_ANY, agwStyle=bookStyle)
 
@@ -128,43 +142,57 @@ class FlatNotebookDemo(wx.Frame):
         self.book.AddPage(self.packs, "pack")
         self.book.AddPage(self.particles, "particle")
 
-        self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
-        self.book.AddPage(self.renders, "render")
         # self.render_tree = custom_tree.CustomTreeCtrl(renders)
+   
 
-        self.book.Tile(wx.HORIZONTAL)
-
-        bookStyle &= ~(FNB.FNB_NODRAG)
-        bookStyle |= FNB.FNB_ALLOW_FOREIGN_DND 
+        # bookStyle &= ~(FNB.FNB_NODRAG)
+        # bookStyle |= FNB.FNB_ALLOW_FOREIGN_DND 
         self.secondBook = FNB.FlatNotebook(self, wx.ID_ANY, agwStyle=bookStyle)
 
         # Set right click menu to the notebook
         # self.book.SetRightClickMenu(self._rmenu)
+        self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
+        # mainSizer.Add(self.renders, 2, wx.EXPAND)
+        self.secondBook.AddPage(self.renders, "render")
+
+        # self.json_editor = JsonPanel(self, self.log, self.EditCallback)
+        # self.secondBook.AddPage(self.json_editor, "json")
+        # self.secondBook.Tile(wx.HORIZONTAL)
 
         # Set the image list 
         self.book.SetImageList(self._ImageList)
-        mainSizer.Add(self.book, 6, wx.EXPAND)
+        mainSizer.Add(self.book, 2, wx.EXPAND)
+
+        # self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
+        # mainSizer.Add(self.renders, 2, wx.ALL|wx.EXPAND)
 
         # Add spacer between the books
-        spacer = wx.Panel(self, -1)
-        spacer.SetBackgroundColour(wx.SystemSettings_GetColour(wx.SYS_COLOUR_3DFACE))
-        mainSizer.Add(spacer, 0, wx.ALL | wx.EXPAND)
+        # spacer = wx.Panel(self, -1)
+        # spacer.SetBackgroundColour(wx.SystemSettings_GetColour(wx.SYS_COLOUR_3DFACE))
+        # mainSizer.Add(spacer, 0, wx.ALL | wx.EXPAND)
 
         mainSizer.Add(self.secondBook, 2, wx.EXPAND)
+
+        # self.json_editor = JsonPanel(self, self.log, self.EditCallback)
+        self.json_editor = ParticleProp(self, self.EditCallback)
+        mainSizer.Add(self.json_editor, 6, wx.EXPAND)
 
         # Add some pages to the second notebook
         self.Freeze()
 
-        text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 1\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
-        self.secondBook.AddPage(text, "Second Book Page 1")
+        # text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 1\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
+        # self.secondBook.AddPage(text, "Second Book Page 1")
 
-        text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 2\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
-        self.secondBook.AddPage(text,  "Second Book Page 2")
+        # text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 2\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
+        # self.secondBook.AddPage(text,  "Second Book Page 2")
 
         self.Thaw()
 
         mainSizer.Layout()
         self.SendSizeEvent()
+
+    def EditCallback(self, key, val):
+        self.Send("set_particle_attr('%s', %d)" % (key, val))
 
     def OnExitApp(self, evt):
         self.Close(True)
@@ -178,6 +206,9 @@ class FlatNotebookDemo(wx.Frame):
 
     def OnRefreshEnv(self, evt):
         self.Refresh()
+
+    def SetParticle(self, data):
+        self.json_editor.ShowData(data)
 
     def Refresh(self):
         msg = self.Send("env(5)")

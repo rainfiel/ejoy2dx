@@ -36,7 +36,7 @@ function M:active(p, act)
 	end
 end
 
-function M:update_para(p, att_name, att_val)
+function M:get_para(p)
 	local usr_data = c.usr_data(p)
 	if not usr_data.cfg then
 		local new_cfg = {}
@@ -46,7 +46,11 @@ function M:update_para(p, att_name, att_val)
 		end
 		usr_data.cfg = new_cfg
 	end
-	local cfg = usr_data.cfg
+	return usr_data.cfg
+end
+
+function M:update_para(p, att_name, att_val)
+	local cfg = self:get_para(p)
 	local att_type = type(att_name)
 	if att_type == "table" then
 		for k, v in pairs(att_name) do
