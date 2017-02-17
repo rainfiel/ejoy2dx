@@ -23,8 +23,8 @@ import pack_panel
 import render_panel
 import particle_panel
 import images
-from wishes.main import JsonPanel
-from prop.particle import ParticleProp
+
+from prop.prop import PropPanel
 
 #----------------------------------------------------------------------
 import connect
@@ -98,8 +98,8 @@ class FlatNotebookDemo(wx.Frame):
 
         if ope == "delete":
             self.Refresh()
-        elif ope == "particle_cfg":
-            self.SetParticle(data["data"])
+        else:
+            self.prop_editor.SetData(data)
 
     def CreateMenuBar(self):
 
@@ -155,10 +155,6 @@ class FlatNotebookDemo(wx.Frame):
         # mainSizer.Add(self.renders, 2, wx.EXPAND)
         self.secondBook.AddPage(self.renders, "render")
 
-        # self.json_editor = JsonPanel(self, self.log, self.EditCallback)
-        # self.secondBook.AddPage(self.json_editor, "json")
-        # self.secondBook.Tile(wx.HORIZONTAL)
-
         # Set the image list 
         self.book.SetImageList(self._ImageList)
         mainSizer.Add(self.book, 2, wx.EXPAND)
@@ -173,9 +169,8 @@ class FlatNotebookDemo(wx.Frame):
 
         mainSizer.Add(self.secondBook, 2, wx.EXPAND)
 
-        # self.json_editor = JsonPanel(self, self.log, self.EditCallback)
-        self.json_editor = ParticleProp(self, self.EditCallback)
-        mainSizer.Add(self.json_editor, 6, wx.EXPAND)
+        self.prop_editor = PropPanel(self, self.Send)
+        mainSizer.Add(self.prop_editor, 6, wx.EXPAND)
 
         # Add some pages to the second notebook
         self.Freeze()
@@ -191,9 +186,6 @@ class FlatNotebookDemo(wx.Frame):
         mainSizer.Layout()
         self.SendSizeEvent()
 
-    def EditCallback(self, key, val):
-        self.Send("set_particle_attr('%s', %d)" % (key, val))
-
     def OnExitApp(self, evt):
         self.Close(True)
 
@@ -206,9 +198,6 @@ class FlatNotebookDemo(wx.Frame):
 
     def OnRefreshEnv(self, evt):
         self.Refresh()
-
-    def SetParticle(self, data):
-        self.json_editor.ShowData(data)
 
     def Refresh(self):
         msg = self.Send("env(5)")

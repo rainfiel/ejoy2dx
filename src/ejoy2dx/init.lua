@@ -21,6 +21,15 @@ ejoy2dx.animation:init(fw.GameInfo.logic_frame)
 
 ejoy2dx.game_stat = require("ejoy2dx.game_stat")
 
+ejoy2dx.SPRITE_TYPE_EMPTY = 0
+ejoy2dx.SPRITE_TYPE_PICTURE = 1
+ejoy2dx.SPRITE_TYPE_ANIMATION = 2
+ejoy2dx.SPRITE_TYPE_POLYGON = 3
+ejoy2dx.SPRITE_TYPE_LABEL = 4
+ejoy2dx.SPRITE_TYPE_PANNEL = 5
+ejoy2dx.SPRITE_TYPE_ANCHOR = 6
+ejoy2dx.SPRITE_TYPE_MATRIX = 7
+
   --gesture states, defined in winfw.h
 ejoy2dx.STATE_POSSIBLE = 0
 ejoy2dx.STATE_BEGAN = 1

@@ -55,6 +55,14 @@ local function on_select_sprite(root, spr)
 	if p then
 		local cfg = particle:get_para(p)
 		interpreter:broadcast({ope="particle_cfg", data=cfg})
+		return
+	end
+
+	local sprite_type = focus_sprite.type
+	if sprite_type == ejoy2dx.SPRITE_TYPE_LABEL then
+		interpreter:broadcast({ope="label_cfg", data={text=spr.text}})
+	elseif sprite_type == ejoy2dx.SPRITE_TYPE_PICTURE then
+		print(".............picture")
 	end
 end
 
@@ -307,4 +315,11 @@ function set_particle_attr(key, val)
 	local p = focus_sprite:get_particle()
 	if not p then return end
 	particle:update_para(p, key, val)
+end
+
+function set_label_attr(key, val)
+	if not focus_sprite then return end
+	if focus_sprite[key] then
+		focus_sprite[key] = val
+	end
 end
