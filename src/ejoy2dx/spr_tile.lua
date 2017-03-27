@@ -61,6 +61,28 @@ function mt:init()
 	spritepack.init(self.name, {self.tex_id}, p)
 end
 
+function mt:get_tile(x, y)
+	y = self.h - y
+	local r = math.ceil(math.abs(x) / self.tile_w)
+	local c = math.ceil(math.abs(y) / self.tile_h)
+	return (c-1) * self.row + r - 1, c, r
+end
+
+function mt:cull(x, y, spr)
+	for i=1, self.col do
+		for j=1, self.row do
+			local idx = (i-1)*self.row + j - 1
+			local tile = spr:fetch_by_index(idx)
+			if tile then
+				if math.abs(x-i) <=3 and math.abs(y-j)<=5 then
+					tile.visible = true
+				else
+					tile.visible = false
+				end
+			end
+		end
+	end
+end
 
 
 return function(name, tex_id, w, h, tile_w, tile_h)
