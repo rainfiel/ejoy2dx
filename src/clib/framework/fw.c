@@ -323,3 +323,8 @@ void
 ejoy2d_fw_resume() {
     ejoy2d_game_resume(G->game);
 }
+
+void
+ejoy2d_fw_close() {
+	ejoy2d_game_close(G->game);
+}
