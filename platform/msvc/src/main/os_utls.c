@@ -91,7 +91,7 @@ _get_path(lua_State* L) {
 		mode_name = "Library/";
 		break;
 	case 'c':
-		mode_name = "Library/Caches/";
+		mode_name = "Library/Caches";
 		break;
 	default:
 		luaL_error(L, "unsupport path mode:%s", mode);
@@ -149,6 +149,18 @@ _input(lua_State* L) {
 }
 
 static int
+_is_key_down(lua_State *L) {
+	int vk = (int)luaL_checkinteger(L, 1);
+	short stat = GetKeyState(vk);
+
+	if (stat & 0x8000)
+		lua_pushboolean(L, true);
+	else
+		lua_pushboolean(L, false);
+	return 1;
+}
+
+static int
 _create_directory(lua_State *L) {
 	const char *path = luaL_checkstring (L, 1);
 	
@@ -175,6 +187,7 @@ luaopen_osutil(lua_State* L) {
 		{"get_path", _get_path},
 		{"create_directory", _create_directory},
 		//{"input", _input},
+		{"is_key_down", _is_key_down},
 		
 		{NULL, NULL}
 	};

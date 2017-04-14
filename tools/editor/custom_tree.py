@@ -1,3 +1,5 @@
+#coding:utf-8
+
 import wx
 import os
 import sys
@@ -27,6 +29,8 @@ class CustomTreeCtrl(CT.CustomTreeCtrl):
         self.menu_callback = None
         self.check_callback = None
         self.select_callback = None
+        self.drag_begin_callback = None
+        self.drag_end_callback = None
 
         # NOTE:  For some reason tree items have to have a data object in
         #        order to be sorted.  Since our compare just uses the labels
@@ -59,6 +63,29 @@ class CustomTreeCtrl(CT.CustomTreeCtrl):
             self.SelectItem(self.root)
             self.Expand(self.root)
 
+    def Traverse(self, func, startNode): 
+        """Apply 'func' to each node in a branch, beginning with 'startNode'. """
+        def TraverseAux(node, depth, func): 
+            nc = self.GetChildrenCount(node, 0) 
+            child, cookie = self.GetFirstChild(node)
+            # In wxPython 2.5.4, GetFirstChild only takes 1 argument
+            for i in xrange(nc): 
+                func(child, depth)                
+                TraverseAux(child, depth + 1, func)
+                child, cookie = self.GetNextChild(node, cookie)
+        func(startNode, 0) 
+        TraverseAux(startNode, 1, func) 
+
+    def ItemIsChildOf(self, item1, item2):
+        ''' Tests if item1 is a child of item2, using the Traverse function '''
+        self.result = False
+        def test_func(node, depth):
+            if node == item1:
+                self.result = True
+                
+        self.Traverse(test_func, item2)
+        return self.result
+        
     def Reset(self):
         self.DeleteAllItems()
 
@@ -400,9 +427,8 @@ class CustomTreeCtrl(CT.CustomTreeCtrl):
     def OnBeginDrag(self, event):
 
         self.item = event.GetItem()
-        if self.item:
-            # self.log.write("Beginning Drag..." + "\n")
-
+        if self.item and self.drag_begin_callback:
+            self.drag_begin_callback(self, event)
             event.Allow()
 
     def OnBeginRDrag(self, event):
@@ -416,8 +442,8 @@ class CustomTreeCtrl(CT.CustomTreeCtrl):
     def OnEndDrag(self, event):
 
         self.item = event.GetItem()
-        # if self.item:
-        #     self.log.write("Ending Drag!" + "\n")
+        if self.item and self.drag_end_callback:
+            self.drag_end_callback(self, event)
 
         event.Skip()
 

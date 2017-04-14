@@ -141,16 +141,22 @@ function mt:_draw()
 			table.insert(hide_list, v)
 			hide_list_cnt = hide_list_cnt+1
 		else	
+			local anchor = render.anchor
+			if self.offscreen_id then anchor = nil end
 			if render.blend_mode then
 				if blend.begin_blend(render.blend_mode) then
-					v:draw(render.anchor)
+					v:draw(anchor)
 					blend.end_blend()
 				end
 			else
-				v:draw(render.anchor)
+				v:draw(anchor)
 			end
 			if render.on_draw then
 				hided = render.on_draw()
+			end
+			if hided then
+				table.insert(hide_list, v)
+				hide_list_cnt = hide_list_cnt+1
 			end
 		end
 	end
@@ -164,7 +170,7 @@ function mt:_offscreen_draw()
 	local gameinfo = fw.GameInfo
 	image_c.active_rt(self.offscreen_id)
 	fw.reset_screen(self.w, self.h, 1)
-	if self.need_clear then
+	if self.need_clear or not self.drawonce then
 		ej.clear()
 		self.need_clear = nil
 	end
@@ -172,18 +178,20 @@ function mt:_offscreen_draw()
 	self:_draw()
 
 	image_c.active_rt()
-	--	ios_bind_drawable()
 	fw.reset_screen(gameinfo.width, gameinfo.height, gameinfo.scale)
 	if self.drawonce then
 		self.draw_call = nil
 		self.sprites = {}
+		self.sorted_sprites = {}
+	end
+
+	if self.on_offscreen_draw then
+		self.on_offscreen_draw()
 	end
 end
 
 function mt:show(spr, zorder, anchor)
 	if self.sprites[spr] then return end
-
-	if self.offscreen_id then anchor = nil end
 
 	if not spr.usr_data then
 		spr.usr_data = {}
@@ -204,7 +212,7 @@ function mt:show(spr, zorder, anchor)
 	self.sprites[spr] = true
 	self.dirty = true
 
-	if self.drawonce and self.offscreen_id then
+	if self.offscreen_id then
 		self.draw_call = self._offscreen_draw
 	end
 end

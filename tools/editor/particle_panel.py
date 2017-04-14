@@ -1,5 +1,4 @@
 #coding:utf-8
-
 import wx
 
 import os
@@ -13,7 +12,7 @@ except ImportError:  # if it's not there locally, try the wxPython lib.
     import wx.lib.agw.customtreectrl as CT
 
 
-class pack_panel(wx.Panel):
+class particle_panel(wx.Panel):
 
     def __init__(self, parent, style):
         wx.Panel.__init__(self, parent.book, style=style)
@@ -22,7 +21,7 @@ class pack_panel(wx.Panel):
 
         self.main = parent
         # Create the CustomTreeCtrl, using a derived class defined below
-        self.tree = CustomTreeCtrl(self, -1, rootLable="packs",
+        self.tree = CustomTreeCtrl(self, -1, rootLable="particle",
                                    style=wx.SUNKEN_BORDER,
                                    agwStyle=CT.TR_HAS_BUTTONS | CT.TR_HAS_VARIABLE_ROW_HEIGHT)
 
@@ -40,35 +39,26 @@ class pack_panel(wx.Panel):
 
         for k, v in data.iteritems():
             pack = self.tree.AppendItem(self.tree.root, k)
-            for idx, p in v.iteritems():
-                export = p.get('export')
-
-                if export:
-                    root = self.tree.AppendItem(pack, export)
-                    self.tree.SetPyData(root, [k, export])
-                    pack_tree.show_sprite(self.tree, root, p, v)
-                else:
-                    if 'id' in p:
-                        root = self.tree.AppendItem(pack, "id:" + p['id'])
-                        self.tree.SetPyData(root, [k, p['id']])
-                        pack_tree.show_sprite(self.tree, root, p, v)
-
-    def new_sprite(self, evt):
-        if len(self.menu_data) == 2:
-            self.main.NewSprite(self.menu_data[0], self.menu_data[1])
+            for name, data in v.iteritems():
+                p = self.tree.AppendItem(pack, name)
+                self.tree.SetPyData(p, [k, name, data])
+            
+    def new_particle(self, evt):
+        if not self.menu_data: return
+        self.main.NewParticle(self.menu_data[0], self.menu_data[1])
 
     def show_menu(self, tree, item):
         self.menu_data = tree.GetPyData(item)
-        if not self.menu_data or len(self.menu_data) < 2:
+        if not self.menu_data or len(self.menu_data) < 3:
             self.menu_data = None
             return
 
         menu = wx.Menu()
 
-        item1 = menu.Append(wx.ID_ANY, "New sprite")
+        item1 = menu.Append(wx.ID_ANY, "New particle")
         menu.AppendSeparator()
 
-        tree.Bind(wx.EVT_MENU, self.new_sprite, item1)
+        tree.Bind(wx.EVT_MENU, self.new_particle, item1)
 
         tree.PopupMenu(menu)
         menu.Destroy()

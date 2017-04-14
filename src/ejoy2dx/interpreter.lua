@@ -38,10 +38,10 @@ function conn_mt:init()
 		str = table.concat(str, "\t")
 		table.insert(self.results, str)
 	end
-	local function dump_env(lv)
+	local function dump_env(lv, name)
 		lv = lv or self.default_level
 		self.default_level = lv
-		self:dump_env(self.default_level)
+		self:dump_env(self.default_level, name)
 	end
 	local function clear_env()
 		self.env = setmetatable(self.origin_env(), {__index=_SYS_ENV})
@@ -67,12 +67,21 @@ function conn_mt:init()
 			dump_env()
 		end
 	end
+	local function list()
+		local conns = {}
+		for k, v in pairs(M.connects) do
+			table.insert(conns, k)
+		end
+		return table.concat(conns, "\n")
+		-- self:send("list", json:encode(conns))
+		-- self.results = nil
+	end
 	local function help()
 		self:send("help", help_txt)
 		self.results = nil
 	end
 	self.origin_env = function( ... )
-		return {print=rmt_print, env=dump_env, clear_env=clear_env, 
+		return {print=rmt_print, env=dump_env, clear_env=clear_env, list_conn=list,
 						disconnect=disconnect, help=help, reload=reload, inject=inject, id=self.id}
 	end
 	self.env = setmetatable(self.origin_env(), {__index=_SYS_ENV})
@@ -212,7 +221,7 @@ local function dump_tbl(tbl, lv)
 	return ret
 end
 
-function conn_mt:dump_env(lv)
+function conn_mt:dump_env(lv, name)
 	-- local ref = {}
 	-- ref[self.env] = "env"
 	-- local tbl = iter_tbl(self.env, ref)
@@ -225,6 +234,9 @@ function conn_mt:dump_env(lv)
 	end
 	if not env_tbl then
 		env_tbl = self.env
+	end
+	if name then
+		env_tbl = rawget(env_tbl, name)
 	end
 	local tbl = dump_tbl(env_tbl, lv)
 	local txt = json:encode(tbl)
@@ -254,18 +266,21 @@ function M:run(port)
 	end
 	self.ip = ip
 	self.port = port
-	self:broadcast(ip, port)
+	self:broadcast()
 	self:init_server(ip, port)
 
 	self.timer = 30
 	ejoy2dx.game_stat:pause()
 end
 
-function M:broadcast(ip, port)
-	local udp = lsocket.bind("mcast", ip, 2606)
+function M:broadcast(msg)
+	local udp = lsocket.bind("mcast", self.ip, 2606)
 	if not udp then return end
 
-	local msg = json:encode({ip=ip,port=port})
+	local msg = msg  or {}
+	msg.ip = self.ip
+	msg.port = self.port
+	msg = json:encode(msg)
 	udp:sendto(msg, "224.0.0.224", 2606)
 	udp:close()
 	print("INTERPRETER: broadcast done")

@@ -14,15 +14,17 @@ font_create(int font_size, struct font_context *ctx) {
 			NSLog(@"  %@", name);
 		}
 	}*/
-	UIFont* font = [UIFont fontWithName:@"STHeitiSC-Light" size:font_size];
+	UIFont* font = [UIFont fontWithName:@"STHeitiSC-Medium" size:font_size];
 	//	UIFont* font = [UIFont fontWithName:@"STHeitiSC-Medium" size:font_size];
 	//UIFont* font = [UIFont fontWithName:@"FZLTHK--GBK1-0" size:font_size];
 //	UIFont* font = [UIFont fontWithName:@"WenQuanYiMicroHei" size:font_size];
 //	UIFont* font = [UIFont fontWithName:@"DFYuanW7-GBK" size:font_size];
 	
 //	UIFont* font = [UIFont fontWithName:@"HiraMinProN-W6" size:font_size];
+  
 	ctx->font = (__bridge void *)font;
-  ctx->ascent = (int)ceilf(font.descender/2);
+  ctx->h = font.capHeight - font.descender;
+  ctx->ascent = font.capHeight - font.ascender;
 	ctx->dc = NULL;
 }
 
@@ -41,12 +43,11 @@ font_size(const char *str, int unicode, struct font_context *ctx) {
       CGSize sz = rect.size;
       
       ctx->w = (int)ceilf(sz.width);
-      ctx->h = (int)ceilf(sz.height);
+    //  ctx->h = (int)ceilf(sz.height);
     } else {
       CGSize sz = [tmp sizeWithFont:(__bridge UIFont *)(ctx->font)];
   
       ctx->w = (int)sz.width;
-      ctx->h = (int)sz.height;
     }
   
 }
@@ -93,7 +94,7 @@ _font_glyph_gray(NSString* str, void* buffer, struct font_context* ctx){
                                                        nil]];
   }else{
     CGContextSetGrayFillColor(context, 1.0f, 1.0f);
-    [str drawAtPoint:CGPointMake(0, 0) withFont:(__bridge UIFont *)(ctx->font)];
+    [str drawAtPoint:CGPointMake(0, ctx->ascent) withFont:(__bridge UIFont *)(ctx->font)];
   }
   UIGraphicsPopContext();
   CGContextRelease(context);

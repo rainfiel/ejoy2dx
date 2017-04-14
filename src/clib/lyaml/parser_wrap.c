@@ -285,12 +285,12 @@ parser_generate_error_message (lyaml_parser *parser)
 
    luaL_buffinit (parser->L, &b);
    luaL_addstring (&b, P->problem ? P->problem : "A problem");
-   _snprintf (buf, sizeof (buf), " at document: %d", parser->document_count);
+   snprintf (buf, sizeof (buf), " at document: %d", parser->document_count);
    luaL_addstring (&b, buf);
 
    if (P->problem_mark.line || P->problem_mark.column)
    {
-      _snprintf (buf, sizeof (buf), ", line: %lu, column: %lu",
+      snprintf (buf, sizeof (buf), ", line: %lu, column: %lu",
          (unsigned long) P->problem_mark.line + 1,
          (unsigned long) P->problem_mark.column + 1);
       luaL_addstring (&b, buf);
@@ -299,7 +299,7 @@ parser_generate_error_message (lyaml_parser *parser)
 
    if (P->context)
    {
-      _snprintf (buf, sizeof (buf), "%s at line: %lu, column: %lu\n",
+      snprintf (buf, sizeof (buf), "%s at line: %lu, column: %lu\n",
          P->context,
          (unsigned long) P->context_mark.line + 1,
          (unsigned long) P->context_mark.column + 1);

@@ -1,3 +1,4 @@
+#coding:utf-8
 import wx
 
 import os
@@ -32,6 +33,8 @@ class render_panel(wx.Panel):
         self.tree.menu_callback = self.show_menu
         self.tree.check_callback = self.on_item_check
         self.tree.select_callback = self.on_item_select
+        self.tree.drag_begin_callback = self.on_drag_begin
+        self.tree.drag_end_callback = self.on_drag_end
 
         mainsizer = wx.BoxSizer(wx.VERTICAL)
         mainsizer.Add(self.tree, 4, wx.EXPAND)
@@ -49,6 +52,14 @@ class render_panel(wx.Panel):
         else:
             self.tree.SetBackgroundColour(wx.WHITE)
 
+    def pydata_to_sprite(self, data):
+        if data and len(data) >= 2:
+            arg = "%s,%s" % (data[0], data[1])
+            for i in data[2:]:
+                arg += ",'%s'" % i
+            return arg
+
+
     def on_item_check(self, tree, evt):
         if self.processing:
             return
@@ -61,93 +72,79 @@ class render_panel(wx.Panel):
             self.main.Send("set_sprite_visible(%s, %s, %d)" %
                            (data[0], data[1], int(item.IsChecked())))
         elif len(data) > 2:
-            arg = "%s,%s" % (data[0], data[1])
-            for i in data[2:]:
-                arg += ",'%s'" % i
-            self.main.Send("toggle_child_visible(%s)" % arg)
+            arg = self.pydata_to_sprite(data)
+            if arg:
+                self.main.Send("toggle_child_visible(%s)" % arg)
+
+    def on_drag_begin(self, tree, evt):
+        self.drag_item = evt.GetItem()
+        self.drag_type = "LeftDrag"
+
+    def is_parent_node(self, src, tar):
+        if not src or not tar or len(tar) == 0: return False
+        if len(src) == len(tar) + 1:
+            for k, v in enumerate(tar):
+                if src[k] != v:
+                    return False
+            return True
+        return False
+
+    def on_drag_end(self, tree, evt):
+        target = evt.GetItem()
+        if not target.IsOk(): return
+
+        source = self.drag_item
+        if not source: return
+
+        if self.tree.ItemIsChildOf(target, source):
+            print "the tree item can not be moved in to itself! "
+            self.tree.Unselect()
+            return
+
+        src_data = tree.GetPyData(source)
+        tar_data = tree.GetPyData(target)
+        if not src_data or not tar_data: return
+        if len(src_data) == 1 and len(tar_data) == 1: return
+
+        if self.is_parent_node(src_data, tar_data):
+            print("no need to remove")
+            return
+
+        print(src_data)
+        print(tar_data)
+        if len(tar_data) == 1 and len(src_data) == 2:
+            arg = self.pydata_to_sprite(src_data)
+            self.main.Move(arg, tar_data[0])
 
     def on_item_select(self, tree, evt):
         item = evt.GetItem()
         data = tree.GetPyData(item)
-        if data and len(data) >= 2:
-            arg = "%s,%s" % (data[0], data[1])
-            for i in data[2:]:
-                arg += ",'%s'" % i
-            print(self.main.Send("select_sprite(%s)" % (arg)))
+        arg = self.pydata_to_sprite(data)
+        if arg:
+            self.main.Send("select_sprite(%s)" % (arg))
+
+    def del_sprite(self, evt):
+        arg = self.pydata_to_sprite(self.menu_data)
+        if arg:
+            self.main.DelSprite(arg)
 
     def show_menu(self, tree, item):
+        self.menu_data = tree.GetPyData(item)
+        if not self.menu_data:
+            self.menu_data = None
+            return
+
         menu = wx.Menu()
 
-        item1 = menu.Append(wx.ID_ANY, "Change item background colour")
-        item2 = menu.Append(wx.ID_ANY, "Modify item text colour")
-        menu.AppendSeparator()
-
-        if False:
-            strs = "Make item text not bold"
-        else:
-            strs = "Make item text bold"
-
-        item3 = menu.Append(wx.ID_ANY, strs)
-        item4 = menu.Append(wx.ID_ANY, "Change item font")
-        menu.AppendSeparator()
-
-        if False:
-            strs = "Set item as non-hyperlink"
-        else:
-            strs = "Set item as hyperlink"
-
-        item5 = menu.Append(wx.ID_ANY, strs)
-        menu.AppendSeparator()
-
-        item13 = menu.Append(wx.ID_ANY, "Insert separator")
-        menu.AppendSeparator()
-
-        if False:
-            enabled = tree.GetItemWindowEnabled(item)
-            if enabled:
-                strs = "Disable associated widget"
-            else:
-                strs = "Enable associated widget"
-        else:
-            strs = "Enable associated widget"
-
-        item6 = menu.Append(wx.ID_ANY, strs)
-
-        if not False:
-            item6.Enable(False)
-
-        item7 = menu.Append(wx.ID_ANY, "Disable item")
+        if len(self.menu_data) >= 2:
+            item1 = menu.Append(wx.ID_ANY, "Del sprite")
+            tree.Bind(wx.EVT_MENU, self.del_sprite, item1)
 
         menu.AppendSeparator()
-        item8 = menu.Append(wx.ID_ANY, "Change item icons")
-        menu.AppendSeparator()
-        item9 = menu.Append(wx.ID_ANY, "Get other information for this item")
-        menu.AppendSeparator()
-
-        item10 = menu.Append(wx.ID_ANY, "Delete item")
-        if item == tree.GetRootItem():
-            item10.Enable(False)
-            item13.Enable(False)
-
-        item11 = menu.Append(wx.ID_ANY, "Prepend an item")
-        item12 = menu.Append(wx.ID_ANY, "Append an item")
-
-        tree.Bind(wx.EVT_MENU, tree.OnItemBackground, item1)
-        tree.Bind(wx.EVT_MENU, tree.OnItemForeground, item2)
-        tree.Bind(wx.EVT_MENU, tree.OnItemBold, item3)
-        tree.Bind(wx.EVT_MENU, tree.OnItemFont, item4)
-        tree.Bind(wx.EVT_MENU, tree.OnItemHyperText, item5)
-        tree.Bind(wx.EVT_MENU, tree.OnEnableWindow, item6)
-        tree.Bind(wx.EVT_MENU, tree.OnDisableItem, item7)
-        tree.Bind(wx.EVT_MENU, tree.OnItemIcons, item8)
-        tree.Bind(wx.EVT_MENU, tree.OnItemInfo, item9)
-        tree.Bind(wx.EVT_MENU, tree.OnItemDelete, item10)
-        tree.Bind(wx.EVT_MENU, tree.OnItemPrepend, item11)
-        tree.Bind(wx.EVT_MENU, tree.OnItemAppend, item12)
-        tree.Bind(wx.EVT_MENU, tree.OnSeparatorInsert, item13)
 
         tree.PopupMenu(menu)
         menu.Destroy()
+
 
     def set_data(self, data, packs):
         self.tree.Reset()

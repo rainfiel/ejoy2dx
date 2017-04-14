@@ -28,6 +28,9 @@
 
 #include "lyaml.h"
 
+#if !defined(_MSC_VER)
+#   define sprintf_s sprintf
+#endif
 
 typedef struct {
    yaml_emitter_t   emitter;

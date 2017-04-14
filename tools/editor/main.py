@@ -1,3 +1,5 @@
+#coding:utf-8
+
 import wx
 
 import os
@@ -19,7 +21,10 @@ except ImportError: # if it's not there locally, try the wxPython lib.
 
 import pack_panel
 import render_panel
+import particle_panel
 import images
+
+from prop.prop import PropPanel
 
 #----------------------------------------------------------------------
 import connect
@@ -28,7 +33,7 @@ class FlatNotebookDemo(wx.Frame):
 
     def __init__(self, parent, log):
 
-        wx.Frame.__init__(self, parent, title="FlatNotebook Demo", size=(800,600))
+        wx.Frame.__init__(self, parent, title="ejoy2dx", size=(1100,600))
         self.log = log
 
         self._bShowImages = False
@@ -75,15 +80,26 @@ class FlatNotebookDemo(wx.Frame):
         data = connect.discover(self.discover)
         if not data: return
 
-        self.discover.close()
-        self.discover = None
-        self.discover_timer.Stop()
-        self.discover_timer = None
+        # self.discover.close()
+        # self.discover = None
+        # self.discover_timer.Stop()
+        # self.discover_timer = None
 
-        exp = "connect('%s', %s)" % (data['ip'], data['port'])
-        self.connect = connect.connect(data['ip'], data['port'])
-        connect.send_file(self.connect, "lua/bdbox.lua")
-        connect.send_file(self.connect, "lua/crust.lua")
+        if not self.connect:
+            exp = "connect('%s', %s)" % (data['ip'], data['port'])
+            self.connect = connect.connect(data['ip'], data['port'])
+            connect.send_file(self.connect, "lua/hotkey.lua")
+            connect.send_file(self.connect, "lua/bdbox.lua")
+            connect.send_file(self.connect, "lua/crust.lua")
+            return
+
+        ope = data["ope"]
+        if not ope: return
+
+        if ope == "delete":
+            self.Refresh()
+        else:
+            self.prop_editor.SetData(data)
 
     def CreateMenuBar(self):
 
@@ -116,44 +132,54 @@ class FlatNotebookDemo(wx.Frame):
         mainSizer = wx.BoxSizer(wx.HORIZONTAL)
         self.SetSizer(mainSizer)
 
-        bookStyle = FNB.FNB_NODRAG
+        bookStyle = FNB.FNB_NODRAG #FNB.FNB_BOTTOM
 
         self.book = FNB.FlatNotebook(self, wx.ID_ANY, agwStyle=bookStyle)
+
         self.packs = pack_panel.pack_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
-        self.book.AddPage(self.packs, "pack", True)
+        self.particles = particle_panel.particle_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
 
-        self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
-        self.book.AddPage(self.renders, "render", True)
+        self.book.AddPage(self.packs, "pack")
+        self.book.AddPage(self.particles, "particle")
+
         # self.render_tree = custom_tree.CustomTreeCtrl(renders)
+   
 
-        self.book.Tile(wx.HORIZONTAL)
-
-        bookStyle &= ~(FNB.FNB_NODRAG)
-        bookStyle |= FNB.FNB_ALLOW_FOREIGN_DND 
+        # bookStyle &= ~(FNB.FNB_NODRAG)
+        # bookStyle |= FNB.FNB_ALLOW_FOREIGN_DND 
         self.secondBook = FNB.FlatNotebook(self, wx.ID_ANY, agwStyle=bookStyle)
 
         # Set right click menu to the notebook
         # self.book.SetRightClickMenu(self._rmenu)
+        self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
+        # mainSizer.Add(self.renders, 2, wx.EXPAND)
+        self.secondBook.AddPage(self.renders, "render")
 
         # Set the image list 
         self.book.SetImageList(self._ImageList)
-        mainSizer.Add(self.book, 6, wx.EXPAND)
+        mainSizer.Add(self.book, 2, wx.EXPAND)
+
+        # self.renders = render_panel.render_panel(self, style=wx.SUNKEN_BORDER|wx.TAB_TRAVERSAL)
+        # mainSizer.Add(self.renders, 2, wx.ALL|wx.EXPAND)
 
         # Add spacer between the books
-        spacer = wx.Panel(self, -1)
-        spacer.SetBackgroundColour(wx.SystemSettings_GetColour(wx.SYS_COLOUR_3DFACE))
-        mainSizer.Add(spacer, 0, wx.ALL | wx.EXPAND)
+        # spacer = wx.Panel(self, -1)
+        # spacer.SetBackgroundColour(wx.SystemSettings_GetColour(wx.SYS_COLOUR_3DFACE))
+        # mainSizer.Add(spacer, 0, wx.ALL | wx.EXPAND)
 
         mainSizer.Add(self.secondBook, 2, wx.EXPAND)
+
+        self.prop_editor = PropPanel(self, self.Send)
+        mainSizer.Add(self.prop_editor, 6, wx.EXPAND)
 
         # Add some pages to the second notebook
         self.Freeze()
 
-        text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 1\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
-        self.secondBook.AddPage(text, "Second Book Page 1")
+        # text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 1\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
+        # self.secondBook.AddPage(text, "Second Book Page 1")
 
-        text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 2\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
-        self.secondBook.AddPage(text,  "Second Book Page 2")
+        # text = wx.TextCtrl(self.secondBook, -1, "Second Book Page 2\n", style=wx.TE_MULTILINE | wx.TE_READONLY)
+        # self.secondBook.AddPage(text,  "Second Book Page 2")
 
         self.Thaw()
 
@@ -170,6 +196,9 @@ class FlatNotebookDemo(wx.Frame):
 
         dispatcher.send(signal='Editor.EditMode', sender=self, edit_mode=self.edit_mode)
 
+    def OnRefreshEnv(self, evt):
+        self.Refresh()
+
     def Refresh(self):
         msg = self.Send("env(5)")
         if msg:
@@ -177,12 +206,39 @@ class FlatNotebookDemo(wx.Frame):
             ps = msg.get('package_source')
             if ps:
                 self.packs.set_data(ps)
+                self.pack_data = ps
             rd = msg.get('renders')
             if rd:
                 self.renders.set_data(rd, ps)
+            particle = msg.get('particle_source')
+            if particle:
+                self.particles.set_data(particle)
 
-    def OnRefreshEnv(self, evt):
-        self.Refresh()
+    def NewSprite(self, pack, name):
+        renders = None
+        if name.isdigit():
+            renders = self.Send("new_sprite('%s',%s)" % (pack, name))
+        else:
+            renders = self.Send("new_sprite('%s', '%s')" % (pack, name))
+
+        if renders:
+            renders = json.loads(renders)
+            self.renders.set_data(renders, self.pack_data)
+
+    def NewParticle(self, pack, name):
+        self.Send("new_particle('%s', '%s')" % (pack, name))
+
+    def DelSprite(self, arg):
+        renders = self.Send("del_sprite(%s)" % arg)
+        if renders:
+            renders = json.loads(renders)
+            self.renders.set_data(renders, self.pack_data)
+
+    def Move(self, arg, tar):
+        renders = self.Send("move_to_render(%s, %s)" % (tar, arg))
+        if renders:
+            renders = json.loads(renders)
+            self.renders.set_data(renders, self.pack_data)
 
     def Send(self, exp):
         if self.connect:
