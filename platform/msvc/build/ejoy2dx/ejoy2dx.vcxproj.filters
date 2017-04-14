@@ -58,6 +58,9 @@
     <Filter Include="ejoy2dx\lyaml\yaml">
       <UniqueIdentifier>{1e961dc9-2b4a-4258-805e-a954e6362d68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\script\lyaml">
+      <UniqueIdentifier>{464913cf-b331-41c5-9ff3-f5106f1e6373}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -645,6 +648,9 @@
     </None>
     <None Include="..\..\..\..\src\ejoy2dx\Liekkas\sound.lua">
       <Filter>ejoy2dx\script\Liekkas</Filter>
+    </None>
+    <None Include="..\..\..\..\src\ejoy2dx\lyaml\lyaml.lua">
+      <Filter>ejoy2dx\script\lyaml</Filter>
     </None>
   </ItemGroup>
 </Project>

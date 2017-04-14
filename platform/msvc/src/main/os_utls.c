@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <windows.h>
+#include <direct.h> 
 
 static int
 _read_file(lua_State* L) {
@@ -90,7 +91,7 @@ _get_path(lua_State* L) {
 		mode_name = "Library/";
 		break;
 	case 'c':
-		mode_name = "Library/Caches";
+		mode_name = "Library/Caches/";
 		break;
 	default:
 		luaL_error(L, "unsupport path mode:%s", mode);
@@ -147,6 +148,19 @@ _input(lua_State* L) {
 	return 0;
 }
 
+static int
+_create_directory(lua_State *L) {
+	const char *path = luaL_checkstring (L, 1);
+	
+	BOOL bRet = CreateDirectory(path, NULL);
+	if (bRet || GetLastError() == ERROR_ALREADY_EXISTS) {
+		lua_pushboolean(L, 1);
+		return 1;
+	}
+
+	return 0;
+}
+
 int 
 luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
@@ -159,6 +173,7 @@ luaopen_osutil(lua_State* L) {
 		{"delete_file", _delete_file},
 		{"to_utf8", _to_utf8},
 		{"get_path", _get_path},
+		{"create_directory", _create_directory},
 		//{"input", _input},
 		
 		{NULL, NULL}
