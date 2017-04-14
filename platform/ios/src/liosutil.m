@@ -203,7 +203,6 @@ int luaopen_osutil(lua_State* L) {
 		{"write_file", _write_file},
 		{"delete_file", _delete_file},
 		{"get_path", _get_path},
-		{"input", _input},
 		{"create_directory", _create_directory}
 		
 		{NULL, NULL}
