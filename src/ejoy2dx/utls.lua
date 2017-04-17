@@ -32,7 +32,7 @@ function M.create_directory(path, mode, recursion)
 	if (recursion) then
 		local full_path = get_path(path, mode)
 		local curr_path = ""
-		for dir in string.gmatch(full_path, "([^/\\]+)[/\\]") do
+		for dir in string.gmatch(full_path, "([^/\\]+)[/\\]*") do
 			curr_path = curr_path .. dir .. "/"
 			os_utls.create_directory(curr_path)
 		end

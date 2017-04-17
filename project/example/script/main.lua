@@ -107,6 +107,8 @@ function game.on_reload()
 	interpreter:stop()
 end
 
+function game.on_close()
+end
 ej.start(game)
 
 
