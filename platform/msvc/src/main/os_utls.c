@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <windows.h>
+#include <direct.h> 
 
 static int
 _read_file(lua_State* L) {
@@ -159,6 +160,19 @@ _is_key_down(lua_State *L) {
 	return 1;
 }
 
+static int
+_create_directory(lua_State *L) {
+	const char *path = luaL_checkstring (L, 1);
+	
+	BOOL bRet = CreateDirectory(path, NULL);
+	if (bRet || GetLastError() == ERROR_ALREADY_EXISTS) {
+		lua_pushboolean(L, 1);
+		return 1;
+	}
+
+	return 0;
+}
+
 int 
 luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
@@ -171,6 +185,7 @@ luaopen_osutil(lua_State* L) {
 		{"delete_file", _delete_file},
 		{"to_utf8", _to_utf8},
 		{"get_path", _get_path},
+		{"create_directory", _create_directory},
 		//{"input", _input},
 		{"is_key_down", _is_key_down},
 		

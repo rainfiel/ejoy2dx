@@ -183,6 +183,17 @@ _get_path(lua_State* L) {
 	return 1;
 }
 
+static int
+_create_directory(lua_State* L){
+  const char* dir_path = luaL_checkstring(L, 1);
+  int b = [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithUTF8String:dir_path]
+                                    withIntermediateDirectories:NO
+                                                     attributes:nil
+                                                          error:nil];
+  lua_pushboolean(L, b);
+  return 1;
+}
+
 int luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
 
@@ -192,7 +203,7 @@ int luaopen_osutil(lua_State* L) {
 		{"write_file", _write_file},
 		{"delete_file", _delete_file},
 		{"get_path", _get_path},
-    {"input", _input},
+		{"create_directory", _create_directory},
 		
 		{NULL, NULL}
 	};

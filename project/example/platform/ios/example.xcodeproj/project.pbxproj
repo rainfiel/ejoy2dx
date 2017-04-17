@@ -57,8 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE9DE51B1A8EF9CD0085776F /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0A17551C0FDC6000D31C04 /* user_lua.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = user_lua.c; path = ../../common/user_lua.c; sourceTree = "<group>"; };
+		AE9DE51B1A8EF9CD0085776F /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9DE51F1A8EF9CD0085776F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE9DE5201A8EF9CD0085776F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE9DE5221A8EF9CD0085776F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,6 +230,7 @@
 				TargetAttributes = {
 					AE9DE51A1A8EF9CD0085776F = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 56628AJ5AX;
 					};
 				};
 			};
@@ -416,6 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 56628AJ5AX;
 				GCC_PREFIX_HEADER = example/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -439,6 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 56628AJ5AX;
 				GCC_PREFIX_HEADER = example/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "EJOY2D_OS=IOS";
 				HEADER_SEARCH_PATHS = (
