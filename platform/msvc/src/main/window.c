@@ -134,6 +134,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	case WM_DESTROY:
+		ejoy2d_fw_close();
 		PostQuitMessage(0);
 		return 0;
 	case WM_LBUTTONUP: {

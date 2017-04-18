@@ -42,6 +42,7 @@ void ejoy2d_fw_view_layout(int stat, float x, float y, float w, float h);
 void ejoy2d_fw_message(int ID,const char* msg,const char* data, lua_Number n);
 void ejoy2d_fw_pause();
 void ejoy2d_fw_resume();
+void ejoy2d_fw_close();
 
 bool ejoy2d_fw_auto_rotate();
 bool ejoy2d_fw_simul_gesture();

@@ -221,6 +221,7 @@
     <None Include="..\..\..\..\src\ejoy2dx\Liekkas\audio.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\Liekkas\music.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\Liekkas\sound.lua" />
+    <None Include="..\..\..\..\src\ejoy2dx\lyaml\lyaml.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\message.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\mult_draw.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\os_utls.lua" />

@@ -28,6 +28,19 @@ function M.frame_to_seconds(frame)
 	return frame / M.frame_per_second
 end
 
+function M.create_directory(path, mode, recursion)
+	if (recursion) then
+		local full_path = get_path(path, mode)
+		local curr_path = ""
+		for dir in string.gmatch(full_path, "([^/\\]+)[/\\]*") do
+			curr_path = curr_path .. dir .. "/"
+			os_utls.create_directory(curr_path)
+		end
+	else
+		return os_utls.create_directory(get_path(path, mode))
+	end
+end
+
 function M.read_file(path,mode,...)
 	path = get_path(path,mode)
 	return os_utls.read_file(path,...)
