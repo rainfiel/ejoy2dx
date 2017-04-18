@@ -3,6 +3,8 @@
 import wx
 import wx.propgrid as wxpg
 
+import enum
+
 class PropBase(object):
 	def init_props(self, scheme, data, name=None, parent=None):
 		pg = self.pg
@@ -32,26 +34,29 @@ class PropBase(object):
 				self.new_prop_item(item, p, fullname, data[item["name"]])
 
 	def new_prop_item(self, item, parent=None, name=None, val=None):
-		t = name and self.type_config.get(name, None) or item["type"]
-		func = getattr(self, t, None)
-		if func:
-			prop = func(item, name, val)
+		prop = None
 
+		t = name and self.type_config.get(name, None) or item["type"]
+		cfg = getattr(enum, t, None)
+		if cfg:
+			prop = self.enum(item, name, val, cfg)
+		else:
+			func = getattr(self, t, None)
+			if func:
+				prop = func(item, name, val)
+
+		if prop:
 			if not parent:
 				self.pg.Append(prop)
 			else:
 				self.pg.AppendIn(parent, prop)
 
-			return prop
+		return prop
 
 	def prop_str(self, prop):
 		name = prop.GetName()
-		# if "." in name:
-		# 	name = name.split(".")[-1]
-
 		type = prop.GetValueType()
 		val = prop.GetValue()
-		print(".....prop_str:", name, type, val)
 
 		if type == "string":
 			return ("'%s', '%s'" % (name, val)).encode('utf-8')
@@ -69,14 +74,13 @@ class PropBase(object):
 	def float(self, item, name, val):
 		return wxpg.FloatProperty(item["name"], name, value=val)
 
-	def enum(self, item, name, val):
+	def enum(self, item, name, val, cfg):
 		return wxpg.EnumProperty(item["name"],name, 
-															item["enum_keys"], item["enum_values"], 0)
+															cfg["keys"], cfg["vals"], val)
 
 	def color(self, item, name, val):
 		c = wx.Colour(val["r"]*255, val["g"]*255, val["b"]*255)
 		cp = wxpg.ColourProperty(item["name"], name, value=c)
-		print("................color:"+name)
 		cp.AppendChild(wxpg.FloatProperty("alpha", "a", value=val["a"]))
 		return cp
 

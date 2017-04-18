@@ -13,6 +13,10 @@ typeConfig = {
 	"startColorVar":"color",\
 	"endColor":"color",\
 	"endColorVar":"color",\
+	"srcBlend":"BLEND_FUNC",\
+	"dstBlend":"BLEND_FUNC", \
+	"positionType":"POSITION_TYPE", \
+	"emitterMode":"EMITTER_TYPE"
 }
 rootCats = ("Emitter", "ParticleSettings", "ColorSettings")
 emitterTypes = ("Gravity", "Radial")
