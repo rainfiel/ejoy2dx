@@ -28,7 +28,6 @@ def create_discover():
 def discover(sock):
     try:
         msg, addr = sock.recvfrom(4096)
-        print(len(msg), msg)
         return json.loads(msg)
     except Exception, e:
         return None
@@ -68,9 +67,13 @@ def send(sock, exp):
 
     return json.loads(ret)
 
-
 def send_file(sock, path):
     f = open(path, "r")
     exp = f.read()
     f.close()
     return send(sock, exp)
+
+def add_module(sock, path, mod_name):
+    send_file(sock, path)
+
+    return send(sock, '''add_module("%s")''' % mod_name)

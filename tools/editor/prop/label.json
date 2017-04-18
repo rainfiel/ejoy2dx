@@ -4,6 +4,51 @@
       "type" : "string",
       "name" : "text",
       "default" : "\"\""
+    },
+    {
+      "type" : "int",
+      "name" : "color",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "width",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "height",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "size",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "align",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "space_w",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "space_h",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "auto_scale",
+      "default" : 0
+    },
+    {
+      "type" : "int",
+      "name" : "edge",
+      "default" : 0
     }
   ]
 }

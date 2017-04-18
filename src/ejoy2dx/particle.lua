@@ -28,6 +28,10 @@ function M:new(packname, name)
 	return p
 end
 
+function M:config(p, cfg)
+	return c.config(p, cfg)
+end
+
 function M:active(p, act)
 	if act then
 		c.reset(p)

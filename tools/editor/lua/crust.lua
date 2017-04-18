@@ -15,6 +15,7 @@ particle_source = particle.configs
 package_edit = {} 		  -- user created packages
 sprite_sample = {}			-- editor created sprite
 focus_sprite = nil				-- current focuse sprite
+focus_memory = nil
 focus_sprite_root = nil	-- the root of the focus sprite
 
 --controller
@@ -42,25 +43,36 @@ local drag_src_y = nil
 
 local function on_select_sprite(root, spr)
 	if focus_sprite_root == root and focus_sprite == spr then
+		print("ignore select")
 		return
 	end
 	focus_sprite = spr
 	focus_sprite_root = root
+	focus_memory = nil
 
 	bdbox.clear()
-	if not focus_sprite_root or not focus_sprite then return end
+	if not focus_sprite_root or not focus_sprite then 
+		print("cancel select")
+		return
+	end
 	bdbox.show_bd(focus_sprite_root, focus_sprite)
 
 	local p = focus_sprite:get_particle()
 	if p then
-		local cfg = particle:get_para(p)
-		interpreter:broadcast({ope="particle_cfg", data=cfg})
+		local cfg = particle:config(p)
+		focus_memory = struct.unpack(c_schemes, "particle_config", cfg)
+		interpreter:broadcast({ope="particle_cfg", data=focus_memory.dump(), scheme=c_schemes["particle_config"]})
 		return
 	end
 
 	local sprite_type = focus_sprite.type
 	if sprite_type == ejoy2dx.SPRITE_TYPE_LABEL then
-		interpreter:broadcast({ope="label_cfg", data={text=spr.text}})
+		focus_memory = struct.unpack(c_schemes, "pack_label", focus_sprite.label_cfg)
+		local scheme = {{name="common", body={{type="string",name="text"}}},
+										{name="pack_label", body=c_schemes["pack_label"]}}
+
+		local data = {common={text=spr.text}, pack_label=focus_memory.dump()}
+		interpreter:broadcast({ope="label_cfg", data=data, scheme=scheme})
 	elseif sprite_type == ejoy2dx.SPRITE_TYPE_PICTURE then
 		print(".............picture")
 	end
@@ -144,6 +156,13 @@ function env(...)
 		end
 	end
 	src_env(...)
+end
+
+--scheme
+------------------------------------------------------------------
+c_schemes = {}
+function parse_c_header(code)
+	struct.parse(code, c_schemes)
 end
 
 --pack
@@ -291,8 +310,8 @@ function toggle_child_visible(layer, idx, ...)
 end
 
 function select_sprite(layer, idx, ...)
-	local a, b = get_sprite(layer, idx, ...)
-	on_select_sprite(a, b)
+	local spr, root = get_sprite(layer, idx, ...)
+	on_select_sprite(root, spr)
 end
 
 function move_to_render(tar_layer, layer, idx, ...)
@@ -311,15 +330,25 @@ function move_to_render(tar_layer, layer, idx, ...)
 end
 
 function set_particle_attr(key, val)
-	if not focus_sprite then return end
 	local p = focus_sprite:get_particle()
-	if not p then return end
-	particle:update_para(p, key, val)
+	if p then
+		if type(key) == "table" then
+			for k, v in ipairs(key) do
+				focus_memory.set(v, val[k])
+			end
+		else
+			focus_memory.set(key, val)
+		end
+
+		particle:config(p, focus_memory.pack())
+	end
 end
 
 function set_label_attr(key, val)
-	if not focus_sprite then return end
-	if focus_sprite[key] then
-		focus_sprite[key] = val
+	if key == "common.text" then
+		focus_sprite.text = val
+	else
+		focus_memory.set(string.sub(key, 12), val)
+		focus_sprite.label_cfg = focus_memory.pack()
 	end
 end

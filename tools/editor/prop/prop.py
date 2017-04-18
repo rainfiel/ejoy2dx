@@ -78,7 +78,7 @@ class PropPanel( wx.Panel ):
 			self.current = self.label
 			
 		if self.current:
-			self.current.ShowData(data["data"])
+			self.current.ShowData(data["scheme"], data["data"])
 
 	def OnPropGridChange(self, event):
 		if self.current:

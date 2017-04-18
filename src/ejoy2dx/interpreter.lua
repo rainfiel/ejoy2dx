@@ -67,6 +67,10 @@ function conn_mt:init()
 			dump_env()
 		end
 	end
+	local function add_module(name)
+		print("add_module:", name, self.env.last_result[1])
+		rawset(self.env, name, self.env.last_result[1])
+	end
 	local function list()
 		local conns = {}
 		for k, v in pairs(M.connects) do
@@ -81,7 +85,7 @@ function conn_mt:init()
 		self.results = nil
 	end
 	self.origin_env = function( ... )
-		return {print=rmt_print, env=dump_env, clear_env=clear_env, list_conn=list,
+		return {print=rmt_print, env=dump_env, clear_env=clear_env, list_conn=list, add_module=add_module,
 						disconnect=disconnect, help=help, reload=reload, inject=inject, id=self.id}
 	end
 	self.env = setmetatable(self.origin_env(), {__index=_SYS_ENV})
@@ -101,7 +105,7 @@ function conn_mt:recv()
 			end
 		end
 		self:parse(msg)
-		print(string.format("INTERPRETER:%s>>>%q", self.id, msg))
+		-- print(string.format("INTERPRETER:%s>>>%q", self.id, msg))
 	elseif msg == nil then
 		print("INTERPRETER:conn closed->", self.id)
 		return false
@@ -151,6 +155,7 @@ function conn_mt:result(ok, ...)
 	local ret = {...}
 	if not ok then
 		self:send("error", ret[1] or "run error")
+		print("pcall err:", ret[1])
 		return
 	end
 	if not self.results then return end
@@ -163,6 +168,7 @@ function conn_mt:result(ok, ...)
 		str = table.concat(str, "\t")
 		table.insert(self.results, str)
 	end
+	self.env.last_result = ret
 	self:send("result", table.concat(self.results, "\n"))
 	self.results = nil
 end

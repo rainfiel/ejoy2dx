@@ -18,25 +18,17 @@ class LabelProp(PropBase):
 		self.edit_callback = edit_callback
 
 		self.pg = parent
+		self.type_config = {}
 
-	def ShowData(self, data):
+	def ShowData(self, scheme, data):
 		self.pg.AddPage( "Label" )
-		self.init_prop()
-
-		self.pg.SetPropertyValues(data)
+		self.init_props(scheme, data)
 
 	def OnPropGridChange(self, event):
 		p = event.GetProperty()
 		if p and self.edit_callback:
 			self.Apply(p)
 
-	def init_prop(self):
-		pg = self.pg
-
-		for cat, items in template.iteritems():
-			pg.Append( wxpg.PropertyCategory(cat) )
-			for item in items:
-				prop = self.new_prop_item(item)
 
 	def Apply(self, prop):
 		args = self.prop_str(prop)

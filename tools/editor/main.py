@@ -74,6 +74,44 @@ class FlatNotebookDemo(wx.Frame):
         self.connect = None
 
         self.edit_mode = False
+        self.scheme_inited = False
+
+    def InitConn(self, data):
+        exp = "connect('%s', %s)" % (data['ip'], data['port'])
+        self.connect = connect.connect(data['ip'], data['port'])
+        connect.send_file(self.connect, "lua/hotkey.lua")
+        connect.send_file(self.connect, "lua/bdbox.lua")
+        connect.send_file(self.connect, "lua/crust.lua")
+
+    def InitScheme(self):
+        self.scheme_inited = True
+        connect.add_module(self.connect, "lua/ceg/c99.lua", "c99")
+        connect.add_module(self.connect, "lua/ceg/init.lua", "ceg")
+        connect.add_module(self.connect, "lua/struct.lua", "struct")
+
+        code = '''
+        typedef signed char        int8_t;
+        typedef short              int16_t;
+        typedef int                int32_t;
+        typedef long long          int64_t;
+        typedef unsigned char      uint8_t;
+        typedef unsigned short     uint16_t;
+        typedef unsigned int       uint32_t;
+        typedef unsigned long long uint64_t;
+        '''
+        self.C_scheme( ["../../ejoy2d/lib/matrix.h",
+                        "../../ejoy2d/lib/particle.h",
+                        "../../ejoy2d/lib/spritepack.h",
+                        "../../ejoy2d/lib/sprite.h",
+                        ], code)
+
+    def C_scheme(self, files, code=""):
+        for f in files:
+            with open(f, "r") as f:
+                code += "\n" + f.read()
+
+        self.Send("parse_c_header([[%s]])" % (code))
+
 
     def OnTimer(self, evt):
         if not self.discover: return
@@ -86,14 +124,12 @@ class FlatNotebookDemo(wx.Frame):
         # self.discover_timer = None
 
         if not self.connect:
-            exp = "connect('%s', %s)" % (data['ip'], data['port'])
-            self.connect = connect.connect(data['ip'], data['port'])
-            connect.send_file(self.connect, "lua/hotkey.lua")
-            connect.send_file(self.connect, "lua/bdbox.lua")
-            connect.send_file(self.connect, "lua/crust.lua")
+            self.InitConn(data)
             return
 
         ope = data["ope"]
+
+        print("...OnTimer:", ope)
         if not ope: return
 
         if ope == "delete":
@@ -102,7 +138,6 @@ class FlatNotebookDemo(wx.Frame):
             self.prop_editor.SetData(data)
 
     def CreateMenuBar(self):
-
         menuBar = wx.MenuBar(wx.MB_DOCKABLE)
         menu = wx.Menu()
         item = menu.Append(-1, "&Refresh\tF5", "Refresh data")
@@ -190,6 +225,9 @@ class FlatNotebookDemo(wx.Frame):
         self.Close(True)
 
     def OnToggleEditMode(self, evt):
+        if not self.edit_mode and not self.scheme_inited:
+            self.InitScheme()
+
         self.edit_mode = not self.edit_mode
         self.Send("edit_mode(%d)" % int(self.edit_mode))
         self.Refresh()
@@ -248,8 +286,8 @@ class FlatNotebookDemo(wx.Frame):
             elif data:
                 msg = data.get('msg')
                 type = data.get('type', 'error')
-                if type == 'error':
-                    print(data)
+                if type == 'error' or type == "result":
+                    print(msg)
                 return msg
 
 #---------------------------------------------------------------------------
