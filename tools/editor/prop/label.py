@@ -8,10 +8,6 @@ import json
 
 from base import PropBase
 
-template_path = os.path.join(os.path.dirname(__file__), "label.json")
-with open(template_path) as f:
-	template = json.loads(f.read())
-
 class LabelProp(PropBase):
 
 	def __init__( self, parent, edit_callback ):

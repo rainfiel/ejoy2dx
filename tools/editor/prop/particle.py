@@ -16,7 +16,10 @@ typeConfig = {
 	"srcBlend":"BLEND_FUNC",\
 	"dstBlend":"BLEND_FUNC", \
 	"positionType":"POSITION_TYPE", \
-	"emitterMode":"EMITTER_TYPE"
+	"emitterMode":"EMITTER_TYPE", \
+	"posVar":"position", \
+	"sourcePosition":"position",\
+	"mode.A.gravity":"position",
 }
 rootCats = ("Emitter", "ParticleSettings", "ColorSettings")
 emitterTypes = ("Gravity", "Radial")

@@ -41,6 +41,16 @@ local drag_target = nil
 local drag_src_x = nil
 local drag_src_y = nil
 
+local function broadcast_particle(p)
+	local cfg = particle:config(p)
+	local mm = struct.unpack(c_schemes, "particle_config", cfg)
+	if mm.get("emitterMode") == 1 then
+		mm = struct.unpack(c_schemes, "particle_config", cfg, {2})
+	end
+	focus_memory = mm
+	interpreter:broadcast({ope="particle_cfg", data=focus_memory.dump(), scheme=c_schemes["particle_config"]})
+end
+
 local function on_select_sprite(root, spr)
 	if focus_sprite_root == root and focus_sprite == spr then
 		print("ignore select")
@@ -59,9 +69,7 @@ local function on_select_sprite(root, spr)
 
 	local p = focus_sprite:get_particle()
 	if p then
-		local cfg = particle:config(p)
-		focus_memory = struct.unpack(c_schemes, "particle_config", cfg)
-		interpreter:broadcast({ope="particle_cfg", data=focus_memory.dump(), scheme=c_schemes["particle_config"]})
+		broadcast_particle(p)
 		return
 	end
 
@@ -341,6 +349,10 @@ function set_particle_attr(key, val)
 		end
 
 		particle:config(p, focus_memory.pack())
+
+		if key == "emitterMode" then
+			broadcast_particle(p)
+		end
 	end
 end
 

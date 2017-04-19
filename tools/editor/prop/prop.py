@@ -8,19 +8,6 @@ import json
 from particle import ParticleProp
 from label import LabelProp
 
-template_path = os.path.join(os.path.dirname(__file__), "particle.json")
-with open(template_path) as f:
-	template = json.loads(f.read())
-
-colorMap = {
-	"startColor":("startColorRed", "startColorGreen", "startColorBlue"),\
-	"startColorVariance":("startColorVarianceRed", "startColorVarianceGreen", "startColorVarianceBlue"),\
-	"finishColor":("finishColorRed", "finishColorGreen", "finishColorBlue"),\
-	"finishColorVariance":("finishColorVarianceRed", "finishColorVarianceGreen", "finishColorVarianceBlue"),\
-}
-rootCats = ("Emitter", "ParticleSettings", "ColorSettings")
-emitterTypes = ("Gravity", "Radial")
-
 class PropPanel( wx.Panel ):
 
 	def __init__( self, parent, edit_callback ):

@@ -519,6 +519,7 @@ function inst.unpack(structs, struct_name, bin, unions)
 		end,
 		set=function(key, val, idx)
 			local id = rawget(unwind_keys, key)
+			assert(id, key)
 			id = id + (idx or 1) -1
 			list[id] = val
 		end,
