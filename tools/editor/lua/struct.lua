@@ -521,7 +521,13 @@ function inst.unpack(structs, struct_name, bin, unions)
 			local id = rawget(unwind_keys, key)
 			assert(id, key)
 			id = id + (idx or 1) -1
-			list[id] = val
+			if type(val) == "table" then
+				for k, v  in ipairs(val) do
+					list[id+k-1] = v
+				end
+			else
+				list[id] = val
+			end
 		end,
 		pack=function()
 			return string.pack(fmt, table.unpack(list))

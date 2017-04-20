@@ -127,7 +127,7 @@ class FlatNotebookDemo(wx.Frame):
             self.InitConn(data)
             return
 
-        ope = data["ope"]
+        ope = data.get("ope", None)
 
         print("...OnTimer:", ope)
         if not ope: return

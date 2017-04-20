@@ -5,8 +5,7 @@ import wx.propgrid as wxpg
 
 import os
 import json
-from particle import ParticleProp
-from label import LabelProp
+import pages
 
 class PropPanel( wx.Panel ):
 
@@ -24,9 +23,7 @@ class PropPanel( wx.Panel ):
 																						# wxpg.PG_AUTO_SORT |
 																						wxpg.PG_TOOLBAR)
 
-		self.particle = ParticleProp(self.pg, self.edit_callback)
-		self.label = LabelProp(self.pg, self.edit_callback)
-		self.current = None
+		self.page = pages.CommonPage(self.pg, self.edit_callback)
 
 		# Show help as tooltips
 		# pg.SetExtraStyle(wxpg.PG_EX_HELP_AS_TOOLTIPS)
@@ -58,15 +55,10 @@ class PropPanel( wx.Panel ):
 		if not ope: return
 
 		self.Clear()
-		self.current = None
-		if ope == "particle_cfg":
-			self.current = self.particle
-		elif ope == "label_cfg":
-			self.current = self.label
-			
-		if self.current:
-			self.current.ShowData(data["scheme"], data["data"])
+
+		cfg = getattr(pages, ope, None)
+		if cfg:
+			self.page.ShowData(cfg, data["scheme"], data["data"])
 
 	def OnPropGridChange(self, event):
-		if self.current:
-			self.current.OnPropGridChange(event)
+		self.page.OnPropGridChange(event)

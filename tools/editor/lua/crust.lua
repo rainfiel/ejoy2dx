@@ -51,6 +51,29 @@ local function broadcast_particle(p)
 	interpreter:broadcast({ope="particle_cfg", data=focus_memory.dump(), scheme=c_schemes["particle_config"]})
 end
 
+local function broadcast_sprite()
+	local unions = {}
+	local spr_type = focus_sprite.type
+	if spr_type == ejoy2dx.SPRITE_TYPE_LABEL then
+		unions[1] = 4
+	elseif spr_type == ejoy2dx.SPRITE_TYPE_ANIMATION then
+		unions[1] = 1
+	elseif spr_type == ejoy2dx.SPRITE_TYPE_PICTURE then
+		unions[1] = 2
+	end
+	focus_memory = struct.unpack(c_schemes, "sprite", focus_sprite.raw_data, unions)
+	interpreter:broadcast({ope="sprite_raw", scheme=c_schemes["sprite"], data = focus_memory.dump()})
+end
+
+local function broadcast_label()
+	focus_memory = struct.unpack(c_schemes, "pack_label", focus_sprite.label_cfg)
+	local scheme = {{name="common", body={{type="string",name="text"}}},
+									{name="pack_label", body=c_schemes["pack_label"]}}
+
+	local data = {common={text=focus_sprite.text}, pack_label=focus_memory.dump()}
+	interpreter:broadcast({ope="label_cfg", data=data, scheme=scheme})
+end
+
 local function on_select_sprite(root, spr)
 	if focus_sprite_root == root and focus_sprite == spr then
 		print("ignore select")
@@ -72,18 +95,17 @@ local function on_select_sprite(root, spr)
 		broadcast_particle(p)
 		return
 	end
+	
+	broadcast_sprite()
 
-	local sprite_type = focus_sprite.type
-	if sprite_type == ejoy2dx.SPRITE_TYPE_LABEL then
-		focus_memory = struct.unpack(c_schemes, "pack_label", focus_sprite.label_cfg)
-		local scheme = {{name="common", body={{type="string",name="text"}}},
-										{name="pack_label", body=c_schemes["pack_label"]}}
-
-		local data = {common={text=spr.text}, pack_label=focus_memory.dump()}
-		interpreter:broadcast({ope="label_cfg", data=data, scheme=scheme})
-	elseif sprite_type == ejoy2dx.SPRITE_TYPE_PICTURE then
-		print(".............picture")
-	end
+	-- local sprite_type = focus_sprite.type
+	-- if sprite_type == ejoy2dx.SPRITE_TYPE_LABEL then
+	-- 	broadcast_label()
+	-- elseif sprite_type == ejoy2dx.SPRITE_TYPE_PICTURE then
+	-- 	print(".............picture")
+	-- else
+	-- 	broadcast_sprite()
+	-- end
 end
 
 local function on_touch(x,y,what,id)
@@ -363,4 +385,9 @@ function set_label_attr(key, val)
 		focus_memory.set(string.sub(key, 12), val)
 		focus_sprite.label_cfg = focus_memory.pack()
 	end
+end
+
+function set_sprite_attr(key, val)
+	focus_memory.set(key, val)
+	focus_sprite.raw_data = focus_memory.pack()
 end

@@ -39,10 +39,33 @@ POSITION_TYPE = {
 }
 
 EMITTER_TYPE = {
-	"keys":(
+        "keys":(
         "Gravity",
         "Radial"),
-	"vals":(
+        "vals":(
         0,
         1)
 }
+
+
+SPRITE_TYPE = {
+        "keys":(
+        "TYPE_EMPTY",
+        "TYPE_PICTURE",
+        "TYPE_ANIMATION",
+        "TYPE_POLYGON",
+        "TYPE_LABEL",
+        "TYPE_PANNEL",
+        "TYPE_ANCHOR",
+        "TYPE_MATRIX"),
+        "vals":(
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7)
+}
+
