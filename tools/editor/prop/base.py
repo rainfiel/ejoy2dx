@@ -111,6 +111,7 @@ class PosProperty(wxpg.PyProperty):
 
 class PropBase(object):
 	def init_props(self, scheme, data, name=None, parent=None):
+		# print(scheme)
 		pg = self.pg
 		if not parent:
 			parent = [wxpg.PropertyCategory("properties")]
@@ -120,6 +121,8 @@ class PropBase(object):
 
 			fullname = name and (".".join(name)+"."+item["name"]) or item["name"]
 			type = self.type_config.get(fullname, None) or getattr(self, item.get("type", ""), None)
+			p = (parent and len(parent) > 0) and parent[-1] or None
+
 			if "body" in item and not type:
 				cat = wxpg.PropertyCategory(item["name"])
 
@@ -135,8 +138,12 @@ class PropBase(object):
 				self.init_props(item["body"], data[item["name"]], _name, parent)
 				parent.pop(-1)
 				_name.pop(-1)
+			elif "array" in item:
+				cat = wxpg.PropertyCategory(item["name"])
+				pg.AppendIn(p, cat)
+				for idx, val in enumerate(data[item["name"]]):
+					self.new_prop_item(item, cat, fullname, val)
 			else:
-				p = (parent and len(parent) > 0) and parent[-1] or None
 				self.new_prop_item(item, p, fullname, data[item["name"]])
 
 	def new_prop_item(self, item, parent=None, name=None, val=None):

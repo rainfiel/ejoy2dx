@@ -411,3 +411,7 @@ function set_sprite_s(key, val)
 	focus_sprite_s.set(key, val)
 	focus_sprite.sprite_s = focus_sprite_s.pack()
 end
+
+function sprite_children()
+	print("..................sprite child")
+end

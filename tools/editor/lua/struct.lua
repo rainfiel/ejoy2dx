@@ -136,7 +136,7 @@ local function struct_declarations(code, structs)
 			is_pointer = nil
 			if string.sub(v, 1, 1) == "*" then
 				is_pointer = true
-				name = name:match("[* ]*([%a%d_]+)")
+				name = string.gsub(name, "[ ]*[*][ ]*", "")
 			end
 			local a, array = name:match("([%a%d_]+)[ ]*[[][ ]*(%d+)[ ]*[]]")
 			if a and array then
@@ -435,7 +435,7 @@ local function unpack_scheme(scheme, unions)
 				table.insert(tbl, s_tbl)
 			end
 		else
-			if v.array and v.array > 1 then
+			if v.array then
 				fmt = fmt .. string.rep(v.fmt, v.array)
 				table.insert(tbl, {name=v.name, array=v.array})
 			else
@@ -507,7 +507,10 @@ function inst.unpack(structs, struct_name, bin, unions)
 	local fmt, keys = unpack_scheme(scheme, unions)
 	fmt = "!="..fmt
 	local list = table.pack(string.unpack(fmt, bin))
+	local unread = list[#list]
+	local size = string.len(bin)
 	list[#list] = nil
+
 	local unwind_keys = unwind(list, keys)
 
 	local mt = {
