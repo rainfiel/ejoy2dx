@@ -71,6 +71,7 @@ def send_file(sock, path):
     f = open(path, "r")
     exp = f.read()
     f.close()
+    print("send file:"+path)
     return send(sock, exp)
 
 def add_module(sock, path, mod_name):

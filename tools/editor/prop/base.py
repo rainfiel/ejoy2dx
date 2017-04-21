@@ -26,7 +26,6 @@ class Int32ColorProperty(wxpg.PyProperty):
 	def RefreshChildren(self):
 		value = self.m_value
 		a,r,g,b = value>>24, value>>16&0xFF, value>>8&0xFF, value&0xFF
-		print(a,r,g,b)
 
 		self.Item(0).SetValue(wx.Colour(r,g,b,a))
 		self.Item(1).SetValue(int(a))
@@ -155,8 +154,7 @@ class PropBase(object):
 			if func:
 				prop = func(item, name, val)
 			else:
-				print(item.get("is_pointer", False), item)
-				print("ignore type:"+str(name)+"|"+item["type"])
+				print("ignore type:"+str(name))
 
 		if prop:
 			if not parent:
@@ -167,9 +165,23 @@ class PropBase(object):
 			if name in self.readonly:
 				prop.Enable(False)
 
+			client = {"is_pointer":item.get("is_pointer", False)}
+
+			cb = self.buttons.get(name, None)
+			if cb:
+				self.pg.SetPropertyEditor(prop, "ButtonEditor")
+				prop.Enable(True)
+				client["btn_callback"] = cb
+			
+			prop.SetClientData(client)
+
 		return prop
 
 	def prop_str(self, prop):
+		client = prop.GetClientData()
+		if not client or client.get("is_pointer", False):
+			return
+
 		name = prop.GetName()
 		ptype = prop.GetValueType()
 		val = prop.GetValue()
@@ -177,9 +189,6 @@ class PropBase(object):
 		ctype = self.type_config.get(name, None)
 		if ctype == "int32_color":
 			return "'%s', %d" % (name, val)
-
-		print(ptype, name, val, prop.__class__)
-		print(prop.m_value, type(val))
 
 		if ptype == "string":
 			return ("'%s', '%s'" % (name, val)).encode('utf-8')
@@ -197,15 +206,20 @@ class PropBase(object):
 			return "'%s', %d" % (name, val)
 
 	def pointer(self, item, name, val):
-		pro = wxpg.StringProperty(item["name"], name, value="0x%.2X"%val)
-		pro.Enable(False)
-		return pro
+		prop = wxpg.StringProperty(item["name"], name, value="0x%.2X"%val)
+		prop.Enable(False)
+		return prop
 
 	def int(self, item, name, val):
 		return wxpg.IntProperty(item["name"], name, value=val)
 
 	def uint16_t(self, item, name, val):
 		return wxpg.IntProperty(item["name"], name, value=val)
+
+	def offset_t(self, item, name, val):
+		prop = wxpg.IntProperty(item["name"], name, value=val)
+		prop.Enable(False)
+		return prop
 
 	def int32_color(self, item, name, val):
 		return Int32ColorProperty(item["name"], name, value=val)

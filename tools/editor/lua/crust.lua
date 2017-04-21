@@ -16,6 +16,7 @@ package_edit = {} 		  -- user created packages
 sprite_sample = {}			-- editor created sprite
 focus_sprite = nil				-- current focuse sprite
 focus_memory = nil
+focus_sprite_s = nil
 focus_sprite_root = nil	-- the root of the focus sprite
 
 --controller
@@ -62,16 +63,26 @@ local function broadcast_sprite()
 		unions[1] = 2
 	end
 	focus_memory = struct.unpack(c_schemes, "sprite", focus_sprite.raw_data, unions)
-	interpreter:broadcast({ope="sprite_raw", scheme=c_schemes["sprite"], data = focus_memory.dump()})
+	interpreter:broadcast({ope="sprite_raw", root=true, scheme=c_schemes["sprite"], data = focus_memory.dump()})
 end
 
-local function broadcast_label()
-	focus_memory = struct.unpack(c_schemes, "pack_label", focus_sprite.label_cfg)
+local function broadcast_label(bin)
 	local scheme = {{name="common", body={{type="string",name="text"}}},
 									{name="pack_label", body=c_schemes["pack_label"]}}
 
-	local data = {common={text=focus_sprite.text}, pack_label=focus_memory.dump()}
-	interpreter:broadcast({ope="label_cfg", data=data, scheme=scheme})
+	local data = {common={text=focus_sprite.text}, pack_label=bin.dump()}
+	interpreter:broadcast({ope="pack_label", data=data, scheme=scheme})
+end
+
+local function broadcast_sprite_s()
+	local name, bin = table.unpack(focus_sprite.sprite_s)
+	print("sprite_s:", name, bin)
+	focus_sprite_s = struct.unpack(c_schemes, name, bin)
+	if name == "pack_label" then
+		broadcast_label(focus_sprite_s)
+	else
+		interpreter:broadcast({ope=name, scheme=c_schemes[name], data=focus_sprite_s.dump()})
+	end
 end
 
 local function on_select_sprite(root, spr)
@@ -382,12 +393,21 @@ function set_label_attr(key, val)
 	if key == "common.text" then
 		focus_sprite.text = val
 	else
-		focus_memory.set(string.sub(key, 12), val)
-		focus_sprite.label_cfg = focus_memory.pack()
+		focus_sprite_s.set(string.sub(key, 12), val)
+		focus_sprite.sprite_s = focus_sprite_s.pack()
 	end
 end
 
 function set_sprite_attr(key, val)
 	focus_memory.set(key, val)
 	focus_sprite.raw_data = focus_memory.pack()
+end
+
+function get_sprite_s()
+	broadcast_sprite_s()
+end
+
+function set_sprite_s(key, val)
+	focus_sprite_s.set(key, val)
+	focus_sprite.sprite_s = focus_sprite_s.pack()
 end

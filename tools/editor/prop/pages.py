@@ -23,10 +23,15 @@ particle_cfg = {
 	}
 }
 
-label_cfg = {
+pack_label = {
 	"name" : "pack_label",
 	"apply_name" : "set_label_attr(%s)",
-	"type_config" : {}
+	"type_config" : {"pack_label.color":"int32_color"}
+}
+
+pack_animation = {
+	"name" : "pack_animation",
+	"apply_name" : "set_sprite_s(%s)",
 }
 
 sprite_raw = {
@@ -37,20 +42,24 @@ sprite_raw = {
 		"t.additive":"int32_color", 
 		"type":"SPRITE_TYPE"
 		},
-	"readonly" : ["type", "id"]
+	"readonly" : ["type", "id"],
+	"buttons" : {	"s.ani":"get_sprite_s()",
+								"s.label":"get_sprite_s()"}
 }
 
 class CommonPage(PropBase):
-	def __init__( self, parent, edit_callback ):
+	def __init__( self, parent, config, edit_callback ):
 		self.edit_callback = edit_callback
 		self.pg = parent
-		self.config = None
-
-	def ShowData(self, config, scheme, data):
 		self.config = config
-		self.type_config = config["type_config"]
+		self.name = config.get("name", "noname")
+		self.type_config = config.get("type_config", {})
 		self.readonly = config.get("readonly", [])
-		self.pg.AddPage( config["name"] )
+		self.buttons = config.get("buttons", {})
+
+		self.pg.AddPage( self.name )
+
+	def ShowData(self, scheme, data):
 		self.init_props(scheme, data)
 		
 	def OnPropGridChange(self, event):
@@ -61,4 +70,5 @@ class CommonPage(PropBase):
 	def Apply(self, prop):
 		if self.config["apply_name"]:
 			args = self.prop_str(prop)
-			self.edit_callback( self.config["apply_name"] % (args))
+			if args:
+				self.edit_callback( self.config["apply_name"] % (args))

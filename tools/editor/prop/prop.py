@@ -7,6 +7,42 @@ import os
 import json
 import pages
 
+class ButtonEditor(wxpg.PyTextCtrlEditor):
+	edit_callback = None
+	def __init__(self):
+		wxpg.PyTextCtrlEditor.__init__(self)
+
+	def CreateControls(self, propGrid, property, pos, sz):
+		buttons = wxpg.PGMultiButton(propGrid, sz)
+		buttons.AddButton("+")
+
+		wnd = self.CallSuperMethod("CreateControls",
+		                           propGrid,
+		                           property,
+		                           pos,
+		                           buttons.GetPrimarySize())
+		buttons.Finalize(propGrid, pos);
+		self.buttons = buttons
+
+		return (wnd, buttons)
+
+	def DoCallback(self, prop):
+		client = prop.GetClientData()
+		cb = client.get("btn_callback", None)
+		if cb:
+			ButtonEditor.edit_callback(cb)
+
+	def OnEvent(self, propGrid, prop, ctrl, event):
+		if event.GetEventType() == wx.wxEVT_COMMAND_BUTTON_CLICKED:
+			buttons = self.buttons
+			evtId = event.GetId()
+
+			if evtId == buttons.GetButtonId(0):
+				self.DoCallback(prop)
+				return False  # Return false since value did not change
+
+		return self.CallSuperMethod("OnEvent", propGrid, prop, ctrl, event)
+
 class PropPanel( wx.Panel ):
 
 	def __init__( self, parent, edit_callback ):
@@ -23,7 +59,12 @@ class PropPanel( wx.Panel ):
 																						# wxpg.PG_AUTO_SORT |
 																						wxpg.PG_TOOLBAR)
 
-		self.page = pages.CommonPage(self.pg, self.edit_callback)
+		pg.RegisterEditor(ButtonEditor)
+		ButtonEditor.edit_callback = edit_callback
+
+		self.page = None
+		self.child_page = None
+		self.current_page = None
 
 		# Show help as tooltips
 		# pg.SetExtraStyle(wxpg.PG_EX_HELP_AS_TOOLTIPS)
@@ -47,18 +88,33 @@ class PropPanel( wx.Panel ):
 		self.SetAutoLayout(True)
 
 	def Clear(self):
-		if self.pg.GetPageCount() > 0:
+		while self.pg.GetPageCount() > 0:
 			self.pg.RemovePage(0)
 
+		self.page = None
+		self.child_page = None
+
 	def SetData(self, data):
-		ope = data["ope"]
+		if data.get("root", False):
+			self.Clear()
+
+		ope = data.get("ope", None)
 		if not ope: return
 
-		self.Clear()
+		cfg = getattr(pages, ope, {})
 
-		cfg = getattr(pages, ope, None)
-		if cfg:
-			self.page.ShowData(cfg, data["scheme"], data["data"])
+		self.current_page = None
+		if not self.page:
+			self.page = pages.CommonPage(self.pg, cfg, self.edit_callback)
+			self.current_page = self.page
+		else:
+			if self.child_page:
+				self.pg.RemovePage(1)
+			self.child_page = pages.CommonPage(self.pg, cfg, self.edit_callback)
+			self.current_page = self.child_page
+
+		self.pg.SelectPage(self.current_page.name)
+		self.current_page.ShowData(data["scheme"], data["data"])
 
 	def OnPropGridChange(self, event):
-		self.page.OnPropGridChange(event)
+		self.current_page.OnPropGridChange(event)
