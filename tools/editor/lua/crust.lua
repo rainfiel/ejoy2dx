@@ -63,7 +63,20 @@ local function broadcast_sprite()
 		unions[1] = 2
 	end
 	focus_memory = struct.unpack(c_schemes, "sprite", focus_sprite.raw_data, unions)
-	interpreter:broadcast({ope="sprite_raw", root=true, scheme=c_schemes["sprite"], data = focus_memory.dump()})
+	local data = focus_memory.dump()
+	local unread = focus_memory.unread_data()
+	if unread then
+		local size = string.len(unread)
+		local unit = string.packsize("L")
+		if size >= unit then
+			local child = table.pack(string.unpack(string.rep("L", size // unit), unread))
+			child[#child] = nil
+			for k, v in ipairs(child) do
+				table.insert(data.data.children, v)
+			end
+		end
+	end
+	interpreter:broadcast({ope="sprite_raw", root=true, scheme=c_schemes["sprite"], data = data})
 end
 
 local function broadcast_label(bin)
@@ -76,10 +89,24 @@ end
 
 local function broadcast_sprite_s()
 	local name, bin = table.unpack(focus_sprite.sprite_s)
-	print("sprite_s:", name, bin)
 	focus_sprite_s = struct.unpack(c_schemes, name, bin)
 	if name == "pack_label" then
 		broadcast_label(focus_sprite_s)
+	elseif name == "pack_animation" then
+		local unread = focus_sprite_s.unread_data()
+		if unread then
+			local size = string.len(unread)
+			local unit = string.packsize("Ii")
+			if size >= unit then
+				local cnt = (size // unit) + 1
+				local scheme = c_schemes[name]
+				local old = scheme[#scheme].array
+				scheme[#scheme].array = cnt
+				focus_sprite_s = struct.unpack(c_schemes, name, bin)
+				scheme[#scheme].array = old
+			end
+		end
+		interpreter:broadcast({ope=name, scheme=c_schemes[name], data=focus_sprite_s.dump()})
 	else
 		interpreter:broadcast({ope=name, scheme=c_schemes[name], data=focus_sprite_s.dump()})
 	end
@@ -412,6 +439,14 @@ function set_sprite_s(key, val)
 	focus_sprite.sprite_s = focus_sprite_s.pack()
 end
 
-function sprite_children()
-	print("..................sprite child")
+function sprite_children(arg)
+	local spr = focus_sprite:fetch_by_index(arg)
+	on_select_sprite(focus_sprite_root, spr)
+end
+
+function sprite_parent()
+	local spr = focus_sprite.parent
+	if spr then
+		on_select_sprite(spr, spr)
+	end
 end

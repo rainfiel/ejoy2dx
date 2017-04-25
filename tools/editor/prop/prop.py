@@ -29,7 +29,10 @@ class ButtonEditor(wxpg.PyTextCtrlEditor):
 	def DoCallback(self, prop):
 		client = prop.GetClientData()
 		cb = client.get("btn_callback", None)
+		arg = client.get("btn_callback_arg", None)
 		if cb:
+			if arg != None: cb = cb % arg
+			print("callback:"+cb)
 			ButtonEditor.edit_callback(cb)
 
 	def OnEvent(self, propGrid, prop, ctrl, event):

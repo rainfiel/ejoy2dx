@@ -45,7 +45,8 @@ sprite_raw = {
 	"readonly" : ["type", "id"],
 	"buttons" : {	"s.ani":"get_sprite_s()",
 								"s.label":"get_sprite_s()",
-								"data.children":"sprite_children()"}
+								"data.children":"sprite_children(%d)",
+								"parent":"sprite_parent()"}
 }
 
 class CommonPage(PropBase):

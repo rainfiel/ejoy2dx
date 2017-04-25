@@ -111,7 +111,6 @@ class PosProperty(wxpg.PyProperty):
 
 class PropBase(object):
 	def init_props(self, scheme, data, name=None, parent=None):
-		# print(scheme)
 		pg = self.pg
 		if not parent:
 			parent = [wxpg.PropertyCategory("properties")]
@@ -123,7 +122,18 @@ class PropBase(object):
 			type = self.type_config.get(fullname, None) or getattr(self, item.get("type", ""), None)
 			p = (parent and len(parent) > 0) and parent[-1] or None
 
-			if "body" in item and not type:
+			if "array" in item:
+				cat = wxpg.PropertyCategory(item["name"])
+				pg.AppendIn(p, cat)
+				body = item.get("body", None)
+				for idx, val in enumerate(data[item["name"]]):
+					if body:
+						sub = wxpg.PropertyCategory(str(idx+1))
+						pg.AppendIn(cat, sub)
+						self.init_props(body, val, fullname+"."+str(idx), [sub])
+					else:
+						self.new_prop_item(item, cat, fullname+"."+str(idx), val, cb_arg=idx)
+			elif "body" in item and not type:
 				cat = wxpg.PropertyCategory(item["name"])
 
 				if not parent or len(parent) == 0:
@@ -138,15 +148,18 @@ class PropBase(object):
 				self.init_props(item["body"], data[item["name"]], _name, parent)
 				parent.pop(-1)
 				_name.pop(-1)
-			elif "array" in item:
-				cat = wxpg.PropertyCategory(item["name"])
-				pg.AppendIn(p, cat)
-				for idx, val in enumerate(data[item["name"]]):
-					self.new_prop_item(item, cat, fullname, val)
 			else:
 				self.new_prop_item(item, p, fullname, data[item["name"]])
 
-	def new_prop_item(self, item, parent=None, name=None, val=None):
+	def get_button_cfg(self, name):
+		cb = self.buttons.get(name, None)
+		if cb: return cb
+		for key, val in self.buttons.iteritems():
+			if name.startswith(key):
+				return val
+
+
+	def new_prop_item(self, item, parent, name, val, cb_arg=None):
 		prop = None
 
 		t = name and self.type_config.get(name, None) or item["type"]
@@ -174,11 +187,13 @@ class PropBase(object):
 
 			client = {"is_pointer":item.get("is_pointer", False)}
 
-			cb = self.buttons.get(name, None)
+			cb = self.get_button_cfg(name)
 			if cb:
 				self.pg.SetPropertyEditor(prop, "ButtonEditor")
 				prop.Enable(True)
 				client["btn_callback"] = cb
+				if cb_arg != None:
+					client["btn_callback_arg"] = cb_arg
 			
 			prop.SetClientData(client)
 
