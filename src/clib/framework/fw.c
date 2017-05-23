@@ -230,10 +230,10 @@ struct WINDOWGAME*
 new_game(const char* lua_root, const char* script) {
 	struct WINDOWGAME* wg = create_game();
 	lua_State* L = ejoy2d_game_lua(wg->game);
+	platform_init(L);
 	init_lua_libs(L);
 	init_user_lua_libs(L);
 
-	platform_init(L);
 #if EJOY2D_OS==ANDROID
 	set_android_loader(L);
 #endif
