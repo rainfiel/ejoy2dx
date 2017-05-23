@@ -55,6 +55,23 @@ local function add_message()
 	return id, node
 end
 
+local function register(id)
+	local node
+	if not id then
+		id, node = add_message()
+	else
+		assert(not messages[id], id)
+		node = {}
+		messages[id] = node
+	end
+	node.retain = true
+	return id, node
+end
+
+local function unregister(id)
+	messages[id] = nil
+end
+
 local function input(title, ok_text, cancel_text, default_text, style, max_len)
 	if not os_utls.input then return end
 
@@ -92,6 +109,10 @@ local function on_message(id, stat, str_data, num_data)
 		if node.on_keyup then
 			node:on_keyup(str_data, num_data)
 		end
+	else
+		if node.on_default then
+			node:on_default(str_data, num_data, stat)
+		end
 	end
 	if not node.retain then
 		messages[id] = nil
@@ -102,4 +123,6 @@ return {
 	on_message=on_message,
 	input=input,
 	char=char,
+	register=register,
+	unregister=unregister
 }
