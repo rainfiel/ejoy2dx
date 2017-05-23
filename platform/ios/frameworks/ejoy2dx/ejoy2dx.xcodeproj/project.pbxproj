@@ -23,6 +23,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		AE421EBC1ED406210085EDA6 /* lk_bgm.c in Sources */ = {isa = PBXBuildFile; fileRef = AE421EB71ED406210085EDA6 /* lk_bgm.c */; };
+		AE421EBD1ED406210085EDA6 /* lk_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = AE421EB81ED406210085EDA6 /* lk_decode.c */; };
+		AE421EBE1ED406210085EDA6 /* lk_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = AE421EB91ED406210085EDA6 /* lk_decode.h */; };
+		AE421EBF1ED406210085EDA6 /* lk_util.c in Sources */ = {isa = PBXBuildFile; fileRef = AE421EBA1ED406210085EDA6 /* lk_util.c */; };
+		AE421EC01ED406210085EDA6 /* lk_util.h in Headers */ = {isa = PBXBuildFile; fileRef = AE421EBB1ED406210085EDA6 /* lk_util.h */; };
+		AE421EC51ED406640085EDA6 /* bgm_ios.m in Sources */ = {isa = PBXBuildFile; fileRef = AE421EC41ED406640085EDA6 /* bgm_ios.m */; };
+		AE421EC81ED406D20085EDA6 /* oal.c in Sources */ = {isa = PBXBuildFile; fileRef = AE421EC71ED406D20085EDA6 /* oal.c */; };
+		AE421ECA1ED4078A0085EDA6 /* platform_init.c in Sources */ = {isa = PBXBuildFile; fileRef = AE421EC91ED4078A0085EDA6 /* platform_init.c */; };
 		AE5C16E21B4FCA4F00666B0E /* lgeometry.c in Sources */ = {isa = PBXBuildFile; fileRef = AE5C16E11B4FCA4F00666B0E /* lgeometry.c */; };
 		AE5C16E61B5E4DAB00666B0E /* lutls.c in Sources */ = {isa = PBXBuildFile; fileRef = AE5C16E41B5E4DAB00666B0E /* lutls.c */; };
 		AE5C16E71B5E4DAB00666B0E /* lutls.h in Headers */ = {isa = PBXBuildFile; fileRef = AE5C16E51B5E4DAB00666B0E /* lutls.h */; };
@@ -146,15 +154,10 @@
 		AE9DE6A81A8F2F640085776F /* font.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE6A51A8F2F640085776F /* font.m */; };
 		AE9DE6A91A8F2F640085776F /* liosutil.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9DE6A61A8F2F640085776F /* liosutil.m */; };
 		AE9DE6AD1A8F30800085776F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9DE6AC1A8F30800085776F /* Foundation.framework */; };
-		AED31F3C1BE3439800763B22 /* ad_hardware_mac_ios.m in Sources */ = {isa = PBXBuildFile; fileRef = AED31F371BE3439800763B22 /* ad_hardware_mac_ios.m */; };
 		AED31F3D1BE3439800763B22 /* ad_mp3.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F381BE3439800763B22 /* ad_mp3.c */; };
 		AED31F3E1BE3439800763B22 /* ad_ogg.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F391BE3439800763B22 /* ad_ogg.c */; };
 		AED31F3F1BE3439800763B22 /* ad_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F3A1BE3439800763B22 /* ad_tools.c */; };
 		AED31F401BE3439800763B22 /* ad_wav.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F3B1BE3439800763B22 /* ad_wav.c */; };
-		AED31F451BE343AD00763B22 /* oal_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F411BE343AD00763B22 /* oal_decode.c */; };
-		AED31F461BE343AD00763B22 /* oal_decode.h in Headers */ = {isa = PBXBuildFile; fileRef = AED31F421BE343AD00763B22 /* oal_decode.h */; };
-		AED31F471BE343AD00763B22 /* oal.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F431BE343AD00763B22 /* oal.c */; };
-		AED31F481BE343AD00763B22 /* oal.h in Headers */ = {isa = PBXBuildFile; fileRef = AED31F441BE343AD00763B22 /* oal.h */; };
 		AEEA43421DB7749F0000998B /* emitter_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = AEEA43311DB7749F0000998B /* emitter_wrap.c */; };
 		AEEA43431DB7749F0000998B /* lyaml.c in Sources */ = {isa = PBXBuildFile; fileRef = AEEA43321DB7749F0000998B /* lyaml.c */; };
 		AEEA43441DB7749F0000998B /* lyaml.h in Headers */ = {isa = PBXBuildFile; fileRef = AEEA43331DB7749F0000998B /* lyaml.h */; };
@@ -226,6 +229,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE421EB71ED406210085EDA6 /* lk_bgm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lk_bgm.c; path = ../../../../../src/clib/Liekkas/src/lk_bgm.c; sourceTree = "<group>"; };
+		AE421EB81ED406210085EDA6 /* lk_decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lk_decode.c; path = ../../../../../src/clib/Liekkas/src/lk_decode.c; sourceTree = "<group>"; };
+		AE421EB91ED406210085EDA6 /* lk_decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lk_decode.h; path = ../../../../../src/clib/Liekkas/src/lk_decode.h; sourceTree = "<group>"; };
+		AE421EBA1ED406210085EDA6 /* lk_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lk_util.c; path = ../../../../../src/clib/Liekkas/src/lk_util.c; sourceTree = "<group>"; };
+		AE421EBB1ED406210085EDA6 /* lk_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lk_util.h; path = ../../../../../src/clib/Liekkas/src/lk_util.h; sourceTree = "<group>"; };
+		AE421EC41ED406640085EDA6 /* bgm_ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = bgm_ios.m; path = ../../../../../src/clib/Liekkas/src/bgm/bgm_ios.m; sourceTree = "<group>"; };
+		AE421EC71ED406D20085EDA6 /* oal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oal.c; path = ../../../../../src/clib/Liekkas/src/openal/oal.c; sourceTree = "<group>"; };
+		AE421EC91ED4078A0085EDA6 /* platform_init.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = platform_init.c; path = ../../../src/platform_init.c; sourceTree = "<group>"; };
 		AE5C16E11B4FCA4F00666B0E /* lgeometry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgeometry.c; path = ../../../../../ejoy2d/lib/lgeometry.c; sourceTree = "<group>"; };
 		AE5C16E41B5E4DAB00666B0E /* lutls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lutls.c; path = ../../../../../ejoy2d/lib/lutls.c; sourceTree = "<group>"; };
 		AE5C16E51B5E4DAB00666B0E /* lutls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lutls.h; path = ../../../../../ejoy2d/lib/lutls.h; sourceTree = "<group>"; };
@@ -352,15 +363,10 @@
 		AE9DE6A61A8F2F640085776F /* liosutil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = liosutil.m; path = ../../../src/liosutil.m; sourceTree = "<group>"; };
 		AE9DE6AC1A8F30800085776F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE9DE6AE1A8F31220085776F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		AED31F371BE3439800763B22 /* ad_hardware_mac_ios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ad_hardware_mac_ios.m; path = ../../../../../src/clib/Liekkas/src/decode/ad_hardware_mac_ios.m; sourceTree = "<group>"; };
 		AED31F381BE3439800763B22 /* ad_mp3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_mp3.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_mp3.c; sourceTree = "<group>"; };
 		AED31F391BE3439800763B22 /* ad_ogg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_ogg.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_ogg.c; sourceTree = "<group>"; };
 		AED31F3A1BE3439800763B22 /* ad_tools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_tools.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_tools.c; sourceTree = "<group>"; };
 		AED31F3B1BE3439800763B22 /* ad_wav.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_wav.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_wav.c; sourceTree = "<group>"; };
-		AED31F411BE343AD00763B22 /* oal_decode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oal_decode.c; path = ../../../../../src/clib/Liekkas/src/oal_decode.c; sourceTree = "<group>"; };
-		AED31F421BE343AD00763B22 /* oal_decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oal_decode.h; path = ../../../../../src/clib/Liekkas/src/oal_decode.h; sourceTree = "<group>"; };
-		AED31F431BE343AD00763B22 /* oal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oal.c; path = ../../../../../src/clib/Liekkas/src/oal.c; sourceTree = "<group>"; };
-		AED31F441BE343AD00763B22 /* oal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oal.h; path = ../../../../../src/clib/Liekkas/src/oal.h; sourceTree = "<group>"; };
 		AEEA43311DB7749F0000998B /* emitter_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = emitter_wrap.c; path = ../../../../../src/clib/lyaml/emitter_wrap.c; sourceTree = "<group>"; };
 		AEEA43321DB7749F0000998B /* lyaml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lyaml.c; path = ../../../../../src/clib/lyaml/lyaml.c; sourceTree = "<group>"; };
 		AEEA43331DB7749F0000998B /* lyaml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lyaml.h; path = ../../../../../src/clib/lyaml/lyaml.h; sourceTree = "<group>"; };
@@ -400,6 +406,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE421EC31ED406500085EDA6 /* bgm */ = {
+			isa = PBXGroup;
+			children = (
+				AE421EC41ED406640085EDA6 /* bgm_ios.m */,
+			);
+			name = bgm;
+			sourceTree = "<group>";
+		};
+		AE421EC61ED406C00085EDA6 /* openal */ = {
+			isa = PBXGroup;
+			children = (
+				AE421EC71ED406D20085EDA6 /* oal.c */,
+			);
+			name = openal;
+			sourceTree = "<group>";
+		};
 		AE7104371C1129E900B525A4 /* lzma */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,6 +659,7 @@
 		AE9DE6A31A8F2F440085776F /* platform_ios */ = {
 			isa = PBXGroup;
 			children = (
+				AE421EC91ED4078A0085EDA6 /* platform_init.c */,
 				AE9DE6A41A8F2F640085776F /* filesystem.c */,
 				AE9DE6A51A8F2F640085776F /* font.m */,
 				AE9DE6A61A8F2F640085776F /* liosutil.m */,
@@ -647,10 +670,13 @@
 		AED31F341BE3435E00763B22 /* Liekkas */ = {
 			isa = PBXGroup;
 			children = (
-				AED31F411BE343AD00763B22 /* oal_decode.c */,
-				AED31F421BE343AD00763B22 /* oal_decode.h */,
-				AED31F431BE343AD00763B22 /* oal.c */,
-				AED31F441BE343AD00763B22 /* oal.h */,
+				AE421EC61ED406C00085EDA6 /* openal */,
+				AE421EC31ED406500085EDA6 /* bgm */,
+				AE421EB71ED406210085EDA6 /* lk_bgm.c */,
+				AE421EB81ED406210085EDA6 /* lk_decode.c */,
+				AE421EB91ED406210085EDA6 /* lk_decode.h */,
+				AE421EBA1ED406210085EDA6 /* lk_util.c */,
+				AE421EBB1ED406210085EDA6 /* lk_util.h */,
 				AED31F361BE3436900763B22 /* decode */,
 			);
 			name = Liekkas;
@@ -659,7 +685,6 @@
 		AED31F361BE3436900763B22 /* decode */ = {
 			isa = PBXGroup;
 			children = (
-				AED31F371BE3439800763B22 /* ad_hardware_mac_ios.m */,
 				AED31F381BE3439800763B22 /* ad_mp3.c */,
 				AED31F391BE3439800763B22 /* ad_ogg.c */,
 				AED31F3A1BE3439800763B22 /* ad_tools.c */,
@@ -751,7 +776,6 @@
 				AE71048C1C112A0E00B525A4 /* Ppmd.h in Headers */,
 				AE71047D1C112A0E00B525A4 /* LzFind.h in Headers */,
 				AE71048B1C112A0E00B525A4 /* LzmaLib.h in Headers */,
-				AED31F461BE343AD00763B22 /* oal_decode.h in Headers */,
 				AE9DE69D1A8F2F3F0085776F /* debug_log.h in Headers */,
 				AEEA43441DB7749F0000998B /* lyaml.h in Headers */,
 				AE9DE61F1A8F21F70085776F /* dfont.h in Headers */,
@@ -779,13 +803,14 @@
 				AE7104931C112A0E00B525A4 /* Sha256.h in Headers */,
 				AE7104871C112A0E00B525A4 /* LzmaDec.h in Headers */,
 				AE71046C1C112A0E00B525A4 /* 7zCrc.h in Headers */,
+				AE421EC01ED406210085EDA6 /* lk_util.h in Headers */,
 				AE9DE6351A8F21F70085776F /* platform_print.h in Headers */,
 				AE7104961C112A0E00B525A4 /* Xz.h in Headers */,
 				E6E8D43A1B7E40BE0049F8AC /* sproto.h in Headers */,
+				AE421EBE1ED406210085EDA6 /* lk_decode.h in Headers */,
 				AE9DE6951A8F2F160085776F /* stb_image.h in Headers */,
 				AE7104801C112A0E00B525A4 /* Lzma2Dec.h in Headers */,
 				AE9DE6261A8F21F70085776F /* label.h in Headers */,
-				AED31F481BE343AD00763B22 /* oal.h in Headers */,
 				AE7104831C112A0E00B525A4 /* Lzma86.h in Headers */,
 				AE9DE68D1A8F2EE90085776F /* lualibs.h in Headers */,
 				AE7104981C112A0E00B525A4 /* XzCrc64.h in Headers */,
@@ -918,6 +943,7 @@
 			files = (
 				AE9DE6A91A8F2F640085776F /* liosutil.m in Sources */,
 				AE7104811C112A0E00B525A4 /* Lzma2Enc.c in Sources */,
+				AE421EBD1ED406210085EDA6 /* lk_decode.c in Sources */,
 				AE71047F1C112A0E00B525A4 /* Lzma2Dec.c in Sources */,
 				E6E8D43D1B7E41030049F8AC /* lcrypt.c in Sources */,
 				AE9DE6251A8F21F70085776F /* label.c in Sources */,
@@ -926,6 +952,8 @@
 				AE7104991C112A0E00B525A4 /* XzDec.c in Sources */,
 				AE7104851C112A0E00B525A4 /* Lzma86Enc.c in Sources */,
 				AE7104841C112A0E00B525A4 /* Lzma86Dec.c in Sources */,
+				AE421EBC1ED406210085EDA6 /* lk_bgm.c in Sources */,
+				AE421ECA1ED4078A0085EDA6 /* platform_init.c in Sources */,
 				AE7104751C112A0E00B525A4 /* CpuArch.c in Sources */,
 				AE9DE6281A8F21F70085776F /* lmatrix.c in Sources */,
 				AED31F3D1BE3439800763B22 /* ad_mp3.c in Sources */,
@@ -934,7 +962,6 @@
 				E6E8D4391B7E40BE0049F8AC /* sproto.c in Sources */,
 				AEEA43421DB7749F0000998B /* emitter_wrap.c in Sources */,
 				AE9DE62A1A8F21F70085776F /* lparticle.c in Sources */,
-				AED31F451BE343AD00763B22 /* oal_decode.c in Sources */,
 				AEEA43461DB7749F0000998B /* scanner_wrap.c in Sources */,
 				E6EFA5381AB33AC600D42B66 /* lmonitor.c in Sources */,
 				AE9DE6331A8F21F70085776F /* particle.c in Sources */,
@@ -946,11 +973,11 @@
 				AE71046D1C112A0E00B525A4 /* 7zCrcOpt.c in Sources */,
 				AED31F3E1BE3439800763B22 /* ad_ogg.c in Sources */,
 				AE9DE6A71A8F2F640085776F /* filesystem.c in Sources */,
-				AED31F471BE343AD00763B22 /* oal.c in Sources */,
 				AEEA434F1DB7749F0000998B /* writer.c in Sources */,
 				AE9DE6A81A8F2F640085776F /* font.m in Sources */,
 				AE7104951C112A0E00B525A4 /* Xz.c in Sources */,
 				AE9DE6381A8F21F70085776F /* renderbuffer.c in Sources */,
+				AE421EC81ED406D20085EDA6 /* oal.c in Sources */,
 				AEEA43471DB7749F0000998B /* api.c in Sources */,
 				AE5C16E61B5E4DAB00666B0E /* lutls.c in Sources */,
 				E6E8D42F1B7E3F240049F8AC /* lpeg.c in Sources */,
@@ -968,6 +995,7 @@
 				AE71046F1C112A0E00B525A4 /* Bcj2.c in Sources */,
 				AE9DE68E1A8F2EE90085776F /* serialize.c in Sources */,
 				AE9DE6461A8F21F70085776F /* texture.c in Sources */,
+				AE421EC51ED406640085EDA6 /* bgm_ios.m in Sources */,
 				AE7104881C112A0E00B525A4 /* LzmaEnc.c in Sources */,
 				AE9DE6301A8F21F70085776F /* matrix.c in Sources */,
 				AE75C0CF1C0FDBC700A839A2 /* easing.c in Sources */,
@@ -999,7 +1027,7 @@
 				E6E8D43E1B7E41030049F8AC /* ltimesync.c in Sources */,
 				AE7104901C112A0E00B525A4 /* Ppmd7Enc.c in Sources */,
 				AED31F401BE3439800763B22 /* ad_wav.c in Sources */,
-				AED31F3C1BE3439800763B22 /* ad_hardware_mac_ios.m in Sources */,
+				AE421EBF1ED406210085EDA6 /* lk_util.c in Sources */,
 				AE71046E1C112A0E00B525A4 /* 7zStream.c in Sources */,
 				AE9DE6441A8F21F70085776F /* spritepack.c in Sources */,
 				AE71048F1C112A0E00B525A4 /* Ppmd7Dec.c in Sources */,
