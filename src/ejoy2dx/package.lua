@@ -5,6 +5,7 @@ local simplepackage = require "ejoy2d.simplepackage"
 
 local image_c = require "ejoy2dx.image.c"
 local texture = require "ejoy2dx.texture"
+local utls = require "ejoy2dx.utls"
 
 local function extname(str)
 	return string.lower(string.match(str, "([^.]+)$"))
@@ -19,12 +20,14 @@ local function splitpath(str)
 end
 
 local function load_raw(packname, filename)
+	local data = assert(utls.read_file(filename..".lua"), filename)
+	data = load(data, packname, "t", {})()
 	local p = {}
-	p.meta = assert(spritepack.pack(dofile(filename .. ".lua")))
+	p.meta = assert(spritepack.pack(data))
 
 	p.tex = {}
 	for i=1,p.meta.texture do
-		local path = filename.."."..i
+		local path = utls.get_path(filename.."."..i)
 		local tex_id = texture:query_texture(path)
 		if not tex_id then
 			tex_id = texture:add_texture(path)
@@ -37,12 +40,14 @@ local function load_raw(packname, filename)
 end
 
 local function load_img(packname, filename, ext)
+	local data = assert(utls.read_file(filename..".lua"), filename)
+	data = load(data, packname, "t", {})()
 	local p = {}
-	p.meta = assert(spritepack.pack(dofile(filename .. ".lua")))
+	p.meta = assert(spritepack.pack(data))
 
 	p.tex = {}
 	for i=1,p.meta.texture do
-		local path = filename.."."..ext
+		local path = utls.get_path(filename.."."..ext)
 		local tex_id = texture:query_texture(path)
 		if not tex_id then
 			tex_id = texture:add_texture(path)
@@ -83,19 +88,11 @@ function pack:do_load(packname)
 
 	local name, ext = splitpath(packname)
 	local loader = rawget(self.loader,ext)
-	return loader(packname, self:realname(name), ext)
-end
-
-function pack:realname(filename)
-	assert(self.package_pattern, "Need a pattern")
-	return string.gsub(self.package_pattern,"([^?]*)?([^?]*)","%1"..filename.."%2")
+	return loader(packname, name, ext)
 end
 
 function pack:prepare_package(package, add_to_simple)
-	local exist = spritepack.query_package(package)
-	if not exist then
-		exist = pack:do_load(package)
-	end
+	local exist = pack:do_load(package)
 	if add_to_simple then
 		local name, ext = splitpath(package)
 		simplepackage.add_package(name, exist)

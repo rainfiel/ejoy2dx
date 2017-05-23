@@ -10,7 +10,11 @@ local os_utls = require "ejoy2dx.os_utls"
  --		nil for bundle
 local function get_path(path, mode)
 	if not mode then
-		return string.format("%s/asset/%s", fw.WorkDir, path)
+		if OS == "ANDROID" then
+			return string.format("asset/%s", path)
+		else
+			return string.format("%s/asset/%s", fw.WorkDir, path)
+		end
 	else
 		return os_utls.get_path(path, mode)
 	end

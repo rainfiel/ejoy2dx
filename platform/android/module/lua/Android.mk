@@ -14,7 +14,7 @@ LOCAL_CFLAGS 		+= -std=c99
 ifneq ($(TARGET_ARCH_ABI),mips64)
 	ifneq ($(TARGET_ARCH_ABI),x86_64)
 		ifneq ($(TARGET_ARCH_ABI),arm64-v8a)
-  		LOCAL_CFLAGS 		+= -D"log2(x)=log(x)/1.4426950408889634"
+  		LOCAL_CFLAGS 		+= -D"log2(x)=log(x)/log(2.0)"
   	endif
   endif
 endif
