@@ -19,23 +19,33 @@ HELP_SRC := $(patsubst %.c,../../platform/android/src/%.c,$(HELP_SRC))
 EJ_SRC += $(HELP_SRC)
 
 X_SRC := $(call LS_C,$(X_PATH))
+X_SRC := $(filter-out Liekkas/src/openal/oal.c, $(X_SRC))
+X_SRC := $(filter-out Liekkas/test/test.c, $(X_SRC))
+X_SRC := $(filter-out lsocket/win_compat.c, $(X_SRC))
+X_SRC := $(filter-out lsocket/gai_async.c, $(X_SRC))
+X_SRC := $(filter-out lsocket/async_resolver.c, $(X_SRC))
+X_SRC := $(filter-out framework/fw.c, $(X_SRC))
 X_SRC := $(patsubst %.c,../../src/clib/%.c,$(X_SRC))  
 EJ_SRC += $(X_SRC)
 
-$(warning $(EJ_SRC))
+#$(warning $(X_SRC))
 
 LOCAL_MODULE:= ejoy2dx-lib
 LOCAL_SRC_FILES:= $(EJ_SRC)
 
-LOCAL_CFLAGS := -std=c99
-LOCAL_LDLIBS := -llog -lGLESv2
+LOCAL_CFLAGS := -std=c99 -Wdangling-else -DEJOY2D_OS=ANDROID
+LOCAL_LDLIBS := -llog -lGLESv2 -lOpenSLES -landroid -lz
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/render
 LOCAL_EXPORT_C_INCLUDES += $(HELP_PATH)
+LOCAL_EXPORT_C_INCLUDES += $(HELP_PATH)/minizip
+LOCAL_EXPORT_C_INCLUDES += $(X_PATH)
+LOCAL_EXPORT_C_INCLUDES += $(X_PATH)/platform
+LOCAL_EXPORT_C_INCLUDES += $(X_PATH)/utls
 LOCAL_C_INCLUDES := $(LOCAL_EXPORT_C_INCLUDES)
 
-LOCAL_SHARED_LIBRARIES  := lua-lib
+LOCAL_STATIC_LIBRARIES  := lua-lib
 
 #include $(BUILD_STATIC_LIBRARY)
 include $(BUILD_SHARED_LIBRARY)

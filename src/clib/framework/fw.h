@@ -2,6 +2,7 @@
 #define ejoy2d_windows_fw_h
 
 #include <lua.h>
+#include <stdbool.h>
 
 #define STATE_POSSIBLE    (0)
 #define STATE_BEGAN       (1)

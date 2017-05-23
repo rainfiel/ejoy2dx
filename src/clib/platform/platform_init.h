@@ -4,7 +4,8 @@
 
 #include "lua.h"
 #include "lauxlib.h"
+#include "ejoy2d.h"
 
-void platform_init(struct lua_State* L);
+EJOY_API void platform_init(struct lua_State* L);
 
 #endif

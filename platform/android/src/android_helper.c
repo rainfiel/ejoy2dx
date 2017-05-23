@@ -5,14 +5,14 @@
 
 #include <string.h>
 #include <stdio.h>
-// #include <unzip.h>
+#include <unzip.h>
 #include <android/log.h>
 #include <sys/time.h>
 
 #define  LOG_TAG    "android_helper"
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 
-#define  CLASS_NAME "com/ejoy/farm/AndroidHelper"
+#define  CLASS_NAME "com/ejoy2dx/doorkickers/AndroidHelper"
 
 char _apkpath[512];
 char _mempath[512];
@@ -32,12 +32,12 @@ void setassetmanager(AAssetManager* a) {
 
 void alertOutOfMemory() {
   // void clearFile(String)
-  struct JniMethodInfo methodInfo;
+ /* struct JniMethodInfo methodInfo;
   if (getStaticMethodInfo(&methodInfo, CLASS_NAME, "createOutOfMemoryDlg", "()V") < 0)
       return;
 
   (*methodInfo.env)->CallStaticVoidMethod(methodInfo.env, methodInfo.class_id, methodInfo.method_id);
-  (*methodInfo.env)->DeleteLocalRef(methodInfo.env, methodInfo.class_id);
+  (*methodInfo.env)->DeleteLocalRef(methodInfo.env, methodInfo.class_id);*/
 }
 
 const char* getMemPath() {
@@ -59,25 +59,25 @@ int apk_file_exists(const char * file)
 		if (file[0] != '/')
 		{
 			// read from apk
-			// if (assetmanager != NULL) {
-			// 	char filepath[255] = "assets/";
-			// 	if (!_apkpath) return 0;
-			// 	unzFile pFile = unzOpen(_apkpath);
-			// 	if (!pFile) return 0;
-			// 	int nRet = unzLocateFile(pFile, strcat(filepath, file), 1);
-			// 	if (UNZ_OK != nRet) return 0;
-			// 	unzClose(pFile);
-			// 	return 1;
-			// } else {
-			// 	AAsset* aa = AAssetManager_open(assetmanager, file, AASSET_MODE_UNKNOWN);
-			// 	if (aa)
-			// 	{
-			// 		AAsset_close(aa);
-			// 		return 1;
-			// 	} else {
-			// 		return 0;
-			// 	}
-			// }
+			if (assetmanager != NULL) {
+				char filepath[255] = "assets/";
+				if (!_apkpath) return 0;
+				unzFile pFile = unzOpen(_apkpath);
+				if (!pFile) return 0;
+				int nRet = unzLocateFile(pFile, strcat(filepath, file), 1);
+				if (UNZ_OK != nRet) return 0;
+				unzClose(pFile);
+				return 1;
+			} else {
+				AAsset* aa = AAssetManager_open(assetmanager, file, AASSET_MODE_UNKNOWN);
+				if (aa)
+				{
+					AAsset_close(aa);
+					return 1;
+				} else {
+					return 0;
+				}
+			}
 		}
 		else
 		{
@@ -109,12 +109,12 @@ unsigned char* getFileData(const char* filename,
 	if (filename[0] != '/')
 	{
 		// read from apk
-/*		if (assetmanager == NULL) {
+		if (assetmanager == NULL) {
 			char filepath[255] = "assets/";
 			data = getFileDataFromZip(_apkpath, strcat(filepath, filename), size);
 		} else {
 			data = getFileDataFromAssets(filename, size);
-		}*/
+		}
 	}
 	else
 	{
@@ -146,51 +146,51 @@ unsigned char* getFileData(const char* filename,
 	return data;
 }
 
-// unsigned char* getFileDataFromZip(const char* zipfilepath, const char* filename,
-// 								  unsigned long * size)
-// {
-// 	unsigned char * buffer = NULL;
-// 	unzFile file = NULL;
-// 	*size = 0;
+unsigned char* getFileDataFromZip(const char* zipfilepath, const char* filename,
+								  unsigned long * size)
+{
+	unsigned char * buffer = NULL;
+	unzFile file = NULL;
+	*size = 0;
 
-// 	do
-// 	{
-// 		if (!zipfilepath || !filename) break;
-// 		if (strlen(zipfilepath) == 0) break;
+	do
+	{
+		if (!zipfilepath || !filename) break;
+		if (strlen(zipfilepath) == 0) break;
 
-// 		file = unzOpen(zipfilepath);
-// 		if (!file) break;
+		file = unzOpen(zipfilepath);
+		if (!file) break;
 
-// 		int nRet = unzLocateFile(file, filename, 1);
-// 		if (UNZ_OK != nRet) break;
+		int nRet = unzLocateFile(file, filename, 1);
+		if (UNZ_OK != nRet) break;
 
-// 		char szFilePathA[260];
-// 		unz_file_info FileInfo;
-// 		nRet = unzGetCurrentFileInfo(file, &FileInfo, szFilePathA, sizeof(szFilePathA), NULL, 0, NULL, 0);
-// 		if (UNZ_OK != nRet) break;
+		char szFilePathA[260];
+		unz_file_info FileInfo;
+		nRet = unzGetCurrentFileInfo(file, &FileInfo, szFilePathA, sizeof(szFilePathA), NULL, 0, NULL, 0);
+		if (UNZ_OK != nRet) break;
 
-// 		nRet = unzOpenCurrentFile(file);
-// 		if (UNZ_OK != nRet) break;
+		nRet = unzOpenCurrentFile(file);
+		if (UNZ_OK != nRet) break;
 
-// 		buffer = (unsigned char*)malloc(FileInfo.uncompressed_size);
-// 		if(!buffer) {
-// 			return NULL;
-// 		}
-// 		int nSize = 0;
-// 		nSize = unzReadCurrentFile(file, buffer, FileInfo.uncompressed_size);
+		buffer = (unsigned char*)malloc(FileInfo.uncompressed_size);
+		if(!buffer) {
+			return NULL;
+		}
+		int nSize = 0;
+		nSize = unzReadCurrentFile(file, buffer, FileInfo.uncompressed_size);
 
-// 		*size = FileInfo.uncompressed_size;
+		*size = FileInfo.uncompressed_size;
 
-// 		unzCloseCurrentFile(file);
-// 	} while (0);
+		unzCloseCurrentFile(file);
+	} while (0);
 
-// 	if (file)
-// 	{
-// 		unzClose(file);
-// 	}
+	if (file)
+	{
+		unzClose(file);
+	}
 
-// 	return buffer;
-// }
+	return buffer;
+}
 
 ///////////////////////////////////////////////////////////////////
 
@@ -316,29 +316,29 @@ getMethodInfo(struct JniMethodInfo* methodinfo, const char *className, const cha
   return getMethodInfo_(methodinfo, className, methodName, paramCode);
 }
 
-// unsigned char*
-// getFileDataFromAssets(const char* filename, unsigned long* size) {
-// 	unsigned char* data = 0;
-// 	do
-// 	{
-// 		/*获取文件名并打开*/
-// 		AAsset* asset = AAssetManager_open(assetmanager, filename, AASSET_MODE_UNKNOWN);
-// 		if( asset == NULL )
-// 		{
-// 			LOGD("getFileData file not exist %s", filename);
-// 			return NULL;
-// 		}
+unsigned char*
+getFileDataFromAssets(const char* filename, unsigned long* size) {
+	unsigned char* data = 0;
+	do
+	{
+		/*获取文件名并打开*/
+		AAsset* asset = AAssetManager_open(assetmanager, filename, AASSET_MODE_UNKNOWN);
+		if( asset == NULL )
+		{
+			// LOGD("getFileData file not exist %s", filename);
+			return NULL;
+		}
 
-// 		/*获取文件大小*/
-// 		off_t bufferSize = AAsset_getLength(asset);
-// 		data = (unsigned char *)malloc(bufferSize);
-// 		int numBytesRead = AAsset_read(asset, data, bufferSize);
-// 		*size = bufferSize;
+		/*获取文件大小*/
+		off_t bufferSize = AAsset_getLength(asset);
+		data = (unsigned char *)malloc(bufferSize);
+		int numBytesRead = AAsset_read(asset, data, bufferSize);
+		*size = bufferSize;
 
-// 		/*关闭文件*/
-// 		AAsset_close(asset);
+		/*关闭文件*/
+		AAsset_close(asset);
 
-// 	} while (0);
+	} while (0);
 
-// 	return data;
-// }
+	return data;
+}

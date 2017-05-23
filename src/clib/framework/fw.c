@@ -5,8 +5,11 @@
 #include "ejoy2dgame.h"
 #include "fault.h"
 #include "screen.h"
+#include "array.h"
 #include "fw.h"
 #include "lualibs.h"
+#include "filesystem.h"
+#include "platform_init.h"
 
 #include <lauxlib.h>
 
@@ -28,11 +31,11 @@ static struct STARTUP_INFO *STARTUP = NULL;
 #define IOS 1
 #define WINDOWS 2
 
-#if EJOY2D_OS == IOS
+#if EJOY2D_OS == IOS || EJOY2D_OS == ANDROID
 static const char * startscript =
 "local path, lua_root, lua_main, startup = ...\n"
 
-"lua_main = lua_main or [[main.lua]]\n"
+"lua_main = lua_main or [[main]]\n"
 //"lua_root = lua_root or [[script]]\n"
 "if not path then print('PLEASE SPECIFY THE WORK DIRECTORY') end\n"
 "local fw=require(\"ejoy2d.framework\")\n"
@@ -44,8 +47,9 @@ static const char * startscript =
 "package.path = script_root..[[;]]..script_project\n"
 
 "require([[script]])\n"
-"local f = assert(loadfile(path..[[/script/]]..lua_main))\n"
-"f()\n"
+//"local f = assert(loadfile(path..[[/script/]]..lua_main))\n"
+"local f = require(lua_main)\n"
+// "f()\n"
 ;
 #else
 static const char * startscript =
@@ -148,20 +152,100 @@ force_sync_frame(lua_State* L) {
 	return 0;
 }
 
+#if EJOY2D_OS==ANDROID
+static int
+android_loader(lua_State *L) {
+	size_t name_sz = 0;
+	const char * libname = luaL_checklstring(L, 1, &name_sz);
+	
+	ARRAY(char, tmp, 1+name_sz+20);
+	char *name = tmp+1;
+	tmp[0]='@';
+	int i;
+	for (i=0;i<name_sz;i++) {
+		if (libname[i] == '.') {
+			name[i] = '/';
+		} else {
+			name[i] = libname[i];
+		}
+	}
+
+	strcpy(name+name_sz,".lua");
+	struct FileHandle* h = pf_fileopen(name, "rb");
+	if (!h)	{
+		strcpy(name+name_sz,"/init.lua");
+		h = pf_fileopen(name, "rb");
+		if (!h) {	
+			char name2[name_sz+20];
+			strcpy(name+name_sz,".lua");
+			snprintf(name2, name_sz+20, "script/%s", name);
+			h = pf_fileopen(name2, "rb");
+			if (!h) {
+				strcpy(name+name_sz,"/init.lua");
+				snprintf(name2, name_sz+20, "script/%s", name);
+				h = pf_fileopen(name2, "rb");
+				if (!h) {
+					return luaL_error(L, "Can't open %s", name);
+				}
+			}
+		}
+	}
+
+	size_t sz = pf_filesize(h);
+	char buf[sz];
+	if(pf_fileread(h, buf, sz) != 1){
+		pf_fileclose(h);
+		return luaL_error(L,"Can't open %s", name);
+	}
+	pf_fileclose(h);
+
+	int r = luaL_loadbuffer(L, buf, sz, tmp);	
+	if (r!=LUA_OK) {
+		return luaL_error(L, "error loading module %s :\n\t%s",
+											name, lua_tostring(L, -1));
+	}
+	lua_pushstring(L, name);
+	return 2;
+}
+#else
+static int
+android_loader(lua_State *L) {
+	return 0;
+}
+#endif
+
+static void
+set_android_loader(lua_State* L) {
+	lua_getglobal(L, "package");
+	luaL_checktype(L,-1,LUA_TTABLE);
+	lua_getfield(L,-1, "searchers");
+	luaL_checktype(L,-1,LUA_TTABLE);
+	int len = lua_rawlen(L, -1);
+	lua_pushcfunction(L, android_loader);
+	lua_rawseti(L, -2, len+1);
+	lua_pop(L,2);
+}
+
 struct WINDOWGAME*
 new_game(const char* lua_root, const char* script) {
 	struct WINDOWGAME* wg = create_game();
 	lua_State* L = ejoy2d_game_lua(wg->game);
 	init_lua_libs(L);
 	init_user_lua_libs(L);
-	
+
+	platform_init(L);
+#if EJOY2D_OS==ANDROID
+	set_android_loader(L);
+#endif
+
 	lua_pushcfunction(L, traceback);
 	int tb = lua_gettop(L);
 	int err = luaL_loadstring(L, startscript);
 	if (err) {
 		const char *msg = lua_tostring(L,-1);
-		fault("%s", msg);
+		fault("load: %s", msg);
 	}
+
 
 	lua_pushstring(L, STARTUP->folder);
 	lua_pushstring(L, lua_root); 
@@ -171,7 +255,7 @@ new_game(const char* lua_root, const char* script) {
 	err = lua_pcall(L, 4, 0, tb);
 	if (err) {
 		const char *msg = lua_tostring(L,-1);
-		fault("%s", msg);
+		fault("run: %s", msg);
 	}
 	lua_pop(L,1);
 
@@ -213,6 +297,12 @@ static int _fluor##X(lua_State *L) { \
 FLUOR_FUNC(1)
 FLUOR_FUNC(2)
 
+static int
+lgame_fps(lua_State *L) {
+	lua_pushnumber(L, G->game->frame_count / G->game->real_time);
+	return 1;
+}
+
 void
 ejoy2d_fw_init(struct STARTUP_INFO* startup) {
 	screen_init(startup->width,startup->height,startup->scale);
@@ -225,8 +315,9 @@ ejoy2d_fw_init(struct STARTUP_INFO* startup) {
 	lua_register(L, "ejoy2dx_sync_frame", force_sync_frame);
 	lua_register(L, "ejoy2dx_new_lvm", lnew_game);
 	lua_register(L, "ejoy2dx_close_lvm", lclose_game);
-    lua_register(L, "fluor1", _fluor1);
-    lua_register(L, "fluor2", _fluor2);
+	lua_register(L, "ejoy2dx_fps", lgame_fps);
+	lua_register(L, "fluor1", _fluor1);
+	lua_register(L, "fluor2", _fluor2);
 
 	ejoy2d_game_logicframe(LOGIC_FRAME);
 	ejoy2d_game_start(G->game);

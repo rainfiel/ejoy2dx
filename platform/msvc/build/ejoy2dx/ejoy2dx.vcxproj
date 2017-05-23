@@ -49,8 +49,9 @@
     <ClInclude Include="..\..\..\..\ejoy2d\lib\sprite.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\spritepack.h" />
     <ClInclude Include="..\..\..\..\ejoy2d\lib\texture.h" />
-    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal.h" />
-    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.h" />
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.h" />
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_util.h" />
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.h" />
     <ClInclude Include="..\..\..\..\src\clib\lsocket\win_compat.h" />
     <ClInclude Include="..\..\..\..\src\clib\lyaml\lyaml.h" />
     <ClInclude Include="..\..\..\..\src\clib\lyaml\yaml\config.h" />
@@ -118,12 +119,15 @@
     <ClCompile Include="..\..\..\..\ejoy2d\lib\sprite.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\spritepack.c" />
     <ClCompile Include="..\..\..\..\ejoy2d\lib\texture.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\bgm\bgm_null.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_mp3.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_ogg.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_tools.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_wav.c" />
-    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal.c" />
-    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_bgm.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_util.c" />
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.c" />
     <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket.c" />
     <ClCompile Include="..\..\..\..\src\clib\lsocket\win_compat.c" />
     <ClCompile Include="..\..\..\..\src\clib\lyaml\emitter_wrap.c" />
@@ -195,6 +199,7 @@
     <ClCompile Include="..\..\..\..\src\clib\utls\serialize.c" />
     <ClCompile Include="..\..\src\main\filesystem.c" />
     <ClCompile Include="..\..\src\main\os_utls.c" />
+    <ClCompile Include="..\..\src\main\platform_init.c" />
     <ClCompile Include="..\..\src\main\winfont.c" />
   </ItemGroup>
   <ItemGroup>
@@ -207,7 +212,6 @@
     <None Include="..\..\..\..\ejoy2d\ejoy2d\simplepackage.lua" />
     <None Include="..\..\..\..\ejoy2d\ejoy2d\sprite.lua" />
     <None Include="..\..\..\..\ejoy2d\ejoy2d\spritepack.lua" />
-    <None Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_hardware_mac_ios.m" />
     <None Include="..\..\..\..\src\ejoy2dx\angle.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\animation.lua" />
     <None Include="..\..\..\..\src\ejoy2dx\bin_pack.lua" />

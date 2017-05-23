@@ -61,6 +61,9 @@
     <Filter Include="ejoy2dx\script\lyaml">
       <UniqueIdentifier>{464913cf-b331-41c5-9ff3-f5106f1e6373}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\Liekkas\openal">
+      <UniqueIdentifier>{c3f1258c-49c7-4ef2-944e-b9d711c95bdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -195,12 +198,6 @@
     <ClInclude Include="..\..\..\..\src\clib\utls\lpeg\lpeg.h">
       <Filter>ejoy2dx\utls\lpeg</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal.h">
-      <Filter>ejoy2dx\Liekkas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.h">
-      <Filter>ejoy2dx\Liekkas</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\clib\lzma\7zCrc.h">
       <Filter>ejoy2dx\lzma</Filter>
     </ClInclude>
@@ -278,6 +275,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\clib\lyaml\yaml\yaml_private.h">
       <Filter>ejoy2dx\lyaml\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.h">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_util.h">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.h">
+      <Filter>ejoy2dx\Liekkas\openal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -403,12 +409,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\clib\utls\lpeg\lpeg.c">
       <Filter>ejoy2dx\utls\lpeg</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal.c">
-      <Filter>ejoy2dx\Liekkas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\oal_decode.c">
-      <Filter>ejoy2dx\Liekkas</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_mp3.c">
       <Filter>ejoy2dx\Liekkas\decode</Filter>
@@ -542,11 +542,26 @@
     <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\writer.c">
       <Filter>ejoy2dx\lyaml\yaml</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_bgm.c">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.c">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_util.c">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.c">
+      <Filter>ejoy2dx\Liekkas\openal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\bgm\bgm_null.c">
+      <Filter>ejoy2dx\Liekkas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\main\platform_init.c">
+      <Filter>ejoy2dx\platform_win</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\src\clib\Liekkas\src\decode\ad_hardware_mac_ios.m">
-      <Filter>ejoy2dx\Liekkas\decode</Filter>
-    </None>
     <None Include="..\..\..\..\ejoy2d\ejoy2d\geometry.lua">
       <Filter>ejoy2d\script</Filter>
     </None>

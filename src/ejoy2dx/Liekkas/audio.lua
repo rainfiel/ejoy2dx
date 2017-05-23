@@ -1,7 +1,7 @@
-local oal = require "oal"
-local source_state = oal.source_state
+local lk = require "liekkas"
+local source_state = lk.source_state
 
-local ad = require "oal.decode"
+local ad = require "liekkas.decode"
 
 
 local SOURCE_LIMIT = 32
@@ -36,7 +36,7 @@ local support_type = {
     return ad.decode_tools(file_path, "caf")
   end,
   ["mp3"] = function (file_path)
-    return ad.decode_tools(file_path, "mp3")
+    return ad.decode_mp3(file_path, "mp3")
   end,
   ["wav"] = function (file_path)
     return ad.decode_wav(file_path)
@@ -56,9 +56,16 @@ function M:load(file_path, file_type)
   local entry = self.load_map[file_path]
   if not entry then
     local info = func(file_path)
-    -- print("load: "..tostring(info))
-    local buffer_id = oal.create_bufferid()
-    oal.buffer_bind(buffer_id, info)
+    print("load: "..tostring(info))
+    
+    local buffer_id = lk.create_buffer()
+    local old_gc_func = debug.getmetatable(buffer_id).__gc
+    debug.getmetatable(buffer_id).__gc = function (buffer_id)
+      self:unload(file_path)
+      old_gc_func(buffer_id)
+    end
+
+    lk.buffer_bind(buffer_id, info)
     entry = {
       -- info = info,  -- for collect garbage
       buffer_id = buffer_id,
@@ -86,7 +93,7 @@ end
 
 
 function M:listen_position(x, y, z)
-  oal.listen_position(x, y, z)
+  lk.listen_position(x, y, z)
 end
 
 
@@ -124,7 +131,7 @@ function M:create_group(source_count)
     source_list[i] = {
       idx = i,
       file = false,
-      source_id = oal.create_source(),
+      source_id = lk.create_source(),
       version = 0,
     }
   end
@@ -184,7 +191,7 @@ function group_mt:add(file_path, loop, pitch, gain, max_distance)
     end
     playing_source[file_path][source_id] = true
 
-    oal.source_set(source_id, entry.buffer_id, pitch, max_distance, gain, loop)
+    lk.source_set(source_id, entry.buffer_id, pitch, max_distance, gain, loop)
     return _gen_handle(group_handle.idx, version)
   end
 end
@@ -202,7 +209,7 @@ local function _audio_op(self, op, handle, ...)
      group_handle.version ~= version or 
      not M.load_map[group_handle.file]
     then
-    -- print("_audio_op false:", op, handle, version, group_handle.version)
+    print("_audio_op false:", op, handle, version, group_handle.version)
     return false 
   end
 
