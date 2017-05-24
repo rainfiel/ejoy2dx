@@ -331,6 +331,15 @@ getFileDataFromAssets(const char* filename, unsigned long* size) {
 
 		/*获取文件大小*/
 		off_t bufferSize = AAsset_getLength(asset);
+
+		char bom[3];
+		int readed = AAsset_read(asset, bom, 3);
+		if (readed == 3 && (bom[0] == 0XEF && bom[1] == 0XBB && bom[2] == 0XBF)) {
+			bufferSize -= 3;
+		} else {
+			AAsset_seek(asset, 0, SEEK_SET);
+		}
+
 		data = (unsigned char *)malloc(bufferSize);
 		int numBytesRead = AAsset_read(asset, data, bufferSize);
 		*size = bufferSize;

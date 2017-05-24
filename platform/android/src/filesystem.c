@@ -53,6 +53,7 @@ int pf_fileread(struct FileHandle* h, void *buffer, size_t size) {
 }
 
 size_t pf_fread(void *ptr, size_t size, size_t nmemb, struct FileHandle *h) {
+  if (nmemb==0) return 0;
   assert(h->size >= h->offset && h->size > 0 && h->buffer != NULL);
   size_t allsize = size * nmemb;
   if(allsize == 0) {

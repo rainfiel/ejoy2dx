@@ -193,9 +193,9 @@ android_loader(lua_State *L) {
 
 	size_t sz = pf_filesize(h);
 	char buf[sz];
-	if(pf_fileread(h, buf, sz) != 1){
+	if(sz > 0 && !pf_fread(buf, sizeof(char), sz, h)){
 		pf_fileclose(h);
-		return luaL_error(L,"Can't open %s", name);
+		return luaL_error(L,"Can't read %s", name);
 	}
 	pf_fileclose(h);
 
