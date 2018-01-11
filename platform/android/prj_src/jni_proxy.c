@@ -39,11 +39,11 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 	return JNI_VERSION_1_4;
 }
 
-void JNICALL Java_com_ejoy2dx_doorkickers_JniProxy_nativeSetContext(JNIEnv*  env, jobject thiz, jobject context, jobject assetManager) {
+void JNICALL Java_com_ejoy2dx_example_JniProxy_nativeSetContext(JNIEnv*  env, jobject thiz, jobject context, jobject assetManager) {
 	setassetmanager(AAssetManager_fromJava(env, assetManager));
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesBegin(JNIEnv * env, jclass class,
+void Java_com_ejoy2dx_example_JniProxy_nativeTouchesBegin(JNIEnv * env, jclass class,
 	jint id, jfloat x, jfloat y) {
 
 	clock_t cur_time = clock();
@@ -64,7 +64,7 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesBegin(JNIEnv * env, jcla
 	}
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesEnd(JNIEnv * env, jclass class,
+void Java_com_ejoy2dx_example_JniProxy_nativeTouchesEnd(JNIEnv * env, jclass class,
 	jint id, jfloat x, jfloat y, jfloat vx, jfloat vy) {
 
 	LOGI("TOUCH_END:%d", id);
@@ -79,7 +79,7 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesEnd(JNIEnv * env, jclass
 	is_recognizing = false;
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesMove(JNIEnv* env, jclass class,
+void Java_com_ejoy2dx_example_JniProxy_nativeTouchesMove(JNIEnv* env, jclass class,
 		jintArray ids, jfloatArray xs, jfloatArray ys, jfloat vx, jfloat vy) {
 	int size = (*env)->GetArrayLength(env, ids);
 	jint _ids[size];
@@ -105,7 +105,7 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesMove(JNIEnv* env, jclass
 	}
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesCancel(JNIEnv* env, jclass class, jintArray ids, jfloatArray xs, jfloatArray ys) {
+void Java_com_ejoy2dx_example_JniProxy_nativeTouchesCancel(JNIEnv* env, jclass class, jintArray ids, jfloatArray xs, jfloatArray ys) {
     int size = (*env)->GetArrayLength(env, ids);
     jint id[size];
     jfloat x[size];
@@ -127,7 +127,7 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeTouchesCancel(JNIEnv* env, jcla
 }
 
 static bool inited = false;
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeInit(JNIEnv * env, jclass class,
+void Java_com_ejoy2dx_example_JniProxy_nativeInit(JNIEnv * env, jclass class,
 		jstring apkPath, jstring memPath, jstring sdPath, jstring userID) {
 	const char* apk = (*env)->GetStringUTFChars(env, apkPath, NULL);
 	const char* mem = (*env)->GetStringUTFChars(env, memPath, NULL);
@@ -161,15 +161,15 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeInit(JNIEnv * env, jclass class
 	ejoy2d_fw_init(startup);
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeExit(JNIEnv * env, jclass class) {
+void Java_com_ejoy2dx_example_JniProxy_nativeExit(JNIEnv * env, jclass class) {
 	gr_release();
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeReload(JNIEnv * env, jclass class) {
+void Java_com_ejoy2dx_example_JniProxy_nativeReload(JNIEnv * env, jclass class) {
 	// ejoy2d_reload();
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeResize(JNIEnv * env, jclass class, jint w, jint h) {
+void Java_com_ejoy2dx_example_JniProxy_nativeResize(JNIEnv * env, jclass class, jint w, jint h) {
 	if (inited) {
 		LOGI("screen size:(%d, %d)\n", w, h);
 		ejoy2d_fw_view_layout(1, 0, 0, w, h);
@@ -177,7 +177,7 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeResize(JNIEnv * env, jclass cla
 	}
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeRender(JNIEnv * env, jclass class, float during) {
+void Java_com_ejoy2dx_example_JniProxy_nativeRender(JNIEnv * env, jclass class, float during) {
 	if (during > 1) {
 		during = 0.033f;
 	}
@@ -186,15 +186,15 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeRender(JNIEnv * env, jclass cla
 	gr_touch_update();
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeOnPause(JNIEnv * env, jclass class) {
+void Java_com_ejoy2dx_example_JniProxy_nativeOnPause(JNIEnv * env, jclass class) {
 	ejoy2d_fw_pause();
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeOnResume(JNIEnv * env, jclass class) {
+void Java_com_ejoy2dx_example_JniProxy_nativeOnResume(JNIEnv * env, jclass class) {
 	ejoy2d_fw_resume();
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeMessage(JNIEnv* env, jclass class,
+void Java_com_ejoy2dx_example_JniProxy_nativeMessage(JNIEnv* env, jclass class,
 		jint id, jbyteArray data) {
 	if (id > 0) {
 		jbyte* byteArray = (*env)->GetByteArrayElements(env, data, false);
@@ -203,14 +203,14 @@ void Java_com_ejoy2dx_doorkickers_JniProxy_nativeMessage(JNIEnv* env, jclass cla
 	}
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeMessageNull(JNIEnv* env, jclass class,
+void Java_com_ejoy2dx_example_JniProxy_nativeMessageNull(JNIEnv* env, jclass class,
 		jint id) {
 	if (id > 0) {
 		ejoy2d_message_finish(id, NULL);
 	}
 }
 
-void Java_com_ejoy2dx_doorkickers_JniProxy_nativeOtherUserInfo(JNIEnv * env,
+void Java_com_ejoy2dx_example_JniProxy_nativeOtherUserInfo(JNIEnv * env,
 		jclass class, jint cbid, jstring msg, jint success) {
 	if (success > 0) {
 		ejoy2d_message_finish(cbid, NULL);

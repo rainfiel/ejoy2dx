@@ -59,6 +59,11 @@ def create_ios(prj_name, folder):
 
 	print("ios xcode project created")
 
+def create_android(prj_name, folder):
+	os.rename(os.path.join(folder, "example"), os.path.join(folder, prj_name))
+
+	print("android project created")
+
 def main(prj_name):
 	py_path = os.getcwd()
 	root = os.path.join(py_path, "../../project")
@@ -74,6 +79,7 @@ def main(prj_name):
 
 	create_msvc(prj_name, os.path.join(prj_dir, "platform/msvc"))
 	create_ios(prj_name, os.path.join(prj_dir, "platform/ios"))
+	create_android(prj_name, os.path.join(prj_dir, "platform/android"))
 
 if __name__ == '__main__':
 	if len(sys.argv) >= 2:
