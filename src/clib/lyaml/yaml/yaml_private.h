@@ -127,7 +127,7 @@ yaml_string_join(
      (value).pointer = (string))
 
 #define STRING_INIT(context,string,size)                                        \
-    (((string).start = yaml_malloc(size)) ?                                     \
+    (((string).start = (yaml_char_t*)yaml_malloc(size)) ?                                     \
         ((string).pointer = (string).start,                                     \
          (string).end = (string).start+(size),                                  \
          memset((string).start, 0, (size)),                                     \

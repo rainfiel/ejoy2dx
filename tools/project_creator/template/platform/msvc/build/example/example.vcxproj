@@ -62,11 +62,17 @@
     <TargetName>ej2dx</TargetName>
     <OutDir>$(EJOY2DX_LIB)</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(EJOY2DX_OBJ)$(ProjectName)</IntDir>
+    <TargetName>ej2dx</TargetName>
+    <OutDir>$(EJOY2DX_LIB)</OutDir>
+  </PropertyGroup>
+
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_UTLS);$(EJ2DX_FRAMEWORK);%s</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_UTLS);$(EJ2DX_FRAMEWORK);$(EJ2DX_ROOT)\platform;%s</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJ2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%s</PreprocessorDefinitions>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
@@ -83,15 +89,24 @@
       <Command>echo start $(EJOY2DX_EXE)$(TargetName)$(TargetExt) -d $(EJOY2DX_EXE)..\..\..\..\ &gt;$(EJOY2DX_EXE)..\..\..\..\win_run_$(Configuration).bat</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_UTLS);$(EJ2DX_FRAMEWORK);$(EJ2DX_ROOT)\platform;%s</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJ2D_LUA);EJOY2D_OS=WINDOWS;_WINDOWS;%s</PreprocessorDefinitions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
+      <CallingConvention>Cdecl</CallingConvention>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(EJOY2DX_LIB)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;ejoy2dx.lib;winmm.lib;%s</AdditionalDependencies>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>

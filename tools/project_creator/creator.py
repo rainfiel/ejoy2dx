@@ -38,7 +38,7 @@ def create_msvc(prj_name, folder):
 	file_list=("%s.vcxproj", "%s.vcxproj.filters", "%s.vcxproj.user")
 	for i in file_list:
 		os.rename(os.path.join(prj_dir, i%"example"), os.path.join(prj_dir, i%prj_name))
-	args=(guid, prj_name, "%(AdditionalIncludeDirectories)", "%(PreprocessorDefinitions)", "%(AdditionalDependencies)")
+	args=(guid, prj_name, "%(AdditionalIncludeDirectories)", "%(PreprocessorDefinitions)", "%(AdditionalDependencies)", "%(AdditionalIncludeDirectories)", "%(PreprocessorDefinitions)", "%(AdditionalDependencies)")
 	format_file(os.path.join(prj_dir, "%s.vcxproj"%prj_name), *args)
 
 	print("msvc project created")

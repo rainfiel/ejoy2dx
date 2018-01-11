@@ -140,14 +140,14 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONUP: {
 		int x,y;
 		get_xy(lParam, &x, &y); 
-		ejoy2d_fw_touch(x, y, TOUCH_END, 1);
+		g_event_stat.disable_gesture = ejoy2d_fw_touch(x, y, TOUCH_END, 1);
 		if (!g_event_stat.disable_gesture) {
 			if (g_event_stat.is_pan) {
 				int dx = x-g_event_stat.last_x;
 				int dy = y-g_event_stat.last_y;
 				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
 				if (seconds < 0.000001f) seconds = 0.033f;
-				ejoy2d_fw_gesture(1, x, y, dx/seconds, dy/seconds, 3); //PAN
+				ejoy2d_fw_gesture(1, dx, dy, dx/seconds, dy/seconds, 3); //PAN
 			} else {
 				ejoy2d_fw_gesture(2, x, y, 0, 0, 3); //TAP
 			}
@@ -169,7 +169,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (g_event_stat.btn_down) {
 			int x,y;
 			get_xy(lParam, &x, &y); 
-			ejoy2d_fw_touch(x,y,TOUCH_MOVE, 1);
+			g_event_stat.disable_gesture = ejoy2d_fw_touch(x,y,TOUCH_MOVE, 1);
 			if (!g_event_stat.disable_gesture) {
 				int dx = x-g_event_stat.last_x;
 				int dy = y-g_event_stat.last_y;
@@ -185,7 +185,7 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				}
 				float seconds = float((timeGetTime()-g_event_stat.last_change_time)/1000.f);
 				if (seconds < 0.000001f) seconds = 0.033f;
-				ejoy2d_fw_gesture(1, x, y, dx / seconds, dy / seconds, stat);
+				ejoy2d_fw_gesture(1, dx, dy, dx / seconds, dy / seconds, stat);
 			}
 			g_event_stat.last_x = x;
 			g_event_stat.last_y = y;

@@ -6,4 +6,10 @@
     <LocalDebuggerCommandArguments>-d $(EJ2DX_PRJ_ROOT)\..\..\</LocalDebuggerCommandArguments>
     <LocalDebuggerWorkingDirectory>$(EJ2DX_PRJ_ROOT)\..\..\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerCommand>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>-d $(EJ2DX_PRJ_ROOT)\..\..\</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>$(EJ2DX_PRJ_ROOT)\..\..\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
 </Project>

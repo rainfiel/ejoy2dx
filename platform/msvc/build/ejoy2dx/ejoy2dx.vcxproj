@@ -53,10 +53,6 @@
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_util.h" />
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.h" />
     <ClInclude Include="..\..\..\..\src\clib\lsocket\win_compat.h" />
-    <ClInclude Include="..\..\..\..\src\clib\lyaml\lyaml.h" />
-    <ClInclude Include="..\..\..\..\src\clib\lyaml\yaml\config.h" />
-    <ClInclude Include="..\..\..\..\src\clib\lyaml\yaml\yaml.h" />
-    <ClInclude Include="..\..\..\..\src\clib\lyaml\yaml\yaml_private.h" />
     <ClInclude Include="..\..\..\..\src\clib\lzma\7zCrc.h" />
     <ClInclude Include="..\..\..\..\src\clib\lzma\Bcj2.h" />
     <ClInclude Include="..\..\..\..\src\clib\lzma\Bra.h" />
@@ -130,34 +126,6 @@
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.c" />
     <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket.c" />
     <ClCompile Include="..\..\..\..\src\clib\lsocket\win_compat.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\emitter_wrap.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\lyaml.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\parser_wrap.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\scanner_wrap.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\api.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\dumper.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\emitter.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\loader.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\parser.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\reader.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\scanner.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\clib\lyaml\yaml\writer.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrc.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrcOpt.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zStream.c" />
@@ -251,7 +219,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -272,6 +240,11 @@
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.dll</TargetExt>
     <OutDir>$(EJOY2DX_LIB)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(EJOY2DX_LIB)</OutDir>
+    <IntDir>$(EJOY2DX_OBJ)$(ProjectName)</IntDir>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -297,11 +270,19 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(EJ2DX_INCLUDE);$(EJ2DX_GLEW);$(EJ2D_ROOT)\lib;$(EJ2D_ROOT)\lib\render;$(EJ2DX_FRAMEWORK);$(EJ2DX_PLATFORM);$(EJ2DX_UTLS);$(EJ2DX_INCLUDE)\OpenAL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJ2D_LUA);EJOY2D_OS=WINDOWS;_WINDOWS;EJOY2D_BUILD_AS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
+      <OutputFile>$(EJOY2DX_EXE)$(TargetName)$(TargetExt)</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(EJOY2DX_LIB);$(EJOY2DX_COMMON_LIB)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew.lib;lua.lib;Ws2_32.lib;OpenAL32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

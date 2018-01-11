@@ -74,7 +74,7 @@ YAML_DECLARE(int)
 yaml_string_extend(yaml_char_t **start,
         yaml_char_t **pointer, yaml_char_t **end)
 {
-    yaml_char_t *new_start = yaml_realloc(*start, (*end - *start)*2);
+    yaml_char_t *new_start = (yaml_char_t*)yaml_realloc(*start, (*end - *start)*2);
 
     if (!new_start) return 0;
 
