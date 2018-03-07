@@ -49,6 +49,7 @@ local mt = {}
 
 local M = {}
 M.packages = {}
+M.packages_export = {}
 M.raw_data = {}
 M.collide_info_handler = default_collide_info
 
@@ -86,16 +87,23 @@ function M:_get_packed_object(path, name, pic_callback, raw)
 		assert(meta.texture == 1)
 		cobj = pack_c.import({tex_id},meta.maxid,meta.size,meta.data, meta.data_sz)
 
+		self.packages_export[package_id] = meta.export
 		self.packages[package_id] = cobj
 	end
 	return cobj, tw, th, tex_id
 end
 
 ----------------------------image-------------------------------
-function M:load_image(path, name, pic_callback)
+function M:load_image(path, name, pic_callback, idx)
 	path = utls.get_path(path)
 	local cobj, tw, th, tex_id = self:_get_packed_object(path, name, pic_callback, false)
-	local spr = sprite.direct_new(cobj, 0)
+
+	if type(idx) == "string" then
+		local package_id = path.."."..name
+		idx = self.packages_export[package_id][idx]
+	end
+
+	local spr = sprite.direct_new(cobj, idx or 0)
 	spr.usr_data.path = path
 	return spr, tw, th, tex_id
 end
