@@ -79,8 +79,8 @@ function mt:test(x, y)
 	local cnt = #sprites
 	for i=cnt, 1, -1 do
 		local spr = sprites[i]
-		if spr.test then
-			local usr_data = spr.usr_data
+		local usr_data = spr.usr_data
+		if spr.test and not usr_data.ignore_test then
 			local touch_callback = usr_data.touch_callback
 			local gesture_callback = usr_data.gesture_callback
 			if touch_callback and gesture_callback then
