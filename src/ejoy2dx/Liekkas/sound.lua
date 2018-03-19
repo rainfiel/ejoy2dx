@@ -15,6 +15,9 @@ end
 
 function M:play(file_path, loop, pitch, gain)
   local handle  = sound_group:add(file_path, loop, pitch, gain)
+  if not handle then
+  	return
+  end
   sound_group:play(handle)
   return handle
 end
