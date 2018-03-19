@@ -17,4 +17,4 @@ Open project/your_prj_name/plaform/msvc/build/your_prj_name.sln with vc2012 or o
 >note: set your own project as startup project in the msvc solution before build
 
 # prerequisites
-OpenAL is required for Windows exe, you can download it from here: https://www.openal.org/downloads/
+OpenAL is required for Windows exe, you can download it from here: https://www.openal.org/downloads/oalinst.zip
