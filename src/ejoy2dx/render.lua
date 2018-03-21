@@ -100,6 +100,45 @@ function mt:test(x, y)
 	end
 end
 
+--return: handled, disable_gesture
+function mt:touch(what, x, y, id)
+	self.touchs = self.touchs or {}
+	if what == "BEGIN" then
+		local callback, touched, anchor_id, ax, ay, is_gesture = self:test(x, y)
+		if callback then
+			if is_gesture then
+				self.gesture_handler = callback
+				self.gesture_touched = touched
+				return true, false
+			else
+				local ret = callback(touched, what, x, y)
+				if ret == false then
+					return false
+				else
+					self.touchs[id] = {callback, touched}
+					return true, true
+				end
+			end
+		end
+	elseif what == "MOVE" then
+		local touch = self.touchs[id]
+		if touch then
+			touch[1](touch[2], what, x, y)
+		end
+	elseif what == "END" then
+		local touch = self.touchs[id]
+		if touch then
+			-- local callback, touched, anchor_id, ax, ay, is_gesture = self.render:test(x, y)
+			-- if touched == touch[2] or touch[2].usr_data.always_touch_end then
+			-- 	touch[1](touch[2], what, x, y)
+			-- end
+			touch[1](touch[2], what, x, y)
+			self.touchs[id] = nil
+		end
+	end
+	return false
+end
+
 local hide_list = {}
 local hide_list_cnt = 0
 function mt:_draw()
