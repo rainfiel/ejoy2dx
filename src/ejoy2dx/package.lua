@@ -16,7 +16,7 @@ local function splitpath(str)
 	for match in string.gmatch(str, "([^.]+)") do
 		table.insert(tbl, match)
 	end
-	return tbl[1], tbl[2]
+	return tbl[1], table.concat(tbl, ".", 2)
 end
 
 local function load_raw(packname, filename)
