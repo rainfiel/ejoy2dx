@@ -13,3 +13,6 @@ url=https://github.com/rainfiel/sproto
 [submodule "tools/lua-crust"]
 	path = tools/lua-crust
 	url = https://github.com/rainfiel/lua-crust.git
+[submodule "tools/unity_editor"]
+	path = tools/unity_editor
+	url = https://github.com/rainfiel/unity_editor.git
