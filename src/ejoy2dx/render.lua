@@ -420,7 +420,7 @@ function RenderManager:remove(rd)
 			self.renders[idx] = self.renders[i]
 		end
 	end
-	self.renders[cnt] = nil
+	self.renders[idx+1] = nil
 end
 
 function RenderManager:clear()
