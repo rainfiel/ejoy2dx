@@ -95,6 +95,13 @@ function M.str_ends(the_string, end_str)
    return end_str=='' or string.sub(the_string,-string.len(end_str))==end_str
 end
 
+function M.str_split(str, sep)
+   local sep, fields = sep or ":", {}
+   local pattern = string.format("([^%s]+)", sep)
+   str:gsub(pattern, function(c) fields[#fields+1] = c end)
+   return fields
+end
+
 
 function M.print_tbl(tbl, ref)
     ref = ref or {}
