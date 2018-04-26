@@ -6,9 +6,12 @@
 #include <stdlib.h>
 
 #define LOG_TAG "-landroidutil-"
-#define  CLASS_NAME "com/ejoy2dx/doorkickers/AndroidHelper"
 #define  pf_log(...)                __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 #define  pf_vprint(format, ap)      __android_log_vprint(ANDROID_LOG_DEBUG, LOG_TAG, (format), (ap))
+
+#define _STR_VALUE(arg)	#arg
+#define STR_VALUE(name) _STR_VALUE(name)
+#define  CLASS_NAME "com/ejoy2dx/" STR_VALUE(PROJECT_NAME) "/AndroidHelper"
 
 int
 lexists(lua_State* L) {

@@ -5,7 +5,11 @@
 
 #include "android_helper.h"
 
-#define  CLASS_NAME "com/ejoy2dx/doorkickers/AndroidHelper"
+#define _STR_VALUE(arg)	#arg
+#define STR_VALUE(name) _STR_VALUE(name)
+#define  CLASS_NAME "com/ejoy2dx/" STR_VALUE(PROJECT_NAME) "/AndroidHelper"
+#define  IMGDATA_NAME "com/ejoy2dx/" STR_VALUE(PROJECT_NAME) "/ImageData"
+#define  IMGDATA_ARG "([BII)Lcom/ejoy2dx/" STR_VALUE(PROJECT_NAME) "/ImageData;"
 
 static int font_size_;
 static const char* cur_str;
@@ -17,7 +21,7 @@ static int hh = 0;
 void font_size(const char *str, int unicode, struct font_context * ctx)
 {
 	struct JniMethodInfo methodInfo;
-	if (getStaticMethodInfo(&methodInfo, CLASS_NAME, "getTextImage", "([BII)Lcom/ejoy2dx/doorkickers/ImageData;") < 0) {
+	if (getStaticMethodInfo(&methodInfo, CLASS_NAME, "getTextImage", IMGDATA_ARG) < 0) {
 		return;
 	}
 	jbyteArray bArray = (*methodInfo.env)->NewByteArray(methodInfo.env, strlen(str));
@@ -28,7 +32,7 @@ void font_size(const char *str, int unicode, struct font_context * ctx)
 
 	if (jImageData != NULL)
     {
-		jclass cls_imgdata = (*methodInfo.env)->FindClass(methodInfo.env, "com/ejoy2dx/doorkickers/ImageData");
+		jclass cls_imgdata = (*methodInfo.env)->FindClass(methodInfo.env,  IMGDATA_NAME);
 		jfieldID id_pixels = (*methodInfo.env)->GetFieldID(methodInfo.env, cls_imgdata, "pixels", "[B");
 		jbyteArray jPixelsArray = (*methodInfo.env)->GetObjectField(methodInfo.env, jImageData, id_pixels);
 		jsize len = (*methodInfo.env)->GetArrayLength(methodInfo.env, jPixelsArray);

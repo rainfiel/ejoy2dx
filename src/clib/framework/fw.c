@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #ifndef LOGIC_FRAME
 #define LOGIC_FRAME 30
@@ -153,58 +154,63 @@ force_sync_frame(lua_State* L) {
 }
 
 #if EJOY2D_OS==ANDROID
+#define MY_LUA_PATH_SEP		";"
+#define MY_LUA_PATH_MARK		"?"
+static const char *pushnexttemplate (lua_State *L, const char *path) {
+  const char *l;
+  while (*path == *MY_LUA_PATH_SEP) path++;  /* skip separators */
+  if (*path == '\0') return NULL;  /* no more templates */
+  l = strchr(path, *MY_LUA_PATH_SEP);  /* find next separator */
+  if (l == NULL) l = path + strlen(path);
+  lua_pushlstring(L, path, l - path);  /* template */
+  return l;
+}
+
+static struct FileHandle* searchpath (lua_State *L, const char *name,
+                                             const char *path,
+                                             const char *sep,
+                                             const char *dirsep) {
+  if (*sep != '\0')  /* non-empty separator? */
+    name = luaL_gsub(L, name, sep, dirsep);  /* replace it by 'dirsep' */
+  while ((path = pushnexttemplate(L, path)) != NULL) {
+    const char *filename = luaL_gsub(L, lua_tostring(L, -1),
+                                     MY_LUA_PATH_MARK, name);
+    lua_remove(L, -2);  /* remove path template */
+		struct FileHandle* h = pf_fileopen(filename+1, "rb");
+		if (h) return h;
+  }
+}
+
+
 static int
 android_loader(lua_State *L) {
 	size_t name_sz = 0;
 	const char * libname = luaL_checklstring(L, 1, &name_sz);
 	
-	ARRAY(char, tmp, 1+name_sz+20);
-	char *name = tmp+1;
-	tmp[0]='@';
-	int i;
-	for (i=0;i<name_sz;i++) {
-		if (libname[i] == '.') {
-			name[i] = '/';
-		} else {
-			name[i] = libname[i];
-		}
-	}
+	lua_getglobal(L, "package");
+	luaL_checktype(L,-1,LUA_TTABLE);
+	lua_getfield(L,-1, "path");
+	const char* path = lua_tostring(L, -1);
+	lua_pop(L, 2);
 
-	strcpy(name+name_sz,".lua");
-	struct FileHandle* h = pf_fileopen(name, "rb");
-	if (!h)	{
-		strcpy(name+name_sz,"/init.lua");
-		h = pf_fileopen(name, "rb");
-		if (!h) {	
-			char name2[name_sz+20];
-			strcpy(name+name_sz,".lua");
-			snprintf(name2, name_sz+20, "script/%s", name);
-			h = pf_fileopen(name2, "rb");
-			if (!h) {
-				strcpy(name+name_sz,"/init.lua");
-				snprintf(name2, name_sz+20, "script/%s", name);
-				h = pf_fileopen(name2, "rb");
-				if (!h) {
-					return luaL_error(L, "Can't open %s", name);
-				}
-			}
-		}
-	}
-
+	struct FileHandle* h = searchpath(L, libname, path, ".", LUA_DIRSEP);
+	if (!h)
+		return luaL_error(L, "Can't load %s", libname);
+	
 	size_t sz = pf_filesize(h);
 	char buf[sz];
 	if(sz > 0 && !pf_fread(buf, sizeof(char), sz, h)){
 		pf_fileclose(h);
-		return luaL_error(L,"Can't read %s", name);
+		return luaL_error(L,"Can't read %s", libname);
 	}
 	pf_fileclose(h);
 
-	int r = luaL_loadbuffer(L, buf, sz, tmp);	
+	int r = luaL_loadbuffer(L, buf, sz, libname);	
 	if (r!=LUA_OK) {
 		return luaL_error(L, "error loading module %s :\n\t%s",
-											name, lua_tostring(L, -1));
+											libname, lua_tostring(L, -1));
 	}
-	lua_pushstring(L, name);
+	lua_pushstring(L, libname);
 	return 2;
 }
 #else
@@ -258,7 +264,7 @@ new_game(const char* lua_root, const char* script) {
 		fault("run: %s", msg);
 	}
 	lua_pop(L,1);
-
+	
 	return wg;
 }
 

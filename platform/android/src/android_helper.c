@@ -12,7 +12,9 @@
 #define  LOG_TAG    "android_helper"
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 
-#define  CLASS_NAME "com/ejoy2dx/doorkickers/AndroidHelper"
+#define _STR_VALUE(arg)	#arg
+#define STR_VALUE(name) _STR_VALUE(name)
+#define  CLASS_NAME "com/ejoy2dx/" STR_VALUE(PROJECT_NAME) "/AndroidHelper"
 
 char _apkpath[512];
 char _mempath[512];
