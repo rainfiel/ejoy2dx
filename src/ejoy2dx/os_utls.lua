@@ -25,4 +25,12 @@ M.is_key_down = function( ... )
 	end
 end
 
+M.open_url = function( ... )
+	if OS == "WINDOWS" then
+		return false
+	else
+		return osutls.open_url(...)
+	end
+end
+
 return M

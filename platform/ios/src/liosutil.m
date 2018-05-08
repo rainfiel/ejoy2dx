@@ -194,6 +194,16 @@ _create_directory(lua_State* L){
   return 1;
 }
 
+static int
+_open_url(lua_State* L){
+  const char* path = luaL_checkstring(L, 1);
+  NSURL *url = [NSURL URLWithString: [NSString stringWithUTF8String:path]];
+  int b = [[UIApplication sharedApplication] openURL:url];
+  lua_pushboolean(L, b);
+  return 1;
+}
+
+
 int luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
 
@@ -204,6 +214,7 @@ int luaopen_osutil(lua_State* L) {
 		{"delete_file", _delete_file},
 		{"get_path", _get_path},
 		{"create_directory", _create_directory},
+    {"open_url", _open_url},
 		
 		{NULL, NULL}
 	};
