@@ -86,6 +86,7 @@
     <ClInclude Include="..\..\..\..\src\clib\tween\easing.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\lpeg\lpeg.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\lualibs.h" />
+    <ClInclude Include="..\..\..\..\src\clib\utls\md5\md5.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\stb_image.h" />
     <ClInclude Include="..\..\..\..\src\clib\utls\stb_image_write.h" />
   </ItemGroup>
@@ -164,6 +165,8 @@
     <ClCompile Include="..\..\..\..\src\clib\utls\lpeg\lpeg.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\ltimesync.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lualibs.c" />
+    <ClCompile Include="..\..\..\..\src\clib\utls\md5\lmd5.c" />
+    <ClCompile Include="..\..\..\..\src\clib\utls\md5\md5.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\serialize.c" />
     <ClCompile Include="..\..\src\main\filesystem.c" />
     <ClCompile Include="..\..\src\main\os_utls.c" />

@@ -58,6 +58,9 @@
     <Filter Include="ejoy2dx\Liekkas\openal">
       <UniqueIdentifier>{c3f1258c-49c7-4ef2-944e-b9d711c95bdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ejoy2dx\utls\md5">
+      <UniqueIdentifier>{94483294-d14f-40be-8a64-090c111883fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\ejoy2d\lib\array.h">
@@ -266,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.h">
       <Filter>ejoy2dx\Liekkas\openal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\utls\md5\md5.h">
+      <Filter>ejoy2dx\utls\md5</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -505,6 +511,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\main\platform_init.c">
       <Filter>ejoy2dx\platform_win</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\utls\md5\lmd5.c">
+      <Filter>ejoy2dx\utls\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\clib\utls\md5\md5.c">
+      <Filter>ejoy2dx\utls\md5</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

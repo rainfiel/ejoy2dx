@@ -22,6 +22,7 @@ int luaopen_liekkas(lua_State *L);
 int luaopen_liekkas_bgm(lua_State* L);
 int luaopen_liekkas_decode(lua_State *L);
 int luaopen_lzma(lua_State *L);
+int luaopen_md5(lua_State *L);
 //int luaopen_yaml(lua_State *L);
 
 void
@@ -39,6 +40,7 @@ init_lua_libs(lua_State* L) {
 	_register(L, luaopen_liekkas_bgm, "liekkas.bgm");
 	_register(L, luaopen_liekkas_decode, "liekkas.decode");
 	_register(L, luaopen_lzma, "ejoy2dx.lzma.c");
+	_register(L, luaopen_md5, "ejoy2dx.md5.c");
 //	_register(L, luaopen_yaml, "ejoy2dx.yaml.c");
   
 #ifdef DEBUG
