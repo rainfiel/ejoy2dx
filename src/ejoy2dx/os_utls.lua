@@ -1,5 +1,6 @@
 
 local osutls = require "ejoy2dx.osutil.c"
+local keymap = require "ejoy2dx.keymap"
 
 local M = {}
 
@@ -17,9 +18,11 @@ M.get_path = osutls.get_path
 M.input = osutls.input
 M.create_directory = osutls.create_directory
 
-M.is_key_down = function( ... )
+M.is_key_down = function(name)
 	if OS == "WINDOWS" then
-		return osutls.is_key_down(...)
+		local key = keymap:name_to_key(name)
+		print(name, key)
+		return osutls.is_key_down(key)
 	else
 		return false
 	end
