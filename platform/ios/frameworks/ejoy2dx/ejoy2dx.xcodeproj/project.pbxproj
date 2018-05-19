@@ -158,6 +158,9 @@
 		AED31F3E1BE3439800763B22 /* ad_ogg.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F391BE3439800763B22 /* ad_ogg.c */; };
 		AED31F3F1BE3439800763B22 /* ad_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F3A1BE3439800763B22 /* ad_tools.c */; };
 		AED31F401BE3439800763B22 /* ad_wav.c in Sources */ = {isa = PBXBuildFile; fileRef = AED31F3B1BE3439800763B22 /* ad_wav.c */; };
+		AEE2A23C20A2EE45003ECD6D /* lmd5.c in Sources */ = {isa = PBXBuildFile; fileRef = AEE2A23920A2EE44003ECD6D /* lmd5.c */; };
+		AEE2A23D20A2EE45003ECD6D /* md5.h in Sources */ = {isa = PBXBuildFile; fileRef = AEE2A23A20A2EE45003ECD6D /* md5.h */; };
+		AEE2A23E20A2EE45003ECD6D /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = AEE2A23B20A2EE45003ECD6D /* md5.c */; };
 		AEEA43421DB7749F0000998B /* emitter_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = AEEA43311DB7749F0000998B /* emitter_wrap.c */; };
 		AEEA43431DB7749F0000998B /* lyaml.c in Sources */ = {isa = PBXBuildFile; fileRef = AEEA43321DB7749F0000998B /* lyaml.c */; };
 		AEEA43441DB7749F0000998B /* lyaml.h in Headers */ = {isa = PBXBuildFile; fileRef = AEEA43331DB7749F0000998B /* lyaml.h */; };
@@ -367,6 +370,9 @@
 		AED31F391BE3439800763B22 /* ad_ogg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_ogg.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_ogg.c; sourceTree = "<group>"; };
 		AED31F3A1BE3439800763B22 /* ad_tools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_tools.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_tools.c; sourceTree = "<group>"; };
 		AED31F3B1BE3439800763B22 /* ad_wav.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ad_wav.c; path = ../../../../../src/clib/Liekkas/src/decode/ad_wav.c; sourceTree = "<group>"; };
+		AEE2A23920A2EE44003ECD6D /* lmd5.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = lmd5.c; path = ../../../../src/clib/utls/md5/lmd5.c; sourceTree = "<group>"; };
+		AEE2A23A20A2EE45003ECD6D /* md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = md5.h; path = ../../../../src/clib/utls/md5/md5.h; sourceTree = "<group>"; };
+		AEE2A23B20A2EE45003ECD6D /* md5.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = md5.c; path = ../../../../src/clib/utls/md5/md5.c; sourceTree = "<group>"; };
 		AEEA43311DB7749F0000998B /* emitter_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = emitter_wrap.c; path = ../../../../../src/clib/lyaml/emitter_wrap.c; sourceTree = "<group>"; };
 		AEEA43321DB7749F0000998B /* lyaml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lyaml.c; path = ../../../../../src/clib/lyaml/lyaml.c; sourceTree = "<group>"; };
 		AEEA43331DB7749F0000998B /* lyaml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lyaml.h; path = ../../../../../src/clib/lyaml/lyaml.h; sourceTree = "<group>"; };
@@ -605,6 +611,7 @@
 		AE9DE6871A8F2EAC0085776F /* ejoy2dx */ = {
 			isa = PBXGroup;
 			children = (
+				AE9DE6881A8F2EBB0085776F /* utls */,
 				AEEA432F1DB7747E0000998B /* yaml */,
 				AE7104371C1129E900B525A4 /* lzma */,
 				AE75C0CA1C0FDBA900A839A2 /* tween */,
@@ -614,7 +621,6 @@
 				AE9DE6A31A8F2F440085776F /* platform_ios */,
 				AE9DE6961A8F2F2C0085776F /* platform */,
 				AE9DE68F1A8F2F010085776F /* image */,
-				AE9DE6881A8F2EBB0085776F /* utls */,
 			);
 			name = ejoy2dx;
 			sourceTree = "<group>";
@@ -622,6 +628,7 @@
 		AE9DE6881A8F2EBB0085776F /* utls */ = {
 			isa = PBXGroup;
 			children = (
+				AEE2A23F20A2EE62003ECD6D /* md5 */,
 				E6E8D43B1B7E41030049F8AC /* lcrypt.c */,
 				E6E8D43C1B7E41030049F8AC /* ltimesync.c */,
 				E6E8D42B1B7E3EFA0049F8AC /* lpeg */,
@@ -691,6 +698,17 @@
 				AED31F3B1BE3439800763B22 /* ad_wav.c */,
 			);
 			name = decode;
+			sourceTree = "<group>";
+		};
+		AEE2A23F20A2EE62003ECD6D /* md5 */ = {
+			isa = PBXGroup;
+			children = (
+				AEE2A23920A2EE44003ECD6D /* lmd5.c */,
+				AEE2A23B20A2EE45003ECD6D /* md5.c */,
+				AEE2A23A20A2EE45003ECD6D /* md5.h */,
+			);
+			name = md5;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		AEEA432F1DB7747E0000998B /* yaml */ = {
@@ -941,6 +959,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE2A23C20A2EE45003ECD6D /* lmd5.c in Sources */,
+				AEE2A23D20A2EE45003ECD6D /* md5.h in Sources */,
+				AEE2A23E20A2EE45003ECD6D /* md5.c in Sources */,
 				AE9DE6A91A8F2F640085776F /* liosutil.m in Sources */,
 				AE7104811C112A0E00B525A4 /* Lzma2Enc.c in Sources */,
 				AE421EBD1ED406210085EDA6 /* lk_decode.c in Sources */,
