@@ -180,6 +180,9 @@ function mt:_draw()
 			table.insert(hide_list, v)
 			hide_list_cnt = hide_list_cnt+1
 		else	
+			if render.ani then
+				v.frame = v.frame + 1
+			end
 			local anchor = render.anchor
 			if self.offscreen_id then anchor = nil end
 			if render.blend_mode then
