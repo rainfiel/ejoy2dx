@@ -18,6 +18,7 @@ static int HEIGHT = 768;
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
 
 static DWORD g_lastTime = 0;
+static DWORD g_lastDrawTime = 0;
 static int g_disable_gesture = 0;
 
 struct EVENT_STAT {
@@ -113,10 +114,18 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT: {
 		if (GetUpdateRect(hWnd, NULL, FALSE)) {
-			HDC hDC = GetDC(hWnd);
-			update_frame(hDC);
-			ValidateRect(hWnd, NULL);
-			ReleaseDC(hWnd, hDC);
+			DWORD now = timeGetTime();
+			
+			if (now - g_lastDrawTime >= 1000.f / 30)
+			{
+				printf("%d\n", now - g_lastDrawTime);
+			
+				g_lastDrawTime = now;
+				HDC hDC = GetDC(hWnd);
+				update_frame(hDC);
+				ValidateRect(hWnd, NULL);
+				ReleaseDC(hWnd, hDC);
+			}
 		}
 		return 0;
 	}
