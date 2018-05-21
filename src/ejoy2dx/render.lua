@@ -176,13 +176,32 @@ function mt:_draw()
 			end
 		end
 
+		--[[
+		ani_loop: play forever
+		ani_playonce:
+		1. just true: play until frame == frame_count, and keep at last frame
+		2. number: play unit frame == frame_count, and keep at ani_playonce frame
+		3. "hide_after_play": play until frame == frame_count, then hide it
+		note: set start frame before playing if needed
+		]]
+		if render.ani_loop then
+			v.frame = v.frame + 1
+		elseif render.ani_playonce then
+			v.frame = v.frame + 1
+			if v.frame % v.frame_count == 0 then
+				if type(render.ani_playonce) == "number" then
+					v.frame = render.ani_playonce//1
+				elseif render.ani_playonce == "hide_after_play" then
+					hided = true
+				end
+				render.ani_playonce = nil
+			end
+		end
+
 		if hided then
 			table.insert(hide_list, v)
 			hide_list_cnt = hide_list_cnt+1
 		else	
-			if render.ani then
-				v.frame = v.frame + 1
-			end
 			local anchor = render.anchor
 			if self.offscreen_id then anchor = nil end
 			if render.blend_mode then
