@@ -118,8 +118,6 @@ WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			
 			if (now - g_lastDrawTime >= 1000.f / 30)
 			{
-				printf("%d\n", now - g_lastDrawTime);
-			
 				g_lastDrawTime = now;
 				HDC hDC = GetDC(hWnd);
 				update_frame(hDC);
