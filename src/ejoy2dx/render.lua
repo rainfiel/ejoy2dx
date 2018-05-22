@@ -195,6 +195,10 @@ function mt:_draw()
 					hided = true
 				end
 				render.ani_playonce = nil
+				if render.ani_playonce_callback then
+					render.ani_playonce_callback()
+					render.ani_playonce_callback = nil
+				end
 			end
 		end
 
