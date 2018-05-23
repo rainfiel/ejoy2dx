@@ -363,10 +363,12 @@ function RenderManager:fixed_adapter(design_width, design_height)
 	if screen_aspect_ratio >= design_aspect_ratio then
 		-- top & bottom black
 		scale = screen_width / design_width
+		self.full_scale = screen_aspect_ratio / design_aspect_ratio
 		dy = (screen_height - scale * design_height) / 2
 	else
 		-- left & right black
 		scale = screen_height / design_height
+		self.full_scale = design_aspect_ratio / screen_aspect_ratio
 		dx = (screen_width - scale * design_width) / 2
 	end
 
