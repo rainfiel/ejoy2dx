@@ -128,11 +128,11 @@ function mt:touch(what, x, y, id)
 	elseif what == "END" then
 		local touch = self.touchs[id]
 		if touch then
-			-- local callback, touched, anchor_id, ax, ay, is_gesture = self.render:test(x, y)
-			-- if touched == touch[2] or touch[2].usr_data.always_touch_end then
-			-- 	touch[1](touch[2], what, x, y)
-			-- end
-			touch[1](touch[2], what, x, y)
+			local callback, touched, anchor_id, ax, ay, is_gesture = self:test(x, y)
+			if touched == touch[2] or touch[2].usr_data.always_touch_end then
+				touch[1](touch[2], what, x, y)
+			end
+			-- touch[1](touch[2], what, x, y)
 			self.touchs[id] = nil
 		end
 	end
@@ -193,6 +193,8 @@ function mt:_draw()
 					v.frame = render.ani_playonce//1
 				elseif render.ani_playonce == "hide_after_play" then
 					hided = true
+				elseif render.ani_playonce == "fade_after_play" then
+					self:hide(v, true)
 				end
 				render.ani_playonce = nil
 				if render.ani_playonce_callback then
