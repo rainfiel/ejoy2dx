@@ -1,7 +1,7 @@
 local audio = require "ejoy2dx.Liekkas.audio"
 
 local M = {}
-local sound_group = audio:create_group(16)
+local sound_group = audio:create_group(8)
 
 
 function M:load(file_path)
