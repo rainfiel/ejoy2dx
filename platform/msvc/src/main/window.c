@@ -307,9 +307,9 @@ main(int argc, const char *argv[]) {
 		OPT_STRING('t', "title", &title, "windows title"),
 	};
 	struct argparse argparse;
-  argparse_init(&argparse, options, NULL, 0);
-  argparse_describe(&argparse, NULL, NULL);
-  argc = argparse_parse(&argparse, argc, argv);
+	argparse_init(&argparse, options, NULL, 0);
+	argparse_describe(&argparse, NULL, NULL);
+	argc = argparse_parse(&argparse, argc, argv);
 
 	if (no_console==0){
 		FILE* new_file;
