@@ -173,6 +173,35 @@ _create_directory(lua_State *L) {
 	return 0;
 }
 
+char* UTF8ToGB2312(const char* pStrUTF8)  
+{  
+    int nStrLen = MultiByteToWideChar(CP_UTF8, 0, pStrUTF8, -1, NULL, 0);  
+    wchar_t* pWStr = new wchar_t[nStrLen + 1];  
+    memset(pWStr, 0, nStrLen + 1);  
+    MultiByteToWideChar(CP_UTF8, 0, pStrUTF8, -1, pWStr, nStrLen);  
+  
+    nStrLen = WideCharToMultiByte(CP_ACP, 0, pWStr, -1, NULL, 0, NULL, NULL);  
+    char* pStr = new char[nStrLen + 1];  
+    memset(pStr, 0, nStrLen + 1);  
+    WideCharToMultiByte(CP_ACP, 0, pWStr, -1, pStr, nStrLen, NULL, NULL);  
+    if(pWStr)  
+    {  
+        delete[] pWStr;  
+    }  
+    return pStr;  
+}  
+
+static int
+_to_gbk(lua_State* L) {
+	const char* text = luaL_checkstring(L, 1);
+
+	char* gbk = UTF8ToGB2312(text);
+	lua_pushstring(L, gbk);
+	free(gbk);
+
+	return 1;
+}
+
 int 
 luaopen_osutil(lua_State* L) {
 	luaL_checkversion(L);
@@ -184,6 +213,7 @@ luaopen_osutil(lua_State* L) {
 		{"write_file", _write_file},
 		{"delete_file", _delete_file},
 		{"to_utf8", _to_utf8},
+		{"to_gbk",_to_gbk},
 		{"get_path", _get_path},
 		{"create_directory", _create_directory},
 		//{"input", _input},
