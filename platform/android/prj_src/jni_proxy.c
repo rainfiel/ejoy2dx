@@ -198,7 +198,7 @@ void Java_com_ejoy2dx_example_JniProxy_nativeMessage(JNIEnv* env, jclass class,
 		jint id, jbyteArray data) {
 	if (id > 0) {
 		jbyte* byteArray = (*env)->GetByteArrayElements(env, data, false);
-		ejoy2d_message_finish(id, (char*)byteArray);
+		ejoy2d_fw_message(id, "FINISH", (char*)byteArray, 0);
 		(*env)->ReleaseByteArrayElements(env, data, byteArray, 0);
 	}
 }
@@ -206,7 +206,7 @@ void Java_com_ejoy2dx_example_JniProxy_nativeMessage(JNIEnv* env, jclass class,
 void Java_com_ejoy2dx_example_JniProxy_nativeMessageNull(JNIEnv* env, jclass class,
 		jint id) {
 	if (id > 0) {
-		ejoy2d_message_finish(id, NULL);
+		ejoy2d_fw_message(id, "CANCEL", NULL, 0);
 	}
 }
 

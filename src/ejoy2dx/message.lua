@@ -72,10 +72,12 @@ local function unregister(id)
 	messages[id] = nil
 end
 
-local function input(title, ok_text, cancel_text, default_text, style, max_len)
+local function input(title, ok_text, cancel_text, default_text, style, max_len, id, node)
 	if not os_utls.input then return end
 
-	local id, node = add_message()
+	if not id or not node then
+		id, node = add_message()
+	end
 	if os_utls.input(title, id, cancel_text, ok_text, default_text, style, max_len) then
 		return node
 	end
@@ -120,6 +122,7 @@ local function on_message(id, stat, str_data, num_data)
 end
 
 return {
+	new_message = add_message,
 	on_message=on_message,
 	input=input,
 	char=char,
