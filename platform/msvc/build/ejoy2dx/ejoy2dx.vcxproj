@@ -52,7 +52,6 @@
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.h" />
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\lk_util.h" />
     <ClInclude Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.h" />
-    <ClInclude Include="..\..\..\..\src\clib\lsocket\win_compat.h" />
     <ClInclude Include="..\..\..\..\src\clib\lzma\7zCrc.h" />
     <ClInclude Include="..\..\..\..\src\clib\lzma\Bcj2.h" />
     <ClInclude Include="..\..\..\..\src\clib\lzma\Bra.h" />
@@ -81,6 +80,10 @@
     <ClInclude Include="..\..\..\..\src\clib\platform\liosutil.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\platform_init.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\sound.h" />
+    <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\lrc4.h" />
+    <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\lsocket.h" />
+    <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\rc4.h" />
+    <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\win_compat.h" />
     <ClInclude Include="..\..\..\..\src\clib\sproto\msvcint.h" />
     <ClInclude Include="..\..\..\..\src\clib\sproto\sproto.h" />
     <ClInclude Include="..\..\..\..\src\clib\tween\easing.h" />
@@ -125,8 +128,6 @@
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_util.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket.c" />
-    <ClCompile Include="..\..\..\..\src\clib\lsocket\win_compat.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrc.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrcOpt.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zStream.c" />
@@ -155,12 +156,16 @@
     <ClCompile Include="..\..\..\..\src\clib\lzma\XzDec.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\XzEnc.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\XzIn.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sconn_client\lib\lcrypt.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sconn_client\lib\lrc4.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sconn_client\lib\lsocket.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sconn_client\lib\rc4.c" />
+    <ClCompile Include="..\..\..\..\src\clib\sconn_client\lib\win_compat.c" />
     <ClCompile Include="..\..\..\..\src\clib\sproto\lsproto.c" />
     <ClCompile Include="..\..\..\..\src\clib\sproto\sproto.c" />
     <ClCompile Include="..\..\..\..\src\clib\tween\easing.c" />
     <ClCompile Include="..\..\..\..\src\clib\tween\leasing.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\image.c" />
-    <ClCompile Include="..\..\..\..\src\clib\utls\lcrypt.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lmonitor.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\lpeg\lpeg.c" />
     <ClCompile Include="..\..\..\..\src\clib\utls\ltimesync.c" />

@@ -253,6 +253,7 @@ end
 ----------------------------------------------------------
 
 local function local_ip()
+	if not lsocket.getinterfaces then return end
 	local interfaces = lsocket.getinterfaces()
 	if not interfaces then return end
 	for _, v in ipairs(interfaces) do
