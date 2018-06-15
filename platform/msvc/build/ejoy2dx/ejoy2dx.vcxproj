@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_decode.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\lk_util.c" />
     <ClCompile Include="..\..\..\..\src\clib\Liekkas\src\openal\oal.c" />
+    <ClCompile Include="..\..\..\..\src\clib\lsocket\lsocket_old.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrc.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zCrcOpt.c" />
     <ClCompile Include="..\..\..\..\src\clib\lzma\7zStream.c" />
