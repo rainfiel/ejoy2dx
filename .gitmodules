@@ -1,9 +1,6 @@
 [submodule "ejoy2d"]
 	path = ejoy2d
 	url = https://github.com/rainfiel/ejoy2d.git
-[submodule "src/clib/lsocket"]
-	path = src/clib/lsocket
-url=https://github.com/rainfiel/lsocket
 [submodule "src/clib/sproto"]
 	path = src/clib/sproto
 url=https://github.com/rainfiel/sproto
