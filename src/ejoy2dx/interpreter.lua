@@ -268,8 +268,8 @@ end
 function M:run(port)
 	local ip = local_ip()
 	if not ip then 
-		print("INTERPRETER: run failed, no ip")
-		return
+		ip = "127.0.0.1"
+		print("INTERPRETER: no lan ip, use", ip)
 	end
 	self.ip = ip
 	self.port = port
