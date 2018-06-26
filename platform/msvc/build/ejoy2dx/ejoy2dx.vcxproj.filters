@@ -282,6 +282,9 @@
     <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\win_compat.h">
       <Filter>ejoy2dx\sconn_client</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\clib\platform\platform_win.h">
+      <Filter>ejoy2dx\platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\ejoy2d\lib\dfont.c">

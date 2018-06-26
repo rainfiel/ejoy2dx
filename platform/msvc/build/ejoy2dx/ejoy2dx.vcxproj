@@ -79,6 +79,7 @@
     <ClInclude Include="..\..\..\..\src\clib\platform\lhttplib.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\liosutil.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\platform_init.h" />
+    <ClInclude Include="..\..\..\..\src\clib\platform\platform_win.h" />
     <ClInclude Include="..\..\..\..\src\clib\platform\sound.h" />
     <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\lrc4.h" />
     <ClInclude Include="..\..\..\..\src\clib\sconn_client\lib\lsocket.h" />
