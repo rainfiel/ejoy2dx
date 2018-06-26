@@ -29,6 +29,7 @@
 #include <netdb.h>
 #include <sys/stat.h>
 #include <dirent.h>
+#include <sys/time.h>
  
 #ifdef __ANDROID__
 #include "ifaddrs.h"
