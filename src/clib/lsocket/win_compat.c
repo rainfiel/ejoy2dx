@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "platform_win.h"
 
 int 
 win_getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen) {

@@ -13,6 +13,7 @@ int luaopen_serialize(lua_State *L);
 int luaopen_osutil(lua_State *L);
 int luaopen_monitor(lua_State *L);
 int luaopen_easing(lua_State *L);
+int luaopen_lsocket(lua_State *L);
 int luaopen_socket_c(lua_State *L);
 int luaopen_rc4_c(lua_State *L);
 int luaopen_crypt(lua_State *L);
@@ -32,7 +33,8 @@ init_lua_libs(lua_State* L) {
 	_register(L, luaopen_osutil, "ejoy2dx.osutil.c");
 	_register(L, luaopen_serialize, "ejoy2dx.serialize.c");
 	_register(L, luaopen_easing, "ejoy2dx.easing.c");
-	_register(L, luaopen_socket_c, "ejoy2dx.socket.c");
+	_register(L, luaopen_lsocket, "ejoy2dx.socket.c");
+	_register(L, luaopen_socket_c, "sconn_socket.c");
 	_register(L, luaopen_rc4_c, "ejoy2dx.rc4.c");
 	_register(L, luaopen_crypt, "ejoy2dx.crypt.c");
 	_register(L, luaopen_timesync, "ejoy2dx.timesync.c");
