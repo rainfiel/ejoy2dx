@@ -373,6 +373,7 @@ ejoy2d_check_reload() {
 
 		free(G);
 		ejoy2d_fw_init(STARTUP);
+		ejoy2d_game_view_layout(G->game, 1, STARTUP->orix, STARTUP->oriy, STARTUP->width, STARTUP->height);
 	}
 
 }
@@ -408,6 +409,10 @@ ejoy2d_fw_gesture(int type, float x1, float y1, float x2, float y2, int state) {
 
 void
 ejoy2d_fw_view_layout(int stat, float x, float y, float width, float height) {
+	STARTUP->width = width;
+	STARTUP->height = height;
+	STARTUP->orix = x;
+	STARTUP->oriy = y;
 	ejoy2d_game_view_layout(G->game, stat, x, y, width, height);
 }
 
