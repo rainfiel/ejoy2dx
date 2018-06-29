@@ -12,7 +12,15 @@ function M:reload()
 
 	registry.ejoy_reload = true
 
+	local music = require "ejoy2dx.Liekkas.music"
+	music.clear()
+	local sound = require "ejoy2dx.Liekkas.sound"
+	sound:clear()
+	local audio = require "ejoy2dx.Liekkas.audio"
+	audio:clear()
 	self:pause()
+
+	collectgarbage()
 end
 
 function M:pause()

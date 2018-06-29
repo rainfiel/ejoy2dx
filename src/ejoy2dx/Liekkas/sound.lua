@@ -30,4 +30,8 @@ function M:close()
   return sound_group:close()
 end
 
+function M:clear()
+  sound_group:clear()
+end
+
 return M

@@ -26,6 +26,9 @@ local function _gen_bgm()
   function m.stop()
     bgm.stop()
   end
+
+  function m.clear()
+  end
   return m
 end
 
@@ -55,6 +58,10 @@ local function _gen_bgm_soft()
     if music_handle then
       music_group:stop(music_handle)
     end
+  end
+
+  function m.clear()
+    music_group:clear()
   end
 
   return m
@@ -97,6 +104,11 @@ end
 function M.close()
   _cur_bg_handle.stop()
   M.is_close = true
+end
+
+function M.clear()
+  M.close()
+  _cur_bg_handle.clear()
 end
 
 

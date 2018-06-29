@@ -139,6 +139,13 @@ function M:create_group(source_count)
   return setmetatable(raw, group_mt)
 end
 
+function M:clear()
+  local path = next(self.load_map)
+  while path do
+    self:unload(path)
+    self.load_map[path] = nil
+  end
+end
 
 local function _update_version(version)
   return (version+1) & 0x00ffffff -- region [0, 0x00ffffff]
@@ -233,6 +240,13 @@ function group_mt:close()
     handle.source_id:stop()
   end
   self.is_close = true
+end
+
+function group_mt:clear()
+  for i,handle in ipairs(self.source_list) do
+    handle.source_id:clear()
+  end
+  self.source_list = nil
 end
 
 
