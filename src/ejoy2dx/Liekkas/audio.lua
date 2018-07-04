@@ -144,6 +144,7 @@ function M:clear()
   while path do
     self:unload(path)
     self.load_map[path] = nil
+    path = next(self.load_map)
   end
 end
 
