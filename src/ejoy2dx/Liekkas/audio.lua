@@ -177,6 +177,8 @@ end
 
 
 function group_mt:add(file_path, loop, pitch, gain, max_distance)
+  if self.is_close then return end
+  
   pitch = pitch or 1.0
   max_distance = max_distance or 100.0
   gain = gain or 1.0
@@ -248,6 +250,7 @@ function group_mt:clear()
     handle.source_id:clear()
   end
   self.source_list = nil
+  self.is_close = true
 end
 
 
