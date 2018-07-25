@@ -1,6 +1,6 @@
 [submodule "ejoy2d"]
 	path = ejoy2d
-url=https://gz-tea.ejoy.com/git/island/ejoy2d.git
+url=ssh://git@gz-tea.ejoy.com:3222/island/ejoy2d.git
 [submodule "src/clib/sproto"]
 	path = src/clib/sproto
 url=https://github.com/rainfiel/sproto
