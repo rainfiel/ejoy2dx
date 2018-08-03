@@ -1,7 +1,6 @@
 
 local osutls = require "ejoy2dx.osutil.c"
 local keymap = require "ejoy2dx.keymap"
-local text_input = require "ejoy2dx.text_input"
 
 local M = {}
 
@@ -16,8 +15,12 @@ M.read_file = osutls.read_file
 M.delete_file = osutls.delete_file
 M.write_file = osutls.write_file
 M.get_path = osutls.get_path
-M.input = text_input.input
 M.create_directory = osutls.create_directory
+
+local ok, text_input = pcall(require, "ejoy2dx.text_input")
+if ok and text_input then
+	M.input = text_input.input
+end
 
 M.is_key_down = function(name)
 	if OS == "WINDOWS" then
