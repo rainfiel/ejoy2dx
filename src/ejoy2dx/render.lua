@@ -190,7 +190,6 @@ function mt:_draw()
 		elseif render.ani_playonce then
 			render.frame = (render.frame or v.frame) + (render.frame_delta or 1)
 			v.frame = render.frame//1
-			print(v.frame)
 			if v.frame > 0 and v.frame % v.frame_count == 0 then
 				if type(render.ani_playonce) == "number" then
 					v.frame = render.ani_playonce//1
