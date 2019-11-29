@@ -25,10 +25,11 @@ function mt:init()
 	self.draw_call = self._draw
 end
 
-function mt:set_offscreen(tex_id, w, h, name, drawonce)
+function mt:set_offscreen(tex_id, w, h, name, drawonce, clear_color)
 	self.offscreen_id = tex_id
 	self.drawonce = drawonce
 	self.w, self.h, self.name = w, h, name
+	self.clear_color = clear_color
 
 	self.need_clear = true
 	self.draw_call = self._offscreen_draw
@@ -209,7 +210,7 @@ function mt:_draw()
 			hide_list_cnt = hide_list_cnt+1
 		else	
 			local anchor = render.anchor
-			if self.offscreen_id then anchor = nil end
+			-- if self.offscreen_id then anchor = nil end
 			if render.blend_mode then
 				if blend.begin_blend(render.blend_mode) then
 					v:draw(anchor)
@@ -238,7 +239,7 @@ function mt:_offscreen_draw()
 	image_c.active_rt(self.offscreen_id)
 	fw.reset_screen(self.w, self.h, 1)
 	if self.need_clear or not self.drawonce then
-		ej.clear()
+		ej.clear(self.clear_color)
 		self.need_clear = nil
 	end
 
@@ -416,12 +417,12 @@ function RenderManager:anchor(anchor_id)
 	return screen_anchors[anchor_id]
 end
 
-function RenderManager:create_offscreen(layer, w, h, name, drawonce)
+function RenderManager:create_offscreen(layer, w, h, name, drawonce, clear_color)
 	local tex_name = name..w..h
 	local tex_id = texture:add_texture(tex_name)
 	image_c.create_rt(tex_id, w, h)
 	local rd = self:create(layer, name)
-	rd:set_offscreen(tex_id, w, h, name, drawonce)
+	rd:set_offscreen(tex_id, w, h, name, drawonce, clear_color)
 	return rd
 end
 
