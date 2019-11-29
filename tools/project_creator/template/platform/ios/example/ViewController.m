@@ -64,7 +64,9 @@ static NSString *appFolderPath = nil;
      bounds.size.width, bounds.size.height);
 	
 	appFolderPath = [[NSBundle mainBundle] resourcePath];
-	const char* folder = [appFolderPath UTF8String];
+	const char* str = [appFolderPath UTF8String];
+	char* folder = (char*)malloc(strlen(str)+1);
+	strcpy(folder, str);
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
 		screenScale = [[UIScreen mainScreen] nativeScale];
