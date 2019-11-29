@@ -185,10 +185,12 @@ function mt:_draw()
 		note: set start frame before playing if needed
 		]]
 		if render.ani_loop then
-			v.frame = v.frame + 1
+			render.frame = (render.frame or v.frame) + (render.frame_delta or 1)
+			v.frame = render.frame//1
 		elseif render.ani_playonce then
-			v.frame = v.frame + 1
-			if v.frame % v.frame_count == 0 then
+			render.frame = (render.frame or v.frame) + (render.frame_delta or 1)
+			v.frame = render.frame//1
+			if v.frame > 0 and v.frame % v.frame_count == 0 then
 				if type(render.ani_playonce) == "number" then
 					v.frame = render.ani_playonce//1
 				elseif render.ani_playonce == "hide_after_play" then
