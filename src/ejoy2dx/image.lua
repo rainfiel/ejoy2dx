@@ -3,6 +3,7 @@ local image_c = require "ejoy2dx.image.c"
 local utls = require "ejoy2dx.utls"
 local texture = require "ejoy2dx.texture"
 
+local ejoy2dx = require "ejoy2dx"
 local sprite = require "ejoy2d.sprite"
 local pack = require "ejoy2d.spritepack"
 local pack_c = require "ejoy2d.spritepack.c"
@@ -25,7 +26,7 @@ local function default_collide_info(tw, th, comp, img_data)
 	return img_data
 end
 
-local SCREEN_SCALE = 16
+local SCREEN_SCALE = ejoy2dx.SCREEN_SCALE
 local sprite_template = [[
 return
 {

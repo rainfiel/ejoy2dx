@@ -35,7 +35,19 @@ function game.message(...)
 	message.on_message(...)
 end
 
-function game.handle_error(...)
+function game.handle_error(type, msg)
+	if error_render then return end
+	ejoy2dx.game_stat:pause()
+	
+	local sprite = require("ejoy2d.sprite")
+	render:clear()
+	error_render = render:create(9999, "error")
+	local width = render.design_width-20
+	local loading_text = sprite.label({width=width, height=24,size=32,color=0xFFaaaaaa, edge=1, align='l'})
+	loading_text:ps(2, 20)
+	error_render:show(loading_text)
+
+	loading_text.text = "#[red]游戏出现错误，重启试试#[stop]\n"..(msg or "")
 end
 
 function game.on_resume()

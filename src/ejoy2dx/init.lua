@@ -4,6 +4,7 @@ local fw = require "ejoy2d.framework"
 
 local ejoy2dx = {}
 
+ejoy2dx.SCREEN_SCALE = 16
 ejoy2dx.texture = require("ejoy2dx.texture")
 ejoy2dx.texture:init()
 
@@ -53,8 +54,6 @@ ejoy2dx.STATE_FAILED = 5
 -- UIKeyboardTypeTwitter NS_ENUM_AVAILABLE_IOS(5_0),      // A type optimized for twitter text entry (easy access to @ #)
 -- UIKeyboardTypeWebSearch NS_ENUM_AVAILABLE_IOS(7_0),    // A default keyboard type with URL-oriented addition (shows space . prominently).
 
-
-local image = require "ejoy2dx.image"
 local utls = require "ejoy2dx.utls"
 local registry = debug.getregistry()
 local old_external_sprite = registry.ejoy2d_external_sprite
@@ -64,6 +63,7 @@ registry.ejoy2d_external_sprite = function(key_str)
 
 	local keys = utls.str_split(key_str, "@")
 	if #keys == 2 then
+		local image = require "ejoy2dx.image"
 		return image:load_image(keys[1]), keys[2]
 	end
 end
